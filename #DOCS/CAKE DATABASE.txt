@@ -1,0 +1,215 @@
+set global event_scheduler="on";
+create database if not exists fertinv character set utf8 collate utf8_unicode_ci;
+use fertinv;
+
+create table if not exists articulos (
+  id integer unsigned auto_increment primary key,
+  Serial varchar(50) unique not null,
+  Modelo_id integer unsigned not null,
+  Datos varchar(200),
+  Ubicacion varchar(50),
+  Estado enum("Nuevo","Usado","Roto","Reparado","Obsoleto") default "Nuevo",
+  Fecha_De_Compra date);
+
+create table if not exists modelos (
+  id integer unsigned auto_increment primary key,
+  Marca varchar(25) not null,
+  Modelo varchar(50) not null,
+  Tipo_De_Articulo varchar(50) not null,
+  Serial_Comun varchar(50),
+  Imagen text,
+  Abstracto varchar(25));
+
+create table if not exists asignaciones (
+  id integer unsigned auto_increment primary key,
+  Proceso_id integer unsigned not null,
+  Articulo_id integer unsigned not null,
+  Hasta date);
+
+create table if not exists devoluciones (
+  id integer unsigned auto_increment primary key,
+  Proceso_id integer unsigned not null,
+  Articulo_id integer unsigned not null);
+
+create table if not exists personas (
+  id integer unsigned auto_increment primary key,
+  Nombre varchar(50) not null,
+  Apellido varchar(50) not null,
+  Cedula varchar(8) unique not null,
+  Gerencia enum("IT","Rec","Finanzas","Contratacion","Servicios Generales","Planificacion","Confiabiliad", "Mantenimiento", "Produccion", "Gestion") not null, /* agregar faltantes*/
+  Cargo enum("Gerente","Supervisor", "Supervisora", "Analista", "Pasante", "Superintendente","Jefe de planta", "Jefa de planta", "Secretaria", "Secretario", "Consultor", "Consultora", "Consejera", "Consejero") not null,/*agregar faltantaes*/
+  Sede smallint default 0,
+  Numero_De_Oficina smallint,
+  Telefono_Personal varchar(25),
+  Rif varchar(15),
+  Residencia varchar(200));
+
+create table if not exists procesos (
+  id integer unsigned auto_increment primary key,
+  Persona_id integer unsigned not null,
+  Motivo varchar(255),
+  Fecha_De_Solicitud date not null,
+  Fecha_De_Aprobacion date,
+  Estado enum("Pendiente","Aprobado","Fallido","Completado") default "Pendiente",
+  Observaciones text);
+
+create table if not exists personas_procesos(
+  Persona_id integer unsigned not null,
+  Proceso_id integer unsigned not null,
+  Primary key (persona_id,proceso_id));
+
+create table if not exists contratos (
+  id integer unsigned auto_increment primary key,
+  Persona_id integer unsigned not null,
+  Fecha_De_Inicio date not null,
+  Fecha_De_Culminacion date,
+  Tipo_De_Contrato enum("Temporal","Permanente") default "Temporal");/*agregar faltantes*/
+
+create table if not exists accesorios (
+  id integer unsigned auto_increment primary key,
+  Tipo varchar(25) not null,
+  Articulo_id integer unsigned not null,
+  Descripcion varchar(50));
+
+create table if not exists rentas (
+  id integer unsigned auto_increment primary key,
+  Descripcion varchar(50) not null,
+  Monto_Basico float default 0);
+
+create table if not exists lineas_rentas (
+  Linea_id integer unsigned not null,
+  Renta_id integer unsigned not null,
+  Primary key (Linea_id,Renta_id));
+
+create table if not exists consumos (
+  id integer unsigned auto_increment primary key,
+  Factura_id integer unsigned not null,
+  Renta_id integer unsigned not null,
+  Consumido varchar(15) default "0",
+  Excedente varchar(10) default "0",
+  Monto_Bs float unsigned not null);
+
+create table if not exists facturas (
+  id integer unsigned auto_increment primary key,
+  Linea_id integer unsigned not null,
+  Paguese_Antes_De date,
+  Balance float unsigned not null default 0,
+  Desde date not null,
+  Hasta date not null,
+  Numero_De_Cuenta varchar(25));
+
+create table if not exists lineas (
+  id integer unsigned auto_increment primary key,
+  Operadora enum("Movilnet","Movistar") not null default "Movilnet",
+  Numero varchar(16) not null,
+  Puk integer unsigned,
+  Pin integer unsigned,
+  Codigo_Sim varchar(25),
+  Articulo_id integer unsigned,
+  Estado enum("Activa","Inactiva","Perdida") default "Inactiva");
+
+create table if not exists usuarios(
+  id integer unsigned auto_increment primary key,
+  Nombre_De_Usuario varchar(25) unique not null,
+  Email varchar(50) unique not null,
+  Clave varchar(25) not null,
+  Funcion enum("Superadministrador","Administrador","Operador","Visitante") default "Visitante",
+  Persona_id integer unsigned not null);
+
+/*relaciones*/
+
+alter table accesorios add index `articulos_asociados` (articulo_id);
+alter table accesorios
+  add foreign key (articulo_id) references articulos (id) on delete cascade on update cascade;
+
+alter table articulos add index `marca_y_modelo` (modelo_id);
+alter table articulos
+  add foreign key (modelo_id) references modelos (id) on delete restrict on update cascade;
+
+alter table asignaciones add index `articulo_asignado` (articulo_id);
+alter table asignaciones
+  add foreign key (articulo_id) references articulos (id) on delete restrict on update cascade;
+alter table asignaciones add index `parte_del_proceso` (proceso_id);
+alter table asignaciones
+  add foreign key (proceso_id) references procesos (id) on delete cascade	on update cascade;
+
+alter table devoluciones add index `articulo_devuelto` (articulo_id);
+alter table devoluciones
+  add foreign key (articulo_id) references articulos (id) on delete restrict on update cascade;
+alter table devoluciones add index `parte_del_proceso` (proceso_id);
+alter table devoluciones
+  add foreign key (proceso_id) references procesos (id) on delete cascade on update cascade;
+
+alter table procesos add index `solicitante` (persona_id);
+alter table procesos
+  add foreign key (persona_id) references personas (id) on delete cascade on update cascade;
+
+alter table personas_procesos
+  add foreign key (persona_id) references personas (id) on delete restrict on update cascade;
+alter table personas_procesos
+  add foreign key (proceso_id) references procesos (id) on delete restrict on update cascade;
+
+alter table contratos add index `persona_contratada` (persona_id);
+alter table contratos
+  add foreign key (persona_id) references personas (id) on delete restrict on update cascade;
+
+alter table lineas add index `equipo_de_linea` (articulo_id);
+alter table lineas
+  add foreign key (articulo_id) references articulos (id) on delete restrict on update cascade;
+
+alter table facturas add index `linea_de_factura` (linea_id);
+alter table facturas
+  add foreign key (linea_id) references lineas (id) on delete restrict on update cascade;
+
+alter table consumos add index `consumo_de` (factura_id);
+alter table consumos
+  add foreign key (factura_id) references facturas (id) on delete restrict on update cascade;
+alter table consumos add index `renta_mensual` (renta_id);
+alter table consumos
+  add foreign key (renta_id) references rentas (id) on delete restrict on update cascade;
+
+alter table lineas_rentas
+  add foreign key (Linea_id) references lineas (id) on delete restrict on update cascade;
+alter table lineas_rentas
+  add foreign key (renta_id) references rentas (id) on delete restrict on update cascade;
+
+alter table usuarios add index `datos_de_usuario`(persona_id);
+alter table usuarios
+  add constraint `usuario->persona`
+    foreign key (persona_id) references  personas (id) on delete cascade on update cascade;
+
+/*
+
+** * **
+<v 2.0>
+** * **
+
+create table if not exists softwares (
+  id integer unsigned primary key,
+  Nombre varchar(25) not null,
+  Descripcion varchar(50),
+  version varchar(25),
+  Estado char(1));
+
+create table if not exists instalaciones (
+  id integer unsigned primary key,
+  Articulo_id integer unsigned not null,
+  Software_id integer unsigned not null,
+  Fecha_De_Instalacion date not null,
+  Fecha_Fin_Licencia date not null,
+  Licencia varchar(50),
+  Nombre_De_Usuario varchar(50),
+  Costo integer unsiged not null);
+
+alter table instalaciones add index `programa` (software_id);
+alter table instalaciones
+  add foreing key (software_id) references softwares (id) on delete cascade on update cascade;
+alter table instalaciones add index `instalado_en` (articulo_id);
+alter table instalaciones
+  add foreing key (articulo_id) references articulos (id) on delete cascade on update cascade;
+
+** * **
+</v 2.0>
+** * **
+
+****/
