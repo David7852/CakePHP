@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $Titulo
- * @property int $trabajor_id
+ * @property int $trabajador_id
  * @property string $Motivo
  * @property string $Tipo
  * @property \Cake\I18n\Time $Fecha_De_Solicitud

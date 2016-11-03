@@ -23,8 +23,8 @@
             <td><?= $this->Number->format($proceso->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Trabajor Id') ?></th>
-            <td><?= $this->Number->format($proceso->trabajor_id) ?></td>
+            <th scope="row"><?= __('Trabajador Id') ?></th>
+            <td><?= $this->Number->format($proceso->trabajador_id) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Fecha De Solicitud') ?></th>

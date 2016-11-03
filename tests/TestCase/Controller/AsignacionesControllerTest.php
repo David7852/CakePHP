@@ -18,6 +18,10 @@ class AsignacionesControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.asignaciones',
         'app.procesos',
+        'app.trabajadores',
+        'app.contratos',
+        'app.procesos_trabajadores',
+        'app.usuarios',
         'app.articulos',
         'app.modelos'
     ];

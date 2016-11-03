@@ -50,8 +50,8 @@ class ModelosFixture extends TestFixture
             'Serial_Comun' => 'Lorem ipsum dolor sit amet',
             'Imagen' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
             'Abstracto' => 'Lorem ipsum dolor sit a',
-            'created' => '2016-11-03 18:52:40',
-            'modified' => '2016-11-03 18:52:40'
+            'created' => '2016-11-03 19:05:26',
+            'modified' => '2016-11-03 19:05:26'
         ],
     ];
 }

@@ -17,7 +17,8 @@ class AccesoriosControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.accesorios',
-        'app.articulos'
+        'app.articulos',
+        'app.modelos'
     ];
 
     /**

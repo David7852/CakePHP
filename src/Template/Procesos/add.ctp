@@ -10,7 +10,7 @@
         <legend><?= __('Add Proceso') ?></legend>
         <?php
             echo $this->Form->input('Titulo');
-            echo $this->Form->input('trabajor_id');
+            echo $this->Form->input('trabajador_id');
             echo $this->Form->input('Motivo');
             echo $this->Form->input('Tipo');
             echo $this->Form->input('Fecha_De_Solicitud');

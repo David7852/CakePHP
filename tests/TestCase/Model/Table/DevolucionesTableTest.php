@@ -26,6 +26,10 @@ class DevolucionesTableTest extends TestCase
     public $fixtures = [
         'app.devoluciones',
         'app.procesos',
+        'app.trabajadores',
+        'app.contratos',
+        'app.procesos_trabajadores',
+        'app.usuarios',
         'app.articulos',
         'app.modelos'
     ];

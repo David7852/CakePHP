@@ -11,7 +11,7 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Titulo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('trabajor_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('trabajador_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Motivo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Fecha_De_Solicitud') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Fecha_De_Aprobacion') ?></th>
@@ -25,7 +25,7 @@
             <tr>
                 <td><?= $this->Number->format($proceso->id) ?></td>
                 <td><?= h($proceso->Titulo) ?></td>
-                <td><?= $this->Number->format($proceso->trabajor_id) ?></td>
+                <td><?= $this->Number->format($proceso->trabajador_id) ?></td>
                 <td><?= h($proceso->Motivo) ?></td>
                 <td><?= h($proceso->Fecha_De_Solicitud) ?></td>
                 <td><?= h($proceso->Fecha_De_Aprobacion) ?></td>

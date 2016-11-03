@@ -52,8 +52,8 @@ class AsignacionesFixture extends TestFixture
             'Proceso_id' => 1,
             'Articulo_id' => 1,
             'Hasta' => '2016-11-03',
-            'created' => '2016-11-03 18:52:44',
-            'modified' => '2016-11-03 18:52:44'
+            'created' => '2016-11-03 19:04:52',
+            'modified' => '2016-11-03 19:04:52'
         ],
     ];
 }

@@ -48,8 +48,8 @@ class AccesoriosFixture extends TestFixture
             'Descripcion' => 'Lorem ipsum dolor sit a',
             'Estado' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
             'Articulo_id' => 1,
-            'created' => '2016-11-03 18:52:29',
-            'modified' => '2016-11-03 18:52:29'
+            'created' => '2016-11-03 19:05:34',
+            'modified' => '2016-11-03 19:05:34'
         ],
     ];
 }

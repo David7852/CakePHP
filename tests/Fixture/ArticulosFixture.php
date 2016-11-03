@@ -55,8 +55,8 @@ class ArticulosFixture extends TestFixture
             'Ubicacion' => 'Lorem ipsum dolor sit amet',
             'Estado' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
             'Fecha_De_Compra' => '2016-11-03',
-            'created' => '2016-11-03 18:52:37',
-            'modified' => '2016-11-03 18:52:37'
+            'created' => '2016-11-03 19:05:30',
+            'modified' => '2016-11-03 19:05:30'
         ],
     ];
 }

@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Contratos Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Trabajores
+ * @property \Cake\ORM\Association\BelongsTo $Trabajadores
  *
  * @method \App\Model\Entity\Contrato get($primaryKey, $options = [])
  * @method \App\Model\Entity\Contrato newEntity($data = null, array $options = [])
@@ -40,8 +40,8 @@ class ContratosTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Trabajores', [
-            'foreignKey' => 'trabajor_id',
+        $this->belongsTo('Trabajadores', [
+            'foreignKey' => 'trabajador_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -85,7 +85,7 @@ class ContratosTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['trabajor_id'], 'Trabajores'));
+        $rules->add($rules->existsIn(['trabajador_id'], 'Trabajadores'));
 
         return $rules;
     }
