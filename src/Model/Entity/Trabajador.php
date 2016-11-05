@@ -7,24 +7,31 @@ use Cake\ORM\Entity;
  * Trabajador Entity
  *
  * @property int $id
- * @property string $Nombre
- * @property string $Apellido
- * @property string $Cedula
- * @property string $Gerencia
- * @property string $Cargo
- * @property int $Sede
- * @property int $Numero_De_Oficina
- * @property string $Telefono_Personal
- * @property string $Rif
- * @property string $Residencia
+ * @property string $nombre
+ * @property string $apellido
+ * @property string $cedula
+ * @property string $sexo
+ * @property string $gerencia
+ * @property string $cargo
+ * @property int $sede
+ * @property int $numero_de_oficina
+ * @property string $telefono_personal
+ * @property string $rif
+ * @property string $residencia
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
+ * @property \App\Model\Entity\Contrato[] $contratos
+ * @property \App\Model\Entity\Usuario[] $usuarios
  * @property \App\Model\Entity\Proceso[] $procesos
  */
 class Trabajador extends Entity
 {
-
+    protected function _getName()
+    {
+        return
+            $this->_properties['nombre'] . ' ' . $this->_properties['apellido'];
+    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

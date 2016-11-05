@@ -34,7 +34,7 @@ class ProcesosController extends AppController
     public function view($id = null)
     {
         $proceso = $this->Procesos->get($id, [
-            'contain' => ['Trabajadores']
+            'contain' => ['Trabajadores', 'Asignaciones', 'Devoluciones']
         ]);
 
         $this->set('proceso', $proceso);

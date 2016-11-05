@@ -7,9 +7,9 @@ use Cake\ORM\Entity;
  * Accesorio Entity
  *
  * @property int $id
- * @property string $Descripcion
- * @property string $Estado
- * @property int $Articulo_id
+ * @property string $descripcion
+ * @property string $estado
+ * @property int $articulo_id
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *

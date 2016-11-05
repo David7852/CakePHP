@@ -4,6 +4,14 @@
         <li><?= $this->Html->link(__('New Articulo'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Modelos'), ['controller' => 'Modelos', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Modelo'), ['controller' => 'Modelos', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Accesorios'), ['controller' => 'Accesorios', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Accesorio'), ['controller' => 'Accesorios', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Asignaciones'), ['controller' => 'Asignaciones', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Asignacion'), ['controller' => 'Asignaciones', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Devoluciones'), ['controller' => 'Devoluciones', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Devolucion'), ['controller' => 'Devoluciones', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Linea'), ['controller' => 'Lineas', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="articulos index large-9 medium-8 columns content">
@@ -12,11 +20,11 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Serial') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Modelo_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Datos') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Ubicacion') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Fecha_De_Compra') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('serial') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('modelo_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('datos') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('ubicacion') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('fecha_de_compra') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -26,11 +34,11 @@
             <?php foreach ($articulos as $articulo): ?>
             <tr>
                 <td><?= $this->Number->format($articulo->id) ?></td>
-                <td><?= h($articulo->Serial) ?></td>
+                <td><?= h($articulo->serial) ?></td>
                 <td><?= $articulo->has('modelo') ? $this->Html->link($articulo->modelo->id, ['controller' => 'Modelos', 'action' => 'view', $articulo->modelo->id]) : '' ?></td>
-                <td><?= h($articulo->Datos) ?></td>
-                <td><?= h($articulo->Ubicacion) ?></td>
-                <td><?= h($articulo->Fecha_De_Compra) ?></td>
+                <td><?= h($articulo->datos) ?></td>
+                <td><?= h($articulo->ubicacion) ?></td>
+                <td><?= h($articulo->fecha_de_compra) ?></td>
                 <td><?= h($articulo->created) ?></td>
                 <td><?= h($articulo->modified) ?></td>
                 <td class="actions">

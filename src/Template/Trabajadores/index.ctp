@@ -2,6 +2,10 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Trabajador'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Contratos'), ['controller' => 'Contratos', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Contrato'), ['controller' => 'Contratos', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Procesos'), ['controller' => 'Procesos', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Proceso'), ['controller' => 'Procesos', 'action' => 'add']) ?></li>
     </ul>
@@ -12,14 +16,14 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Nombre') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Apellido') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Cedula') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Sede') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Numero_De_Oficina') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Telefono_Personal') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Rif') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Residencia') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('nombre') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('apellido') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('cedula') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('sede') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('numero_de_oficina') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('telefono_personal') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('rif') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('residencia') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -29,14 +33,14 @@
             <?php foreach ($trabajadores as $trabajador): ?>
             <tr>
                 <td><?= $this->Number->format($trabajador->id) ?></td>
-                <td><?= h($trabajador->Nombre) ?></td>
-                <td><?= h($trabajador->Apellido) ?></td>
-                <td><?= h($trabajador->Cedula) ?></td>
-                <td><?= $this->Number->format($trabajador->Sede) ?></td>
-                <td><?= $this->Number->format($trabajador->Numero_De_Oficina) ?></td>
-                <td><?= h($trabajador->Telefono_Personal) ?></td>
-                <td><?= h($trabajador->Rif) ?></td>
-                <td><?= h($trabajador->Residencia) ?></td>
+                <td><?= h($trabajador->nombre) ?></td>
+                <td><?= h($trabajador->apellido) ?></td>
+                <td><?= h($trabajador->cedula) ?></td>
+                <td><?= $this->Number->format($trabajador->sede) ?></td>
+                <td><?= $this->Number->format($trabajador->numero_de_oficina) ?></td>
+                <td><?= h($trabajador->telefono_personal) ?></td>
+                <td><?= h($trabajador->rif) ?></td>
+                <td><?= h($trabajador->residencia) ?></td>
                 <td><?= h($trabajador->created) ?></td>
                 <td><?= h($trabajador->modified) ?></td>
                 <td class="actions">

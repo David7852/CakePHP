@@ -19,9 +19,9 @@
     <fieldset>
         <legend><?= __('Edit Devolucion') ?></legend>
         <?php
-            echo $this->Form->input('Titulo');
-            echo $this->Form->input('Proceso_id', ['options' => $procesos]);
-            echo $this->Form->input('Articulo_id', ['options' => $articulos]);
+            echo $this->Form->input('titulo');
+            echo $this->Form->input('proceso_id', ['options' => $procesos]);
+            echo $this->Form->input('articulo_id', ['options' => $articulos]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

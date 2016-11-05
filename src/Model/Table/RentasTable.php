@@ -9,6 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Rentas Model
  *
+ * @property \Cake\ORM\Association\HasMany $Consumos
  * @property \Cake\ORM\Association\BelongsToMany $Lineas
  *
  * @method \App\Model\Entity\Renta get($primaryKey, $options = [])
@@ -40,6 +41,9 @@ class RentasTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->hasMany('Consumos', [
+            'foreignKey' => 'renta_id'
+        ]);
         $this->belongsToMany('Lineas', [
             'foreignKey' => 'renta_id',
             'targetForeignKey' => 'linea_id',
@@ -60,15 +64,15 @@ class RentasTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('Nombre', 'create')
-            ->notEmpty('Nombre');
+            ->requirePresence('nombre', 'create')
+            ->notEmpty('nombre');
 
         $validator
-            ->numeric('Monto_Basico')
-            ->allowEmpty('Monto_Basico');
+            ->numeric('monto_basico')
+            ->allowEmpty('monto_basico');
 
         $validator
-            ->allowEmpty('Operadora');
+            ->allowEmpty('operadora');
 
         return $validator;
     }

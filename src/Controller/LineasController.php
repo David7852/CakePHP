@@ -37,7 +37,7 @@ class LineasController extends AppController
     public function view($id = null)
     {
         $linea = $this->Lineas->get($id, [
-            'contain' => ['Articulos', 'Rentas']
+            'contain' => ['Articulos', 'Rentas', 'Facturas']
         ]);
 
         $this->set('linea', $linea);

@@ -34,7 +34,7 @@ class ModelosController extends AppController
     public function view($id = null)
     {
         $modelo = $this->Modelos->get($id, [
-            'contain' => []
+            'contain' => ['Articulos']
         ]);
 
         $this->set('modelo', $modelo);

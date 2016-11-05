@@ -12,8 +12,8 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Descripcion') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Articulo_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('descripcion') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('articulo_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -23,7 +23,7 @@
             <?php foreach ($accesorios as $accesorio): ?>
             <tr>
                 <td><?= $this->Number->format($accesorio->id) ?></td>
-                <td><?= h($accesorio->Descripcion) ?></td>
+                <td><?= h($accesorio->descripcion) ?></td>
                 <td><?= $accesorio->has('articulo') ? $this->Html->link($accesorio->articulo->id, ['controller' => 'Articulos', 'action' => 'view', $accesorio->articulo->id]) : '' ?></td>
                 <td><?= h($accesorio->created) ?></td>
                 <td><?= h($accesorio->modified) ?></td>

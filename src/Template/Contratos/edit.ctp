@@ -17,11 +17,11 @@
     <fieldset>
         <legend><?= __('Edit Contrato') ?></legend>
         <?php
-            echo $this->Form->input('Titulo');
-            echo $this->Form->input('Trabajador_id', ['options' => $trabajadores]);
-            echo $this->Form->input('Fecha_De_Inicio');
-            echo $this->Form->input('Fecha_De_Culminacion', ['empty' => true]);
-            echo $this->Form->input('Tipo_De_Contrato');
+            echo $this->Form->input('titulo');
+            echo $this->Form->input('trabajador_id', ['options' => $trabajadores]);
+            echo $this->Form->input('fecha_de_inicio');
+            echo $this->Form->input('fecha_de_culminacion', ['empty' => true]);
+            echo $this->Form->input('tipo_de_contrato');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

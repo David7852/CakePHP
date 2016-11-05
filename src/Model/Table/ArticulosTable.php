@@ -10,6 +10,10 @@ use Cake\Validation\Validator;
  * Articulos Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Modelos
+ * @property \Cake\ORM\Association\HasMany $Accesorios
+ * @property \Cake\ORM\Association\HasMany $Asignaciones
+ * @property \Cake\ORM\Association\HasMany $Devoluciones
+ * @property \Cake\ORM\Association\HasMany $Lineas
  *
  * @method \App\Model\Entity\Articulo get($primaryKey, $options = [])
  * @method \App\Model\Entity\Articulo newEntity($data = null, array $options = [])
@@ -41,8 +45,20 @@ class ArticulosTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Modelos', [
-            'foreignKey' => 'Modelo_id',
+            'foreignKey' => 'modelo_id',
             'joinType' => 'INNER'
+        ]);
+        $this->hasMany('Accesorios', [
+            'foreignKey' => 'articulo_id'
+        ]);
+        $this->hasMany('Asignaciones', [
+            'foreignKey' => 'articulo_id'
+        ]);
+        $this->hasMany('Devoluciones', [
+            'foreignKey' => 'articulo_id'
+        ]);
+        $this->hasMany('Lineas', [
+            'foreignKey' => 'articulo_id'
         ]);
     }
 
@@ -59,22 +75,22 @@ class ArticulosTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('Serial', 'create')
-            ->notEmpty('Serial')
-            ->add('Serial', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->requirePresence('serial', 'create')
+            ->notEmpty('serial')
+            ->add('serial', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
-            ->allowEmpty('Datos');
+            ->allowEmpty('datos');
 
         $validator
-            ->allowEmpty('Ubicacion');
+            ->allowEmpty('ubicacion');
 
         $validator
-            ->allowEmpty('Estado');
+            ->allowEmpty('estado');
 
         $validator
-            ->date('Fecha_De_Compra')
-            ->allowEmpty('Fecha_De_Compra');
+            ->date('fecha_de_compra')
+            ->allowEmpty('fecha_de_compra');
 
         return $validator;
     }
@@ -88,8 +104,8 @@ class ArticulosTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['Serial']));
-        $rules->add($rules->existsIn(['Modelo_id'], 'Modelos'));
+        $rules->add($rules->isUnique(['serial']));
+        $rules->add($rules->existsIn(['modelo_id'], 'Modelos'));
 
         return $rules;
     }

@@ -14,10 +14,10 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Titulo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Proceso_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Articulo_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Hasta') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('titulo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('proceso_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('articulo_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('hasta') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -27,10 +27,10 @@
             <?php foreach ($asignaciones as $asignacion): ?>
             <tr>
                 <td><?= $this->Number->format($asignacion->id) ?></td>
-                <td><?= h($asignacion->Titulo) ?></td>
+                <td><?= h($asignacion->titulo) ?></td>
                 <td><?= $asignacion->has('proceso') ? $this->Html->link($asignacion->proceso->id, ['controller' => 'Procesos', 'action' => 'view', $asignacion->proceso->id]) : '' ?></td>
                 <td><?= $asignacion->has('articulo') ? $this->Html->link($asignacion->articulo->id, ['controller' => 'Articulos', 'action' => 'view', $asignacion->articulo->id]) : '' ?></td>
-                <td><?= h($asignacion->Hasta) ?></td>
+                <td><?= h($asignacion->hasta) ?></td>
                 <td><?= h($asignacion->created) ?></td>
                 <td><?= h($asignacion->modified) ?></td>
                 <td class="actions">

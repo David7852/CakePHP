@@ -4,6 +4,8 @@
         <li><?= $this->Html->link(__('New Linea'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Articulo'), ['controller' => 'Articulos', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Facturas'), ['controller' => 'Facturas', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Factura'), ['controller' => 'Facturas', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Renta'), ['controller' => 'Rentas', 'action' => 'add']) ?></li>
     </ul>
@@ -14,11 +16,12 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Numero') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Puk') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Pin') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Codigo_Sim') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Articulo_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('numero') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('puk') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('pin') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('codigo_sim') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('articulo_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('observaciones') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -28,11 +31,12 @@
             <?php foreach ($lineas as $linea): ?>
             <tr>
                 <td><?= $this->Number->format($linea->id) ?></td>
-                <td><?= h($linea->Numero) ?></td>
-                <td><?= $this->Number->format($linea->Puk) ?></td>
-                <td><?= $this->Number->format($linea->Pin) ?></td>
-                <td><?= h($linea->Codigo_Sim) ?></td>
+                <td><?= h($linea->numero) ?></td>
+                <td><?= $this->Number->format($linea->puk) ?></td>
+                <td><?= $this->Number->format($linea->pin) ?></td>
+                <td><?= h($linea->codigo_sim) ?></td>
                 <td><?= $linea->has('articulo') ? $this->Html->link($linea->articulo->id, ['controller' => 'Articulos', 'action' => 'view', $linea->articulo->id]) : '' ?></td>
+                <td><?= h($linea->observaciones) ?></td>
                 <td><?= h($linea->created) ?></td>
                 <td><?= h($linea->modified) ?></td>
                 <td class="actions">

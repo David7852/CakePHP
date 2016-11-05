@@ -8,6 +8,10 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Trabajadores'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Contratos'), ['controller' => 'Contratos', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Contrato'), ['controller' => 'Contratos', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Procesos'), ['controller' => 'Procesos', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Proceso'), ['controller' => 'Procesos', 'action' => 'add']) ?></li>
     </ul>
@@ -17,16 +21,17 @@
     <fieldset>
         <legend><?= __('Edit Trabajador') ?></legend>
         <?php
-            echo $this->Form->input('Nombre');
-            echo $this->Form->input('Apellido');
-            echo $this->Form->input('Cedula');
-            echo $this->Form->input('Gerencia');
-            echo $this->Form->input('Cargo');
-            echo $this->Form->input('Sede');
-            echo $this->Form->input('Numero_De_Oficina');
-            echo $this->Form->input('Telefono_Personal');
-            echo $this->Form->input('Rif');
-            echo $this->Form->input('Residencia');
+            echo $this->Form->input('nombre');
+            echo $this->Form->input('apellido');
+            echo $this->Form->input('cedula');
+            echo $this->Form->input('sexo');
+            echo $this->Form->input('gerencia');
+            echo $this->Form->input('cargo');
+            echo $this->Form->input('sede');
+            echo $this->Form->input('numero_de_oficina');
+            echo $this->Form->input('telefono_personal');
+            echo $this->Form->input('rif');
+            echo $this->Form->input('residencia');
             echo $this->Form->input('procesos._ids', ['options' => $procesos]);
         ?>
     </fieldset>

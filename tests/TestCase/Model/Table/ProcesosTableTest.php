@@ -25,7 +25,19 @@ class ProcesosTableTest extends TestCase
      */
     public $fixtures = [
         'app.procesos',
+        'app.asignaciones',
+        'app.articulos',
+        'app.modelos',
+        'app.accesorios',
+        'app.devoluciones',
+        'app.lineas',
+        'app.facturas',
+        'app.consumos',
+        'app.rentas',
+        'app.lineas_rentas',
         'app.trabajadores',
+        'app.contratos',
+        'app.usuarios',
         'app.procesos_trabajadores'
     ];
 

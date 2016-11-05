@@ -6,8 +6,8 @@ use Cake\ORM\Entity;
 /**
  * LineasRenta Entity
  *
- * @property int $Linea_id
- * @property int $Renta_id
+ * @property int $linea_id
+ * @property int $renta_id
  *
  * @property \App\Model\Entity\Linea $linea
  * @property \App\Model\Entity\Renta $renta
@@ -26,7 +26,7 @@ class LineasRenta extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'Linea_id' => false,
-        'Renta_id' => false
+        'linea_id' => false,
+        'renta_id' => false
     ];
 }

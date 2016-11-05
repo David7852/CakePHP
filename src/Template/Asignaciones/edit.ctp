@@ -19,10 +19,10 @@
     <fieldset>
         <legend><?= __('Edit Asignacion') ?></legend>
         <?php
-            echo $this->Form->input('Titulo');
-            echo $this->Form->input('Proceso_id', ['options' => $procesos]);
-            echo $this->Form->input('Articulo_id', ['options' => $articulos]);
-            echo $this->Form->input('Hasta', ['empty' => true]);
+            echo $this->Form->input('titulo');
+            echo $this->Form->input('proceso_id', ['options' => $procesos]);
+            echo $this->Form->input('articulo_id', ['options' => $articulos]);
+            echo $this->Form->input('hasta', ['empty' => true]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

@@ -16,7 +16,7 @@
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Titulo') ?></th>
-            <td><?= h($devolucion->Titulo) ?></td>
+            <td><?= h($devolucion->titulo) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Proceso') ?></th>

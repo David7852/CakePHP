@@ -41,7 +41,7 @@ class ContratosTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Trabajadores', [
-            'foreignKey' => 'Trabajador_id',
+            'foreignKey' => 'trabajador_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -59,19 +59,19 @@ class ContratosTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('Titulo');
+            ->allowEmpty('titulo');
 
         $validator
-            ->date('Fecha_De_Inicio')
-            ->requirePresence('Fecha_De_Inicio', 'create')
-            ->notEmpty('Fecha_De_Inicio');
+            ->date('fecha_de_inicio')
+            ->requirePresence('fecha_de_inicio', 'create')
+            ->notEmpty('fecha_de_inicio');
 
         $validator
-            ->date('Fecha_De_Culminacion')
-            ->allowEmpty('Fecha_De_Culminacion');
+            ->date('fecha_de_culminacion')
+            ->allowEmpty('fecha_de_culminacion');
 
         $validator
-            ->allowEmpty('Tipo_De_Contrato');
+            ->allowEmpty('tipo_de_contrato');
 
         return $validator;
     }
@@ -85,7 +85,7 @@ class ContratosTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['Trabajador_id'], 'Trabajadores'));
+        $rules->add($rules->existsIn(['trabajador_id'], 'Trabajadores'));
 
         return $rules;
     }

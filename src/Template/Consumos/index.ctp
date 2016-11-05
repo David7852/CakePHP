@@ -14,12 +14,12 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Titulo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Factura_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Renta_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Consumido') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Excedente') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Monto_Bs') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('titulo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('factura_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('renta_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('consumido') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('excedente') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('monto_bs') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -29,12 +29,12 @@
             <?php foreach ($consumos as $consumo): ?>
             <tr>
                 <td><?= $this->Number->format($consumo->id) ?></td>
-                <td><?= h($consumo->Titulo) ?></td>
+                <td><?= h($consumo->titulo) ?></td>
                 <td><?= $consumo->has('factura') ? $this->Html->link($consumo->factura->id, ['controller' => 'Facturas', 'action' => 'view', $consumo->factura->id]) : '' ?></td>
                 <td><?= $consumo->has('renta') ? $this->Html->link($consumo->renta->id, ['controller' => 'Rentas', 'action' => 'view', $consumo->renta->id]) : '' ?></td>
-                <td><?= h($consumo->Consumido) ?></td>
-                <td><?= h($consumo->Excedente) ?></td>
-                <td><?= $this->Number->format($consumo->Monto_Bs) ?></td>
+                <td><?= h($consumo->consumido) ?></td>
+                <td><?= h($consumo->excedente) ?></td>
+                <td><?= $this->Number->format($consumo->monto_bs) ?></td>
                 <td><?= h($consumo->created) ?></td>
                 <td><?= h($consumo->modified) ?></td>
                 <td class="actions">

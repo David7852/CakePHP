@@ -25,7 +25,20 @@ class AccesoriosTableTest extends TestCase
      */
     public $fixtures = [
         'app.accesorios',
-        'app.articulos'
+        'app.articulos',
+        'app.modelos',
+        'app.asignaciones',
+        'app.procesos',
+        'app.devoluciones',
+        'app.trabajadores',
+        'app.contratos',
+        'app.usuarios',
+        'app.procesos_trabajadores',
+        'app.lineas',
+        'app.facturas',
+        'app.consumos',
+        'app.rentas',
+        'app.lineas_rentas'
     ];
 
     /**

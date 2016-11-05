@@ -13,8 +13,8 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('Linea_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Renta_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('linea_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('renta_id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -24,9 +24,9 @@
                 <td><?= $lineasRenta->has('linea') ? $this->Html->link($lineasRenta->linea->id, ['controller' => 'Lineas', 'action' => 'view', $lineasRenta->linea->id]) : '' ?></td>
                 <td><?= $lineasRenta->has('renta') ? $this->Html->link($lineasRenta->renta->id, ['controller' => 'Rentas', 'action' => 'view', $lineasRenta->renta->id]) : '' ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $lineasRenta->Linea_id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $lineasRenta->Linea_id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $lineasRenta->Linea_id], ['confirm' => __('Are you sure you want to delete # {0}?', $lineasRenta->Linea_id)]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $lineasRenta->linea_id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $lineasRenta->linea_id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $lineasRenta->linea_id], ['confirm' => __('Are you sure you want to delete # {0}?', $lineasRenta->linea_id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

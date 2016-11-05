@@ -7,10 +7,10 @@ use Cake\ORM\Entity;
  * Asignacion Entity
  *
  * @property int $id
- * @property string $Titulo
- * @property int $Proceso_id
- * @property int $Articulo_id
- * @property \Cake\I18n\Time $Hasta
+ * @property string $titulo
+ * @property int $proceso_id
+ * @property int $articulo_id
+ * @property \Cake\I18n\Time $hasta
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *

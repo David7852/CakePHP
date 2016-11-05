@@ -7,12 +7,13 @@ use Cake\ORM\Entity;
  * Renta Entity
  *
  * @property int $id
- * @property string $Nombre
- * @property float $Monto_Basico
- * @property string $Operadora
+ * @property string $nombre
+ * @property float $monto_basico
+ * @property string $operadora
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
+ * @property \App\Model\Entity\Consumo[] $consumos
  * @property \App\Model\Entity\Linea[] $lineas
  */
 class Renta extends Entity

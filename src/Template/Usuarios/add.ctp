@@ -1,24 +1,24 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Usuarios'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Trabajador'), ['controller' => 'Trabajadores', 'action' => 'add']) ?></li>
+        <li class="heading"><?= __('Accioness') ?></li>
+        <li><?= $this->Html->link(__('Listar Usuarios'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Listar Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Nuevo Trabajador'), ['controller' => 'Trabajadores', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="usuarios form large-9 medium-8 columns content">
     <?= $this->Form->create($usuario) ?>
     <fieldset>
-        <legend><?= __('Add Usuario') ?></legend>
+        <legend><?= __('Nuevo Usuario') ?></legend>
         <?php
-            echo $this->Form->input('Nombre_De_Usuario');
-            echo $this->Form->input('Email');
-            echo $this->Form->input('Clave');
-            echo $this->Form->input('Funcion');
-            echo $this->Form->input('Trabajador_id', ['options' => $trabajadores]);
-            echo $this->Form->input('Imagen');
+            echo $this->Form->input('nombre_de_usuario');
+            echo $this->Form->input('email');
+            echo $this->Form->input('clave',['type'=>'password']);
+            echo $this->Form->input('funcion');
+            echo $this->Form->input('trabajador_id', ['options' => $trabajadores]);
+            echo $this->Form->input('imagen');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Aceptar')) ?>
     <?= $this->Form->end() ?>
 </div>

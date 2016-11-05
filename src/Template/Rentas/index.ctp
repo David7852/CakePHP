@@ -2,6 +2,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Renta'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Consumos'), ['controller' => 'Consumos', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Consumo'), ['controller' => 'Consumos', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Linea'), ['controller' => 'Lineas', 'action' => 'add']) ?></li>
     </ul>
@@ -12,8 +14,8 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Nombre') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Monto_Basico') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('nombre') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('monto_basico') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -23,8 +25,8 @@
             <?php foreach ($rentas as $renta): ?>
             <tr>
                 <td><?= $this->Number->format($renta->id) ?></td>
-                <td><?= h($renta->Nombre) ?></td>
-                <td><?= $this->Number->format($renta->Monto_Basico) ?></td>
+                <td><?= h($renta->nombre) ?></td>
+                <td><?= $this->Number->format($renta->monto_basico) ?></td>
                 <td><?= h($renta->created) ?></td>
                 <td><?= h($renta->modified) ?></td>
                 <td class="actions">

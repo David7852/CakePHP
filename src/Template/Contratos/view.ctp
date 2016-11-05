@@ -14,7 +14,7 @@
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Titulo') ?></th>
-            <td><?= h($contrato->Titulo) ?></td>
+            <td><?= h($contrato->titulo) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Trabajador') ?></th>
@@ -26,11 +26,11 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Fecha De Inicio') ?></th>
-            <td><?= h($contrato->Fecha_De_Inicio) ?></td>
+            <td><?= h($contrato->fecha_de_inicio) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Fecha De Culminacion') ?></th>
-            <td><?= h($contrato->Fecha_De_Culminacion) ?></td>
+            <td><?= h($contrato->fecha_de_culminacion) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Created') ?></th>
@@ -43,6 +43,6 @@
     </table>
     <div class="row">
         <h4><?= __('Tipo De Contrato') ?></h4>
-        <?= $this->Text->autoParagraph(h($contrato->Tipo_De_Contrato)); ?>
+        <?= $this->Text->autoParagraph(h($contrato->tipo_de_contrato)); ?>
     </div>
 </div>

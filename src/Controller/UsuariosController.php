@@ -55,11 +55,11 @@ class UsuariosController extends AppController
         if ($this->request->is('post')) {
             $usuario = $this->Usuarios->patchEntity($usuario, $this->request->data);
             if ($this->Usuarios->save($usuario)) {
-                $this->Flash->success(__('The usuario has been saved.'));
+                $this->Flash->success(__('El usuario a sido registrado.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The usuario could not be saved. Please, try again.'));
+                $this->Flash->error(__('El nuevo usuario no pudo ser guardado. Intente nuevamente.'));
             }
         }
         $trabajadores = $this->Usuarios->Trabajadores->find('list', ['limit' => 200]);
@@ -82,11 +82,11 @@ class UsuariosController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $usuario = $this->Usuarios->patchEntity($usuario, $this->request->data);
             if ($this->Usuarios->save($usuario)) {
-                $this->Flash->success(__('The usuario has been saved.'));
+                $this->Flash->success(__('El usuario se modifico correctamente.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The usuario could not be saved. Please, try again.'));
+                $this->Flash->error(__('Los cambios no pudieron guardarse, Intente nuevamente.'));
             }
         }
         $trabajadores = $this->Usuarios->Trabajadores->find('list', ['limit' => 200]);
@@ -106,9 +106,9 @@ class UsuariosController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $usuario = $this->Usuarios->get($id);
         if ($this->Usuarios->delete($usuario)) {
-            $this->Flash->success(__('The usuario has been deleted.'));
+            $this->Flash->success(__('El usuario ha sido eliminado.'));
         } else {
-            $this->Flash->error(__('The usuario could not be deleted. Please, try again.'));
+            $this->Flash->error(__('El usuario no pudo ser eliminado. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

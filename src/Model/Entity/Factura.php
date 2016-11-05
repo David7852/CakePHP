@@ -7,17 +7,18 @@ use Cake\ORM\Entity;
  * Factura Entity
  *
  * @property int $id
- * @property string $Titulo
- * @property int $Linea_id
- * @property \Cake\I18n\Time $Paguese_Antes_De
- * @property float $Balance
- * @property \Cake\I18n\Time $Desde
- * @property \Cake\I18n\Time $Hasta
- * @property string $Numero_De_Cuenta
+ * @property string $titulo
+ * @property int $linea_id
+ * @property \Cake\I18n\Time $paguese_antes_de
+ * @property float $balance
+ * @property \Cake\I18n\Time $desde
+ * @property \Cake\I18n\Time $hasta
+ * @property string $numero_de_cuenta
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
  * @property \App\Model\Entity\Linea $linea
+ * @property \App\Model\Entity\Consumo[] $consumos
  */
 class Factura extends Entity
 {

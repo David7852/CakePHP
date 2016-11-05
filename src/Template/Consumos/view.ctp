@@ -16,7 +16,7 @@
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Titulo') ?></th>
-            <td><?= h($consumo->Titulo) ?></td>
+            <td><?= h($consumo->titulo) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Factura') ?></th>
@@ -28,11 +28,11 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Consumido') ?></th>
-            <td><?= h($consumo->Consumido) ?></td>
+            <td><?= h($consumo->consumido) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Excedente') ?></th>
-            <td><?= h($consumo->Excedente) ?></td>
+            <td><?= h($consumo->excedente) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
@@ -40,7 +40,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Monto Bs') ?></th>
-            <td><?= $this->Number->format($consumo->Monto_Bs) ?></td>
+            <td><?= $this->Number->format($consumo->monto_bs) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Created') ?></th>

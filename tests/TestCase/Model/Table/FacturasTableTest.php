@@ -28,7 +28,16 @@ class FacturasTableTest extends TestCase
         'app.lineas',
         'app.articulos',
         'app.modelos',
+        'app.accesorios',
+        'app.asignaciones',
+        'app.procesos',
+        'app.devoluciones',
+        'app.trabajadores',
+        'app.contratos',
+        'app.usuarios',
+        'app.procesos_trabajadores',
         'app.rentas',
+        'app.consumos',
         'app.lineas_rentas'
     ];
 

@@ -18,21 +18,21 @@ class FacturasFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'Titulo' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'Linea_id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'Paguese_Antes_De' => ['type' => 'date', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        'Balance' => ['type' => 'float', 'length' => 0, 'precision' => 0, 'unsigned' => true, 'null' => false, 'default' => '0', 'comment' => ''],
-        'Desde' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'Hasta' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'Numero_De_Cuenta' => ['type' => 'string', 'length' => 25, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'titulo' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'linea_id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'paguese_antes_de' => ['type' => 'date', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'balance' => ['type' => 'float', 'length' => 0, 'precision' => 0, 'unsigned' => true, 'null' => false, 'default' => '0', 'comment' => ''],
+        'desde' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'hasta' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'numero_de_cuenta' => ['type' => 'string', 'length' => 25, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
-            'linea_de_factura' => ['type' => 'index', 'columns' => ['Linea_id'], 'length' => []],
+            'linea_de_factura' => ['type' => 'index', 'columns' => ['linea_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'facturas_ibfk_1' => ['type' => 'foreign', 'columns' => ['Linea_id'], 'references' => ['lineas', 'id'], 'update' => 'cascade', 'delete' => 'restrict', 'length' => []],
+            'facturas_ibfk_1' => ['type' => 'foreign', 'columns' => ['linea_id'], 'references' => ['lineas', 'id'], 'update' => 'cascade', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -49,15 +49,15 @@ class FacturasFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'Titulo' => 'Lorem ipsum dolor sit amet',
-            'Linea_id' => 1,
-            'Paguese_Antes_De' => '2016-11-05',
-            'Balance' => 1,
-            'Desde' => '2016-11-05',
-            'Hasta' => '2016-11-05',
-            'Numero_De_Cuenta' => 'Lorem ipsum dolor sit a',
-            'created' => '2016-11-05 18:01:46',
-            'modified' => '2016-11-05 18:01:46'
+            'titulo' => 'Lorem ipsum dolor sit amet',
+            'linea_id' => 1,
+            'paguese_antes_de' => '2016-11-05',
+            'balance' => 1,
+            'desde' => '2016-11-05',
+            'hasta' => '2016-11-05',
+            'numero_de_cuenta' => 'Lorem ipsum dolor sit a',
+            'created' => '2016-11-05 20:03:34',
+            'modified' => '2016-11-05 20:03:34'
         ],
     ];
 }

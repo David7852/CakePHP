@@ -7,16 +7,18 @@ use Cake\ORM\Entity;
  * Proceso Entity
  *
  * @property int $id
- * @property string $Titulo
- * @property string $Motivo
- * @property string $Tipo
- * @property \Cake\I18n\Time $Fecha_De_Solicitud
- * @property \Cake\I18n\Time $Fecha_De_Aprobacion
- * @property string $Estado
- * @property string $Observaciones
+ * @property string $titulo
+ * @property string $motivo
+ * @property string $tipo
+ * @property \Cake\I18n\Time $fecha_de_solicitud
+ * @property \Cake\I18n\Time $fecha_de_aprobacion
+ * @property string $estado
+ * @property string $observaciones
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
+ * @property \App\Model\Entity\Asignacion[] $asignaciones
+ * @property \App\Model\Entity\Devolucion[] $devoluciones
  * @property \App\Model\Entity\Trabajador[] $trabajadores
  */
 class Proceso extends Entity

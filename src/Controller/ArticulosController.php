@@ -37,7 +37,7 @@ class ArticulosController extends AppController
     public function view($id = null)
     {
         $articulo = $this->Articulos->get($id, [
-            'contain' => ['Modelos']
+            'contain' => ['Modelos', 'Accesorios', 'Asignaciones', 'Devoluciones', 'Lineas']
         ]);
 
         $this->set('articulo', $articulo);

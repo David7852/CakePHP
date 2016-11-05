@@ -7,16 +7,20 @@ use Cake\ORM\Entity;
  * Articulo Entity
  *
  * @property int $id
- * @property string $Serial
- * @property int $Modelo_id
- * @property string $Datos
- * @property string $Ubicacion
- * @property string $Estado
- * @property \Cake\I18n\Time $Fecha_De_Compra
+ * @property string $serial
+ * @property int $modelo_id
+ * @property string $datos
+ * @property string $ubicacion
+ * @property string $estado
+ * @property \Cake\I18n\Time $fecha_de_compra
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
  * @property \App\Model\Entity\Modelo $modelo
+ * @property \App\Model\Entity\Accesorio[] $accesorios
+ * @property \App\Model\Entity\Asignacion[] $asignaciones
+ * @property \App\Model\Entity\Devolucion[] $devoluciones
+ * @property \App\Model\Entity\Linea[] $lineas
  */
 class Articulo extends Entity
 {

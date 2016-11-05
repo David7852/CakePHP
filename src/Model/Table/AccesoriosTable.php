@@ -41,7 +41,7 @@ class AccesoriosTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Articulos', [
-            'foreignKey' => 'Articulo_id'
+            'foreignKey' => 'articulo_id'
         ]);
     }
 
@@ -58,11 +58,11 @@ class AccesoriosTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('Descripcion', 'create')
-            ->notEmpty('Descripcion');
+            ->requirePresence('descripcion', 'create')
+            ->notEmpty('descripcion');
 
         $validator
-            ->allowEmpty('Estado');
+            ->allowEmpty('estado');
 
         return $validator;
     }
@@ -76,7 +76,7 @@ class AccesoriosTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['Articulo_id'], 'Articulos'));
+        $rules->add($rules->existsIn(['articulo_id'], 'Articulos'));
 
         return $rules;
     }

@@ -18,7 +18,14 @@ class ContratosControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.contratos',
         'app.trabajadores',
+        'app.usuarios',
         'app.procesos',
+        'app.asignaciones',
+        'app.articulos',
+        'app.modelos',
+        'app.accesorios',
+        'app.devoluciones',
+        'app.lineas',
         'app.procesos_trabajadores'
     ];
 

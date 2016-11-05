@@ -18,10 +18,18 @@ class ConsumosControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.consumos',
         'app.facturas',
+        'app.rentas',
         'app.lineas',
         'app.articulos',
         'app.modelos',
-        'app.rentas',
+        'app.accesorios',
+        'app.asignaciones',
+        'app.procesos',
+        'app.devoluciones',
+        'app.trabajadores',
+        'app.contratos',
+        'app.usuarios',
+        'app.procesos_trabajadores',
         'app.lineas_rentas'
     ];
 

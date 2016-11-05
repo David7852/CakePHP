@@ -5,6 +5,10 @@
         <li><?= $this->Form->postLink(__('Delete Trabajador'), ['action' => 'delete', $trabajador->id], ['confirm' => __('Are you sure you want to delete # {0}?', $trabajador->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Trabajadores'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Trabajador'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Contratos'), ['controller' => 'Contratos', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Contrato'), ['controller' => 'Contratos', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Procesos'), ['controller' => 'Procesos', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Proceso'), ['controller' => 'Procesos', 'action' => 'add']) ?> </li>
     </ul>
@@ -14,27 +18,27 @@
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Nombre') ?></th>
-            <td><?= h($trabajador->Nombre) ?></td>
+            <td><?= h($trabajador->nombre) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Apellido') ?></th>
-            <td><?= h($trabajador->Apellido) ?></td>
+            <td><?= h($trabajador->apellido) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Cedula') ?></th>
-            <td><?= h($trabajador->Cedula) ?></td>
+            <td><?= h($trabajador->cedula) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Telefono Personal') ?></th>
-            <td><?= h($trabajador->Telefono_Personal) ?></td>
+            <td><?= h($trabajador->telefono_personal) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Rif') ?></th>
-            <td><?= h($trabajador->Rif) ?></td>
+            <td><?= h($trabajador->rif) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Residencia') ?></th>
-            <td><?= h($trabajador->Residencia) ?></td>
+            <td><?= h($trabajador->residencia) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
@@ -42,11 +46,11 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Sede') ?></th>
-            <td><?= $this->Number->format($trabajador->Sede) ?></td>
+            <td><?= $this->Number->format($trabajador->sede) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Numero De Oficina') ?></th>
-            <td><?= $this->Number->format($trabajador->Numero_De_Oficina) ?></td>
+            <td><?= $this->Number->format($trabajador->numero_de_oficina) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Created') ?></th>
@@ -58,12 +62,88 @@
         </tr>
     </table>
     <div class="row">
+        <h4><?= __('Sexo') ?></h4>
+        <?= $this->Text->autoParagraph(h($trabajador->sexo)); ?>
+    </div>
+    <div class="row">
         <h4><?= __('Gerencia') ?></h4>
-        <?= $this->Text->autoParagraph(h($trabajador->Gerencia)); ?>
+        <?= $this->Text->autoParagraph(h($trabajador->gerencia)); ?>
     </div>
     <div class="row">
         <h4><?= __('Cargo') ?></h4>
-        <?= $this->Text->autoParagraph(h($trabajador->Cargo)); ?>
+        <?= $this->Text->autoParagraph(h($trabajador->cargo)); ?>
+    </div>
+    <div class="related">
+        <h4><?= __('Related Contratos') ?></h4>
+        <?php if (!empty($trabajador->contratos)): ?>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th scope="col"><?= __('Id') ?></th>
+                <th scope="col"><?= __('Titulo') ?></th>
+                <th scope="col"><?= __('Trabajador Id') ?></th>
+                <th scope="col"><?= __('Fecha De Inicio') ?></th>
+                <th scope="col"><?= __('Fecha De Culminacion') ?></th>
+                <th scope="col"><?= __('Tipo De Contrato') ?></th>
+                <th scope="col"><?= __('Created') ?></th>
+                <th scope="col"><?= __('Modified') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
+            </tr>
+            <?php foreach ($trabajador->contratos as $contratos): ?>
+            <tr>
+                <td><?= h($contratos->id) ?></td>
+                <td><?= h($contratos->titulo) ?></td>
+                <td><?= h($contratos->trabajador_id) ?></td>
+                <td><?= h($contratos->fecha_de_inicio) ?></td>
+                <td><?= h($contratos->fecha_de_culminacion) ?></td>
+                <td><?= h($contratos->tipo_de_contrato) ?></td>
+                <td><?= h($contratos->created) ?></td>
+                <td><?= h($contratos->modified) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['controller' => 'Contratos', 'action' => 'view', $contratos->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Contratos', 'action' => 'edit', $contratos->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Contratos', 'action' => 'delete', $contratos->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contratos->id)]) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+        <?php endif; ?>
+    </div>
+    <div class="related">
+        <h4><?= __('Related Usuarios') ?></h4>
+        <?php if (!empty($trabajador->usuarios)): ?>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th scope="col"><?= __('Id') ?></th>
+                <th scope="col"><?= __('Nombre De Usuario') ?></th>
+                <th scope="col"><?= __('Email') ?></th>
+                <th scope="col"><?= __('Clave') ?></th>
+                <th scope="col"><?= __('Funcion') ?></th>
+                <th scope="col"><?= __('Trabajador Id') ?></th>
+                <th scope="col"><?= __('Imagen') ?></th>
+                <th scope="col"><?= __('Created') ?></th>
+                <th scope="col"><?= __('Modified') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
+            </tr>
+            <?php foreach ($trabajador->usuarios as $usuarios): ?>
+            <tr>
+                <td><?= h($usuarios->id) ?></td>
+                <td><?= h($usuarios->nombre_de_usuario) ?></td>
+                <td><?= h($usuarios->email) ?></td>
+                <td><?= h($usuarios->clave) ?></td>
+                <td><?= h($usuarios->funcion) ?></td>
+                <td><?= h($usuarios->trabajador_id) ?></td>
+                <td><?= h($usuarios->imagen) ?></td>
+                <td><?= h($usuarios->created) ?></td>
+                <td><?= h($usuarios->modified) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['controller' => 'Usuarios', 'action' => 'view', $usuarios->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Usuarios', 'action' => 'edit', $usuarios->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Usuarios', 'action' => 'delete', $usuarios->id], ['confirm' => __('Are you sure you want to delete # {0}?', $usuarios->id)]) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+        <?php endif; ?>
     </div>
     <div class="related">
         <h4><?= __('Related Procesos') ?></h4>
@@ -85,13 +165,13 @@
             <?php foreach ($trabajador->procesos as $procesos): ?>
             <tr>
                 <td><?= h($procesos->id) ?></td>
-                <td><?= h($procesos->Titulo) ?></td>
-                <td><?= h($procesos->Motivo) ?></td>
-                <td><?= h($procesos->Tipo) ?></td>
-                <td><?= h($procesos->Fecha_De_Solicitud) ?></td>
-                <td><?= h($procesos->Fecha_De_Aprobacion) ?></td>
-                <td><?= h($procesos->Estado) ?></td>
-                <td><?= h($procesos->Observaciones) ?></td>
+                <td><?= h($procesos->titulo) ?></td>
+                <td><?= h($procesos->motivo) ?></td>
+                <td><?= h($procesos->tipo) ?></td>
+                <td><?= h($procesos->fecha_de_solicitud) ?></td>
+                <td><?= h($procesos->fecha_de_aprobacion) ?></td>
+                <td><?= h($procesos->estado) ?></td>
+                <td><?= h($procesos->observaciones) ?></td>
                 <td><?= h($procesos->created) ?></td>
                 <td><?= h($procesos->modified) ?></td>
                 <td class="actions">

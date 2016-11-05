@@ -37,7 +37,7 @@ class FacturasController extends AppController
     public function view($id = null)
     {
         $factura = $this->Facturas->get($id, [
-            'contain' => ['Lineas']
+            'contain' => ['Lineas', 'Consumos']
         ]);
 
         $this->set('factura', $factura);

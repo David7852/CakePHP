@@ -7,11 +7,11 @@ use Cake\ORM\Entity;
  * Contrato Entity
  *
  * @property int $id
- * @property string $Titulo
- * @property int $Trabajador_id
- * @property \Cake\I18n\Time $Fecha_De_Inicio
- * @property \Cake\I18n\Time $Fecha_De_Culminacion
- * @property string $Tipo_De_Contrato
+ * @property string $titulo
+ * @property int $trabajador_id
+ * @property \Cake\I18n\Time $fecha_de_inicio
+ * @property \Cake\I18n\Time $fecha_de_culminacion
+ * @property string $tipo_de_contrato
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *

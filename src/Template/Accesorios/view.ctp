@@ -14,7 +14,7 @@
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Descripcion') ?></th>
-            <td><?= h($accesorio->Descripcion) ?></td>
+            <td><?= h($accesorio->descripcion) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Articulo') ?></th>
@@ -35,6 +35,6 @@
     </table>
     <div class="row">
         <h4><?= __('Estado') ?></h4>
-        <?= $this->Text->autoParagraph(h($accesorio->Estado)); ?>
+        <?= $this->Text->autoParagraph(h($accesorio->estado)); ?>
     </div>
 </div>

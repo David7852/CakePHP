@@ -19,6 +19,16 @@ class LineasControllerTest extends IntegrationTestCase
         'app.lineas',
         'app.articulos',
         'app.modelos',
+        'app.accesorios',
+        'app.asignaciones',
+        'app.procesos',
+        'app.devoluciones',
+        'app.trabajadores',
+        'app.contratos',
+        'app.usuarios',
+        'app.procesos_trabajadores',
+        'app.facturas',
+        'app.consumos',
         'app.rentas',
         'app.lineas_rentas'
     ];

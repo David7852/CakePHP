@@ -3,8 +3,8 @@
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $lineasRenta->Linea_id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $lineasRenta->Linea_id)]
+                ['action' => 'delete', $lineasRenta->linea_id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $lineasRenta->linea_id)]
             )
         ?></li>
         <li><?= $this->Html->link(__('List Lineas Rentas'), ['action' => 'index']) ?></li>

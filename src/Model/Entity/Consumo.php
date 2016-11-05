@@ -7,12 +7,12 @@ use Cake\ORM\Entity;
  * Consumo Entity
  *
  * @property int $id
- * @property string $Titulo
- * @property int $Factura_id
- * @property int $Renta_id
- * @property string $Consumido
- * @property string $Excedente
- * @property float $Monto_Bs
+ * @property string $titulo
+ * @property int $factura_id
+ * @property int $renta_id
+ * @property string $consumido
+ * @property string $excedente
+ * @property float $monto_bs
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *

@@ -2,6 +2,10 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Proceso'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Asignaciones'), ['controller' => 'Asignaciones', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Asignacion'), ['controller' => 'Asignaciones', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Devoluciones'), ['controller' => 'Devoluciones', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Devolucion'), ['controller' => 'Devoluciones', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Trabajador'), ['controller' => 'Trabajadores', 'action' => 'add']) ?></li>
     </ul>
@@ -12,10 +16,10 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Titulo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Motivo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Fecha_De_Solicitud') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Fecha_De_Aprobacion') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('titulo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('motivo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('fecha_de_solicitud') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('fecha_de_aprobacion') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -25,10 +29,10 @@
             <?php foreach ($procesos as $proceso): ?>
             <tr>
                 <td><?= $this->Number->format($proceso->id) ?></td>
-                <td><?= h($proceso->Titulo) ?></td>
-                <td><?= h($proceso->Motivo) ?></td>
-                <td><?= h($proceso->Fecha_De_Solicitud) ?></td>
-                <td><?= h($proceso->Fecha_De_Aprobacion) ?></td>
+                <td><?= h($proceso->titulo) ?></td>
+                <td><?= h($proceso->motivo) ?></td>
+                <td><?= h($proceso->fecha_de_solicitud) ?></td>
+                <td><?= h($proceso->fecha_de_aprobacion) ?></td>
                 <td><?= h($proceso->created) ?></td>
                 <td><?= h($proceso->modified) ?></td>
                 <td class="actions">

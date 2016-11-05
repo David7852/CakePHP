@@ -7,17 +7,19 @@ use Cake\ORM\Entity;
  * Linea Entity
  *
  * @property int $id
- * @property string $Operadora
- * @property string $Numero
- * @property int $Puk
- * @property int $Pin
- * @property string $Codigo_Sim
- * @property int $Articulo_id
- * @property string $Estado
+ * @property string $operadora
+ * @property string $numero
+ * @property int $puk
+ * @property int $pin
+ * @property string $codigo_sim
+ * @property int $articulo_id
+ * @property string $estado
+ * @property string $observaciones
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
  * @property \App\Model\Entity\Articulo $articulo
+ * @property \App\Model\Entity\Factura[] $facturas
  * @property \App\Model\Entity\Renta[] $rentas
  */
 class Linea extends Entity

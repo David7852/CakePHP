@@ -26,8 +26,19 @@ class AsignacionesTableTest extends TestCase
     public $fixtures = [
         'app.asignaciones',
         'app.procesos',
+        'app.devoluciones',
         'app.articulos',
-        'app.modelos'
+        'app.modelos',
+        'app.accesorios',
+        'app.lineas',
+        'app.facturas',
+        'app.consumos',
+        'app.rentas',
+        'app.lineas_rentas',
+        'app.trabajadores',
+        'app.contratos',
+        'app.usuarios',
+        'app.procesos_trabajadores'
     ];
 
     /**

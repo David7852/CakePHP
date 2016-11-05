@@ -13,12 +13,12 @@
     <fieldset>
         <legend><?= __('Add Consumo') ?></legend>
         <?php
-            echo $this->Form->input('Titulo');
-            echo $this->Form->input('Factura_id', ['options' => $facturas]);
-            echo $this->Form->input('Renta_id', ['options' => $rentas]);
-            echo $this->Form->input('Consumido');
-            echo $this->Form->input('Excedente');
-            echo $this->Form->input('Monto_Bs');
+            echo $this->Form->input('titulo');
+            echo $this->Form->input('factura_id', ['options' => $facturas]);
+            echo $this->Form->input('renta_id', ['options' => $rentas]);
+            echo $this->Form->input('consumido');
+            echo $this->Form->input('excedente');
+            echo $this->Form->input('monto_bs');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

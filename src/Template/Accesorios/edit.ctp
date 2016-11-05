@@ -17,9 +17,9 @@
     <fieldset>
         <legend><?= __('Edit Accesorio') ?></legend>
         <?php
-            echo $this->Form->input('Descripcion');
-            echo $this->Form->input('Estado');
-            echo $this->Form->input('Articulo_id', ['options' => $articulos, 'empty' => true]);
+            echo $this->Form->input('descripcion');
+            echo $this->Form->input('estado');
+            echo $this->Form->input('articulo_id', ['options' => $articulos, 'empty' => true]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

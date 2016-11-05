@@ -12,10 +12,10 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Titulo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Trabajador_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Fecha_De_Inicio') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Fecha_De_Culminacion') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('titulo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('trabajador_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('fecha_de_inicio') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('fecha_de_culminacion') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -25,10 +25,10 @@
             <?php foreach ($contratos as $contrato): ?>
             <tr>
                 <td><?= $this->Number->format($contrato->id) ?></td>
-                <td><?= h($contrato->Titulo) ?></td>
+                <td><?= h($contrato->titulo) ?></td>
                 <td><?= $contrato->has('trabajador') ? $this->Html->link($contrato->trabajador->id, ['controller' => 'Trabajadores', 'action' => 'view', $contrato->trabajador->id]) : '' ?></td>
-                <td><?= h($contrato->Fecha_De_Inicio) ?></td>
-                <td><?= h($contrato->Fecha_De_Culminacion) ?></td>
+                <td><?= h($contrato->fecha_de_inicio) ?></td>
+                <td><?= h($contrato->fecha_de_culminacion) ?></td>
                 <td><?= h($contrato->created) ?></td>
                 <td><?= h($contrato->modified) ?></td>
                 <td class="actions">

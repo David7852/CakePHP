@@ -7,14 +7,16 @@ use Cake\ORM\Entity;
  * Modelo Entity
  *
  * @property int $id
- * @property string $Marca
- * @property string $Modelo
- * @property string $Tipo_De_Articulo
- * @property string $Serial_Comun
- * @property string $Imagen
- * @property string $Abstracto
+ * @property string $marca
+ * @property string $modelo
+ * @property string $tipo_de_articulo
+ * @property string $serial_comun
+ * @property string $imagen
+ * @property string $abstracto
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
+ *
+ * @property \App\Model\Entity\Articulo[] $articulos
  */
 class Modelo extends Entity
 {

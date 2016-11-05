@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
  * Facturas Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Lineas
+ * @property \Cake\ORM\Association\HasMany $Consumos
  *
  * @method \App\Model\Entity\Factura get($primaryKey, $options = [])
  * @method \App\Model\Entity\Factura newEntity($data = null, array $options = [])
@@ -41,8 +42,11 @@ class FacturasTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Lineas', [
-            'foreignKey' => 'Linea_id',
+            'foreignKey' => 'linea_id',
             'joinType' => 'INNER'
+        ]);
+        $this->hasMany('Consumos', [
+            'foreignKey' => 'factura_id'
         ]);
     }
 
@@ -59,29 +63,29 @@ class FacturasTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('Titulo');
+            ->allowEmpty('titulo');
 
         $validator
-            ->date('Paguese_Antes_De')
-            ->allowEmpty('Paguese_Antes_De');
+            ->date('paguese_antes_de')
+            ->allowEmpty('paguese_antes_de');
 
         $validator
-            ->numeric('Balance')
-            ->requirePresence('Balance', 'create')
-            ->notEmpty('Balance');
+            ->numeric('balance')
+            ->requirePresence('balance', 'create')
+            ->notEmpty('balance');
 
         $validator
-            ->date('Desde')
-            ->requirePresence('Desde', 'create')
-            ->notEmpty('Desde');
+            ->date('desde')
+            ->requirePresence('desde', 'create')
+            ->notEmpty('desde');
 
         $validator
-            ->date('Hasta')
-            ->requirePresence('Hasta', 'create')
-            ->notEmpty('Hasta');
+            ->date('hasta')
+            ->requirePresence('hasta', 'create')
+            ->notEmpty('hasta');
 
         $validator
-            ->allowEmpty('Numero_De_Cuenta');
+            ->allowEmpty('numero_de_cuenta');
 
         return $validator;
     }
@@ -95,7 +99,7 @@ class FacturasTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['Linea_id'], 'Lineas'));
+        $rules->add($rules->existsIn(['linea_id'], 'Lineas'));
 
         return $rules;
     }

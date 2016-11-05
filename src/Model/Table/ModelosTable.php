@@ -9,6 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Modelos Model
  *
+ * @property \Cake\ORM\Association\HasMany $Articulos
+ *
  * @method \App\Model\Entity\Modelo get($primaryKey, $options = [])
  * @method \App\Model\Entity\Modelo newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Modelo[] newEntities(array $data, array $options = [])
@@ -37,6 +39,10 @@ class ModelosTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('Articulos', [
+            'foreignKey' => 'modelo_id'
+        ]);
     }
 
     /**
@@ -52,25 +58,25 @@ class ModelosTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('Marca', 'create')
-            ->notEmpty('Marca');
+            ->requirePresence('marca', 'create')
+            ->notEmpty('marca');
 
         $validator
-            ->requirePresence('Modelo', 'create')
-            ->notEmpty('Modelo');
+            ->requirePresence('modelo', 'create')
+            ->notEmpty('modelo');
 
         $validator
-            ->requirePresence('Tipo_De_Articulo', 'create')
-            ->notEmpty('Tipo_De_Articulo');
+            ->requirePresence('tipo_de_articulo', 'create')
+            ->notEmpty('tipo_de_articulo');
 
         $validator
-            ->allowEmpty('Serial_Comun');
+            ->allowEmpty('serial_comun');
 
         $validator
-            ->allowEmpty('Imagen');
+            ->allowEmpty('imagen');
 
         $validator
-            ->allowEmpty('Abstracto');
+            ->allowEmpty('abstracto');
 
         return $validator;
     }

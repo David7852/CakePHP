@@ -34,7 +34,7 @@ class RentasController extends AppController
     public function view($id = null)
     {
         $renta = $this->Rentas->get($id, [
-            'contain' => ['Lineas']
+            'contain' => ['Lineas', 'Consumos']
         ]);
 
         $this->set('renta', $renta);

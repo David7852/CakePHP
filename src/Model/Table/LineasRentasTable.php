@@ -34,15 +34,15 @@ class LineasRentasTable extends Table
         parent::initialize($config);
 
         $this->table('lineas_rentas');
-        $this->displayField('Linea_id');
-        $this->primaryKey(['Linea_id', 'Renta_id']);
+        $this->displayField('linea_id');
+        $this->primaryKey(['linea_id', 'renta_id']);
 
         $this->belongsTo('Lineas', [
-            'foreignKey' => 'Linea_id',
+            'foreignKey' => 'linea_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Rentas', [
-            'foreignKey' => 'Renta_id',
+            'foreignKey' => 'renta_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -56,8 +56,8 @@ class LineasRentasTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['Linea_id'], 'Lineas'));
-        $rules->add($rules->existsIn(['Renta_id'], 'Rentas'));
+        $rules->add($rules->existsIn(['linea_id'], 'Lineas'));
+        $rules->add($rules->existsIn(['renta_id'], 'Rentas'));
 
         return $rules;
     }

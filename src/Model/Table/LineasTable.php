@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
  * Lineas Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Articulos
+ * @property \Cake\ORM\Association\HasMany $Facturas
  * @property \Cake\ORM\Association\BelongsToMany $Rentas
  *
  * @method \App\Model\Entity\Linea get($primaryKey, $options = [])
@@ -42,7 +43,10 @@ class LineasTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Articulos', [
-            'foreignKey' => 'Articulo_id'
+            'foreignKey' => 'articulo_id'
+        ]);
+        $this->hasMany('Facturas', [
+            'foreignKey' => 'linea_id'
         ]);
         $this->belongsToMany('Rentas', [
             'foreignKey' => 'linea_id',
@@ -64,26 +68,29 @@ class LineasTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('Operadora', 'create')
-            ->notEmpty('Operadora');
+            ->requirePresence('operadora', 'create')
+            ->notEmpty('operadora');
 
         $validator
-            ->requirePresence('Numero', 'create')
-            ->notEmpty('Numero');
+            ->requirePresence('numero', 'create')
+            ->notEmpty('numero');
 
         $validator
-            ->integer('Puk')
-            ->allowEmpty('Puk');
+            ->integer('puk')
+            ->allowEmpty('puk');
 
         $validator
-            ->integer('Pin')
-            ->allowEmpty('Pin');
+            ->integer('pin')
+            ->allowEmpty('pin');
 
         $validator
-            ->allowEmpty('Codigo_Sim');
+            ->allowEmpty('codigo_sim');
 
         $validator
-            ->allowEmpty('Estado');
+            ->allowEmpty('estado');
+
+        $validator
+            ->allowEmpty('observaciones');
 
         return $validator;
     }
@@ -97,7 +104,7 @@ class LineasTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['Articulo_id'], 'Articulos'));
+        $rules->add($rules->existsIn(['articulo_id'], 'Articulos'));
 
         return $rules;
     }

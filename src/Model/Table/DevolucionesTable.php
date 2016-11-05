@@ -42,11 +42,11 @@ class DevolucionesTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Procesos', [
-            'foreignKey' => 'Proceso_id',
+            'foreignKey' => 'proceso_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Articulos', [
-            'foreignKey' => 'Articulo_id',
+            'foreignKey' => 'articulo_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -64,7 +64,7 @@ class DevolucionesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('Titulo');
+            ->allowEmpty('titulo');
 
         return $validator;
     }
@@ -78,8 +78,8 @@ class DevolucionesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['Proceso_id'], 'Procesos'));
-        $rules->add($rules->existsIn(['Articulo_id'], 'Articulos'));
+        $rules->add($rules->existsIn(['proceso_id'], 'Procesos'));
+        $rules->add($rules->existsIn(['articulo_id'], 'Articulos'));
 
         return $rules;
     }

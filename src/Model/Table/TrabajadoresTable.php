@@ -9,6 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Trabajadores Model
  *
+ * @property \Cake\ORM\Association\HasMany $Contratos
+ * @property \Cake\ORM\Association\HasMany $Usuarios
  * @property \Cake\ORM\Association\BelongsToMany $Procesos
  *
  * @method \App\Model\Entity\Trabajador get($primaryKey, $options = [])
@@ -35,11 +37,17 @@ class TrabajadoresTable extends Table
         parent::initialize($config);
 
         $this->table('trabajadores');
-        $this->displayField('id');
+        $this->displayField('name');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
 
+        $this->hasMany('Contratos', [
+            'foreignKey' => 'trabajador_id'
+        ]);
+        $this->hasMany('Usuarios', [
+            'foreignKey' => 'trabajador_id'
+        ]);
         $this->belongsToMany('Procesos', [
             'foreignKey' => 'trabajador_id',
             'targetForeignKey' => 'proceso_id',
@@ -60,42 +68,45 @@ class TrabajadoresTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('Nombre', 'create')
-            ->notEmpty('Nombre');
+            ->requirePresence('nombre', 'create')
+            ->notEmpty('nombre');
 
         $validator
-            ->requirePresence('Apellido', 'create')
-            ->notEmpty('Apellido');
+            ->requirePresence('apellido', 'create')
+            ->notEmpty('apellido');
 
         $validator
-            ->requirePresence('Cedula', 'create')
-            ->notEmpty('Cedula')
-            ->add('Cedula', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->requirePresence('cedula', 'create')
+            ->notEmpty('cedula')
+            ->add('cedula', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
-            ->requirePresence('Gerencia', 'create')
-            ->notEmpty('Gerencia');
+            ->allowEmpty('sexo');
 
         $validator
-            ->requirePresence('Cargo', 'create')
-            ->notEmpty('Cargo');
+            ->requirePresence('gerencia', 'create')
+            ->notEmpty('gerencia');
 
         $validator
-            ->integer('Sede')
-            ->allowEmpty('Sede');
+            ->requirePresence('cargo', 'create')
+            ->notEmpty('cargo');
 
         $validator
-            ->integer('Numero_De_Oficina')
-            ->allowEmpty('Numero_De_Oficina');
+            ->integer('sede')
+            ->allowEmpty('sede');
 
         $validator
-            ->allowEmpty('Telefono_Personal');
+            ->integer('numero_de_oficina')
+            ->allowEmpty('numero_de_oficina');
 
         $validator
-            ->allowEmpty('Rif');
+            ->allowEmpty('telefono_personal');
 
         $validator
-            ->allowEmpty('Residencia');
+            ->allowEmpty('rif');
+
+        $validator
+            ->allowEmpty('residencia');
 
         return $validator;
     }
@@ -109,7 +120,7 @@ class TrabajadoresTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['Cedula']));
+        $rules->add($rules->isUnique(['cedula']));
 
         return $rules;
     }

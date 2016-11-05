@@ -2,6 +2,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Modelo'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Articulo'), ['controller' => 'Articulos', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="modelos index large-9 medium-8 columns content">
@@ -10,11 +12,11 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Marca') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Modelo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Tipo_De_Articulo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Serial_Comun') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Abstracto') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('marca') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('modelo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('tipo_de_articulo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('serial_comun') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('abstracto') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -24,11 +26,11 @@
             <?php foreach ($modelos as $modelo): ?>
             <tr>
                 <td><?= $this->Number->format($modelo->id) ?></td>
-                <td><?= h($modelo->Marca) ?></td>
-                <td><?= h($modelo->Modelo) ?></td>
-                <td><?= h($modelo->Tipo_De_Articulo) ?></td>
-                <td><?= h($modelo->Serial_Comun) ?></td>
-                <td><?= h($modelo->Abstracto) ?></td>
+                <td><?= h($modelo->marca) ?></td>
+                <td><?= h($modelo->modelo) ?></td>
+                <td><?= h($modelo->tipo_de_articulo) ?></td>
+                <td><?= h($modelo->serial_comun) ?></td>
+                <td><?= h($modelo->abstracto) ?></td>
                 <td><?= h($modelo->created) ?></td>
                 <td><?= h($modelo->modified) ?></td>
                 <td class="actions">

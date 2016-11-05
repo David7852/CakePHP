@@ -9,6 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Procesos Model
  *
+ * @property \Cake\ORM\Association\HasMany $Asignaciones
+ * @property \Cake\ORM\Association\HasMany $Devoluciones
  * @property \Cake\ORM\Association\BelongsToMany $Trabajadores
  *
  * @method \App\Model\Entity\Proceso get($primaryKey, $options = [])
@@ -40,6 +42,12 @@ class ProcesosTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->hasMany('Asignaciones', [
+            'foreignKey' => 'proceso_id'
+        ]);
+        $this->hasMany('Devoluciones', [
+            'foreignKey' => 'proceso_id'
+        ]);
         $this->belongsToMany('Trabajadores', [
             'foreignKey' => 'proceso_id',
             'targetForeignKey' => 'trabajador_id',
@@ -60,28 +68,28 @@ class ProcesosTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('Titulo');
+            ->allowEmpty('titulo');
 
         $validator
-            ->allowEmpty('Motivo');
+            ->allowEmpty('motivo');
 
         $validator
-            ->allowEmpty('Tipo');
+            ->allowEmpty('tipo');
 
         $validator
-            ->date('Fecha_De_Solicitud')
-            ->requirePresence('Fecha_De_Solicitud', 'create')
-            ->notEmpty('Fecha_De_Solicitud');
+            ->date('fecha_de_solicitud')
+            ->requirePresence('fecha_de_solicitud', 'create')
+            ->notEmpty('fecha_de_solicitud');
 
         $validator
-            ->date('Fecha_De_Aprobacion')
-            ->allowEmpty('Fecha_De_Aprobacion');
+            ->date('fecha_de_aprobacion')
+            ->allowEmpty('fecha_de_aprobacion');
 
         $validator
-            ->allowEmpty('Estado');
+            ->allowEmpty('estado');
 
         $validator
-            ->allowEmpty('Observaciones');
+            ->allowEmpty('observaciones');
 
         return $validator;
     }

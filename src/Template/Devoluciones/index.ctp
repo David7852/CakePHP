@@ -14,9 +14,9 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Titulo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Proceso_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Articulo_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('titulo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('proceso_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('articulo_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -26,7 +26,7 @@
             <?php foreach ($devoluciones as $devolucion): ?>
             <tr>
                 <td><?= $this->Number->format($devolucion->id) ?></td>
-                <td><?= h($devolucion->Titulo) ?></td>
+                <td><?= h($devolucion->titulo) ?></td>
                 <td><?= $devolucion->has('proceso') ? $this->Html->link($devolucion->proceso->id, ['controller' => 'Procesos', 'action' => 'view', $devolucion->proceso->id]) : '' ?></td>
                 <td><?= $devolucion->has('articulo') ? $this->Html->link($devolucion->articulo->id, ['controller' => 'Articulos', 'action' => 'view', $devolucion->articulo->id]) : '' ?></td>
                 <td><?= h($devolucion->created) ?></td>

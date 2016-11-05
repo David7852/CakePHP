@@ -41,7 +41,7 @@ class UsuariosTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Trabajadores', [
-            'foreignKey' => 'Trabajador_id',
+            'foreignKey' => 'trabajador_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -59,24 +59,25 @@ class UsuariosTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('Nombre_De_Usuario', 'create')
-            ->notEmpty('Nombre_De_Usuario')
-            ->add('Nombre_De_Usuario', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->requirePresence('nombre_de_usuario', 'create')
+            ->notEmpty('nombre_de_usuario')
+            ->add('nombre_de_usuario', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
-            ->requirePresence('Email', 'create')
-            ->notEmpty('Email')
-            ->add('Email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmpty('email')
+            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
-            ->requirePresence('Clave', 'create')
-            ->notEmpty('Clave');
+            ->requirePresence('clave', 'create')
+            ->notEmpty('clave');
 
         $validator
-            ->allowEmpty('Funcion');
+            ->allowEmpty('funcion');
 
         $validator
-            ->allowEmpty('Imagen');
+            ->allowEmpty('imagen');
 
         return $validator;
     }
@@ -90,9 +91,9 @@ class UsuariosTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['Nombre_De_Usuario']));
-        $rules->add($rules->isUnique(['Email']));
-        $rules->add($rules->existsIn(['Trabajador_id'], 'Trabajadores'));
+        $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->isUnique(['nombre_de_usuario']));
+        $rules->add($rules->existsIn(['trabajador_id'], 'Trabajadores'));
 
         return $rules;
     }

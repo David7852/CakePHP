@@ -8,6 +8,8 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Rentas'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Consumos'), ['controller' => 'Consumos', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Consumo'), ['controller' => 'Consumos', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Linea'), ['controller' => 'Lineas', 'action' => 'add']) ?></li>
     </ul>
@@ -17,9 +19,9 @@
     <fieldset>
         <legend><?= __('Edit Renta') ?></legend>
         <?php
-            echo $this->Form->input('Nombre');
-            echo $this->Form->input('Monto_Basico');
-            echo $this->Form->input('Operadora');
+            echo $this->Form->input('nombre');
+            echo $this->Form->input('monto_basico');
+            echo $this->Form->input('operadora');
             echo $this->Form->input('lineas._ids', ['options' => $lineas]);
         ?>
     </fieldset>

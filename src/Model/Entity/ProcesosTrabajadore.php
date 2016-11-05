@@ -6,9 +6,9 @@ use Cake\ORM\Entity;
 /**
  * ProcesosTrabajadore Entity
  *
- * @property int $Trabajador_id
- * @property int $Proceso_id
- * @property string $Rol
+ * @property int $trabajador_id
+ * @property int $proceso_id
+ * @property string $rol
  *
  * @property \App\Model\Entity\Trabajador $trabajador
  * @property \App\Model\Entity\Proceso $proceso
@@ -27,7 +27,7 @@ class ProcesosTrabajadore extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'Trabajador_id' => false,
-        'Proceso_id' => false
+        'trabajador_id' => false,
+        'proceso_id' => false
     ];
 }

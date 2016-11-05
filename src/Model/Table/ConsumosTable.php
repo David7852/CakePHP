@@ -42,11 +42,11 @@ class ConsumosTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Facturas', [
-            'foreignKey' => 'Factura_id',
+            'foreignKey' => 'factura_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Rentas', [
-            'foreignKey' => 'Renta_id',
+            'foreignKey' => 'renta_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -64,18 +64,18 @@ class ConsumosTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('Titulo');
+            ->allowEmpty('titulo');
 
         $validator
-            ->allowEmpty('Consumido');
+            ->allowEmpty('consumido');
 
         $validator
-            ->allowEmpty('Excedente');
+            ->allowEmpty('excedente');
 
         $validator
-            ->numeric('Monto_Bs')
-            ->requirePresence('Monto_Bs', 'create')
-            ->notEmpty('Monto_Bs');
+            ->numeric('monto_bs')
+            ->requirePresence('monto_bs', 'create')
+            ->notEmpty('monto_bs');
 
         return $validator;
     }
@@ -89,8 +89,8 @@ class ConsumosTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['Factura_id'], 'Facturas'));
-        $rules->add($rules->existsIn(['Renta_id'], 'Rentas'));
+        $rules->add($rules->existsIn(['factura_id'], 'Facturas'));
+        $rules->add($rules->existsIn(['renta_id'], 'Rentas'));
 
         return $rules;
     }

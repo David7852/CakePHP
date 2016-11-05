@@ -3,8 +3,8 @@
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $procesosTrabajadore->Trabajador_id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $procesosTrabajadore->Trabajador_id)]
+                ['action' => 'delete', $procesosTrabajadore->trabajador_id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $procesosTrabajadore->trabajador_id)]
             )
         ?></li>
         <li><?= $this->Html->link(__('List Procesos Trabajadores'), ['action' => 'index']) ?></li>
@@ -19,7 +19,7 @@
     <fieldset>
         <legend><?= __('Edit Procesos Trabajadore') ?></legend>
         <?php
-            echo $this->Form->input('Rol');
+            echo $this->Form->input('rol');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
