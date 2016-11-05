@@ -56,8 +56,8 @@ class ConsumosFixture extends TestFixture
             'Consumido' => 'Lorem ipsum d',
             'Excedente' => 'Lorem ip',
             'Monto_Bs' => 1,
-            'created' => '2016-11-03 19:05:39',
-            'modified' => '2016-11-03 19:05:39'
+            'created' => '2016-11-05 18:01:53',
+            'modified' => '2016-11-05 18:01:53'
         ],
     ];
 }

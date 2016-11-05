@@ -18,9 +18,6 @@ class ProcesosController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Trabajors']
-        ];
         $procesos = $this->paginate($this->Procesos);
 
         $this->set(compact('procesos'));
@@ -37,7 +34,7 @@ class ProcesosController extends AppController
     public function view($id = null)
     {
         $proceso = $this->Procesos->get($id, [
-            'contain' => ['Trabajors']
+            'contain' => ['Trabajadores']
         ]);
 
         $this->set('proceso', $proceso);
@@ -62,8 +59,8 @@ class ProcesosController extends AppController
                 $this->Flash->error(__('The proceso could not be saved. Please, try again.'));
             }
         }
-        $trabajors = $this->Procesos->Trabajors->find('list', ['limit' => 200]);
-        $this->set(compact('proceso', 'trabajors'));
+        $trabajadores = $this->Procesos->Trabajadores->find('list', ['limit' => 200]);
+        $this->set(compact('proceso', 'trabajadores'));
         $this->set('_serialize', ['proceso']);
     }
 
@@ -77,7 +74,7 @@ class ProcesosController extends AppController
     public function edit($id = null)
     {
         $proceso = $this->Procesos->get($id, [
-            'contain' => []
+            'contain' => ['Trabajadores']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $proceso = $this->Procesos->patchEntity($proceso, $this->request->data);
@@ -89,8 +86,8 @@ class ProcesosController extends AppController
                 $this->Flash->error(__('The proceso could not be saved. Please, try again.'));
             }
         }
-        $trabajors = $this->Procesos->Trabajors->find('list', ['limit' => 200]);
-        $this->set(compact('proceso', 'trabajors'));
+        $trabajadores = $this->Procesos->Trabajadores->find('list', ['limit' => 200]);
+        $this->set(compact('proceso', 'trabajadores'));
         $this->set('_serialize', ['proceso']);
     }
 

@@ -9,6 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $Nombre
  * @property float $Monto_Basico
+ * @property string $Operadora
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *

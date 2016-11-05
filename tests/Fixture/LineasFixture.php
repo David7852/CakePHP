@@ -56,8 +56,8 @@ class LineasFixture extends TestFixture
             'Codigo_Sim' => 'Lorem ipsum dolor sit a',
             'Articulo_id' => 1,
             'Estado' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-            'created' => '2016-11-03 19:05:15',
-            'modified' => '2016-11-03 19:05:15'
+            'created' => '2016-11-05 18:01:44',
+            'modified' => '2016-11-05 18:01:44'
         ],
     ];
 }

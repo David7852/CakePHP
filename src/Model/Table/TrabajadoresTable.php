@@ -9,9 +9,6 @@ use Cake\Validation\Validator;
 /**
  * Trabajadores Model
  *
- * @property \Cake\ORM\Association\HasMany $Contratos
- * @property \Cake\ORM\Association\HasMany $Procesos
- * @property \Cake\ORM\Association\HasMany $Usuarios
  * @property \Cake\ORM\Association\BelongsToMany $Procesos
  *
  * @method \App\Model\Entity\Trabajador get($primaryKey, $options = [])
@@ -43,15 +40,6 @@ class TrabajadoresTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('Contratos', [
-            'foreignKey' => 'trabajador_id'
-        ]);
-        $this->hasMany('Procesos', [
-            'foreignKey' => 'trabajador_id'
-        ]);
-        $this->hasMany('Usuarios', [
-            'foreignKey' => 'trabajador_id'
-        ]);
         $this->belongsToMany('Procesos', [
             'foreignKey' => 'trabajador_id',
             'targetForeignKey' => 'proceso_id',

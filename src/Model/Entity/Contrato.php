@@ -8,14 +8,14 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $Titulo
- * @property int $trabajador_id
+ * @property int $Trabajador_id
  * @property \Cake\I18n\Time $Fecha_De_Inicio
  * @property \Cake\I18n\Time $Fecha_De_Culminacion
  * @property string $Tipo_De_Contrato
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
- * @property \App\Model\Entity\Trabajore $trabajore
+ * @property \App\Model\Entity\Trabajador $trabajador
  */
 class Contrato extends Entity
 {

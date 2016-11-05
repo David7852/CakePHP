@@ -51,9 +51,9 @@ class AsignacionesFixture extends TestFixture
             'Titulo' => 'Lorem ipsum dolor sit amet',
             'Proceso_id' => 1,
             'Articulo_id' => 1,
-            'Hasta' => '2016-11-03',
-            'created' => '2016-11-03 19:04:52',
-            'modified' => '2016-11-03 19:04:52'
+            'Hasta' => '2016-11-05',
+            'created' => '2016-11-05 18:01:21',
+            'modified' => '2016-11-05 18:01:21'
         ],
     ];
 }

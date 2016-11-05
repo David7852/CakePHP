@@ -2,6 +2,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Proceso'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Trabajador'), ['controller' => 'Trabajadores', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="procesos index large-9 medium-8 columns content">
@@ -11,7 +13,6 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Titulo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('trabajador_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Motivo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Fecha_De_Solicitud') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Fecha_De_Aprobacion') ?></th>
@@ -25,7 +26,6 @@
             <tr>
                 <td><?= $this->Number->format($proceso->id) ?></td>
                 <td><?= h($proceso->Titulo) ?></td>
-                <td><?= $this->Number->format($proceso->trabajador_id) ?></td>
                 <td><?= h($proceso->Motivo) ?></td>
                 <td><?= h($proceso->Fecha_De_Solicitud) ?></td>
                 <td><?= h($proceso->Fecha_De_Aprobacion) ?></td>

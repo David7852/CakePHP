@@ -13,7 +13,7 @@
     <fieldset>
         <legend><?= __('Add Procesos Trabajadore') ?></legend>
         <?php
-            echo $this->Form->input('rol');
+            echo $this->Form->input('Rol');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

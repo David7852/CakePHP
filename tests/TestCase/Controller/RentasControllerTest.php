@@ -18,6 +18,8 @@ class RentasControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.rentas',
         'app.lineas',
+        'app.articulos',
+        'app.modelos',
         'app.lineas_rentas'
     ];
 

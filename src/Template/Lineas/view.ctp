@@ -63,6 +63,7 @@
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Nombre') ?></th>
                 <th scope="col"><?= __('Monto Basico') ?></th>
+                <th scope="col"><?= __('Operadora') ?></th>
                 <th scope="col"><?= __('Created') ?></th>
                 <th scope="col"><?= __('Modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -72,6 +73,7 @@
                 <td><?= h($rentas->id) ?></td>
                 <td><?= h($rentas->Nombre) ?></td>
                 <td><?= h($rentas->Monto_Basico) ?></td>
+                <td><?= h($rentas->Operadora) ?></td>
                 <td><?= h($rentas->created) ?></td>
                 <td><?= h($rentas->modified) ?></td>
                 <td class="actions">

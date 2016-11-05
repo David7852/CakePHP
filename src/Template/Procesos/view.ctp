@@ -5,6 +5,8 @@
         <li><?= $this->Form->postLink(__('Delete Proceso'), ['action' => 'delete', $proceso->id], ['confirm' => __('Are you sure you want to delete # {0}?', $proceso->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Procesos'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Proceso'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Trabajador'), ['controller' => 'Trabajadores', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="procesos view large-9 medium-8 columns content">
@@ -21,10 +23,6 @@
         <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($proceso->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Trabajador Id') ?></th>
-            <td><?= $this->Number->format($proceso->trabajador_id) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Fecha De Solicitud') ?></th>
@@ -54,5 +52,50 @@
     <div class="row">
         <h4><?= __('Observaciones') ?></h4>
         <?= $this->Text->autoParagraph(h($proceso->Observaciones)); ?>
+    </div>
+    <div class="related">
+        <h4><?= __('Related Trabajadores') ?></h4>
+        <?php if (!empty($proceso->trabajadores)): ?>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th scope="col"><?= __('Id') ?></th>
+                <th scope="col"><?= __('Nombre') ?></th>
+                <th scope="col"><?= __('Apellido') ?></th>
+                <th scope="col"><?= __('Cedula') ?></th>
+                <th scope="col"><?= __('Gerencia') ?></th>
+                <th scope="col"><?= __('Cargo') ?></th>
+                <th scope="col"><?= __('Sede') ?></th>
+                <th scope="col"><?= __('Numero De Oficina') ?></th>
+                <th scope="col"><?= __('Telefono Personal') ?></th>
+                <th scope="col"><?= __('Rif') ?></th>
+                <th scope="col"><?= __('Residencia') ?></th>
+                <th scope="col"><?= __('Created') ?></th>
+                <th scope="col"><?= __('Modified') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
+            </tr>
+            <?php foreach ($proceso->trabajadores as $trabajadores): ?>
+            <tr>
+                <td><?= h($trabajadores->id) ?></td>
+                <td><?= h($trabajadores->Nombre) ?></td>
+                <td><?= h($trabajadores->Apellido) ?></td>
+                <td><?= h($trabajadores->Cedula) ?></td>
+                <td><?= h($trabajadores->Gerencia) ?></td>
+                <td><?= h($trabajadores->Cargo) ?></td>
+                <td><?= h($trabajadores->Sede) ?></td>
+                <td><?= h($trabajadores->Numero_De_Oficina) ?></td>
+                <td><?= h($trabajadores->Telefono_Personal) ?></td>
+                <td><?= h($trabajadores->Rif) ?></td>
+                <td><?= h($trabajadores->Residencia) ?></td>
+                <td><?= h($trabajadores->created) ?></td>
+                <td><?= h($trabajadores->modified) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['controller' => 'Trabajadores', 'action' => 'view', $trabajadores->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Trabajadores', 'action' => 'edit', $trabajadores->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Trabajadores', 'action' => 'delete', $trabajadores->id], ['confirm' => __('Are you sure you want to delete # {0}?', $trabajadores->id)]) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+        <?php endif; ?>
     </div>
 </div>

@@ -8,7 +8,6 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $Titulo
- * @property int $trabajador_id
  * @property string $Motivo
  * @property string $Tipo
  * @property \Cake\I18n\Time $Fecha_De_Solicitud
@@ -18,7 +17,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
- * @property \App\Model\Entity\Trabajor $trabajor
+ * @property \App\Model\Entity\Trabajador[] $trabajadores
  */
 class Proceso extends Entity
 {

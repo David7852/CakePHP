@@ -67,6 +67,9 @@ class RentasTable extends Table
             ->numeric('Monto_Basico')
             ->allowEmpty('Monto_Basico');
 
+        $validator
+            ->allowEmpty('Operadora');
+
         return $validator;
     }
 }

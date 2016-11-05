@@ -51,13 +51,13 @@ class FacturasFixture extends TestFixture
             'id' => 1,
             'Titulo' => 'Lorem ipsum dolor sit amet',
             'Linea_id' => 1,
-            'Paguese_Antes_De' => '2016-11-03',
+            'Paguese_Antes_De' => '2016-11-05',
             'Balance' => 1,
-            'Desde' => '2016-11-03',
-            'Hasta' => '2016-11-03',
+            'Desde' => '2016-11-05',
+            'Hasta' => '2016-11-05',
             'Numero_De_Cuenta' => 'Lorem ipsum dolor sit a',
-            'created' => '2016-11-03 19:05:11',
-            'modified' => '2016-11-03 19:05:11'
+            'created' => '2016-11-05 18:01:46',
+            'modified' => '2016-11-05 18:01:46'
         ],
     ];
 }

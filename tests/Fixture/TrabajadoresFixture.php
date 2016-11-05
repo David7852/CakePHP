@@ -59,8 +59,8 @@ class TrabajadoresFixture extends TestFixture
             'Telefono_Personal' => 'Lorem ipsum dolor sit a',
             'Rif' => 'Lorem ipsum d',
             'Residencia' => 'Lorem ipsum dolor sit amet',
-            'created' => '2016-11-03 19:04:11',
-            'modified' => '2016-11-03 19:04:11'
+            'created' => '2016-11-05 18:02:34',
+            'modified' => '2016-11-05 18:02:34'
         ],
     ];
 }

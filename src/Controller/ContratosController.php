@@ -19,7 +19,7 @@ class ContratosController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Trabajores']
+            'contain' => ['Trabajadores']
         ];
         $contratos = $this->paginate($this->Contratos);
 
@@ -37,7 +37,7 @@ class ContratosController extends AppController
     public function view($id = null)
     {
         $contrato = $this->Contratos->get($id, [
-            'contain' => ['Trabajores']
+            'contain' => ['Trabajadores']
         ]);
 
         $this->set('contrato', $contrato);
@@ -62,8 +62,8 @@ class ContratosController extends AppController
                 $this->Flash->error(__('The contrato could not be saved. Please, try again.'));
             }
         }
-        $trabajores = $this->Contratos->Trabajores->find('list', ['limit' => 200]);
-        $this->set(compact('contrato', 'trabajores'));
+        $trabajadores = $this->Contratos->Trabajadores->find('list', ['limit' => 200]);
+        $this->set(compact('contrato', 'trabajadores'));
         $this->set('_serialize', ['contrato']);
     }
 
@@ -89,8 +89,8 @@ class ContratosController extends AppController
                 $this->Flash->error(__('The contrato could not be saved. Please, try again.'));
             }
         }
-        $trabajores = $this->Contratos->Trabajores->find('list', ['limit' => 200]);
-        $this->set(compact('contrato', 'trabajores'));
+        $trabajadores = $this->Contratos->Trabajadores->find('list', ['limit' => 200]);
+        $this->set(compact('contrato', 'trabajadores'));
         $this->set('_serialize', ['contrato']);
     }
 

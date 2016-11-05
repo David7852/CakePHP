@@ -50,8 +50,8 @@ class DevolucionesFixture extends TestFixture
             'Titulo' => 'Lorem ipsum dolor sit amet',
             'Proceso_id' => 1,
             'Articulo_id' => 1,
-            'created' => '2016-11-03 19:05:22',
-            'modified' => '2016-11-03 19:05:22'
+            'created' => '2016-11-05 18:01:24',
+            'modified' => '2016-11-05 18:01:24'
         ],
     ];
 }

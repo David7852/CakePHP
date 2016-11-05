@@ -34,7 +34,7 @@ class TrabajadoresController extends AppController
     public function view($id = null)
     {
         $trabajador = $this->Trabajadores->get($id, [
-            'contain' => ['Procesos', 'Contratos', 'Usuarios']
+            'contain' => ['Procesos']
         ]);
 
         $this->set('trabajador', $trabajador);

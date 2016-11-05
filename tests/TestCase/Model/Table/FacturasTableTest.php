@@ -25,7 +25,11 @@ class FacturasTableTest extends TestCase
      */
     public $fixtures = [
         'app.facturas',
-        'app.lineas'
+        'app.lineas',
+        'app.articulos',
+        'app.modelos',
+        'app.rentas',
+        'app.lineas_rentas'
     ];
 
     /**

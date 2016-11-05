@@ -17,7 +17,8 @@ class ProcesosControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.procesos',
-        'app.trabajors'
+        'app.trabajadores',
+        'app.procesos_trabajadores'
     ];
 
     /**

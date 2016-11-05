@@ -20,9 +20,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
- * @property \App\Model\Entity\Contrato[] $contratos
  * @property \App\Model\Entity\Proceso[] $procesos
- * @property \App\Model\Entity\Usuario[] $usuarios
  */
 class Trabajador extends Entity
 {

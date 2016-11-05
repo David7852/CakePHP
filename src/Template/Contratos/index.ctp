@@ -2,6 +2,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Contrato'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Trabajador'), ['controller' => 'Trabajadores', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="contratos index large-9 medium-8 columns content">
@@ -11,7 +13,7 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Titulo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('trabajador_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Trabajador_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Fecha_De_Inicio') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Fecha_De_Culminacion') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
@@ -24,7 +26,7 @@
             <tr>
                 <td><?= $this->Number->format($contrato->id) ?></td>
                 <td><?= h($contrato->Titulo) ?></td>
-                <td><?= $this->Number->format($contrato->trabajador_id) ?></td>
+                <td><?= $contrato->has('trabajador') ? $this->Html->link($contrato->trabajador->id, ['controller' => 'Trabajadores', 'action' => 'view', $contrato->trabajador->id]) : '' ?></td>
                 <td><?= h($contrato->Fecha_De_Inicio) ?></td>
                 <td><?= h($contrato->Fecha_De_Culminacion) ?></td>
                 <td><?= h($contrato->created) ?></td>

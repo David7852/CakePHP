@@ -59,7 +59,6 @@ create table if not exists trabajadores (
 create table if not exists procesos (
   id integer unsigned auto_increment primary key,
   Titulo varchar(255),
-  trabajador_id integer unsigned not null,
   Motivo varchar(255),
   Tipo enum("Asignacion","Devolucion","Mixto"),
   Fecha_De_Solicitud date not null,
@@ -70,15 +69,15 @@ create table if not exists procesos (
   modified DATETIME default null);
 
 create table if not exists procesos_trabajadores(
-  trabajador_id integer unsigned not null,
+  Trabajador_id integer unsigned not null,
   Proceso_id integer unsigned not null,
-  rol enum("Solicitante","Supervisor","Encargado"),
-  Primary key (trabajador_id,proceso_id));
+  Rol enum("Solicitante","Supervisor","Encargado"),
+  Primary key (Trabajador_id,Proceso_id));
 
 create table if not exists contratos (
   id integer unsigned auto_increment primary key,
   Titulo varchar(255),
-  trabajador_id integer unsigned not null,
+  Trabajador_id integer unsigned not null,
   Fecha_De_Inicio date not null,
   Fecha_De_Culminacion date,
   Tipo_De_Contrato enum("Temporal","Permanente") default "Temporal",/*agregar faltantes*/
@@ -97,6 +96,7 @@ create table if not exists rentas (
   id integer unsigned auto_increment primary key,
   Nombre varchar(50) not null,
   Monto_Basico float default 0,
+  Operadora enum("Movilnet","Movistar") default "Movilnet",
   created DATETIME default null,
   modified DATETIME default null);
 
@@ -144,9 +144,10 @@ create table if not exists usuarios(
   id integer unsigned auto_increment primary key,
   Nombre_De_Usuario varchar(25) unique not null,
   Email varchar(50) unique not null,
-  Clave varchar(25) not null,
+  Clave varchar(255) not null,
   Funcion enum("Superadministrador","Administrador","Operador","Visitante") default "Visitante",
-  trabajador_id integer unsigned not null,
+  Trabajador_id integer unsigned not null,
+  Imagen text,
   created DATETIME default null,
   modified DATETIME default null);
 
@@ -175,13 +176,13 @@ alter table devoluciones
   add foreign key (proceso_id) references procesos (id) on delete cascade on update cascade;
 
 alter table procesos_trabajadores
-  add foreign key (trabajador_id) references trabajadores (id) on delete restrict on update cascade;
+  add foreign key (Trabajador_id) references trabajadores (id) on delete restrict on update cascade;
 alter table procesos_trabajadores
   add foreign key (proceso_id) references procesos (id) on delete restrict on update cascade;
 
 alter table contratos add index `trabajador_contratado` (trabajador_id);
 alter table contratos
-  add foreign key (trabajador_id) references trabajadores (id) on delete restrict on update cascade;
+  add foreign key (Trabajador_id) references trabajadores (id) on delete restrict on update cascade;
 
 alter table lineas add index `equipo_de_linea` (articulo_id);
 alter table lineas
@@ -203,9 +204,9 @@ alter table lineas_rentas
 alter table lineas_rentas
   add foreign key (renta_id) references rentas (id) on delete restrict on update cascade;
 
-alter table usuarios add index `datos_de_usuario`(trabajador_id);
+alter table usuarios add index `datos_de_usuario`(Trabajador_id);
 alter table usuarios
-  add foreign key (trabajador_id) references  trabajadores (id) on delete cascade on update cascade;
+  add foreign key (Trabajador_id) references  trabajadores (id) on delete cascade on update cascade;
 
 /*
 
@@ -218,6 +219,7 @@ create table if not exists softwares (
   Nombre varchar(25) not null,
   Descripcion varchar(50),
   version varchar(25),
+  Imagen text,
   Estado char(1),
   created DATETIME default null,
   modified DATETIME default null);

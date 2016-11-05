@@ -13,6 +13,7 @@
         <?php
             echo $this->Form->input('Nombre');
             echo $this->Form->input('Monto_Basico');
+            echo $this->Form->input('Operadora');
             echo $this->Form->input('lineas._ids', ['options' => $lineas]);
         ?>
     </fieldset>

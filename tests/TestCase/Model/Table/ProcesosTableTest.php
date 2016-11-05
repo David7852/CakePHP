@@ -25,7 +25,8 @@ class ProcesosTableTest extends TestCase
      */
     public $fixtures = [
         'app.procesos',
-        'app.trabajors'
+        'app.trabajadores',
+        'app.procesos_trabajadores'
     ];
 
     /**
@@ -68,16 +69,6 @@ class ProcesosTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

@@ -5,6 +5,8 @@
         <li><?= $this->Form->postLink(__('Delete Contrato'), ['action' => 'delete', $contrato->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contrato->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Contratos'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Contrato'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Trabajador'), ['controller' => 'Trabajadores', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="contratos view large-9 medium-8 columns content">
@@ -15,12 +17,12 @@
             <td><?= h($contrato->Titulo) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($contrato->id) ?></td>
+            <th scope="row"><?= __('Trabajador') ?></th>
+            <td><?= $contrato->has('trabajador') ? $this->Html->link($contrato->trabajador->id, ['controller' => 'Trabajadores', 'action' => 'view', $contrato->trabajador->id]) : '' ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Trabajador Id') ?></th>
-            <td><?= $this->Number->format($contrato->trabajador_id) ?></td>
+            <th scope="row"><?= __('Id') ?></th>
+            <td><?= $this->Number->format($contrato->id) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Fecha De Inicio') ?></th>

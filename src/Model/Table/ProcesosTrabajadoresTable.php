@@ -34,11 +34,11 @@ class ProcesosTrabajadoresTable extends Table
         parent::initialize($config);
 
         $this->table('procesos_trabajadores');
-        $this->displayField('trabajador_id');
-        $this->primaryKey(['trabajador_id', 'Proceso_id']);
+        $this->displayField('Trabajador_id');
+        $this->primaryKey(['Trabajador_id', 'Proceso_id']);
 
         $this->belongsTo('Trabajadores', [
-            'foreignKey' => 'trabajador_id',
+            'foreignKey' => 'Trabajador_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Procesos', [
@@ -56,7 +56,7 @@ class ProcesosTrabajadoresTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->allowEmpty('rol');
+            ->allowEmpty('Rol');
 
         return $validator;
     }
@@ -70,7 +70,7 @@ class ProcesosTrabajadoresTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['trabajador_id'], 'Trabajadores'));
+        $rules->add($rules->existsIn(['Trabajador_id'], 'Trabajadores'));
         $rules->add($rules->existsIn(['Proceso_id'], 'Procesos'));
 
         return $rules;

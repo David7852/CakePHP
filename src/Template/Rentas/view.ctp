@@ -33,6 +33,10 @@
             <td><?= h($renta->modified) ?></td>
         </tr>
     </table>
+    <div class="row">
+        <h4><?= __('Operadora') ?></h4>
+        <?= $this->Text->autoParagraph(h($renta->Operadora)); ?>
+    </div>
     <div class="related">
         <h4><?= __('Related Lineas') ?></h4>
         <?php if (!empty($renta->lineas)): ?>

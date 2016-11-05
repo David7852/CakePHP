@@ -41,7 +41,7 @@ class ContratosTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Trabajadores', [
-            'foreignKey' => 'trabajador_id',
+            'foreignKey' => 'Trabajador_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -85,7 +85,7 @@ class ContratosTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['trabajador_id'], 'Trabajadores'));
+        $rules->add($rules->existsIn(['Trabajador_id'], 'Trabajadores'));
 
         return $rules;
     }

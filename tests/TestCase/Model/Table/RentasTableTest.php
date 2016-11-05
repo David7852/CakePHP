@@ -26,6 +26,8 @@ class RentasTableTest extends TestCase
     public $fixtures = [
         'app.rentas',
         'app.lineas',
+        'app.articulos',
+        'app.modelos',
         'app.lineas_rentas'
     ];
 

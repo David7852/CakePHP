@@ -26,9 +26,7 @@ class ProcesosTrabajadoresTableTest extends TestCase
     public $fixtures = [
         'app.procesos_trabajadores',
         'app.trabajadores',
-        'app.contratos',
-        'app.procesos',
-        'app.usuarios'
+        'app.procesos'
     ];
 
     /**

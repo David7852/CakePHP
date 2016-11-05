@@ -13,7 +13,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('trabajador_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Trabajador_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Proceso_id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -24,9 +24,9 @@
                 <td><?= $procesosTrabajadore->has('trabajador') ? $this->Html->link($procesosTrabajadore->trabajador->id, ['controller' => 'Trabajadores', 'action' => 'view', $procesosTrabajadore->trabajador->id]) : '' ?></td>
                 <td><?= $procesosTrabajadore->has('proceso') ? $this->Html->link($procesosTrabajadore->proceso->id, ['controller' => 'Procesos', 'action' => 'view', $procesosTrabajadore->proceso->id]) : '' ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $procesosTrabajadore->trabajador_id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $procesosTrabajadore->trabajador_id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $procesosTrabajadore->trabajador_id], ['confirm' => __('Are you sure you want to delete # {0}?', $procesosTrabajadore->trabajador_id)]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $procesosTrabajadore->Trabajador_id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $procesosTrabajadore->Trabajador_id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $procesosTrabajadore->Trabajador_id], ['confirm' => __('Are you sure you want to delete # {0}?', $procesosTrabajadore->Trabajador_id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

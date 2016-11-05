@@ -9,7 +9,6 @@ use Cake\Validation\Validator;
 /**
  * Procesos Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Trabajadores
  * @property \Cake\ORM\Association\BelongsToMany $Trabajadores
  *
  * @method \App\Model\Entity\Proceso get($primaryKey, $options = [])
@@ -41,10 +40,6 @@ class ProcesosTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Trabajadores', [
-            'foreignKey' => 'trabajador_id',
-            'joinType' => 'INNER'
-        ]);
         $this->belongsToMany('Trabajadores', [
             'foreignKey' => 'proceso_id',
             'targetForeignKey' => 'trabajador_id',
@@ -89,19 +84,5 @@ class ProcesosTable extends Table
             ->allowEmpty('Observaciones');
 
         return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['trabajador_id'], 'Trabajadores'));
-
-        return $rules;
     }
 }
