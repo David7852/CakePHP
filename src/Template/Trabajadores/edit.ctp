@@ -1,25 +1,26 @@
+<?=$this->assign('title',"Trabajadores de Fertinitro")?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+        <li class="heading"><?= __('Acciones') ?></li>
         <li><?= $this->Form->postLink(
-                __('Delete'),
+                __('Eliminar'),
                 ['action' => 'delete', $trabajador->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $trabajador->id)]
+                ['confirm' => __('¿Esta seguro de querer eliminar al trabajador {0}?', $trabajador->name)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Trabajadores'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Contratos'), ['controller' => 'Contratos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Contrato'), ['controller' => 'Contratos', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Procesos'), ['controller' => 'Procesos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Proceso'), ['controller' => 'Procesos', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Listar Trabajadores'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Listar Contratos'), ['controller' => 'Contratos', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Nuevo Contrato'), ['controller' => 'Contratos', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Listar Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Nuevo Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Listar Procesos'), ['controller' => 'Procesos', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Nuevo Proceso'), ['controller' => 'Procesos', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="trabajadores form large-9 medium-8 columns content">
     <?= $this->Form->create($trabajador) ?>
     <fieldset>
-        <legend><?= __('Edit Trabajador') ?></legend>
+        <legend><?= __('Editar Trabajador') ?></legend>
         <?php
             echo $this->Form->input('nombre');
             echo $this->Form->input('apellido');
@@ -35,6 +36,6 @@
             echo $this->Form->input('procesos._ids', ['options' => $procesos]);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Aceptar')) ?>
     <?= $this->Form->end() ?>
 </div>
