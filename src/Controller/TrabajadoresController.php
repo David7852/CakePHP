@@ -52,11 +52,11 @@ class TrabajadoresController extends AppController
         if ($this->request->is('post')) {
             $trabajador = $this->Trabajadores->patchEntity($trabajador, $this->request->data);
             if ($this->Trabajadores->save($trabajador)) {
-                $this->Flash->success(__('The trabajador has been saved.'));
+                $this->Flash->success(__('El trabajador ha sido registrado.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The trabajador could not be saved. Please, try again.'));
+                $this->Flash->error(__('El trabajador no pudo ser guardado. Intente nuevamente.'));
             }
         }
         $procesos = $this->Trabajadores->Procesos->find('list', ['limit' => 200]);
@@ -79,11 +79,11 @@ class TrabajadoresController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $trabajador = $this->Trabajadores->patchEntity($trabajador, $this->request->data);
             if ($this->Trabajadores->save($trabajador)) {
-                $this->Flash->success(__('The trabajador has been saved.'));
+                $this->Flash->success(__('Los cambios en el trabajador fueron guardados.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The trabajador could not be saved. Please, try again.'));
+                $this->Flash->error(__('Los cambios en el trabajador no pudieron ser guardados. Intente nuevamente.'));
             }
         }
         $procesos = $this->Trabajadores->Procesos->find('list', ['limit' => 200]);
@@ -103,9 +103,9 @@ class TrabajadoresController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $trabajador = $this->Trabajadores->get($id);
         if ($this->Trabajadores->delete($trabajador)) {
-            $this->Flash->success(__('The trabajador has been deleted.'));
+            $this->Flash->success(__('Se ha eliminado correctamente al trabajador.'));
         } else {
-            $this->Flash->error(__('The trabajador could not be deleted. Please, try again.'));
+            $this->Flash->error(__('El trabajador no pudo ser eliminado. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

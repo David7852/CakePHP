@@ -19,11 +19,9 @@
                 <th scope="col"><?= $this->Paginator->sort('nombre') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('apellido') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('cedula') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('sede') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('numero_de_oficina') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('telefono_personal') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('rif') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('residencia') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('gerencia') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('cargo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('sede') ?></th>                
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
         </thead>
@@ -32,12 +30,16 @@
             <tr>
                 <td><?= h($trabajador->nombre) ?></td>
                 <td><?= h($trabajador->apellido) ?></td>
-                <td><?= h($trabajador->cedula) ?></td>
-                <td><?= $this->Number->format($trabajador->sede) ?></td>
-                <td><?= $this->Number->format($trabajador->numero_de_oficina) ?></td>
-                <td><?= h($trabajador->telefono_personal) ?></td>
-                <td><?= h($trabajador->rif) ?></td>
-                <td><?= h($trabajador->residencia) ?></td>
+                <td><?= h($trabajador->cedula) ?></td>                
+                <td><?=$this->Text->autoParagraph(h($trabajador->gerencia))?></td>
+                <td><?=$this->Text->autoParagraph(h($trabajador->cargo))?></td>
+                <td>
+                <?php if ($trabajador->sede==0): ?>
+                <?= h('Sede del complejo Jose') ?>
+                <?php else: ?>
+                <?= h('Sede edificio Laguna') ?>
+                <?php endif; ?>
+                </td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $trabajador->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $trabajador->id]) ?>
