@@ -55,11 +55,11 @@ class LineasController extends AppController
         if ($this->request->is('post')) {
             $linea = $this->Lineas->patchEntity($linea, $this->request->data);
             if ($this->Lineas->save($linea)) {
-                $this->Flash->success(__('The linea has been saved.'));
+                $this->Flash->success(__('La linea fue registrada.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The linea could not be saved. Please, try again.'));
+                $this->Flash->error(__('La linea no pudo ser registrada. Intente nuevamente.'));
             }
         }
         $articulos = $this->Lineas->Articulos->find('list', ['limit' => 200]);
@@ -83,11 +83,11 @@ class LineasController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $linea = $this->Lineas->patchEntity($linea, $this->request->data);
             if ($this->Lineas->save($linea)) {
-                $this->Flash->success(__('The linea has been saved.'));
+                $this->Flash->success(__('Los cambios en la linea fueron guardados.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The linea could not be saved. Please, try again.'));
+                $this->Flash->error(__('Los cambios en la linea no pudieron guardarse. Intente nuevamente'));
             }
         }
         $articulos = $this->Lineas->Articulos->find('list', ['limit' => 200]);
@@ -108,9 +108,9 @@ class LineasController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $linea = $this->Lineas->get($id);
         if ($this->Lineas->delete($linea)) {
-            $this->Flash->success(__('The linea has been deleted.'));
+            $this->Flash->success(__('La linea ha sido eliminada                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    .'));
         } else {
-            $this->Flash->error(__('The linea could not be deleted. Please, try again.'));
+            $this->Flash->error(__('La linea no pudo ser eliminada. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

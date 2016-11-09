@@ -4,7 +4,7 @@
         <li><?= $this->Form->postLink(
                 __('Eliminar'),
                 ['action' => 'delete', $usuario->id],
-                ['confirm' => __('¿Esta seguro de querer eliminar al usuario {0}?', $usuario->nombre_de_usuario)]
+                ['confirm' => __('¿Confirma querer eliminar al usuario {0}?', $usuario->nombre_de_usuario)]
             )
         ?></li>
         <li><?= $this->Html->link(__('Listar Usuarios'), ['action' => 'index']) ?></li>
@@ -15,7 +15,7 @@
 <div class="usuarios form large-9 medium-8 columns content">
     <?= $this->Form->create($usuario) ?>
     <fieldset>
-        <legend><?= __('Edit Usuario') ?></legend>
+        <legend><?= __('Editando a ').h($usuario->nombre_de_usuario) ?></legend>
         <?php
             echo $this->Form->input('nombre_de_usuario');
             echo $this->Form->input('email');

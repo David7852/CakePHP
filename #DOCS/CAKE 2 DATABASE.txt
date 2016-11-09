@@ -1,6 +1,7 @@
 set global event_scheduler="on";
 create database if not exists fertinv character set utf8 collate utf8_unicode_ci;
 use fertinv;
+SET time_zone = "-04:00";
 
 create table if not exists articulos (
   id integer unsigned auto_increment primary key,
@@ -47,7 +48,7 @@ create table if not exists trabajadores (
   apellido varchar(50) not null,
   cedula varchar(8) unique not null,
   sexo enum ("M","F") default null,
-  gerencia enum("IT","Recursos Humanos","Finanzas","Contratacion","Servicios Generales","Planificacion","Confiabiliad", "Mantenimiento", "Produccion", "Gestion") not null, /* agregar faltantes*/
+  gerencia enum("IT","Recursos Humanos","Finanzas","Contratacion","Servicios Generales","Planificacion","Confiabilidad", "Mantenimiento", "Produccion", "Gestion") not null, /* agregar faltantes*/
   cargo enum("Gerente","Supervisor", "Supervisora", "Analista", "Pasante", "Superintendente","Jefe de planta", "Jefa de planta", "Secretaria", "Secretario", "Consultor", "Consultora", "Consejera", "Consejero") not null,/*agregar faltantaes*/
   sede smallint default 0,
   numero_de_oficina smallint,

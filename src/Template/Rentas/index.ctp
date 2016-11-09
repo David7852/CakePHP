@@ -1,38 +1,35 @@
+<?=$this->assign('title',"Rentas y Planes")?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Renta'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Consumos'), ['controller' => 'Consumos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Consumo'), ['controller' => 'Consumos', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Linea'), ['controller' => 'Lineas', 'action' => 'add']) ?></li>
+        <li class="heading"><?= __('Acciones') ?></li>
+        <li><?= $this->Html->link(__('Nueva Renta'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Listar Consumos'), ['controller' => 'Consumos', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Nuevo Consumo'), ['controller' => 'Consumos', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Listar Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Nueva Linea'), ['controller' => 'Lineas', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="rentas index large-9 medium-8 columns content">
-    <h3><?= __('Rentas') ?></h3>
+    <h3><?= __('Rentas Disponibles') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('nombre') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('monto_basico') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('operadora') ?></th>
+                <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($rentas as $renta): ?>
             <tr>
-                <td><?= $this->Number->format($renta->id) ?></td>
                 <td><?= h($renta->nombre) ?></td>
-                <td><?= $this->Number->format($renta->monto_basico) ?></td>
-                <td><?= h($renta->created) ?></td>
-                <td><?= h($renta->modified) ?></td>
+                <td><?= $this->Number->format($renta->monto_basico)." Bs" ?></td>
+                <td><?=$this->Text->autoParagraph(h($renta->operadora))?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $renta->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $renta->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $renta->id], ['confirm' => __('Are you sure you want to delete # {0}?', $renta->id)]) ?>
+                    <?= $this->Html->link(__('Ver'), ['action' => 'view', $renta->id]) ?>
+                    <?= $this->Html->link(__('Editar'), ['action' => 'edit', $renta->id]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $renta->id], ['confirm' => __('¿Confirma querer eliminar la renta o plan {0}?', $renta->nombre)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -40,10 +37,10 @@
     </table>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
+            <?= $this->Paginator->prev('< ' . __('<')) ?>
+            <?= str_replace("of","de",$this->Paginator->numbers()) ?>
+            <?= $this->Paginator->next(__('>') . ' >') ?>
         </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+        <p><?= str_replace("of","de",$this->Paginator->counter()) ?></p>
     </div>
 </div>

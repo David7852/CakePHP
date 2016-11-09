@@ -2,8 +2,8 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Acciones') ?></li>
-        <li><?= $this->Html->link(__('Editar este Trabajador'), ['action' => 'edit', $trabajador->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Eliminar este Trabajador'), ['action' => 'delete', $trabajador->id], ['confirm' => __('¿Esta seguro de querer eliminar al trabajador {0}?', $trabajador->name)]) ?> </li>
+        <li><?= $this->Html->link(__('Editar a ').h($trabajador->name), ['action' => 'edit', $trabajador->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Eliminar a ').h($trabajador->name), ['action' => 'delete', $trabajador->id], ['confirm' => __('¿Confirma querer eliminar al trabajador {0}?', $trabajador->name)]) ?> </li>
         <li><?= $this->Html->link(__('Listar Trabajadores'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Nuevo Trabajador'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('Listar Contratos'), ['controller' => 'Contratos', 'action' => 'index']) ?> </li>
@@ -87,7 +87,7 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Contratos', 'action' => 'view', $contratos->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Contratos', 'action' => 'edit', $contratos->id]) ?>
-                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Contratos', 'action' => 'delete', $contratos->id], ['confirm' => __('¿Esta seguro de querer eliminar el contrato {0}?', $contratos->titulo)]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Contratos', 'action' => 'delete', $contratos->id], ['confirm' => __('¿Confirma querer eliminar el contrato {0}?', $contratos->titulo)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -115,7 +115,7 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Usuarios', 'action' => 'view', $usuarios->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Usuarios', 'action' => 'edit', $usuarios->id]) ?>
-                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Usuarios', 'action' => 'delete', $usuarios->id], ['confirm' => __('¿Esta seguro de querer eliminar al usuario {0}?', $usuarios->nombre_de_usuario)]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Usuarios', 'action' => 'delete', $usuarios->id], ['confirm' => __('¿Confirma querer eliminar al usuario {0}?', $usuarios->nombre_de_usuario)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -143,7 +143,7 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Procesos', 'action' => 'view', $procesos->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Procesos', 'action' => 'edit', $procesos->id]) ?>
-                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Procesos', 'action' => 'delete', $procesos->id], ['confirm' => __('¿Esta seguro de querer eliminar el proceso {0}?', $procesos->titulo)]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Procesos', 'action' => 'delete', $procesos->id], ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $procesos->titulo)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

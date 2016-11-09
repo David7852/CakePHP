@@ -1,21 +1,22 @@
+<?=$this->assign('title',"Modelos y Marcas")?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+        <li class="heading"><?= __('Acciones') ?></li>
         <li><?= $this->Form->postLink(
-                __('Delete'),
+                __('Eliminar'),
                 ['action' => 'delete', $modelo->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $modelo->id)]
+                ['confirm' => __('¿Confirma querer eliminar el tipo de {0}?', $modelo->name)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Modelos'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Articulo'), ['controller' => 'Articulos', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Listar Modelos'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Listar Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Articulo'), ['controller' => 'Articulos', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="modelos form large-9 medium-8 columns content">
     <?= $this->Form->create($modelo) ?>
     <fieldset>
-        <legend><?= __('Edit Modelo') ?></legend>
+        <legend><?= __('Editando el Modelo ').h($modelo->name) ?></legend>
         <?php
             echo $this->Form->input('marca');
             echo $this->Form->input('modelo');
@@ -25,6 +26,6 @@
             echo $this->Form->input('abstracto');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Aceptar')) ?>
     <?= $this->Form->end() ?>
 </div>

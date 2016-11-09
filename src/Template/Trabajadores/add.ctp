@@ -60,7 +60,6 @@
             echo $this->Form->input('telefono_personal');
             echo $this->Form->input('rif');
             echo $this->Form->input('residencia');
-            echo $this->Form->input('procesos._ids', ['options' => $procesos]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Aceptar')) ?>

@@ -37,7 +37,7 @@ class LineasTable extends Table
         parent::initialize($config);
 
         $this->table('lineas');
-        $this->displayField('id');
+        $this->displayField('numero');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');

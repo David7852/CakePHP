@@ -52,11 +52,11 @@ class ModelosController extends AppController
         if ($this->request->is('post')) {
             $modelo = $this->Modelos->patchEntity($modelo, $this->request->data);
             if ($this->Modelos->save($modelo)) {
-                $this->Flash->success(__('The modelo has been saved.'));
+                $this->Flash->success(__('El modelo fue registrado.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The modelo could not be saved. Please, try again.'));
+                $this->Flash->error(__('El modelo no pudo ser registrado. Intente nuevamente.'));
             }
         }
         $this->set(compact('modelo'));
@@ -78,11 +78,11 @@ class ModelosController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $modelo = $this->Modelos->patchEntity($modelo, $this->request->data);
             if ($this->Modelos->save($modelo)) {
-                $this->Flash->success(__('The modelo has been saved.'));
+                $this->Flash->success(__('Los cambios en el modelo fueron guardados.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The modelo could not be saved. Please, try again.'));
+                $this->Flash->error(__('Los cambios en el modelo no pudieron ser guardados. Intente nuevamente.'));
             }
         }
         $this->set(compact('modelo'));
@@ -101,9 +101,9 @@ class ModelosController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $modelo = $this->Modelos->get($id);
         if ($this->Modelos->delete($modelo)) {
-            $this->Flash->success(__('The modelo has been deleted.'));
+            $this->Flash->success(__('El modelo fue eliminado'));
         } else {
-            $this->Flash->error(__('The modelo could not be deleted. Please, try again.'));
+            $this->Flash->error(__('El modelo no pudo ser eliminado. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

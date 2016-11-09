@@ -36,7 +36,7 @@ class RentasTable extends Table
         parent::initialize($config);
 
         $this->table('rentas');
-        $this->displayField('id');
+        $this->displayField('nombre');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');

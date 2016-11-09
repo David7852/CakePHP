@@ -1,20 +1,21 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Linea'), ['action' => 'edit', $linea->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Linea'), ['action' => 'delete', $linea->id], ['confirm' => __('Are you sure you want to delete # {0}?', $linea->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Lineas'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Linea'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Articulo'), ['controller' => 'Articulos', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Facturas'), ['controller' => 'Facturas', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Factura'), ['controller' => 'Facturas', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Renta'), ['controller' => 'Rentas', 'action' => 'add']) ?> </li>
+        <li class="heading"><?= __('Acciones') ?></li>
+        <li><?= $this->Html->link(__('Editar Linea'), ['action' => 'edit', $linea->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Eliminar Linea'), ['action' => 'delete', $linea->id], ['confirm' => __('¿Confirma querer eliminar la linea {0}?', $linea->numero)]) ?> </li>
+        <li><?= $this->Html->link(__('Listar Lineas'), ['action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nueva Linea'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Listar Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nueva Articulo'), ['controller' => 'Articulos', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Listar Facturas'), ['controller' => 'Facturas', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nueva Factura'), ['controller' => 'Facturas', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Listar Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nueva Renta'), ['controller' => 'Rentas', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="lineas view large-9 medium-8 columns content">
-    <h3><?= h($linea->id) ?></h3>
+    <h3><?= 'Linea '.h($linea->numero)//en lugar de numero, el nombre del propietario del equipo debería ir aca, si y
+        // solo si la linea esta asignada a alguien. de lo contrario, mostrar numero ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Numero') ?></th>
@@ -33,10 +34,6 @@
             <td><?= h($linea->observaciones) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($linea->id) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Puk') ?></th>
             <td><?= $this->Number->format($linea->puk) ?></td>
         </tr>
@@ -45,90 +42,68 @@
             <td><?= $this->Number->format($linea->pin) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($linea->created) ?></td>
+            <th scope="row"><?= __('Operadora') ?></th>
+            <td><?= h($this->operadora) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($linea->modified) ?></td>
+            <th scope="row"><?= __('Estado') ?></th>
+            <td><?= h($this->estado) ?></td>
         </tr>
     </table>
-    <div class="row">
-        <h4><?= __('Operadora') ?></h4>
-        <?= $this->Text->autoParagraph(h($linea->operadora)); ?>
-    </div>
-    <div class="row">
-        <h4><?= __('Estado') ?></h4>
-        <?= $this->Text->autoParagraph(h($linea->estado)); ?>
-    </div>
+    <?php if (!empty($linea->facturas)): ?>
     <div class="related">
-        <h4><?= __('Related Facturas') ?></h4>
-        <?php if (!empty($linea->facturas)): ?>
+        <h4><?= __('Facturas de esta linea') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Titulo') ?></th>
-                <th scope="col"><?= __('Linea Id') ?></th>
                 <th scope="col"><?= __('Paguese Antes De') ?></th>
                 <th scope="col"><?= __('Balance') ?></th>
                 <th scope="col"><?= __('Desde') ?></th>
                 <th scope="col"><?= __('Hasta') ?></th>
                 <th scope="col"><?= __('Numero De Cuenta') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($linea->facturas as $facturas): ?>
             <tr>
-                <td><?= h($facturas->id) ?></td>
                 <td><?= h($facturas->titulo) ?></td>
-                <td><?= h($facturas->linea_id) ?></td>
                 <td><?= h($facturas->paguese_antes_de) ?></td>
                 <td><?= h($facturas->balance) ?></td>
                 <td><?= h($facturas->desde) ?></td>
                 <td><?= h($facturas->hasta) ?></td>
                 <td><?= h($facturas->numero_de_cuenta) ?></td>
-                <td><?= h($facturas->created) ?></td>
-                <td><?= h($facturas->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Facturas', 'action' => 'view', $facturas->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Facturas', 'action' => 'edit', $facturas->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Facturas', 'action' => 'delete', $facturas->id], ['confirm' => __('Are you sure you want to delete # {0}?', $facturas->id)]) ?>
+                    <?= $this->Html->link(__('Ver'), ['controller' => 'Facturas', 'action' => 'view', $facturas->id]) ?>
+                    <?= $this->Html->link(__('Editar'), ['controller' => 'Facturas', 'action' => 'edit', $facturas->id]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Facturas', 'action' => 'delete', $facturas->id], ['confirm' => __('Confirma querer eliminar la factura {0}?', $facturas->titulo)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
         </table>
-        <?php endif; ?>
     </div>
+    <?php endif; ?>
+    <?php if (!empty($linea->rentas)): ?>
     <div class="related">
-        <h4><?= __('Related Rentas') ?></h4>
-        <?php if (!empty($linea->rentas)): ?>
+        <h4><?= __('Rentas y planes asignados') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Nombre') ?></th>
                 <th scope="col"><?= __('Monto Basico') ?></th>
                 <th scope="col"><?= __('Operadora') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($linea->rentas as $rentas): ?>
             <tr>
-                <td><?= h($rentas->id) ?></td>
                 <td><?= h($rentas->nombre) ?></td>
                 <td><?= h($rentas->monto_basico) ?></td>
                 <td><?= h($rentas->operadora) ?></td>
-                <td><?= h($rentas->created) ?></td>
-                <td><?= h($rentas->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Rentas', 'action' => 'view', $rentas->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Rentas', 'action' => 'edit', $rentas->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Rentas', 'action' => 'delete', $rentas->id], ['confirm' => __('Are you sure you want to delete # {0}?', $rentas->id)]) ?>
+                    <?= $this->Html->link(__('Ver'), ['controller' => 'Rentas', 'action' => 'view', $rentas->id]) ?>
+                    <?= $this->Html->link(__('Editar'), ['controller' => 'Rentas', 'action' => 'edit', $rentas->id]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Rentas', 'action' => 'delete', $rentas->id], ['confirm' => __('¿Confirma querer eliminar la renta o plan {0}?', $rentas->nombre)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
         </table>
-        <?php endif; ?>
     </div>
+    <?php endif; ?>
 </div>

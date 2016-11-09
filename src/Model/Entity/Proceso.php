@@ -23,7 +23,15 @@ use Cake\ORM\Entity;
  */
 class Proceso extends Entity
 {
-
+    protected function _setCreated($value){
+        $this->fecha_de_solicitud=$value;
+        return $value;
+    }
+    protected function _setModified($value){
+        if($this->fecha_de_aprobacion==''&&($this->estado=='Aprobado'||$this->estado=='Completado'))
+            $this->fecha_de_aprobacion=$value;
+        return $value;
+    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

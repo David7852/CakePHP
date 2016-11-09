@@ -3,9 +3,9 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Acciones') ?></li>
         <li><?= $this->Form->postLink(
-                __('Eliminar'),
+                __('Eliminar a ').h($trabajador->name),
                 ['action' => 'delete', $trabajador->id],
-                ['confirm' => __('¿Esta seguro de querer eliminar al trabajador {0}?', $trabajador->name)]
+                ['confirm' => __('¿Confirma querer eliminar al trabajador {0}?', $trabajador->name)]
             )
         ?></li>
         <li><?= $this->Html->link(__('Listar Trabajadores'), ['action' => 'index']) ?></li>
@@ -20,7 +20,7 @@
 <div class="trabajadores form large-9 medium-8 columns content">
     <?= $this->Form->create($trabajador) ?>
     <fieldset>
-        <legend><?= __('Editar Trabajador') ?></legend>
+        <legend><?= __('Editando a ').h($trabajador->name) ?></legend>
         <?php
             echo $this->Form->input('nombre');
             echo $this->Form->input('apellido');
@@ -37,7 +37,7 @@
                       "Contratacion"=>"Contratacion",
                       "Servicios Generales"=>"Servicios Generales",
                       "Planificacion"=>"Planificacion",
-                      "Confiabiliad"=>"Confiabiliad", 
+                      "Confiabilidad"=>"Confiabilidad",
                       "Mantenimiento"=>"Mantenimiento", 
                       "Produccion"=>"Produccion", 
                       "Gestion"=>"Gestion"];
@@ -67,7 +67,6 @@
             echo $this->Form->input('telefono_personal');
             echo $this->Form->input('rif');
             echo $this->Form->input('residencia');
-            echo $this->Form->input('procesos._ids', ['options' => $procesos]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Aceptar')) ?>

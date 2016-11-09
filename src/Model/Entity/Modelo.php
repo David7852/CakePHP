@@ -20,6 +20,10 @@ use Cake\ORM\Entity;
  */
 class Modelo extends Entity
 {
+    protected function _getName()
+    {
+        return $this->_properties['tipo_de_articulo']. ' ' . $this->_properties['marca'] . ' ' . $this->_properties['modelo'];
+    }
 
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

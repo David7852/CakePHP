@@ -52,11 +52,11 @@ class ProcesosController extends AppController
         if ($this->request->is('post')) {
             $proceso = $this->Procesos->patchEntity($proceso, $this->request->data);
             if ($this->Procesos->save($proceso)) {
-                $this->Flash->success(__('The proceso has been saved.'));
+                $this->Flash->success(__('El proceso fue registrado.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The proceso could not be saved. Please, try again.'));
+                $this->Flash->error(__('El proceso no pudo ser guardado. Intente nuevamente.'));
             }
         }
         $trabajadores = $this->Procesos->Trabajadores->find('list', ['limit' => 200]);
@@ -79,11 +79,11 @@ class ProcesosController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $proceso = $this->Procesos->patchEntity($proceso, $this->request->data);
             if ($this->Procesos->save($proceso)) {
-                $this->Flash->success(__('The proceso has been saved.'));
+                $this->Flash->success(__('Los cambios en el proceso fueron registrados.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The proceso could not be saved. Please, try again.'));
+                $this->Flash->error(__('Los cambios no pudieron ser guardados. Intente nuevamente.'));
             }
         }
         $trabajadores = $this->Procesos->Trabajadores->find('list', ['limit' => 200]);
@@ -103,9 +103,9 @@ class ProcesosController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $proceso = $this->Procesos->get($id);
         if ($this->Procesos->delete($proceso)) {
-            $this->Flash->success(__('The proceso has been deleted.'));
+            $this->Flash->success(__('El proceso fue eliminado.'));
         } else {
-            $this->Flash->error(__('The proceso could not be deleted. Please, try again.'));
+            $this->Flash->error(__('El Proceso no pudo ser eliminado. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

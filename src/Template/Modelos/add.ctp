@@ -1,15 +1,16 @@
+<?=$this->assign('title',"Modelos y Marcas")?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Modelos'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Articulo'), ['controller' => 'Articulos', 'action' => 'add']) ?></li>
+        <li class="heading"><?= __('Acciones') ?></li>
+        <li><?= $this->Html->link(__('Listar Modelos'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Listar Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Articulo'), ['controller' => 'Articulos', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="modelos form large-9 medium-8 columns content">
     <?= $this->Form->create($modelo) ?>
     <fieldset>
-        <legend><?= __('Add Modelo') ?></legend>
+        <legend><?= __('Agregar Modelo') ?></legend>
         <?php
             echo $this->Form->input('marca');
             echo $this->Form->input('modelo');
@@ -19,6 +20,6 @@
             echo $this->Form->input('abstracto');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Aceptar')) ?>
     <?= $this->Form->end() ?>
 </div>

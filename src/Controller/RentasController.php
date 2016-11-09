@@ -52,11 +52,11 @@ class RentasController extends AppController
         if ($this->request->is('post')) {
             $renta = $this->Rentas->patchEntity($renta, $this->request->data);
             if ($this->Rentas->save($renta)) {
-                $this->Flash->success(__('The renta has been saved.'));
+                $this->Flash->success(__('La nueva renta mensual fue guardada.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The renta could not be saved. Please, try again.'));
+                $this->Flash->error(__('La renta no pudo ser guardada. Intente nuevamente.'));
             }
         }
         $lineas = $this->Rentas->Lineas->find('list', ['limit' => 200]);
@@ -79,11 +79,11 @@ class RentasController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $renta = $this->Rentas->patchEntity($renta, $this->request->data);
             if ($this->Rentas->save($renta)) {
-                $this->Flash->success(__('The renta has been saved.'));
+                $this->Flash->success(__('Los cambios en la renta fueron registrados.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The renta could not be saved. Please, try again.'));
+                $this->Flash->error(__('Los cambios en la renta no pudieron guardarse. Intente nuevamente'));
             }
         }
         $lineas = $this->Rentas->Lineas->find('list', ['limit' => 200]);
@@ -103,9 +103,9 @@ class RentasController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $renta = $this->Rentas->get($id);
         if ($this->Rentas->delete($renta)) {
-            $this->Flash->success(__('The renta has been deleted.'));
+            $this->Flash->success(__('La renta fue eliminada y ya no estara disponible a nuevas lineas.'));
         } else {
-            $this->Flash->error(__('The renta could not be deleted. Please, try again.'));
+            $this->Flash->error(__('La renta no pudo ser eliminada. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

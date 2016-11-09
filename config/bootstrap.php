@@ -210,9 +210,9 @@ Type::build('datetime')
  * Uncomment one of the lines below, as you need. make sure you read the documentation on Plugin to use more
  * advanced ways of loading plugins
  */
- Plugin::loadAll(); // Loads all plugins at once
+ //Plugin::loadAll(); // Loads all plugins at once
  //Plugin::load('Migrations'); //Loads a single plugin named Migrations
- Plugin::load('CakePHP-Enum-Behavior');
+ //Plugin::load('CakePHP-Enum-Behavior');
 /*
  * Only try to load DebugKit in development mode
  * Debug Kit should not be installed on a production system
