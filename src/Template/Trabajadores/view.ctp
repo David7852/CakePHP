@@ -2,8 +2,8 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Acciones') ?></li>
-        <li><?= $this->Html->link(__('Editar a ').h($trabajador->name), ['action' => 'edit', $trabajador->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Eliminar a ').h($trabajador->name), ['action' => 'delete', $trabajador->id], ['confirm' => __('¿Confirma querer eliminar al trabajador {0}?', $trabajador->name)]) ?> </li>
+        <li><?= $this->Html->link(__('Editar a ').h($trabajador->titulo), ['action' => 'edit', $trabajador->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Eliminar a ').h($trabajador->titulo), ['action' => 'delete', $trabajador->id], ['confirm' => __('¿Confirma querer eliminar al trabajador {0}?', $trabajador->titulo)]) ?> </li>
         <li><?= $this->Html->link(__('Listar Trabajadores'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Nuevo Trabajador'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('Listar Contratos'), ['controller' => 'Contratos', 'action' => 'index']) ?> </li>
@@ -15,7 +15,7 @@
     </ul>
 </nav>
 <div class="trabajadores view large-9 medium-8 columns content">
-    <h3><?= h($trabajador->name) ?></h3>
+    <h3><?= h($trabajador->titulo) ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Nombre') ?></th>

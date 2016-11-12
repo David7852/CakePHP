@@ -27,12 +27,11 @@
         <tbody>
             <?php foreach ($lineas as $linea): ?>
             <tr>
-                <td><?= $this->Number->format($linea->id) ?></td>
                 <td><?= h($linea->numero) ?></td>
                 <td><?= $this->Number->format($linea->puk) ?></td>
                 <td><?= $this->Number->format($linea->pin) ?></td>
                 <td><?= h($linea->codigo_sim) ?></td>
-                <td><?= $linea->has('articulo') ? $this->Html->link($linea->articulo->id, ['controller' => 'Articulos', 'action' => 'view', $linea->articulo->id]) : '' ?></td>
+                <td><?= $linea->has('articulo') ? $this->Html->link($linea->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $linea->articulo->id]) : '' ?></td>
                 <td><?= h($linea->observaciones) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $linea->id]) ?>

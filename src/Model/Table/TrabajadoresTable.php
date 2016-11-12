@@ -37,7 +37,7 @@ class TrabajadoresTable extends Table
         parent::initialize($config);
 
         $this->table('trabajadores');
-        $this->displayField('name');
+        $this->displayField('titulo');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');

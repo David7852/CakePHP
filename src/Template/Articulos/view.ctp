@@ -1,24 +1,24 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Articulo'), ['action' => 'edit', $articulo->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Articulo'), ['action' => 'delete', $articulo->id], ['confirm' => __('Are you sure you want to delete # {0}?', $articulo->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Articulos'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Articulo'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Modelos'), ['controller' => 'Modelos', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Modelo'), ['controller' => 'Modelos', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Accesorios'), ['controller' => 'Accesorios', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Accesorio'), ['controller' => 'Accesorios', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Asignaciones'), ['controller' => 'Asignaciones', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Asignacion'), ['controller' => 'Asignaciones', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Devoluciones'), ['controller' => 'Devoluciones', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Devolucion'), ['controller' => 'Devoluciones', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Linea'), ['controller' => 'Lineas', 'action' => 'add']) ?> </li>
+        <li class="heading"><?= __('Acciones') ?></li>
+        <li><?= $this->Html->link(__('Editar este Articulo'), ['action' => 'edit', $articulo->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Eliminar este Articulo'), ['action' => 'delete', $articulo->id], ['confirm' => __('¿Confirma querer eliminar el articulo {0}?', $articulo->titulo)]) ?> </li>
+        <li><?= $this->Html->link(__('Listar Articulos'), ['action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nuevo Articulo'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Listar Modelos'), ['controller' => 'Modelos', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nuevo Modelo'), ['controller' => 'Modelos', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Listar Accesorios'), ['controller' => 'Accesorios', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nuevo Accesorio'), ['controller' => 'Accesorios', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Listar Asignaciones'), ['controller' => 'Asignaciones', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Formar Asignacion'), ['controller' => 'Asignaciones', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Listar Devoluciones'), ['controller' => 'Devoluciones', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Formar Devolucion'), ['controller' => 'Devoluciones', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Listar Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nueva Linea'), ['controller' => 'Lineas', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="articulos view large-9 medium-8 columns content">
-    <h3><?= h($articulo->id) ?></h3>
+    <h3><?= h($articulo->modelo->tipo_de_articulo).h($articulo->modelo->marca).'<br>S/N: '.h($articulo->titulo) ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Serial') ?></th>
@@ -26,81 +26,61 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Modelo') ?></th>
-            <td><?= $articulo->has('modelo') ? $this->Html->link($articulo->modelo->id, ['controller' => 'Modelos', 'action' => 'view', $articulo->modelo->id]) : '' ?></td>
+            <td><?= $articulo->has('modelo') ? $this->Html->link($articulo->modelo->titulo, ['controller' => 'Modelos', 'action' => 'view', $articulo->modelo->id]) : '' ?></td>
         </tr>
+        <?php if($articulo->datos!=''||$articulo->modelo->abstracto!=''): ?>
         <tr>
-            <th scope="row"><?= __('Datos') ?></th>
+            <th scope="row"><?php if($articulo->modelo->abstracto=='') __('Datos adicionales'); else echo(h($articulo->modelo->abstracto));?></th>
             <td><?= h($articulo->datos) ?></td>
         </tr>
+        <?php endif; ?>
         <tr>
             <th scope="row"><?= __('Ubicacion') ?></th>
             <td><?= h($articulo->ubicacion) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($articulo->id) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Fecha De Compra') ?></th>
             <td><?= h($articulo->fecha_de_compra) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($articulo->created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($articulo->modified) ?></td>
+            <th scope="row"><?= __('Estado') ?></th>
+            <td><?= h($articulo->estado) ?></td>
         </tr>
     </table>
-    <div class="row">
-        <h4><?= __('Estado') ?></h4>
-        <?= $this->Text->autoParagraph(h($articulo->estado)); ?>
-    </div>
+    <?php if (!empty($articulo->accesorios)): ?>
     <div class="related">
-        <h4><?= __('Related Accesorios') ?></h4>
-        <?php if (!empty($articulo->accesorios)): ?>
+        <h4><?= __('Accesorios asociados') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Descripcion') ?></th>
                 <th scope="col"><?= __('Estado') ?></th>
                 <th scope="col"><?= __('Articulo Id') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($articulo->accesorios as $accesorios): ?>
             <tr>
-                <td><?= h($accesorios->id) ?></td>
                 <td><?= h($accesorios->descripcion) ?></td>
                 <td><?= h($accesorios->estado) ?></td>
                 <td><?= h($accesorios->articulo_id) ?></td>
-                <td><?= h($accesorios->created) ?></td>
-                <td><?= h($accesorios->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Accesorios', 'action' => 'view', $accesorios->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Accesorios', 'action' => 'edit', $accesorios->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Accesorios', 'action' => 'delete', $accesorios->id], ['confirm' => __('Are you sure you want to delete # {0}?', $accesorios->id)]) ?>
+                    <?= $this->Html->link(__('Ver'), ['controller' => 'Accesorios', 'action' => 'view', $accesorios->id]) ?>
+                    <?= $this->Html->link(__('Editar'), ['controller' => 'Accesorios', 'action' => 'edit', $accesorios->id]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Accesorios', 'action' => 'delete', $accesorios->id], ['confirm' => __('¿Confirma querer eliminar el accesorio: {0}?', $accesorios->titulo)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
         </table>
-        <?php endif; ?>
     </div>
+    <?php endif; ?>
+    <?php if (!empty($articulo->asignaciones)): ?>
     <div class="related">
-        <h4><?= __('Related Asignaciones') ?></h4>
-        <?php if (!empty($articulo->asignaciones)): ?>
+        <h4><?= __('Asignaciones') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('Titulo') ?></th>
                 <th scope="col"><?= __('Proceso Id') ?></th>
                 <th scope="col"><?= __('Articulo Id') ?></th>
                 <th scope="col"><?= __('Hasta') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($articulo->asignaciones as $asignaciones): ?>
             <tr>
@@ -112,52 +92,43 @@
                 <td><?= h($asignaciones->created) ?></td>
                 <td><?= h($asignaciones->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Asignaciones', 'action' => 'view', $asignaciones->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Asignaciones', 'action' => 'edit', $asignaciones->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Asignaciones', 'action' => 'delete', $asignaciones->id], ['confirm' => __('Are you sure you want to delete # {0}?', $asignaciones->id)]) ?>
+                    <?= $this->Html->link(__('Ver'), ['controller' => 'Asignaciones', 'action' => 'view', $asignaciones->id]) ?>
+                    <?= $this->Html->link(__('Editar'), ['controller' => 'Asignaciones', 'action' => 'edit', $asignaciones->id]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Asignaciones', 'action' => 'delete', $asignaciones->id], ['confirm' => __('¿Confirma querer eliminar la asignacion {0}?', $asignaciones->titulo)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
         </table>
-        <?php endif; ?>
     </div>
+    <?php endif; ?>
+    <?php if (!empty($articulo->devoluciones)): ?>
     <div class="related">
-        <h4><?= __('Related Devoluciones') ?></h4>
-        <?php if (!empty($articulo->devoluciones)): ?>
+        <h4><?= __('Devoluciones') ?></h4>
         <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('Titulo') ?></th>
+            <tr>th>
                 <th scope="col"><?= __('Proceso Id') ?></th>
                 <th scope="col"><?= __('Articulo Id') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($articulo->devoluciones as $devoluciones): ?>
             <tr>
-                <td><?= h($devoluciones->id) ?></td>
-                <td><?= h($devoluciones->titulo) ?></td>
                 <td><?= h($devoluciones->proceso_id) ?></td>
                 <td><?= h($devoluciones->articulo_id) ?></td>
-                <td><?= h($devoluciones->created) ?></td>
-                <td><?= h($devoluciones->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Devoluciones', 'action' => 'view', $devoluciones->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Devoluciones', 'action' => 'edit', $devoluciones->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Devoluciones', 'action' => 'delete', $devoluciones->id], ['confirm' => __('Are you sure you want to delete # {0}?', $devoluciones->id)]) ?>
+                    <?= $this->Html->link(__('Ver'), ['controller' => 'Devoluciones', 'action' => 'view', $devoluciones->id]) ?>
+                    <?= $this->Html->link(__('Editar'), ['controller' => 'Devoluciones', 'action' => 'edit', $devoluciones->id]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Devoluciones', 'action' => 'delete', $devoluciones->id], ['confirm' => __('¿Confirma querer eliminar la devolucion {0}?', $devoluciones->titulo)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
         </table>
-        <?php endif; ?>
     </div>
+    <?php endif; ?>
+    <?php if (!empty($articulo->lineas)): ?>
     <div class="related">
-        <h4><?= __('Related Lineas') ?></h4>
-        <?php if (!empty($articulo->lineas)): ?>
+        <h4><?= __('Lineas asociadas') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Operadora') ?></th>
                 <th scope="col"><?= __('Numero') ?></th>
                 <th scope="col"><?= __('Puk') ?></th>
@@ -166,13 +137,10 @@
                 <th scope="col"><?= __('Articulo Id') ?></th>
                 <th scope="col"><?= __('Estado') ?></th>
                 <th scope="col"><?= __('Observaciones') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($articulo->lineas as $lineas): ?>
             <tr>
-                <td><?= h($lineas->id) ?></td>
                 <td><?= h($lineas->operadora) ?></td>
                 <td><?= h($lineas->numero) ?></td>
                 <td><?= h($lineas->puk) ?></td>
@@ -181,16 +149,14 @@
                 <td><?= h($lineas->articulo_id) ?></td>
                 <td><?= h($lineas->estado) ?></td>
                 <td><?= h($lineas->observaciones) ?></td>
-                <td><?= h($lineas->created) ?></td>
-                <td><?= h($lineas->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Lineas', 'action' => 'view', $lineas->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Lineas', 'action' => 'edit', $lineas->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Lineas', 'action' => 'delete', $lineas->id], ['confirm' => __('Are you sure you want to delete # {0}?', $lineas->id)]) ?>
+                    <?= $this->Html->link(__('Ver'), ['controller' => 'Lineas', 'action' => 'view', $lineas->id]) ?>
+                    <?= $this->Html->link(__('Editar'), ['controller' => 'Lineas', 'action' => 'edit', $lineas->id]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Lineas', 'action' => 'delete', $lineas->id], ['confirm' => __('¿Confirma querer eliminar la linea {0}?', $lineas->numero)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
         </table>
-        <?php endif; ?>
     </div>
+    <?php endif; ?>
 </div>

@@ -1,9 +1,10 @@
+<?=$this->assign('title',"Contratos de los trabajadores")?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Contrato'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Trabajador'), ['controller' => 'Trabajadores', 'action' => 'add']) ?></li>
+        <li class="heading"><?= __('Acciones') ?></li>
+        <li><?= $this->Html->link(__('Nuevo Contrato'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Listar Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Nuevo Trabajador'), ['controller' => 'Trabajadores', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="contratos index large-9 medium-8 columns content">
@@ -11,30 +12,24 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('titulo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('trabajador_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('fecha_de_inicio') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('fecha_de_culminacion') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('tipo_de_contrato')?></th>
+                <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($contratos as $contrato): ?>
             <tr>
-                <td><?= $this->Number->format($contrato->id) ?></td>
-                <td><?= h($contrato->titulo) ?></td>
-                <td><?= $contrato->has('trabajador') ? $this->Html->link($contrato->trabajador->id, ['controller' => 'Trabajadores', 'action' => 'view', $contrato->trabajador->id]) : '' ?></td>
+                <td><?= $contrato->has('trabajador') ? $this->Html->link($contrato->trabajador->titulo, ['controller' => 'Trabajadores', 'action' => 'view', $contrato->trabajador->id]) : '' ?></td>
                 <td><?= h($contrato->fecha_de_inicio) ?></td>
                 <td><?= h($contrato->fecha_de_culminacion) ?></td>
-                <td><?= h($contrato->created) ?></td>
-                <td><?= h($contrato->modified) ?></td>
+                <td><?= h($contrato->tipo_de_contrato) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $contrato->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $contrato->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $contrato->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contrato->id)]) ?>
+                    <?= $this->Html->link(__('Ver'), ['action' => 'view', $contrato->id]) ?>
+                    <?= $this->Html->link(__('Editar'), ['action' => 'edit', $contrato->id]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $contrato->id], ['confirm' => __('¿Confirma querer eliminar el contrato {0}?', $contrato->titulo)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -42,10 +37,10 @@
     </table>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
+            <?= $this->Paginator->prev('< ' . __('<')) ?>
+            <?= str_replace("of","de",$this->Paginator->numbers()) ?>
+            <?= $this->Paginator->next(__('>') . ' >') ?>
         </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+        <p><?= str_replace("of","de",$this->Paginator->counter()) ?></p>
     </div>
 </div>

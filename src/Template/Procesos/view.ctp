@@ -132,7 +132,7 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Trabajadores', 'action' => 'view', $trabajadores->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Trabajadores', 'action' => 'edit', $trabajadores->id]) ?>
-                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Trabajadores', 'action' => 'delete', $trabajadores->id], ['confirm' => __('¿Confirma querer eliminar al trabajador {0}?', $trabajadores->name)]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Trabajadores', 'action' => 'delete', $trabajadores->id], ['confirm' => __('¿Confirma querer eliminar al trabajador {0}?', $trabajadores->titulo)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

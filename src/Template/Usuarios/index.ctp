@@ -22,7 +22,7 @@
             <tr>
                 <td><?= h($usuario->nombre_de_usuario) ?></td>
                 <td><?= h($usuario->email) ?></td>
-                <td><?= $usuario->has('trabajador') ? $this->Html->link($usuario->trabajador->name, ['controller' => 'Trabajadores', 'action' => 'view', $usuario->trabajador->id]) : '' ?></td>
+                <td><?= $usuario->has('trabajador') ? $this->Html->link($usuario->trabajador->titulo, ['controller' => 'Trabajadores', 'action' => 'view', $usuario->trabajador->id]) : '' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $usuario->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $usuario->id]) ?>

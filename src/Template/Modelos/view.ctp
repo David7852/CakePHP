@@ -3,7 +3,7 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Acciones') ?></li>
         <li><?= $this->Html->link(__('Editar este Modelo'), ['action' => 'edit', $modelo->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Eliminar este Modelo'), ['action' => 'delete', $modelo->id], ['confirm' => __('¿Confirma querer eliminar el tipo de {0}?', $modelo->name)]) ?> </li>
+        <li><?= $this->Form->postLink(__('Eliminar este Modelo'), ['action' => 'delete', $modelo->id], ['confirm' => __('¿Confirma querer eliminar el tipo de {0}?', $modelo->titulo)]) ?> </li>
         <li><?= $this->Html->link(__('Listar Modelos'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Agregar Modelo'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('Listar Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?> </li>
@@ -11,7 +11,7 @@
     </ul>
 </nav>
 <div class="modelos view large-9 medium-8 columns content">
-    <h3><?= h($modelo->name) ?></h3>
+    <h3><?= h($modelo->titulo) ?></h3>
     <table class="vertical-table">
         <tr><!-- La marca podría traer sugerencias. segun los registros previos-->
             <th scope="row"><?= __('Marca') ?></th>
@@ -25,6 +25,12 @@
             <th scope="row"><?= __('Tipo De Articulo') ?></th>
             <td><?= h($modelo->tipo_de_articulo) ?></td>
         </tr>
+        <?php if($modelo->abstracto!=''): ?>
+            <tr>
+                <th scope="row"><?= __('Campo extra') ?></th>
+                <td> <?= h($modelo->abstracto) ?></td>
+            </tr>
+        <?php endif; ?>
     </table>
     <div class="row"><!-- debería ir en la cabecera, junto con el titulo del modelo -->
         <h4><?= __('Imagen') ?></h4>

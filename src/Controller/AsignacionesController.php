@@ -55,11 +55,11 @@ class AsignacionesController extends AppController
         if ($this->request->is('post')) {
             $asignacion = $this->Asignaciones->patchEntity($asignacion, $this->request->data);
             if ($this->Asignaciones->save($asignacion)) {
-                $this->Flash->success(__('The asignacion has been saved.'));
+                $this->Flash->success(__('La asignacion ha sido guardada.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The asignacion could not be saved. Please, try again.'));
+                $this->Flash->error(__('La asignacion no pudo ser guardada. Intente nuevamente.'));
             }
         }
         $procesos = $this->Asignaciones->Procesos->find('list', ['limit' => 200]);
@@ -83,11 +83,11 @@ class AsignacionesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $asignacion = $this->Asignaciones->patchEntity($asignacion, $this->request->data);
             if ($this->Asignaciones->save($asignacion)) {
-                $this->Flash->success(__('The asignacion has been saved.'));
+                $this->Flash->success(__('Los cambios en la asignacion fueron guardados.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The asignacion could not be saved. Please, try again.'));
+                $this->Flash->error(__('Los cambios en la asignacion no pudieron guardarse. Intente nuevamente.'));
             }
         }
         $procesos = $this->Asignaciones->Procesos->find('list', ['limit' => 200]);
@@ -108,9 +108,9 @@ class AsignacionesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $asignacion = $this->Asignaciones->get($id);
         if ($this->Asignaciones->delete($asignacion)) {
-            $this->Flash->success(__('The asignacion has been deleted.'));
+            $this->Flash->success(__('L asignacion a sido eliminada.'));
         } else {
-            $this->Flash->error(__('The asignacion could not be deleted. Please, try again.'));
+            $this->Flash->error(__('La asignacion no pudo eliminarse. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

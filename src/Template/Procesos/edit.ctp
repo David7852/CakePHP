@@ -2,7 +2,7 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Acciones') ?></li>
         <li><?= $this->Form->postLink(
-                __('Eliminar'),
+                __('Eliminar este proceso'),
                 ['action' => 'delete', $proceso->id],
                 ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $proceso->titulo)]
             )

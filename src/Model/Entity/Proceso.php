@@ -32,6 +32,10 @@ class Proceso extends Entity
             $this->fecha_de_aprobacion=$value;
         return $value;
     }
+    protected function _getTitulo()
+    {
+        return $this->_properties['titulo'];
+    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

@@ -32,7 +32,7 @@
                 <th scope="col"><?= __('Titulo') ?></th>
                 <th scope="col"><?= __('Consumido') ?></th>
                 <th scope="col"><?= __('Excedente') ?></th>
-                <th scope="col"><?= __('Monto Bs') ?></th>
+                <th scope="col"><?= __('Monto') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($renta->consumos as $consumos): ?>
@@ -40,7 +40,7 @@
                 <td><?= h($consumos->titulo) ?></td>
                 <td><?= h($consumos->consumido) ?></td>
                 <td><?= h($consumos->excedente) ?></td>
-                <td><?= h($consumos->monto_bs) ?></td>
+                <td><?= h($consumos->monto_bs).' Bs' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Consumos', 'action' => 'view', $consumos->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Consumos', 'action' => 'edit', $consumos->id]) ?>

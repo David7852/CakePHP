@@ -36,7 +36,7 @@ class DevolucionesTable extends Table
         parent::initialize($config);
 
         $this->table('devoluciones');
-        $this->displayField('id');
+        $this->displayField('titulo');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');

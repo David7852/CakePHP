@@ -1,6 +1,8 @@
 <?php
 namespace App\Model\Entity;
 
+use App\Controller\FacturasController;
+use App\Model\Table\FacturasTable;
 use Cake\ORM\Entity;
 
 /**
@@ -22,7 +24,14 @@ use Cake\ORM\Entity;
  */
 class Factura extends Entity
 {
-
+    protected function _setDesde($value){
+        $this->titulo=$value.' '/* mas el numero de la linea*/;
+        return $value;
+    }
+    protected function _getTitulo()
+    {
+        return $this->_properties['titulo'];
+    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

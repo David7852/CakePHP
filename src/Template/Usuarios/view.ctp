@@ -14,7 +14,7 @@
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Nombre Completo') ?></th>
-            <td><?= $usuario->has('trabajador') ? $this->Html->link($usuario->trabajador->name, ['controller' => 'Trabajadores', 'action' => 'view', $usuario->trabajador->id]) : '' ?></td>
+            <td><?= $usuario->has('trabajador') ? $this->Html->link($usuario->trabajador->titulo, ['controller' => 'Trabajadores', 'action' => 'view', $usuario->trabajador->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Email') ?></th>

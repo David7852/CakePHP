@@ -21,6 +21,10 @@ use Cake\ORM\Entity;
  */
 class Consumo extends Entity
 {
+    protected function _getTitulo()
+    {
+        return h($this->_properties['consumido'].' + '.$this->_properties['excedente'].' = '.this_>$this->_properties['monto_bs']);//titulo seria mejor en la forma : renta: monto_bs
+    }
 
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

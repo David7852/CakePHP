@@ -3,9 +3,9 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Acciones') ?></li>
         <li><?= $this->Form->postLink(
-                __('Eliminar a ').h($trabajador->name),
+                __('Eliminar a ').h($trabajador->titulo),
                 ['action' => 'delete', $trabajador->id],
-                ['confirm' => __('¿Confirma querer eliminar al trabajador {0}?', $trabajador->name)]
+                ['confirm' => __('¿Confirma querer eliminar al trabajador {0}?', $trabajador->titulo)]
             )
         ?></li>
         <li><?= $this->Html->link(__('Listar Trabajadores'), ['action' => 'index']) ?></li>
@@ -20,7 +20,7 @@
 <div class="trabajadores form large-9 medium-8 columns content">
     <?= $this->Form->create($trabajador) ?>
     <fieldset>
-        <legend><?= __('Editando a ').h($trabajador->name) ?></legend>
+        <legend><?= __('Editando a ').h($trabajador->titulo) ?></legend>
         <?php
             echo $this->Form->input('nombre');
             echo $this->Form->input('apellido');

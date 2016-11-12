@@ -36,7 +36,7 @@ class AsignacionesTable extends Table
         parent::initialize($config);
 
         $this->table('asignaciones');
-        $this->displayField('id');
+        $this->displayField('titulo');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');

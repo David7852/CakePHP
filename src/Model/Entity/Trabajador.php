@@ -27,7 +27,7 @@ use Cake\ORM\Entity;
  */
 class Trabajador extends Entity
 {
-    protected function _getName()
+    protected function _getTitulo()
     {
         return
             $this->_properties['nombre'] . ' ' . $this->_properties['apellido'];

@@ -1,21 +1,22 @@
+<?=$this->assign('title',"Contratos de los trabajadores")?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+        <li class="heading"><?= __('Acciones') ?></li>
         <li><?= $this->Form->postLink(
-                __('Delete'),
+                __('Eliminar este contrato'),
                 ['action' => 'delete', $contrato->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $contrato->id)]
+                ['confirm' => __('¿Confirma querer eliminar el contrato {0}?', $contrato->titulo)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Contratos'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Trabajador'), ['controller' => 'Trabajadores', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Listar Contratos'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Listar Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Nuevo Trabajador'), ['controller' => 'Trabajadores', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="contratos form large-9 medium-8 columns content">
     <?= $this->Form->create($contrato) ?>
     <fieldset>
-        <legend><?= __('Edit Contrato') ?></legend>
+        <legend><?= __('Editando el Contrato ').h($contrato->titulo) ?></legend>
         <?php
             echo $this->Form->input('titulo');
             echo $this->Form->input('trabajador_id', ['options' => $trabajadores]);
@@ -24,6 +25,6 @@
             echo $this->Form->input('tipo_de_contrato');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Aceptar')) ?>
     <?= $this->Form->end() ?>
 </div>

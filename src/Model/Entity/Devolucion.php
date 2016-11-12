@@ -18,7 +18,10 @@ use Cake\ORM\Entity;
  */
 class Devolucion extends Entity
 {
-
+    protected function _getTitulo()
+    {
+        return $this->_properties['titulo'];
+    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

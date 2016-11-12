@@ -19,7 +19,10 @@
             echo $this->Form->input('imagen');
             echo $this->Form->input('abstracto');
         ?>
+        <small><?=h("(!) Puede especificar si este nuevo tipo de articulo requiere informacion adicional, escribiendo el nombre del dato en el campo 'abstracto'.");?></small><br>
+        <small><?=h("Por ejemplo: el abstracto de un carro modelo toyota corolla seria su placa; el de un celular, su IMEI.");?></small>
     </fieldset>
+
     <?= $this->Form->button(__('Aceptar')) ?>
     <?= $this->Form->end() ?>
 </div>

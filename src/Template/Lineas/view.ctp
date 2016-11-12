@@ -1,8 +1,8 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Acciones') ?></li>
-        <li><?= $this->Html->link(__('Editar Linea'), ['action' => 'edit', $linea->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Eliminar Linea'), ['action' => 'delete', $linea->id], ['confirm' => __('¿Confirma querer eliminar la linea {0}?', $linea->numero)]) ?> </li>
+        <li><?= $this->Html->link(__('Editar esta Linea'), ['action' => 'edit', $linea->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Eliminar esta Linea'), ['action' => 'delete', $linea->id], ['confirm' => __('¿Confirma querer eliminar la linea {0}?', $linea->numero)]) ?> </li>
         <li><?= $this->Html->link(__('Listar Lineas'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Nueva Linea'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('Listar Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?> </li>
@@ -27,7 +27,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Articulo') ?></th>
-            <td><?= $linea->has('articulo') ? $this->Html->link($linea->articulo->id, ['controller' => 'Articulos', 'action' => 'view', $linea->articulo->id]) : '' ?></td>
+            <td><?= $linea->has('articulo') ? $this->Html->link($linea->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $linea->articulo->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Observaciones') ?></th>

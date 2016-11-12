@@ -55,11 +55,11 @@ class DevolucionesController extends AppController
         if ($this->request->is('post')) {
             $devolucion = $this->Devoluciones->patchEntity($devolucion, $this->request->data);
             if ($this->Devoluciones->save($devolucion)) {
-                $this->Flash->success(__('The devolucion has been saved.'));
+                $this->Flash->success(__('La devolucion ha sido guardada'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The devolucion could not be saved. Please, try again.'));
+                $this->Flash->error(__('La devolucion no pudo ser guardada. Intente nuevamente.'));
             }
         }
         $procesos = $this->Devoluciones->Procesos->find('list', ['limit' => 200]);
@@ -83,11 +83,11 @@ class DevolucionesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $devolucion = $this->Devoluciones->patchEntity($devolucion, $this->request->data);
             if ($this->Devoluciones->save($devolucion)) {
-                $this->Flash->success(__('The devolucion has been saved.'));
+                $this->Flash->success(__('Los cambios en la devolucion fueron guardados'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The devolucion could not be saved. Please, try again.'));
+                $this->Flash->error(__('Los cambios en la devolucion no pudieron guardarse. Intente nuevamente'));
             }
         }
         $procesos = $this->Devoluciones->Procesos->find('list', ['limit' => 200]);
@@ -108,9 +108,9 @@ class DevolucionesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $devolucion = $this->Devoluciones->get($id);
         if ($this->Devoluciones->delete($devolucion)) {
-            $this->Flash->success(__('The devolucion has been deleted.'));
+            $this->Flash->success(__('La devolucion ha sido eliminada.'));
         } else {
-            $this->Flash->error(__('The devolucion could not be deleted. Please, try again.'));
+            $this->Flash->error(__('La devolucion no pudo eliminarse. Intente nuevamente'));
         }
 
         return $this->redirect(['action' => 'index']);

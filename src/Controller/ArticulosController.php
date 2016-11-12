@@ -55,11 +55,11 @@ class ArticulosController extends AppController
         if ($this->request->is('post')) {
             $articulo = $this->Articulos->patchEntity($articulo, $this->request->data);
             if ($this->Articulos->save($articulo)) {
-                $this->Flash->success(__('The articulo has been saved.'));
+                $this->Flash->success(__('El articulo ha sido guardado.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The articulo could not be saved. Please, try again.'));
+                $this->Flash->error(__('El articulo no pudo guardarse. Intente nuevamente.'));
             }
         }
         $modelos = $this->Articulos->Modelos->find('list', ['limit' => 200]);
@@ -77,16 +77,16 @@ class ArticulosController extends AppController
     public function edit($id = null)
     {
         $articulo = $this->Articulos->get($id, [
-            'contain' => []
+            'contain' => ['Modelos', 'Accesorios']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $articulo = $this->Articulos->patchEntity($articulo, $this->request->data);
             if ($this->Articulos->save($articulo)) {
-                $this->Flash->success(__('The articulo has been saved.'));
+                $this->Flash->success(__('Los cambios en el articulo fueron guardados.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The articulo could not be saved. Please, try again.'));
+                $this->Flash->error(__('Los cambios en el articulo no pudieron guardarse. Intente nuevamente.'));
             }
         }
         $modelos = $this->Articulos->Modelos->find('list', ['limit' => 200]);
@@ -106,9 +106,9 @@ class ArticulosController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $articulo = $this->Articulos->get($id);
         if ($this->Articulos->delete($articulo)) {
-            $this->Flash->success(__('The articulo has been deleted.'));
+            $this->Flash->success(__('El articulo fue eliminado.'));
         } else {
-            $this->Flash->error(__('The articulo could not be deleted. Please, try again.'));
+            $this->Flash->error(__('El articulo no pudo eliminarse. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

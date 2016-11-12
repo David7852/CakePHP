@@ -82,7 +82,7 @@ class ModelosController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Los cambios en el modelo no pudieron ser guardados. Intente nuevamente.'));
+                $this->Flash->error(__('Los cambios en el modelo no pudieron guardarse. Intente nuevamente.'));
             }
         }
         $this->set(compact('modelo'));
@@ -103,7 +103,7 @@ class ModelosController extends AppController
         if ($this->Modelos->delete($modelo)) {
             $this->Flash->success(__('El modelo fue eliminado'));
         } else {
-            $this->Flash->error(__('El modelo no pudo ser eliminado. Intente nuevamente.'));
+            $this->Flash->error(__('El modelo no pudo eliminarse. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

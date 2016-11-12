@@ -1,11 +1,11 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Consumo'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Facturas'), ['controller' => 'Facturas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Factura'), ['controller' => 'Facturas', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Renta'), ['controller' => 'Rentas', 'action' => 'add']) ?></li>
+        <li class="heading"><?= __('Acciones') ?></li>
+        <li><?= $this->Html->link(__('Nuevo Consumo'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Listar Facturas'), ['controller' => 'Facturas', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Nueva Factura'), ['controller' => 'Facturas', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Listar Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Nueva Renta'), ['controller' => 'Rentas', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="consumos index large-9 medium-8 columns content">
@@ -13,34 +13,26 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('titulo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('factura_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('renta_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('consumido') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('excedente') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('monto_bs') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('monto') ?></th>
+                <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($consumos as $consumo): ?>
             <tr>
-                <td><?= $this->Number->format($consumo->id) ?></td>
-                <td><?= h($consumo->titulo) ?></td>
-                <td><?= $consumo->has('factura') ? $this->Html->link($consumo->factura->id, ['controller' => 'Facturas', 'action' => 'view', $consumo->factura->id]) : '' ?></td>
-                <td><?= $consumo->has('renta') ? $this->Html->link($consumo->renta->id, ['controller' => 'Rentas', 'action' => 'view', $consumo->renta->id]) : '' ?></td>
+                <td><?= $consumo->has('factura') ? $this->Html->link($consumo->factura->titulo, ['controller' => 'Facturas', 'action' => 'view', $consumo->factura->id]) : '' ?></td>
+                <td><?= $consumo->has('renta') ? $this->Html->link($consumo->renta->nombre, ['controller' => 'Rentas', 'action' => 'view', $consumo->renta->id]) : '' ?></td>
                 <td><?= h($consumo->consumido) ?></td>
                 <td><?= h($consumo->excedente) ?></td>
-                <td><?= $this->Number->format($consumo->monto_bs) ?></td>
-                <td><?= h($consumo->created) ?></td>
-                <td><?= h($consumo->modified) ?></td>
+                <td><?= $this->Number->format($consumo->monto_bs).' Bs' ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $consumo->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $consumo->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $consumo->id], ['confirm' => __('Are you sure you want to delete # {0}?', $consumo->id)]) ?>
+                    <?= $this->Html->link(__('Ver'), ['action' => 'view', $consumo->id]) ?>
+                    <?= $this->Html->link(__('Editar'), ['action' => 'edit', $consumo->id]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $consumo->id], ['confirm' => __('¿Confirma querer eliminar el consumo {0}?', $consumo->titulo)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -48,10 +40,10 @@
     </table>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
+            <?= $this->Paginator->prev('< ' . __('<')) ?>
+            <?= str_replace("of","de",$this->Paginator->numbers()) ?>
+            <?= $this->Paginator->next(__('>') . ' >') ?>
         </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+        <p><?= str_replace("of","de",$this->Paginator->counter()) ?></p>
     </div>
 </div>

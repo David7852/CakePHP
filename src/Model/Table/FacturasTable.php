@@ -36,7 +36,7 @@ class FacturasTable extends Table
         parent::initialize($config);
 
         $this->table('facturas');
-        $this->displayField('titulo');
+        $this->displayField('titulo');//titulo seria factura:  "fecha, numero de linea"
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');

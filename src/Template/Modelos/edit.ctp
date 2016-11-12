@@ -3,9 +3,9 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Acciones') ?></li>
         <li><?= $this->Form->postLink(
-                __('Eliminar'),
+                __('Eliminar ').h($modelo->titulo),
                 ['action' => 'delete', $modelo->id],
-                ['confirm' => __('¿Confirma querer eliminar el tipo de {0}?', $modelo->name)]
+                ['confirm' => __('¿Confirma querer eliminar el tipo de {0}?', $modelo->titulo)]
             )
         ?></li>
         <li><?= $this->Html->link(__('Listar Modelos'), ['action' => 'index']) ?></li>
@@ -16,7 +16,7 @@
 <div class="modelos form large-9 medium-8 columns content">
     <?= $this->Form->create($modelo) ?>
     <fieldset>
-        <legend><?= __('Editando el Modelo ').h($modelo->name) ?></legend>
+        <legend><?= __('Editando el Modelo ').h($modelo->titulo) ?></legend>
         <?php
             echo $this->Form->input('marca');
             echo $this->Form->input('modelo');

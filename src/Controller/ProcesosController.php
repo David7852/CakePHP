@@ -83,7 +83,7 @@ class ProcesosController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Los cambios no pudieron ser guardados. Intente nuevamente.'));
+                $this->Flash->error(__('Los cambios no pudieron guardarse. Intente nuevamente.'));
             }
         }
         $trabajadores = $this->Procesos->Trabajadores->find('list', ['limit' => 200]);
@@ -105,7 +105,7 @@ class ProcesosController extends AppController
         if ($this->Procesos->delete($proceso)) {
             $this->Flash->success(__('El proceso fue eliminado.'));
         } else {
-            $this->Flash->error(__('El Proceso no pudo ser eliminado. Intente nuevamente.'));
+            $this->Flash->error(__('El Proceso no pudo eliminarse. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

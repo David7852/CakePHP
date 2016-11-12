@@ -2,7 +2,7 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Acciones') ?></li>
         <li><?= $this->Form->postLink(
-                __('Eliminar'),
+                __('Eliminar ').h($linea->numero),
                 ['action' => 'delete', $linea->id],
                 ['confirm' => __('¿Confirma querer eliminar la linea {0}?', $linea->numero)]
             )
@@ -21,13 +21,19 @@
     <fieldset>
         <legend><?= __('Editando Linea ').h($linea->numero) ?></legend>
         <?php
-            echo $this->Form->input('operadora');
+        $options = ['Movilnet'=>'Movilnet',
+                    'Movistar'=>'Movistar'];
+        echo $this->Form->input('operadora',array('options'=>$options,'empty'=>false,'escape'=>false));
             echo $this->Form->input('numero');
             echo $this->Form->input('puk');
             echo $this->Form->input('pin');
             echo $this->Form->input('codigo_sim');
             echo $this->Form->input('articulo_id', ['options' => $articulos, 'empty' => true]);
-            echo $this->Form->input('estado');
+            $options = ['Activa'=>'Activa',
+                        'Inactiva'=>'Inactiva',
+                        'Suspendida'=>'Suspendida',
+                        'Perdida'=>'Perdida'];
+            echo $this->Form->input('estado',array('options'=>$options,'empty'=>false,'escape'=>false));
             echo $this->Form->input('observaciones');
             echo $this->Form->input('rentas._ids', ['options' => $rentas]);
         ?>

@@ -1,6 +1,8 @@
 <?php
 namespace App\Model\Entity;
 
+use App\Model\Table\ArticulosTable;
+use App\Model\Table\ModelosTable;
 use Cake\ORM\Entity;
 
 /**
@@ -24,6 +26,10 @@ use Cake\ORM\Entity;
  */
 class Articulo extends Entity
 {
+    protected function _getTitulo()
+    {
+        return $this->_properties['serial'];//mas titulo de modelo
+    }//ubicacion deberia tener un metodo set o get tal que cuando se asigne un articulo a alguien cambie a la ubicacion de la persona.
 
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

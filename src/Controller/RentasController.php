@@ -105,7 +105,7 @@ class RentasController extends AppController
         if ($this->Rentas->delete($renta)) {
             $this->Flash->success(__('La renta fue eliminada y ya no estara disponible a nuevas lineas.'));
         } else {
-            $this->Flash->error(__('La renta no pudo ser eliminada. Intente nuevamente.'));
+            $this->Flash->error(__('La renta no pudo eliminarse. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

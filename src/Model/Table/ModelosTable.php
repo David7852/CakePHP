@@ -35,7 +35,7 @@ class ModelosTable extends Table
         parent::initialize($config);
 
         $this->table('modelos');
-        $this->displayField('name');
+        $this->displayField('titulo');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');

@@ -55,11 +55,11 @@ class ContratosController extends AppController
         if ($this->request->is('post')) {
             $contrato = $this->Contratos->patchEntity($contrato, $this->request->data);
             if ($this->Contratos->save($contrato)) {
-                $this->Flash->success(__('The contrato has been saved.'));
+                $this->Flash->success(__('El contrato a sido guardado.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The contrato could not be saved. Please, try again.'));
+                $this->Flash->error(__('El contrato no pudo guardarse. Intente nuevamente .'));
             }
         }
         $trabajadores = $this->Contratos->Trabajadores->find('list', ['limit' => 200]);
@@ -82,11 +82,11 @@ class ContratosController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $contrato = $this->Contratos->patchEntity($contrato, $this->request->data);
             if ($this->Contratos->save($contrato)) {
-                $this->Flash->success(__('The contrato has been saved.'));
+                $this->Flash->success(__('Los cambios en el contrato fueron guardados.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The contrato could not be saved. Please, try again.'));
+                $this->Flash->error(__('Los cambios en el contrato no pudieron guardarse. Intente nuevamente'));
             }
         }
         $trabajadores = $this->Contratos->Trabajadores->find('list', ['limit' => 200]);
@@ -106,9 +106,9 @@ class ContratosController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $contrato = $this->Contratos->get($id);
         if ($this->Contratos->delete($contrato)) {
-            $this->Flash->success(__('The contrato has been deleted.'));
+            $this->Flash->success(__('El contrato fue eliminado.'));
         } else {
-            $this->Flash->error(__('The contrato could not be deleted. Please, try again.'));
+            $this->Flash->error(__('El contrato no pudo eliminarse. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

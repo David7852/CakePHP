@@ -83,7 +83,7 @@ class TrabajadoresController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Los cambios en el trabajador no pudieron ser guardados. Intente nuevamente.'));
+                $this->Flash->error(__('Los cambios en el trabajador no pudieron guardarse. Intente nuevamente.'));
             }
         }
         $procesos = $this->Trabajadores->Procesos->find('list', ['limit' => 200]);
@@ -105,7 +105,7 @@ class TrabajadoresController extends AppController
         if ($this->Trabajadores->delete($trabajador)) {
             $this->Flash->success(__('Se ha eliminado correctamente al trabajador.'));
         } else {
-            $this->Flash->error(__('El trabajador no pudo ser eliminado. Intente nuevamente.'));
+            $this->Flash->error(__('El trabajador no pudo eliminarse. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

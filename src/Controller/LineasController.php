@@ -62,7 +62,7 @@ class LineasController extends AppController
                 $this->Flash->error(__('La linea no pudo ser registrada. Intente nuevamente.'));
             }
         }
-        $articulos = $this->Lineas->Articulos->find('list', ['limit' => 200]);
+        $articulos = $this->Lineas->Articulos->find('list', ['limit' => 200]);//restringir para que solo muestre celulares o telefonos fijos
         $rentas = $this->Lineas->Rentas->find('list', ['limit' => 200]);
         $this->set(compact('linea', 'articulos', 'rentas'));
         $this->set('_serialize', ['linea']);
@@ -110,7 +110,7 @@ class LineasController extends AppController
         if ($this->Lineas->delete($linea)) {
             $this->Flash->success(__('La linea ha sido eliminada                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    .'));
         } else {
-            $this->Flash->error(__('La linea no pudo ser eliminada. Intente nuevamente.'));
+            $this->Flash->error(__('La linea no pudo eliminarse. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

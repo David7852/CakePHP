@@ -86,7 +86,7 @@ class FacturasController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Los cambios en la factura no pudieron ser guardados. Intente nuevamente.'));
+                $this->Flash->error(__('Los cambios en la factura no pudieron guardarse. Intente nuevamente.'));
             }
         }
         $lineas = $this->Facturas->Lineas->find('list', ['limit' => 200]);
@@ -108,7 +108,7 @@ class FacturasController extends AppController
         if ($this->Facturas->delete($factura)) {
             $this->Flash->success(__('La factura ha sido eliminada.'));
         } else {
-            $this->Flash->error(__('La factura no pudo ser eliminada. Intente nuevamente.'));
+            $this->Flash->error(__('La factura no pudo eliminarse. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

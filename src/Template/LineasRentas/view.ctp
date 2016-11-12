@@ -1,6 +1,6 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+        <li class="heading"><?= __('Acciones') ?></li>
         <li><?= $this->Html->link(__('Edit Lineas Renta'), ['action' => 'edit', $lineasRenta->linea_id]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete Lineas Renta'), ['action' => 'delete', $lineasRenta->linea_id], ['confirm' => __('Are you sure you want to delete # {0}?', $lineasRenta->linea_id)]) ?> </li>
         <li><?= $this->Html->link(__('List Lineas Rentas'), ['action' => 'index']) ?> </li>
@@ -16,11 +16,11 @@
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Linea') ?></th>
-            <td><?= $lineasRenta->has('linea') ? $this->Html->link($lineasRenta->linea->id, ['controller' => 'Lineas', 'action' => 'view', $lineasRenta->linea->id]) : '' ?></td>
+            <td><?= $lineasRenta->has('linea') ? $this->Html->link($lineasRenta->linea->numero, ['controller' => 'Lineas', 'action' => 'view', $lineasRenta->linea->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Renta') ?></th>
-            <td><?= $lineasRenta->has('renta') ? $this->Html->link($lineasRenta->renta->id, ['controller' => 'Rentas', 'action' => 'view', $lineasRenta->renta->id]) : '' ?></td>
+            <td><?= $lineasRenta->has('renta') ? $this->Html->link($lineasRenta->renta->nombre, ['controller' => 'Rentas', 'action' => 'view', $lineasRenta->renta->id]) : '' ?></td>
         </tr>
     </table>
 </div>
