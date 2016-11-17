@@ -13,11 +13,12 @@ class ConsumosController extends AppController
 
     public function getRelated($id)
     {
-         $consumo = $this->Consumos->get($id, [
-            'contain' => ['Facturas', 'Rentas']
+        $consumo = $this->Consumos->get($id, [
+            'contain' => ['Facturas', 'Servicios']
         ]);
         return $consumo;
     }
+
     /**
      * Index method
      *
@@ -26,7 +27,7 @@ class ConsumosController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Facturas', 'Rentas']
+            'contain' => ['Facturas', 'Servicios']
         ];
         $consumos = $this->paginate($this->Consumos);
 
@@ -44,7 +45,7 @@ class ConsumosController extends AppController
     public function view($id = null)
     {
         $consumo = $this->Consumos->get($id, [
-            'contain' => ['Facturas', 'Rentas']
+            'contain' => ['Facturas', 'Servicios']
         ]);
 
         $this->set('consumo', $consumo);
@@ -62,16 +63,16 @@ class ConsumosController extends AppController
         if ($this->request->is('post')) {
             $consumo = $this->Consumos->patchEntity($consumo, $this->request->data);
             if ($this->Consumos->save($consumo)) {
-                $this->Flash->success(__('El consumo ha sido guardado.'));
+                $this->Flash->success(__('The consumo has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('El consumo no pudo ser guardado. Intente nuevamente.'));
+                $this->Flash->error(__('The consumo could not be saved. Please, try again.'));
             }
         }
         $facturas = $this->Consumos->Facturas->find('list', ['limit' => 200]);
-        $rentas = $this->Consumos->Rentas->find('list', ['limit' => 200]);
-        $this->set(compact('consumo', 'facturas', 'rentas'));
+        $servicios = $this->Consumos->Servicios->find('list', ['limit' => 200]);
+        $this->set(compact('consumo', 'facturas', 'servicios'));
         $this->set('_serialize', ['consumo']);
     }
 
@@ -90,16 +91,16 @@ class ConsumosController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $consumo = $this->Consumos->patchEntity($consumo, $this->request->data);
             if ($this->Consumos->save($consumo)) {
-                $this->Flash->success(__('Los cambios en el consumo fueron guardados.'));
+                $this->Flash->success(__('The consumo has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Los cambios en el consumo no pudieron guardarse. Intente nuevamente.'));
+                $this->Flash->error(__('The consumo could not be saved. Please, try again.'));
             }
         }
         $facturas = $this->Consumos->Facturas->find('list', ['limit' => 200]);
-        $rentas = $this->Consumos->Rentas->find('list', ['limit' => 200]);
-        $this->set(compact('consumo', 'facturas', 'rentas'));
+        $servicios = $this->Consumos->Servicios->find('list', ['limit' => 200]);
+        $this->set(compact('consumo', 'facturas', 'servicios'));
         $this->set('_serialize', ['consumo']);
     }
 
@@ -115,9 +116,9 @@ class ConsumosController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $consumo = $this->Consumos->get($id);
         if ($this->Consumos->delete($consumo)) {
-            $this->Flash->success(__('El consumo ha sido eliminado.'));
+            $this->Flash->success(__('The consumo has been deleted.'));
         } else {
-            $this->Flash->error(__('El consumo no ha podido eliminarse. Intente nuevamente'));
+            $this->Flash->error(__('The consumo could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);

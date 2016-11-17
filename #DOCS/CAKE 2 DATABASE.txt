@@ -52,7 +52,7 @@ create table if not exists trabajadores (
   cargo varchar(50) not null,
   area varchar(50),
   sede smallint default 0,
-  puesto_de_trabajo varchar,
+  puesto_de_trabajo varchar(50),
   telefono_personal varchar(20),
   rif varchar(15),
   residencia varchar(200),
@@ -111,7 +111,9 @@ create table if not exists servicios (
   id integer unsigned auto_increment primary key,
   nombre varchar(50) not null,
   cupo varchar(20) not null,
-  renta_id integer unsigned not null);
+  renta_id integer unsigned not null,
+  created datetime default null,
+  modified datetime default null);
 
 create table if not exists consumos (
   id integer unsigned auto_increment primary key,

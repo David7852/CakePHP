@@ -41,7 +41,7 @@ class RentasTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('Consumos', [
+        $this->hasMany('Servicios', [
             'foreignKey' => 'renta_id'
         ]);
         $this->belongsToMany('Lineas', [

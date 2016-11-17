@@ -7,8 +7,8 @@
         <li><?= $this->Html->link(__('Nuevo Consumo'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('Listar Facturas'), ['controller' => 'Facturas', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Nueva Factura'), ['controller' => 'Facturas', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('Listar Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Nueva Renta'), ['controller' => 'Rentas', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Listar Servicios'), ['controller' => 'Servicio', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nuevo Servicio'), ['controller' => 'Servicio', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="consumos view large-9 medium-8 columns content">
@@ -19,8 +19,12 @@
             <td><?= $consumo->has('factura') ? $this->Html->link($consumo->factura->titulo, ['controller' => 'Facturas', 'action' => 'view', $consumo->factura->id]) : '' ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Renta') ?></th>
-            <td><?= $consumo->has('renta') ? $this->Html->link($consumo->renta->nombre, ['controller' => 'Rentas', 'action' => 'view', $consumo->renta->id]) : '' ?></td>
+            <th scope="row"><?= __('Servicio') ?></th>
+            <td><?= $consumo->has('servicio') ? $this->Html->link($consumo->servicio->titulo, ['controller' => 'Servicio', 'action' => 'view', $consumo->servicio->id]) : '' ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Cupo') ?></th>
+            <td><?= h($consumo->cupo) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Consumido') ?></th>

@@ -46,7 +46,8 @@
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Titulo') ?></th>
-                <th scope="col"><?= __('Renta Id') ?></th>
+                <th scope="col"><?= __('Servicio Id') ?></th>
+                <th scope="col"><?= __('Cupo') ?></th>
                 <th scope="col"><?= __('Consumido') ?></th>
                 <th scope="col"><?= __('Excedente') ?></th>
                 <th scope="col"><?= __('Monto') ?></th>
@@ -55,7 +56,8 @@
             <?php foreach ($factura->consumos as $consumos): ?>
             <tr>
                 <td><?= h($consumos->titulo) ?></td>
-                <td><?= h($consumos->renta_id) ?></td>
+                <td><?= h($consumos->servicio_id) ?></td>
+                <td><?= h($consumos->cupo) ?></td>
                 <td><?= h($consumos->consumido) ?></td>
                 <td><?= h($consumos->excedente) ?></td>
                 <td><?= h($consumos->monto_bs).' Bs' ?></td>

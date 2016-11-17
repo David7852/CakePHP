@@ -6,8 +6,8 @@
         <li><?= $this->Form->postLink(__('Eliminar ').h($renta->nombre), ['action' => 'delete', $renta->id], ['confirm' => __('¿Confirma querer eliminar la renta {0}?', $renta->nombre)]) ?> </li>
         <li><?= $this->Html->link(__('Listar Rentas'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Nueva Renta'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('Listar Consumos'), ['controller' => 'Consumos', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Nuevo Consumo'), ['controller' => 'Consumos', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Listar Servicios'), ['controller' => 'Servicios', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nuevo Servicio'), ['controller' => 'Servicios', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('Listar Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Nueva Linea'), ['controller' => 'Lineas', 'action' => 'add']) ?> </li>
     </ul>
@@ -24,27 +24,23 @@
             <td><?= $this->Text->autoParagraph(h($renta->operadora)) ?></td>
         </tr>
     </table>
-    <?php if (!empty($renta->consumos)): ?>
+    <?php if (!empty($renta->servicios)): ?>
     <div class="related">
         <h4><?= __('Consumos realizados') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Titulo') ?></th>
-                <th scope="col"><?= __('Consumido') ?></th>
-                <th scope="col"><?= __('Excedente') ?></th>
-                <th scope="col"><?= __('Monto') ?></th>
+                <th scope="col"><?= __('Nombre') ?></th>
+                <th scope="col"><?= __('Cupo') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
-            <?php foreach ($renta->consumos as $consumos): ?>
+            <?php foreach ($renta->servicios as $servicios): ?>
             <tr>
-                <td><?= h($consumos->titulo) ?></td>
-                <td><?= h($consumos->consumido) ?></td>
-                <td><?= h($consumos->excedente) ?></td>
-                <td><?= h($consumos->monto_bs).' Bs' ?></td>
+                <td><?= h($servicios->nombre) ?></td>
+                <td><?= h($servicios->cupo) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('Ver'), ['controller' => 'Consumos', 'action' => 'view', $consumos->id]) ?>
-                    <?= $this->Html->link(__('Editar'), ['controller' => 'Consumos', 'action' => 'edit', $consumos->id]) ?>
-                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Consumos', 'action' => 'delete', $consumos->id], ['confirm' => __('¿Confirma querer eliminar el consumo {0}?', $consumos->titulo)]) ?>
+                    <?= $this->Html->link(__('Ver'), ['controller' => 'Consumos', 'action' => 'view', $servicios->id]) ?>
+                    <?= $this->Html->link(__('Editar'), ['controller' => 'Consumos', 'action' => 'edit', $servicios->id]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Consumos', 'action' => 'delete', $servicios->id], ['confirm' => __('¿Confirma querer eliminar el consumo {0}?', $servicios->titulo)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

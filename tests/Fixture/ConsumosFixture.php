@@ -20,20 +20,21 @@ class ConsumosFixture extends TestFixture
         'id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'titulo' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'factura_id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'renta_id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'consumido' => ['type' => 'string', 'length' => 15, 'null' => true, 'default' => '0', 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'excedente' => ['type' => 'string', 'length' => 10, 'null' => true, 'default' => '0', 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'servicio_id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'cupo' => ['type' => 'string', 'length' => 20, 'null' => true, 'default' => '0', 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'consumido' => ['type' => 'string', 'length' => 20, 'null' => true, 'default' => '0', 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'excedente' => ['type' => 'string', 'length' => 20, 'null' => true, 'default' => '0', 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'monto_bs' => ['type' => 'float', 'length' => 0, 'precision' => 0, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => ''],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
             'consumo_de' => ['type' => 'index', 'columns' => ['factura_id'], 'length' => []],
-            'renta_mensual' => ['type' => 'index', 'columns' => ['renta_id'], 'length' => []],
+            'consumo_del_servicio' => ['type' => 'index', 'columns' => ['servicio_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
             'consumos_ibfk_1' => ['type' => 'foreign', 'columns' => ['factura_id'], 'references' => ['facturas', 'id'], 'update' => 'cascade', 'delete' => 'restrict', 'length' => []],
-            'consumos_ibfk_2' => ['type' => 'foreign', 'columns' => ['renta_id'], 'references' => ['rentas', 'id'], 'update' => 'cascade', 'delete' => 'restrict', 'length' => []],
+            'consumos_ibfk_2' => ['type' => 'foreign', 'columns' => ['servicio_id'], 'references' => ['servicios', 'id'], 'update' => 'cascade', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -52,12 +53,13 @@ class ConsumosFixture extends TestFixture
             'id' => 1,
             'titulo' => 'Lorem ipsum dolor sit amet',
             'factura_id' => 1,
-            'renta_id' => 1,
-            'consumido' => 'Lorem ipsum d',
-            'excedente' => 'Lorem ip',
+            'servicio_id' => 1,
+            'cupo' => 'Lorem ipsum dolor ',
+            'consumido' => 'Lorem ipsum dolor ',
+            'excedente' => 'Lorem ipsum dolor ',
             'monto_bs' => 1,
-            'created' => '2016-11-05 20:03:29',
-            'modified' => '2016-11-05 20:03:29'
+            'created' => '2016-11-17 03:46:07',
+            'modified' => '2016-11-17 03:46:07'
         ],
     ];
 }

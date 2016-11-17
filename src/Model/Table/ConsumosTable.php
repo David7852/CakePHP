@@ -10,7 +10,7 @@ use Cake\Validation\Validator;
  * Consumos Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Facturas
- * @property \Cake\ORM\Association\BelongsTo $Rentas
+ * @property \Cake\ORM\Association\BelongsTo $Servicios
  *
  * @method \App\Model\Entity\Consumo get($primaryKey, $options = [])
  * @method \App\Model\Entity\Consumo newEntity($data = null, array $options = [])
@@ -45,8 +45,8 @@ class ConsumosTable extends Table
             'foreignKey' => 'factura_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Rentas', [
-            'foreignKey' => 'renta_id',
+        $this->belongsTo('Servicios', [
+            'foreignKey' => 'servicio_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -93,7 +93,7 @@ class ConsumosTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['factura_id'], 'Facturas'));
-        $rules->add($rules->existsIn(['renta_id'], 'Rentas'));
+        $rules->add($rules->existsIn(['servicio_id'], 'Servicios'));
 
         return $rules;
     }

@@ -4,21 +4,25 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Renta Entity
+ * Servicio Entity
  *
  * @property int $id
  * @property string $nombre
- * @property float $monto_basico
- * @property string $operadora
+ * @property string $cupo
+ * @property int $renta_id
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
- * @property \App\Model\Entity\Servicio[] $Servicios
- * @property \App\Model\Entity\Linea[] $lineas
+ * @property \App\Model\Entity\Renta $renta
+ * @property \App\Model\Entity\Consumo[] $consumos
  */
-class Renta extends Entity
-{
+class Servicio extends Entity
+{//titulo seria la renta asociada mas el nombre
 
+    protected function _getTitulo()
+    {
+        return $this->_properties['nombre'];
+    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Entity;
 
-use App\Controller\ConsumosController;
 use Cake\ORM\Entity;
 
 /**
@@ -10,7 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $titulo
  * @property int $factura_id
- * @property int $renta_id
+ * @property int $servicio_id
  * @property string $cupo
  * @property string $consumido
  * @property string $excedente
@@ -19,10 +18,11 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $modified
  *
  * @property \App\Model\Entity\Factura $factura
- * @property \App\Model\Entity\Renta $renta
+ * @property \App\Model\Entity\Servicio $servicio
  */
 class Consumo extends Entity
 {
+
     /**
      * @return string
      */
@@ -30,7 +30,7 @@ class Consumo extends Entity
     {
         $c = new ConsumosController();
         $related=$c->getRelated($this->_properties['id']);
-        return h($this->_properties['monto_bs']).' en la factura del '.h($related->factura->titulo);//titulo seria mejor en la forma : renta: monto_bs
+        return h($this->_properties['monto_bs']).' en la factura del '.h($related->factura->titulo);
     }
 
     /**
