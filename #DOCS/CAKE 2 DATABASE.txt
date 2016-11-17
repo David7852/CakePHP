@@ -48,11 +48,12 @@ create table if not exists trabajadores (
   apellido varchar(50) not null,
   cedula varchar(8) unique not null,
   sexo enum ("M","F") default null,
-  gerencia enum("IT","Recursos Humanos","Finanzas","Contratacion","Servicios Generales","Planificacion","Confiabilidad", "Mantenimiento", "Produccion", "Gestion") not null, /* agregar faltantes*/
-  cargo enum("Gerente","Supervisor", "Supervisora", "Analista", "Pasante", "Superintendente","Jefe de planta", "Jefa de planta", "Secretaria", "Secretario", "Consultor", "Consultora", "Consejera", "Consejero") not null,/*agregar faltantaes*/
+  gerencia varchar(50) not null,
+  cargo varchar(50) not null,
+  area varchar(50),
   sede smallint default 0,
-  numero_de_oficina smallint,
-  telefono_personal varchar(25),
+  puesto_de_trabajo varchar,
+  telefono_personal varchar(20),
   rif varchar(15),
   residencia varchar(200),
   created datetime default null,
@@ -63,7 +64,6 @@ create table if not exists procesos (
   titulo varchar(255),
   motivo varchar(255),
   tipo enum("Asignacion","Devolucion","Mixto"),
-  fecha_de_solicitud date not null,
   fecha_de_aprobacion date,
   estado enum("Pendiente","Aprobado","Rechazado","Completado") default "Pendiente",
   observaciones text,
@@ -107,13 +107,20 @@ create table if not exists lineas_rentas (
   renta_id integer unsigned not null,
   primary key (linea_id,renta_id));
 
+create table if not exists servicios (
+  id integer unsigned auto_increment primary key,
+  nombre varchar(50) not null,
+  cupo varchar(20) not null,
+  renta_id integer unsigned not null);
+
 create table if not exists consumos (
   id integer unsigned auto_increment primary key,
   titulo varchar(255),
   factura_id integer unsigned not null,
-  renta_id integer unsigned not null,
-  consumido varchar(15) default "0",
-  excedente varchar(10) default "0",
+  servicio_id integer unsigned not null,
+  cupo varchar(20) default "0",
+  consumido varchar(20) default "0",
+  excedente varchar(20) default "0",
   monto_bs float unsigned not null,
   created datetime default null,
   modified datetime default null);
@@ -133,7 +140,7 @@ create table if not exists facturas (
 create table if not exists lineas (
   id integer unsigned auto_increment primary key,
   operadora enum("Movilnet","Movistar") not null default "Movilnet",
-  numero varchar(16) not null,
+  numero varchar(20) not null,
   puk integer unsigned,
   pin integer unsigned,
   codigo_sim varchar(25),
@@ -198,8 +205,12 @@ alter table facturas
 alter table consumos add index `consumo_de` (factura_id);
 alter table consumos
   add foreign key (factura_id) references facturas (id) on delete restrict on update cascade;
-alter table consumos add index `renta_mensual` (renta_id);
+alter table consumos add index `consumo_del_servicio` (servicio_id);
 alter table consumos
+  add foreign key (servicio_id) references servicios (id) on delete restrict on update cascade;
+
+alter table servicios add index `servicio_de_renta` (renta_id);
+alter table servicios
   add foreign key (renta_id) references rentas (id) on delete restrict on update cascade;
 
 alter table lineas_rentas

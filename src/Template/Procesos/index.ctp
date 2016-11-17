@@ -17,7 +17,7 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('titulo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('motivo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('fecha_de_solicitud') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('created',['label'=>'Fecha de Solicitud']) ?></th>
                 <th scope="col"><?= $this->Paginator->sort('fecha_de_aprobacion') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
@@ -27,7 +27,7 @@
             <tr>
                 <td><?= h($proceso->titulo) ?></td>
                 <td><?= h($proceso->motivo) ?></td>
-                <td><?= h($proceso->fecha_de_solicitud) ?></td>
+                <td><?= h($proceso->created) ?></td>
                 <td>
                     <?php if($proceso->fecha_de_aprobacion!=''):?>
                     <?= h($proceso->fecha_de_aprobacion) ?>

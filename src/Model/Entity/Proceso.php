@@ -10,7 +10,6 @@ use Cake\ORM\Entity;
  * @property string $titulo
  * @property string $motivo
  * @property string $tipo
- * @property \Cake\I18n\Time $fecha_de_solicitud
  * @property \Cake\I18n\Time $fecha_de_aprobacion
  * @property string $estado
  * @property string $observaciones
@@ -23,10 +22,6 @@ use Cake\ORM\Entity;
  */
 class Proceso extends Entity
 {
-    protected function _setCreated($value){
-        $this->fecha_de_solicitud=$value;
-        return $value;
-    }
     protected function _setModified($value){
         if($this->fecha_de_aprobacion==''&&($this->estado=='Aprobado'||$this->estado=='Completado'))
             $this->fecha_de_aprobacion=$value;

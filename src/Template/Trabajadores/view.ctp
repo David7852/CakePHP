@@ -17,6 +17,17 @@
 <div class="trabajadores view large-9 medium-8 columns content">
     <h3><?= h($trabajador->titulo) ?></h3>
     <table class="vertical-table">
+        <div class="row">
+            <h4><?= __('Gerencia: ').h($trabajador->gerencia) ?></h4>
+        </div>
+        <div class="row">
+            <h4><?= __('Cargo: ').h($trabajador->cargo) ?></h4>
+        </div>
+        <?php if($trabajador->area!=''):?>
+            <div class="row">
+                <h4><?= __('Area: ').h($trabajador->area) ?></h4>
+            </div>
+        <?php endif; ?>
         <tr>
             <th scope="row"><?= __('Nombre') ?></th>
             <td><?= h($trabajador->nombre) ?></td>
@@ -52,22 +63,15 @@
             </td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Numero De Oficina') ?></th>
-            <td><?= $this->Number->format($trabajador->numero_de_oficina) ?></td>
+            <th scope="row"><?= __('Puesto de trabajo') ?></th>
+            <td><?= $this->Number->format($trabajador->puesto_de_trabajo) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Sexo') ?></th>
             <td><?= h($trabajador->sexo) ?></td>
         </tr>
     </table>
-    <div class="row">
-        <h4><?= __('Gerencia') ?></h4>
-        <?= $this->Text->autoParagraph(h($trabajador->gerencia)); ?>
-    </div>
-    <div class="row">
-        <h4><?= __('Cargo') ?></h4>
-        <?= $this->Text->autoParagraph(h($trabajador->cargo)); ?>
-    </div>
+
     
     <?php if (!empty($trabajador->contratos)): ?>
     <div class="related">
@@ -137,7 +141,7 @@
             <?php foreach ($trabajador->procesos as $procesos): ?>
             <tr>
                 <td><?= h($procesos->tipo) ?></td>
-                <td><?= h($procesos->fecha_de_solicitud) ?></td>
+                <td><?= h($procesos->created) ?></td>
                 <td><?= h($procesos->estado) ?></td>
                 <td><?= h($procesos->observaciones) ?></td>
                 <td class="actions">

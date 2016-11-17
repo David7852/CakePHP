@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Entity;
 
+use App\Controller\ConsumosController;
 use Cake\ORM\Entity;
 
 /**
@@ -10,6 +11,7 @@ use Cake\ORM\Entity;
  * @property string $titulo
  * @property int $factura_id
  * @property int $renta_id
+ * @property string $cupo
  * @property string $consumido
  * @property string $excedente
  * @property float $monto_bs
@@ -21,9 +23,14 @@ use Cake\ORM\Entity;
  */
 class Consumo extends Entity
 {
+    /**
+     * @return string
+     */
     protected function _getTitulo()
     {
-        return h($this->_properties['consumido'].' + '.$this->_properties['excedente'].' = '.this_>$this->_properties['monto_bs']);//titulo seria mejor en la forma : renta: monto_bs
+        $c = new ConsumosController();
+        $related=$c->getRelated($this->_properties['id']);
+        return h($this->_properties['monto_bs']).' en la factura del '.h($related->factura->titulo);//titulo seria mejor en la forma : renta: monto_bs
     }
 
     /**

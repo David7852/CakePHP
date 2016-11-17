@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Fecha De Solicitud') ?></th>
-            <td><?= h($proceso->fecha_de_solicitud) ?></td>
+            <td><?= h($proceso->created) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Fecha De Aprobacion') ?></th>
@@ -127,7 +127,7 @@
                         <?= h('Sede edificio Laguna') ?>
                     <?php endif; ?>
                 </td>
-                <td><?= h($trabajadores->numero_de_oficina) ?></td>
+                <td><?= h($trabajadores->puesto_de_trabajo) ?></td>
                 <td><?= h($trabajadores->telefono_personal) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Trabajadores', 'action' => 'view', $trabajadores->id]) ?>

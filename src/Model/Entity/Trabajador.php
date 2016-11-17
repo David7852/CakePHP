@@ -13,8 +13,9 @@ use Cake\ORM\Entity;
  * @property string $sexo
  * @property string $gerencia
  * @property string $cargo
+ * @property string $area
  * @property int $sede
- * @property int $numero_de_oficina
+ * @property string $puesto_de_trabajo
  * @property string $telefono_personal
  * @property string $rif
  * @property string $residencia

@@ -76,17 +76,9 @@ class ProcesosTable extends Table
         $validator
             ->allowEmpty('tipo');
 
-        /*$validator
-            ->date('fecha_de_solicitud')
-            ->requirePresence('fecha_de_solicitud', 'create')
-            ->notEmpty('fecha_de_solicitud');*/
-        
         $validator
             ->date('fecha_de_aprobacion')
             ->allowEmpty('fecha_de_aprobacion');
-        $validator
-            ->date('fecha_de_solicitud')
-            ->allowEmpty('fecha_de_solicitud');
 
         $validator
             ->allowEmpty('estado');

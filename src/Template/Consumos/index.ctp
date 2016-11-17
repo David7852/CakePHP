@@ -15,6 +15,7 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('factura_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('renta_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('cupo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('consumido') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('excedente') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('monto') ?></th>
@@ -26,6 +27,7 @@
             <tr>
                 <td><?= $consumo->has('factura') ? $this->Html->link($consumo->factura->titulo, ['controller' => 'Facturas', 'action' => 'view', $consumo->factura->id]) : '' ?></td>
                 <td><?= $consumo->has('renta') ? $this->Html->link($consumo->renta->nombre, ['controller' => 'Rentas', 'action' => 'view', $consumo->renta->id]) : '' ?></td>
+                <td><?= h($consumo->cupo) ?></td>
                 <td><?= h($consumo->consumido) ?></td>
                 <td><?= h($consumo->excedente) ?></td>
                 <td><?= $this->Number->format($consumo->monto_bs).' Bs' ?></td>

@@ -92,12 +92,14 @@ class TrabajadoresTable extends Table
             ->notEmpty('cargo');
 
         $validator
+            ->allowEmpty('area');
+
+        $validator
             ->integer('sede')
             ->allowEmpty('sede');
 
         $validator
-            ->integer('numero_de_oficina')
-            ->allowEmpty('numero_de_oficina');
+            ->allowEmpty('puesto_de_trabajo');
 
         $validator
             ->allowEmpty('telefono_personal');

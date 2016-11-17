@@ -29,7 +29,6 @@
             $options = ['M'=>'Hombre',
                         'F'=>'Mujer'];
             echo $this->Form->input('sexo',array('options'=>$options,'empty'=>true));
-            //echo $this->Form->select('sexo', $options,['empty'=>true]);
 
             $options=["IT"=>"IT",
                       "Recursos Humanos"=>"Recursos Humanos",
@@ -59,11 +58,12 @@
                       "Consejero"=>"Consejero"];
             echo $this->Form->input('cargo', array('options'=>$options,'empty'=>false,'escape'=>false));
 
+            echo $this->Form->input('area');
             $options = ['0' => 'Sede del complejo Jose',
                         '1' => 'Sede edificio Laguna'];
             echo $this->Form->input('sede', array('options'=>$options,'empty'=>false,'escape'=>false));
 
-            echo $this->Form->input('numero_de_oficina');
+            echo $this->Form->input('puesto_de_trabajo');
             echo $this->Form->input('telefono_personal');
             echo $this->Form->input('rif');
             echo $this->Form->input('residencia');

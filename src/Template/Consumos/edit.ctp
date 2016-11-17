@@ -21,6 +21,7 @@
         <?php
             echo $this->Form->input('factura_id', ['options' => $facturas]);
             echo $this->Form->input('renta_id', ['options' => $rentas]);
+            echo $this->Form->input('cupo');
             echo $this->Form->input('consumido');
             echo $this->Form->input('excedente');
             echo $this->Form->input('monto');

@@ -11,6 +11,13 @@ use App\Controller\AppController;
 class ConsumosController extends AppController
 {
 
+    public function getRelated($id)
+    {
+         $consumo = $this->Consumos->get($id, [
+            'contain' => ['Facturas', 'Rentas']
+        ]);
+        return $consumo;
+    }
     /**
      * Index method
      *
