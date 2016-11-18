@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://book.cakephp.org/3.0/en/orm/associations.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>Associations - Linking Tables Together</title>
+    <link href="http://book.cakephp.org/3.0/en/_static/favicon.png" type="image/png" rel="icon">
+
+    
+    <link rel="stylesheet" href="./Associations - Linking Tables Together_files/app.css" type="text/css">
+    
+    <script type="text/javascript" async="" src="./Associations - Linking Tables Together_files/ga.js.download"></script><script id="twitter-wjs" src="./Associations - Linking Tables Together_files/widgets.js.download"></script><script id="facebook-jssdk" src="./Associations - Linking Tables Together_files/sdk.js.download"></script><script type="text/javascript" src="./Associations - Linking Tables Together_files/app.js.download"></script>
+
+    <link rel="alternate" hreflang="pt" href="http://book.cakephp.org/3.0/pt/orm/associations.html"><link rel="alternate" hreflang="es" href="http://book.cakephp.org/3.0/es/orm/associations.html"><link rel="alternate" hreflang="ja" href="http://book.cakephp.org/3.0/ja/orm/associations.html"><link rel="alternate" hreflang="fr" href="http://book.cakephp.org/3.0/fr/orm/associations.html"><link rel="alternate" hreflang="zh" href="http://book.cakephp.org/3.0/zh/orm/associations.html"><link rel="alternate" hreflang="tr" href="http://book.cakephp.org/3.0/tr/orm/associations.html">
+
+    <link rel="search" type="application/opensearchdescription+xml" title="Search within CakePHP Cookbook 3.x documentation" href="http://book.cakephp.org/3.0/en/_static/opensearchdescription-book-3-x.xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="top" title="CakePHP Cookbook 3.x documentation" href="http://book.cakephp.org/3.0/en/index.html">
+    <link rel="up" title="Database Access &amp; ORM" href="http://book.cakephp.org/3.0/en/orm.html">
+    <link rel="next" title="Behaviors" href="http://book.cakephp.org/3.0/en/orm/behaviors.html">
+    <link rel="prev" title="Deleting Data" href="http://book.cakephp.org/3.0/en/orm/deleting-data.html">
+
+    <script type="text/javascript">
+    window.lang = "en";
+    </script>
+  <script type="text/javascript" charset="utf-8" async="" src="./Associations - Linking Tables Together_files/button.5546439b5d743401ca910708312f6e81.js.download"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head>
+  <body>
+
+<div id="container">
+	
+	<header class="nav-up">
+		<div class="container-fluid hidden-xs hidden-sm">
+			<div class="row">
+				<div class="col-sm-3 col-md-3">
+					<a class="logo-cake" href="http://cakephp.org/">
+						<img src="./Associations - Linking Tables Together_files/logo-cake.png" alt="CakePHP">
+					</a>
+				</div>
+
+				<div class="col-sm-9 col-md-9">
+					<nav class="navbar-right">
+						<ul class="menu">
+							<li class="first" style="">
+								<a href="http://book.cakephp.org/3.0/en/orm/associations.html#"><i class="fa fa-menu fa-chevron-down"></i>Documentation</a>
+								<ul class="submenu">
+									
+<li><a href="http://book.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Book</a></li>
+<li><a href="http://api.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>API</a></li>
+
+<li><a href="http://cakephp.org/documentation/videos"><i class="fa fa-menu fa-chevron-right"></i>Videos</a></li>
+<li><a href="http://cakephp.org/privacy"><i class="fa fa-menu fa-chevron-right"></i>Privacy Policy</a></li>
+<li><a href="http://cakephp.org/pages/trademark"><i class="fa fa-menu fa-chevron-right"></i>Logos &amp; Trademarks</a></li>
+								</ul>
+							</li>
+
+							<li style=""><a href="http://cakephp.org/business-solutions">Business Solutions</a></li>
+							<li style=""><a href="http://cakephp.org/showcase">Showcase</a></li>
+
+							<li style="">
+								<a href="http://book.cakephp.org/3.0/en/orm/associations.html#"><i class="fa fa-menu fa-chevron-down"></i>Community</a>
+								<div class="megamenu full">
+									<div class="row">
+										<div class="col-6 pl30">
+											<ul class="megamenu-list">
+												
+<li class="menu-title"><i class="fa fa-menu-title fa-users"></i>Community</li>
+
+<li><a href="http://cakephp.org/team"><i class="fa fa-menu fa-chevron-right"></i>Team</a></li>
+<li><a href="https://github.com/cakephp/cakephp/issues"><i class="fa fa-menu fa-chevron-right"></i>Issues (Github)</a></li>
+<li><a href="http://www.youtube.com/user/CakePHP"><i class="fa fa-menu fa-chevron-right"></i>YouTube Channel</a></li>
+<li><a href="http://cakephp.org/get-involved"><i class="fa fa-menu fa-chevron-right"></i>Get Involved</a></li>
+
+<li><a href="http://bakery.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Bakery</a></li>
+<li><a href="https://github.com/FriendsOfCake/awesome-cakephp"><i class="fa fa-menu fa-chevron-right"></i>Featured Resources</a></li>
+<li><a href="http://cakephp.org/newsletter/signup"><i class="fa fa-menu fa-chevron-right"></i>Newsletter</a></li>
+<li><a href="http://certification.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Certification</a></li>
+<li><a href="http://my.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>My CakePHP</a></li>
+<li><a href="http://cakefest.org/"><i class="fa fa-menu fa-chevron-right"></i>CakeFest</a></li>
+<li><a href="http://www.facebook.com/groups/cake.community"><i class="fa fa-menu fa-chevron-right"></i>Facebook</a></li>
+<li><a href="http://twitter.com/cakephp"><i class="fa fa-menu fa-chevron-right"></i>Twitter</a></li>
+											</ul>
+										</div>
+										<div class="col-6 pl30">
+											<ul class="megamenu-list">
+												
+<li class="menu-title"><i class="fa fa-menu-title fa-comments-o"></i>Help &amp; Support</li>
+
+<li><a href="http://discourse.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Forum</a></li>
+<li><a href="http://stackoverflow.com/tags/cakephp"><i class="fa fa-menu fa-chevron-right"></i>Stack Overflow</a></li>
+<li><a href="http://webchat.freenode.net/?channels=cakephp"><i class="fa fa-menu fa-chevron-right"></i>IRC</a></li>
+<li><a href="http://cakesf.herokuapp.com/"><i class="fa fa-menu fa-chevron-right"></i>Slack</a></li>
+<li><a href="http://cakedc.com/"><i class="fa fa-menu fa-chevron-right"></i>Paid Support</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="container-fluid hidden-md hidden-lg">
+			<div class="row">
+				<div class="col-sm-6 col-xs-6">
+					<a class="logo-cake" href="http://cakephp.org/">
+						<img src="./Associations - Linking Tables Together_files/logo-cake.png" alt="CakePHP">
+					</a>
+				</div>
+
+				<div class="col-sm-6 col-xs-6">
+					<div class="navbar-right">
+						<button id="btn-menu" class="btn-menu" data-toggle="modal" data-target="#modal">
+							<i class="fa fa-bars toggle-modal"></i>
+						</button>
+					</div>
+					<div id="wrap">
+						<form class="search" action="http://book.cakephp.org/3.0/en/search.html" method="get">
+							<span class="twitter-typeahead" style="position: relative; display: inline-block;"><input name="q" type="search" placeholder="What are you looking for?" class="tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Raleway, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div class="tt-dataset tt-dataset-es"></div></div></span>
+							<input id="search_submit" value="Search" type="submit">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+		<section id="nav-cook" class="hidden-xs hidden-sm">
+			<div class="container-fluid ">
+				<div class="row ">
+					<div class="col-md-12 back-book">
+						<div class="col-md-4 col-md-offset-1 text-center t-cook-nav p0 hidden-sm hidden-xs">
+							<h2>
+								<a href="http://book.cakephp.org/3.0/en/contents.html">
+									<span class="glyph_range icon-submenu icon-submenu-cook">B</span>
+									CakePHP 3.3 Red Velvet <strong>Cookbook</strong>
+								</a>
+							</h2>
+						</div>
+
+						<div class="col-md-4 hidden-sm">
+							<form class="search" action="http://book.cakephp.org/3.0/en/search.html" method="get">
+								<input type="hidden" name="check_keywords" value="yes">
+								<input type="hidden" name="area" value="default">
+
+								<div class="col-md-10 p0">
+									<span class="twitter-typeahead" style="position: relative; display: inline-block;"><input class="form-control form-cook tt-input" autocomplete="off" type="search" name="q" size="18" placeholder="Cookbook Search" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Raleway, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 500; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div class="tt-dataset tt-dataset-es"></div></div></span>
+								</div>
+								<div class="col-md-2 p0 search-cook">
+									<button type="submit">
+										<span class="glyph_range icon-submenu icon-submenu-cook">A</span>
+									</button>
+								</div>
+							</form>
+						</div>
+
+						
+						<div class="col-md-3">
+							<div class="col-md-6 p0">
+								<div class="col-md-7 t-language p0">
+									<h6>Language:</h6>
+								</div>
+								<div class="col-md-5 p0">
+									<ul class="nav navbar-nav">
+										<li class="dropdown">
+											<a class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="http://book.cakephp.org/3.0/en/orm/associations.html#">
+														en
+														<i class="fa fa-menu-en fa-chevron-down"></i>
+													</a>
+											<ul class="dropdown-menu">
+											
+												<li></li>
+											
+												<li><a href="http://book.cakephp.org/3.0/pt/orm/associations.html">pt</a></li>
+											
+												<li><a href="http://book.cakephp.org/3.0/es/orm/associations.html">es</a></li>
+											
+												<li><a href="http://book.cakephp.org/3.0/ja/orm/associations.html">ja</a></li>
+											
+												<li><a href="http://book.cakephp.org/3.0/fr/orm/associations.html">fr</a></li>
+											
+												<li><a href="http://book.cakephp.org/3.0/zh/orm/associations.html">zh</a></li>
+											
+												<li><a href="http://book.cakephp.org/3.0/tr/orm/associations.html">tr</a></li>
+											
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="col-md-6 p0">
+								<div class="col-md-7 t-language p0">
+									<h6>Version:</h6>
+								</div>
+								<div class="col-md-5 p0">
+									<ul class="nav navbar-nav">
+										<li class="dropdown">
+											<a href="http://book.cakephp.org/3.0/en/orm/associations.html#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">3.x <i class="fa fa-menu-en fa-chevron-down"></i></a>
+											<ul class="dropdown-menu">
+												<li><a href="http://book.cakephp.org/3.0/en">3.x Book</a></li>
+												<li><a href="http://book.cakephp.org/2.0/en">2.x Book</a></li>
+												<li><a href="http://book.cakephp.org/1.3/en/">1.3 Book</a></li>
+												<li><a href="http://book.cakephp.org/1.2/en/">1.2 Book</a></li>
+												<li><a href="http://book.cakephp.org/1.1/en">1.1 Book</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+	</header>
+
+	
+	<section class="nav-btn visible-sm visible-xs">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-xs-6 text-center">
+					<button id="btn-nav" class="btn btn-b btn-nav" data-toggle="modal" data-target="#modal"><strong>Nav</strong></button>
+				</div>
+
+				<div class="col-sm-6 col-xs-6 text-center">
+					<button id="btn-toc" class="btn btn-b btn-nav" data-toggle="modal" data-target="#modal"><strong>Table of Contents</strong></button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	
+	<div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-header">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title-cookbook" id="modal-header"></h4>
+				</div>
+				<div class="modal-body"></div>
+			</div>
+		</div>
+	</div>
+
+<div class="container page-container"><div id="improve-slideout">
+		<i class="fa fa-pencil icon-improve"></i>
+		<a href="https://github.com/cakephp/docs/edit/3.0/en/orm/associations.rst" target="_blank">
+			<div id="improve-slideout-inner"><h6>Improve This Doc <i class="fa fa-github git-improve"></i></h6></div>
+		</a>
+	</div><a id="back-to-contents" href="http://book.cakephp.org/3.0/en/orm/associations.html#page-contents"><i class="fa fa-arrow-circle-up icon-improve" title="Back to Contents"></i></a>
+
+	
+	<div class="row">
+		<div class="col-sm-12 col-md-9 col-md-push-3 space-left push-off"><div class="page-contents col-sm-5">
+				<h3>Page Contents</h3>
+				<ul>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/associations.html#">Associations - Linking Tables Together</a><ul>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/associations.html#hasone-associations">HasOne Associations</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/associations.html#belongsto-associations">BelongsTo Associations</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/associations.html#hasmany-associations">HasMany Associations</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/associations.html#belongstomany-associations">BelongsToMany Associations</a><ul>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/associations.html#using-the-through-option">Using the ‘through’ Option</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/associations.html#default-association-conditions">Default Association Conditions</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/associations.html#loading-associations">Loading Associations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+			</div><div class="document-body">
+			
+  <div class="section" id="associations-linking-tables-together">
+<h1>Associations - Linking Tables Together<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/associations.html#associations-linking-tables-together" title="Permalink to this headline">¶</a></h1>
+<p>Defining relations between different objects in your application should be
+a natural process. For example, an article may have many comments, and belong
+to an author. Authors may have many articles and comments. CakePHP makes
+managing these associations easy. The four association types in CakePHP are:
+hasOne, hasMany, belongsTo, and belongsToMany.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%">
+<col width="29%">
+<col width="53%">
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Relationship</th>
+<th class="head">Association Type</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>one to one</td>
+<td>hasOne</td>
+<td>A user has one profile.</td>
+</tr>
+<tr class="row-odd"><td>one to many</td>
+<td>hasMany</td>
+<td>A user can have multiple articles.</td>
+</tr>
+<tr class="row-even"><td>many to one</td>
+<td>belongsTo</td>
+<td>Many articles belong to a user.</td>
+</tr>
+<tr class="row-odd"><td>many to many</td>
+<td>belongsToMany</td>
+<td>Tags belong to many articles.</td>
+</tr>
+</tbody>
+</table>
+<p>Associations are defined during the <code class="docutils literal"><span class="pre">initialize()</span></code> method of your table
+object. Methods matching the association type allow you to define the
+associations in your application. For example if we wanted to define a belongsTo
+association in our ArticlesTable:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">App\Model\Table</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Cake\ORM\Table</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ArticlesTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="s1">'Authors'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The simplest form of any association setup takes the table alias you want to
+associate with. By default all of the details of an association will use the
+CakePHP conventions. If you want to customize how your associations are handled
+you can do so with the second parameter:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ArticlesTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="s1">'Authors'</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">'className'</span> <span class="o">=&gt;</span> <span class="s1">'Publishing.Authors'</span><span class="p">,</span>
+            <span class="s1">'foreignKey'</span> <span class="o">=&gt;</span> <span class="s1">'authorid'</span><span class="p">,</span>
+            <span class="s1">'propertyName'</span> <span class="o">=&gt;</span> <span class="s1">'person'</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The same table can be used multiple times to define different types of
+associations. For example consider a case where you want to separate
+approved comments and those that have not been moderated yet:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ArticlesTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="s1">'Comments'</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">'className'</span> <span class="o">=&gt;</span> <span class="s1">'Comments'</span><span class="p">,</span>
+            <span class="s1">'conditions'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'approved'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">]</span>
+        <span class="p">]);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="s1">'UnapprovedComments'</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">'className'</span> <span class="o">=&gt;</span> <span class="s1">'Comments'</span><span class="p">,</span>
+            <span class="s1">'conditions'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'approved'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">],</span>
+            <span class="s1">'propertyName'</span> <span class="o">=&gt;</span> <span class="s1">'unapproved_comments'</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As you can see, by specifying the <code class="docutils literal"><span class="pre">className</span></code> key, it is possible to use the
+same table as different associations for the same table. You can even create
+self-associated tables to create parent-child relationships:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CategoriesTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="s1">'SubCategories'</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">'className'</span> <span class="o">=&gt;</span> <span class="s1">'Categories'</span><span class="p">,</span>
+        <span class="p">]);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="s1">'ParentCategories'</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">'className'</span> <span class="o">=&gt;</span> <span class="s1">'Categories'</span><span class="p">,</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also setup associations in mass by making a single call to
+<code class="docutils literal"><span class="pre">Table::addAssociations()</span></code> which accepts an array containing a set of
+table names indexed by association type as an argument:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PostsTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addAssociations</span><span class="p">([</span>
+      <span class="s1">'belongsTo'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'Users'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'className'</span> <span class="o">=&gt;</span> <span class="s1">'App\Model\Table\UsersTable'</span><span class="p">]</span>
+      <span class="p">],</span>
+      <span class="s1">'hasMany'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'Comments'</span><span class="p">],</span>
+      <span class="s1">'belongsToMany'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'Tags'</span><span class="p">]</span>
+    <span class="p">]);</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Each association type accepts multiple associations where the keys are the
+aliases, and the values are association config data. If numeric keys are used
+the values will be treated as association aliases.</p>
+<div class="section" id="hasone-associations">
+<h2>HasOne Associations<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/associations.html#hasone-associations" title="Permalink to this headline">¶</a></h2>
+<p>Let’s set up a Users Table with a hasOne relationship to an Addresses Table.</p>
+<p>First, your database tables need to be keyed correctly. For a hasOne
+relationship to work, one table has to contain a foreign key that points to a
+record in the other. In this case the addresses table will contain a field
+called <code class="docutils literal"><span class="pre">user_id</span></code>. The basic pattern is:</p>
+<p><strong>hasOne:</strong> the <em>other</em> model contains the foreign key.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%">
+<col width="45%">
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Relation</th>
+<th class="head">Schema</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Users hasOne Addresses</td>
+<td>addresses.user_id</td>
+</tr>
+<tr class="row-odd"><td>Doctors hasOne Mentors</td>
+<td>mentors.doctor_id</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is not mandatory to follow CakePHP conventions, you can override the use
+of any foreignKey in your associations definitions. Nevertheless sticking
+to conventions will make your code less repetitive, easier to read and to
+maintain.</p>
+</div>
+<p>If we had the <code class="docutils literal"><span class="pre">UsersTable</span></code> and <code class="docutils literal"><span class="pre">AddressesTable</span></code> classes made we could make
+the association with the following code:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UsersTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasOne</span><span class="p">(</span><span class="s1">'Addresses'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you need more control, you can define your associations using array syntax.
+For example, you might want to limit the association to include only certain
+records:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UsersTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasOne</span><span class="p">(</span><span class="s1">'Addresses'</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">'className'</span> <span class="o">=&gt;</span> <span class="s1">'Addresses'</span><span class="p">,</span>
+            <span class="s1">'conditions'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'Addresses.primary'</span> <span class="o">=&gt;</span> <span class="s1">'1'</span><span class="p">],</span>
+            <span class="s1">'dependent'</span> <span class="o">=&gt;</span> <span class="k">true</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Possible keys for hasOne association arrays include:</p>
+<ul class="simple">
+<li><strong>className</strong>: the class name of the table being associated to the current
+model. If you’re defining a ‘User hasOne Address’ relationship, the className
+key should equal ‘Addresses’.</li>
+<li><strong>foreignKey</strong>: the name of the foreign key found in the other table. This is
+especially handy if you need to define multiple hasOne relationships. The
+default value for this key is the underscored, singular name of the current
+model, suffixed with ‘_id’. In the example above it would default to
+‘user_id’.</li>
+<li><strong>bindingKey</strong>: The name of the column in the current table, that will be used
+for matching the <code class="docutils literal"><span class="pre">foreignKey</span></code>. If not specified, the primary key (for
+example the id column of the <code class="docutils literal"><span class="pre">Users</span></code> table) will be used.</li>
+<li><strong>conditions</strong>: an array of find() compatible conditions such as
+<code class="docutils literal"><span class="pre">['Addresses.primary'</span> <span class="pre">=&gt;</span> <span class="pre">true]</span></code></li>
+<li><strong>joinType</strong>: the type of the join to use in the SQL query, default
+is LEFT. You can use INNER if your hasOne association is always present.</li>
+<li><strong>dependent</strong>: When the dependent key is set to <code class="docutils literal"><span class="pre">true</span></code>, and an entity is
+deleted, the associated model records are also deleted. In this case we set it
+to <code class="docutils literal"><span class="pre">true</span></code> so that deleting a User will also delete her associated Address.</li>
+<li><strong>cascadeCallbacks</strong>: When this and <strong>dependent</strong> are <code class="docutils literal"><span class="pre">true</span></code>, cascaded
+deletes will load and delete entities so that callbacks are properly
+triggered. When <code class="docutils literal"><span class="pre">false</span></code>, <code class="docutils literal"><span class="pre">deleteAll()</span></code> is used to remove associated data
+and no callbacks are triggered.</li>
+<li><strong>propertyName</strong>: The property name that should be filled with data from the
+associated table into the source table results. By default this is the
+underscored &amp; singular name of the association so <code class="docutils literal"><span class="pre">address</span></code> in our example.</li>
+<li><strong>strategy</strong>: Defines the query strategy to use. Defaults to ‘join’. The other
+valid value is ‘select’, which utilizes a separate query instead.</li>
+<li><strong>finder</strong>: The finder method to use when loading associated records.</li>
+</ul>
+<p>Once this association has been defined, find operations on the Users table can
+contain the Address record if it exists:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span> <span class="c1">// In a controller or table method.</span>
+ <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$users</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">'all'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">contain</span><span class="p">([</span><span class="s1">'Addresses'</span><span class="p">]);</span>
+ <span class="k">foreach</span> <span class="p">(</span><span class="nv">$query</span> <span class="k">as</span> <span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">address</span><span class="o">-&gt;</span><span class="na">street</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The above would emit SQL that is similar to:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nx">SELECT</span> <span class="o">*</span> <span class="nx">FROM</span> <span class="nx">users</span> <span class="nx">INNER</span> <span class="nx">JOIN</span> <span class="nx">addresses</span> <span class="nx">ON</span> <span class="nx">addresses</span><span class="o">.</span><span class="nx">user_id</span> <span class="o">=</span> <span class="nx">users</span><span class="o">.</span><span class="nx">id</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="belongsto-associations">
+<h2>BelongsTo Associations<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/associations.html#belongsto-associations" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have Address data access from the User table, let’s define a
+belongsTo association in the Addresses table in order to get access to related
+User data. The belongsTo association is a natural complement to the hasOne and
+hasMany associations.</p>
+<p>When keying your database tables for a belongsTo relationship, follow this
+convention:</p>
+<p><strong>belongsTo:</strong> the <em>current</em> model contains the foreign key.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="58%">
+<col width="42%">
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Relation</th>
+<th class="head">Schema</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Addresses belongsTo Users</td>
+<td>addresses.user_id</td>
+</tr>
+<tr class="row-odd"><td>Mentors belongsTo Doctors</td>
+<td>mentors.doctor_id</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If a Table contains a foreign key, it belongs to the other Table.</p>
+</div>
+<p>We can define the belongsTo association in our Addresses table as follows:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AddressesTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="s1">'Users'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We can also define a more specific relationship using array
+syntax:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AddressesTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="s1">'Users'</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">'foreignKey'</span> <span class="o">=&gt;</span> <span class="s1">'user_id'</span><span class="p">,</span>
+            <span class="s1">'joinType'</span> <span class="o">=&gt;</span> <span class="s1">'INNER'</span><span class="p">,</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Possible keys for belongsTo association arrays include:</p>
+<ul class="simple">
+<li><strong>className</strong>: the class name of the model being associated to the current
+model. If you’re defining a ‘Profile belongsTo User’ relationship, the
+className key should equal ‘Users’.</li>
+<li><strong>foreignKey</strong>: the name of the foreign key found in the current table. This
+is especially handy if you need to define multiple belongsTo relationships to
+the same model. The default value for this key is the underscored, singular
+name of the other model, suffixed with <code class="docutils literal"><span class="pre">_id</span></code>.</li>
+<li><strong>bindingKey</strong>: The name of the column in the other table, that will be used
+for matching the <code class="docutils literal"><span class="pre">foreignKey</span></code>. If not specified, the primary key (for
+example the id column of the <code class="docutils literal"><span class="pre">Users</span></code> table) will be used.</li>
+<li><strong>conditions</strong>: an array of find() compatible conditions or SQL strings such
+as <code class="docutils literal"><span class="pre">['Users.active'</span> <span class="pre">=&gt;</span> <span class="pre">true]</span></code></li>
+<li><strong>joinType</strong>: the type of the join to use in the SQL query, default is LEFT
+which may not fit your needs in all situations, INNER may be helpful when you
+want everything from your main and associated models or nothing at all.</li>
+<li><strong>propertyName</strong>: The property name that should be filled with data from the
+associated table into the source table results. By default this is the
+underscored &amp; singular name of the association so <code class="docutils literal"><span class="pre">user</span></code> in our example.</li>
+<li><strong>strategy</strong>: Defines the query strategy to use. Defaults to ‘join’. The other
+valid value is ‘select’, which utilizes a separate query instead.</li>
+<li><strong>finder</strong>: The finder method to use when loading associated records.</li>
+</ul>
+<p>Once this association has been defined, find operations on the User table can
+contain the Address record if it exists:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="c1">// In a controller or table method.</span>
+<span class="nv">$query</span> <span class="o">=</span> <span class="nv">$addresses</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">'all'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">contain</span><span class="p">([</span><span class="s1">'Users'</span><span class="p">]);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$query</span> <span class="k">as</span> <span class="nv">$address</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$address</span><span class="o">-&gt;</span><span class="na">user</span><span class="o">-&gt;</span><span class="na">username</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The above would emit SQL that is similar to:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nx">SELECT</span> <span class="o">*</span> <span class="nx">FROM</span> <span class="nx">addresses</span> <span class="nx">LEFT</span> <span class="nx">JOIN</span> <span class="nx">users</span> <span class="nx">ON</span> <span class="nx">addresses</span><span class="o">.</span><span class="nx">user_id</span> <span class="o">=</span> <span class="nx">users</span><span class="o">.</span><span class="nx">id</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hasmany-associations">
+<h2>HasMany Associations<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/associations.html#hasmany-associations" title="Permalink to this headline">¶</a></h2>
+<p>An example of a hasMany association is “Article hasMany Comments”. Defining this
+association will allow us to fetch an article’s comments when the article is
+loaded.</p>
+<p>When creating your database tables for a hasMany relationship, follow this
+convention:</p>
+<p><strong>hasMany:</strong> the <em>other</em> model contains the foreign key.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="58%">
+<col width="42%">
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Relation</th>
+<th class="head">Schema</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Article hasMany Comment</td>
+<td>Comment.article_id</td>
+</tr>
+<tr class="row-odd"><td>Product hasMany Option</td>
+<td>Option.product_id</td>
+</tr>
+<tr class="row-even"><td>Doctor hasMany Patient</td>
+<td>Patient.doctor_id</td>
+</tr>
+</tbody>
+</table>
+<p>We can define the hasMany association in our Articles model as follows:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ArticlesTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="s1">'Comments'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We can also define a more specific relationship using array syntax:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ArticlesTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="s1">'Comments'</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">'foreignKey'</span> <span class="o">=&gt;</span> <span class="s1">'article_id'</span><span class="p">,</span>
+            <span class="s1">'dependent'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Sometimes you may want to configure composite keys in your associations:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="c1">// Within ArticlesTable::initialize() call</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="s1">'Reviews'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">'foreignKey'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'article_id'</span><span class="p">,</span>
+        <span class="s1">'article_hash'</span>
+    <span class="p">]</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<p>Relying on the example above, we have passed an array containing the desired
+composite keys to <code class="docutils literal"><span class="pre">foreignKey</span></code>. By default the <code class="docutils literal"><span class="pre">bindingKey</span></code> would be
+automatically defined as <code class="docutils literal"><span class="pre">id</span></code> and <code class="docutils literal"><span class="pre">hash</span></code> respectively, but let’s assume that
+you need to specify different binding fields than the defaults, you can setup it
+manually in your <code class="docutils literal"><span class="pre">bindingKeys</span></code> array:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="c1">// Within ArticlesTable::initialize() call</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="s1">'Reviews'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">'foreignKey'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'article_id'</span><span class="p">,</span>
+        <span class="s1">'article_hash'</span>
+    <span class="p">],</span>
+    <span class="s1">'bindingKey'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'whatever_id'</span><span class="p">,</span>
+        <span class="s1">'whatever_hash'</span>
+    <span class="p">]</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<p>It is important to note that <code class="docutils literal"><span class="pre">foreignKey</span></code> values refers to the <strong>reviews</strong>
+table and <code class="docutils literal"><span class="pre">bindingKey</span></code> values refers to the <strong>articles</strong> table.</p>
+<p>Possible keys for hasMany association arrays include:</p>
+<ul class="simple">
+<li><strong>className</strong>: the class name of the model being associated to
+the current model. If you’re defining a ‘User hasMany Comment’
+relationship, the className key should equal ‘Comments’.</li>
+<li><strong>foreignKey</strong>: the name of the foreign key found in the other
+table. This is especially handy if you need to define multiple
+hasMany relationships. The default value for this key is the
+underscored, singular name of the actual model, suffixed with
+‘_id’.</li>
+<li><strong>bindingKey</strong>: The name of the column in the current table, that will be used
+for matching the <code class="docutils literal"><span class="pre">foreignKey</span></code>. If not specified, the primary key (for
+example the id column of the <code class="docutils literal"><span class="pre">Articles</span></code> table) will be used.</li>
+<li><strong>conditions</strong>: an array of find() compatible conditions or SQL
+strings such as <code class="docutils literal"><span class="pre">['Comments.visible'</span> <span class="pre">=&gt;</span> <span class="pre">true]</span></code></li>
+<li><strong>sort</strong>  an array of find() compatible order clauses or SQL
+strings such as <code class="docutils literal"><span class="pre">['Comments.created'</span> <span class="pre">=&gt;</span> <span class="pre">'ASC']</span></code></li>
+<li><strong>dependent</strong>: When dependent is set to <code class="docutils literal"><span class="pre">true</span></code>, recursive model
+deletion is possible. In this example, Comment records will be
+deleted when their associated Article record has been deleted.</li>
+<li><strong>cascadeCallbacks</strong>: When this and <strong>dependent</strong> are <code class="docutils literal"><span class="pre">true</span></code>, cascaded
+deletes will load and delete entities so that callbacks are properly
+triggered. When <code class="docutils literal"><span class="pre">false</span></code>, <code class="docutils literal"><span class="pre">deleteAll()</span></code> is used to remove associated data
+and no callbacks are triggered.</li>
+<li><strong>propertyName</strong>: The property name that should be filled with data from the
+associated table into the source table results. By default this is the
+underscored &amp; plural name of the association so <code class="docutils literal"><span class="pre">comments</span></code> in our example.</li>
+<li><strong>strategy</strong>: Defines the query strategy to use. Defaults to ‘select’. The
+other valid value is ‘subquery’, which replaces the <code class="docutils literal"><span class="pre">IN</span></code> list with an
+equivalent subquery.</li>
+<li><strong>saveStrategy</strong>: Either ‘append’ or ‘replace’. When ‘append’ the current
+records are appended to any records in the database. When ‘replace’ associated
+records not in the current set will be removed. If the foreign key is a null
+able column or if <code class="docutils literal"><span class="pre">dependent</span></code> is true records will be orphaned.</li>
+<li><strong>finder</strong>: The finder method to use when loading associated records.</li>
+</ul>
+<p>Once this association has been defined, find operations on the Articles table
+can contain the Comment records if they exist:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="c1">// In a controller or table method.</span>
+<span class="nv">$query</span> <span class="o">=</span> <span class="nv">$articles</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">'all'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">contain</span><span class="p">([</span><span class="s1">'Comments'</span><span class="p">]);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$query</span> <span class="k">as</span> <span class="nv">$article</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$article</span><span class="o">-&gt;</span><span class="na">comments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The above would emit SQL that is similar to:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nx">SELECT</span> <span class="o">*</span> <span class="nx">FROM</span> <span class="nx">articles</span><span class="p">;</span>
+<span class="nx">SELECT</span> <span class="o">*</span> <span class="nx">FROM</span> <span class="nx">comments</span> <span class="nx">WHERE</span> <span class="nx">article_id</span> <span class="nx">IN</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>When the subquery strategy is used, SQL similar to the following will be
+generated:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nx">SELECT</span> <span class="o">*</span> <span class="nx">FROM</span> <span class="nx">articles</span><span class="p">;</span>
+<span class="nx">SELECT</span> <span class="o">*</span> <span class="nx">FROM</span> <span class="nx">comments</span> <span class="nx">WHERE</span> <span class="nx">article_id</span> <span class="nx">IN</span> <span class="p">(</span><span class="nx">SELECT</span> <span class="nx">id</span> <span class="nx">FROM</span> <span class="nx">articles</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You may want to cache the counts for your hasMany associations. This is useful
+when you often need to show the number of associated records, but don’t want to
+load all the records just to count them. For example, the comment count on any
+given article is often cached to make generating lists of articles more
+efficient. You can use the <a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/behaviors/counter-cache.html"><span class="doc">CounterCacheBehavior</span></a> to cache counts of associated records.</p>
+<p>You should make sure that your database tables do not contain columns that match
+association property names. If for example you have counter fields that conflict
+with association properties, you must either rename the association property, or
+the column name.</p>
+</div>
+<div class="section" id="belongstomany-associations">
+<h2>BelongsToMany Associations<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/associations.html#belongstomany-associations" title="Permalink to this headline">¶</a></h2>
+<p>An example of a BelongsToMany association is “Article BelongsToMany Tags”, where
+the tags from one article are shared with other articles.  BelongsToMany is
+often referred to as “has and belongs to many”, and is a classic “many to many”
+association.</p>
+<p>The main difference between hasMany and BelongsToMany is that the link between
+the models in a BelongsToMany association are not exclusive. For example, we are
+joining our Articles table with a Tags table. Using ‘funny’ as a Tag for my
+Article, doesn’t “use up” the tag. I can also use it on the next article
+I write.</p>
+<p>Three database tables are required for a BelongsToMany association. In the
+example above we would need tables for <code class="docutils literal"><span class="pre">articles</span></code>, <code class="docutils literal"><span class="pre">tags</span></code> and
+<code class="docutils literal"><span class="pre">articles_tags</span></code>.  The <code class="docutils literal"><span class="pre">articles_tags</span></code> table contains the data that links
+tags and articles together. The joining table is named after the two tables
+involved, separated with an underscore by convention. In its simplest form, this
+table consists of <code class="docutils literal"><span class="pre">article_id</span></code> and <code class="docutils literal"><span class="pre">tag_id</span></code>.</p>
+<p><strong>belongsToMany</strong> requires a separate join table that includes both <em>model</em>
+names.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%">
+<col width="70%">
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Relationship</th>
+<th class="head">Pivot Table Fields</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Article belongsToMany Tag</td>
+<td>articles_tags.id, articles_tags.tag_id, articles_tags.article_id</td>
+</tr>
+<tr class="row-odd"><td>Patient belongsToMany Doctor</td>
+<td>doctors_patients.id, doctors_patients.doctor_id,
+doctors_patients.patient_id.</td>
+</tr>
+</tbody>
+</table>
+<p>We can define the belongsToMany association in both our models as follows:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="c1">// In src/Model/Table/ArticlesTable.php</span>
+<span class="k">class</span> <span class="nc">ArticlesTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsToMany</span><span class="p">(</span><span class="s1">'Tags'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// In src/Model/Table/TagsTable.php</span>
+<span class="k">class</span> <span class="nc">TagsTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsToMany</span><span class="p">(</span><span class="s1">'Articles'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We can also define a more specific relationship using array
+syntax:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="c1">// In src/Model/Table/ArticlesTable.php</span>
+<span class="k">class</span> <span class="nc">ArticlesTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsToMany</span><span class="p">(</span><span class="s1">'Tags'</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">'joinTable'</span> <span class="o">=&gt;</span> <span class="s1">'articles_tags'</span><span class="p">,</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// In src/Model/Table/TagsTable.php</span>
+<span class="k">class</span> <span class="nc">TagsTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsToMany</span><span class="p">(</span><span class="s1">'Articles'</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">'joinTable'</span> <span class="o">=&gt;</span> <span class="s1">'articles_tags'</span><span class="p">,</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Possible keys for belongsToMany association arrays include:</p>
+<ul class="simple">
+<li><strong>className</strong>: the class name of the model being associated to
+the current model. If you’re defining a ‘Article belongsToMany Tag’
+relationship, the className key should equal ‘Tags.’</li>
+<li><strong>joinTable</strong>: The name of the join table used in this
+association (if the current table doesn’t adhere to the naming
+convention for belongsToMany join tables). By default this table
+name will be used to load the Table instance for the join/pivot table.</li>
+<li><strong>foreignKey</strong>: the name of the foreign key found in the current
+model or list in case of composite foreign keys.
+This is especially handy if you need to define multiple
+belongsToMany relationships. The default value for this key is the
+underscored, singular name of the current model, suffixed with ‘_id’.</li>
+<li><strong>targetForeignKey</strong>: the name of the foreign key found in the target
+model or list in case of composite foreign keys.
+The default value for this key is the underscored, singular name of
+the target model, suffixed with ‘_id’.</li>
+<li><strong>conditions</strong>: an array of find() compatible conditions.  If you have
+conditions on an associated table, you should use a ‘through’ model, and
+define the necessary belongsTo associations on it.</li>
+<li><strong>sort</strong> an array of find() compatible order clauses.</li>
+<li><strong>dependent</strong>: When the dependent key is set to <code class="docutils literal"><span class="pre">false</span></code>, and an entity is
+deleted, the data of the join table will not be deleted.</li>
+<li><strong>through</strong> Allows you to provide a either the name of the Table instance you
+want used on the join table, or the instance itself. This makes customizing
+the join table keys possible, and allows you to customize the behavior of the
+pivot table.</li>
+<li><strong>cascadeCallbacks</strong>: When this is <code class="docutils literal"><span class="pre">true</span></code>, cascaded deletes will load and
+delete entities so that callbacks are properly triggered on join table
+records. When <code class="docutils literal"><span class="pre">false</span></code>, <code class="docutils literal"><span class="pre">deleteAll()</span></code> is used to remove associated data and
+no callbacks are triggered. This defaults to <code class="docutils literal"><span class="pre">false</span></code> to help reduce
+overhead.</li>
+<li><strong>propertyName</strong>: The property name that should be filled with data from the
+associated table into the source table results. By default this is the
+underscored &amp; plural name of the association, so <code class="docutils literal"><span class="pre">tags</span></code> in our example.</li>
+<li><strong>strategy</strong>: Defines the query strategy to use. Defaults to ‘select’. The
+other valid value is ‘subquery’, which replaces the <code class="docutils literal"><span class="pre">IN</span></code> list with an
+equivalent subquery.</li>
+<li><strong>saveStrategy</strong>: Either ‘append’ or ‘replace’. Defaults to ‘replace’.
+Indicates the mode to be used for saving associated entities. The former will
+only create new links between both side of the relation and the latter will
+do a wipe and replace to create the links between the passed entities when
+saving.</li>
+<li><strong>finder</strong>: The finder method to use when loading associated records.</li>
+</ul>
+<p>Once this association has been defined, find operations on the Articles table can
+contain the Tag records if they exist:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="c1">// In a controller or table method.</span>
+<span class="nv">$query</span> <span class="o">=</span> <span class="nv">$articles</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">'all'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">contain</span><span class="p">([</span><span class="s1">'Tags'</span><span class="p">]);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$query</span> <span class="k">as</span> <span class="nv">$article</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$article</span><span class="o">-&gt;</span><span class="na">tags</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The above would emit SQL that is similar to:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nx">SELECT</span> <span class="o">*</span> <span class="nx">FROM</span> <span class="nx">articles</span><span class="p">;</span>
+<span class="nx">SELECT</span> <span class="o">*</span> <span class="nx">FROM</span> <span class="nx">tags</span>
+<span class="nx">INNER</span> <span class="nx">JOIN</span> <span class="nx">articles_tags</span> <span class="nx">ON</span> <span class="p">(</span>
+  <span class="nx">tags</span><span class="o">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">article_tags</span><span class="o">.</span><span class="nx">tag_id</span>
+  <span class="k">AND</span> <span class="nx">article_id</span> <span class="nx">IN</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>When the subquery strategy is used, SQL similar to the following will be
+generated:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nx">SELECT</span> <span class="o">*</span> <span class="nx">FROM</span> <span class="nx">articles</span><span class="p">;</span>
+<span class="nx">SELECT</span> <span class="o">*</span> <span class="nx">FROM</span> <span class="nx">tags</span>
+<span class="nx">INNER</span> <span class="nx">JOIN</span> <span class="nx">articles_tags</span> <span class="nx">ON</span> <span class="p">(</span>
+  <span class="nx">tags</span><span class="o">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">article_tags</span><span class="o">.</span><span class="nx">tag_id</span>
+  <span class="k">AND</span> <span class="nx">article_id</span> <span class="nx">IN</span> <span class="p">(</span><span class="nx">SELECT</span> <span class="nx">id</span> <span class="nx">FROM</span> <span class="nx">articles</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="using-the-through-option">
+<span id="id1"></span><h3>Using the ‘through’ Option<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/associations.html#using-the-through-option" title="Permalink to this headline">¶</a></h3>
+<p>If you plan on adding extra information to the join/pivot table, or if you need
+to use join columns outside of the conventions, you will need to define the
+<code class="docutils literal"><span class="pre">through</span></code> option. The <code class="docutils literal"><span class="pre">through</span></code> option provides you full control over how
+the belongsToMany association will be created.</p>
+<p>It is sometimes desirable to store additional data with a many to many
+association. Consider the following:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nx">Student</span> <span class="nx">BelongsToMany</span> <span class="nx">Course</span>
+<span class="nx">Course</span> <span class="nx">BelongsToMany</span> <span class="nx">Student</span>
+</pre></div>
+</div>
+<p>A Student can take many Courses and a Course can be taken by many Students. This
+is a simple many to many association. The following table would suffice:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nx">id</span> <span class="o">|</span> <span class="nx">student_id</span> <span class="o">|</span> <span class="nx">course_id</span>
+</pre></div>
+</div>
+<p>Now what if we want to store the number of days that were attended by the
+student on the course and their final grade? The table we’d want would be:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nx">id</span> <span class="o">|</span> <span class="nx">student_id</span> <span class="o">|</span> <span class="nx">course_id</span> <span class="o">|</span> <span class="nx">days_attended</span> <span class="o">|</span> <span class="nx">grade</span>
+</pre></div>
+</div>
+<p>The way to implement our requirement is to use a <strong>join model</strong>, otherwise known
+as a <strong>hasMany through</strong> association. That is, the association is a model
+itself. So, we can create a new model CoursesMemberships. Take a look at the
+following models.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">StudentsTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsToMany</span><span class="p">(</span><span class="s1">'Courses'</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">'through'</span> <span class="o">=&gt;</span> <span class="s1">'CourseMemberships'</span><span class="p">,</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">CoursesTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsToMany</span><span class="p">(</span><span class="s1">'Students'</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">'through'</span> <span class="o">=&gt;</span> <span class="s1">'CourseMemberships'</span><span class="p">,</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">CoursesMembershipsTable</span> <span class="k">extends</span> <span class="nx">Table</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="s1">'Students'</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="s1">'Courses'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The CoursesMemberships join table uniquely identifies a given Student’s
+participation on a Course in addition to extra meta-information.</p>
+</div>
+<div class="section" id="default-association-conditions">
+<h3>Default Association Conditions<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/associations.html#default-association-conditions" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">finder</span></code> option allows you to use a <a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/retrieving-data-and-resultsets.html#custom-find-methods"><span class="std std-ref">custom finder</span></a> to load associated record data. This lets you encapsulate
+your queries better and keep your code DRY’er. There are some limitations when
+using finders to load data in associations that are loaded using joins
+(belongsTo/hasOne). Only the following aspects of the query will be applied to
+the root query:</p>
+<ul class="simple">
+<li>WHERE conditions.</li>
+<li>Additional joins.</li>
+<li>Contained associations.</li>
+</ul>
+<p>Other aspects of the query, such as selected columns, order, group by, having
+and other sub-statements, will not be applied to the root query. Associations
+that are <em>not</em> loaded through joins (hasMany/belongsToMany), do not have the
+above restrictions and can also use result formatters or map/reduce functions.</p>
+</div>
+<div class="section" id="loading-associations">
+<h3>Loading Associations<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/associations.html#loading-associations" title="Permalink to this headline">¶</a></h3>
+<p>Once you’ve defined your associations you can <a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/retrieving-data-and-resultsets.html#eager-loading-associations"><span class="std std-ref">eager load associations</span></a> when fetching results.</p>
+</div>
+</div>
+</div>
+
+
+			</div>
+		</div>
+
+		
+		<div class="col-md-3 col-md-pull-9 pull-off hidden-xs hidden-sm" lang="en">
+			<aside class="sidebar">
+				<div class="mb30 row">
+<div id="sidebar-navigation" class="hidden-xs">
+	<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/intro.html">CakePHP at a Glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/appendices/3-x-migration-guide.html">3.x Migration Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/tutorials-and-examples.html">Tutorials &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/development/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/development/routing.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/controllers/request-response.html">Request &amp; Response Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/controllers/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/views.html">Views</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm.html">Database Access &amp; ORM</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/database-basics.html">Database Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/query-builder.html">Query Builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/table-objects.html">Table Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html">Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/retrieving-data-and-resultsets.html">Retrieving Data &amp; Results Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/validation.html">Validating Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/saving-data.html">Saving Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/deleting-data.html">Deleting Data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="http://book.cakephp.org/3.0/en/orm/associations.html#">Associations - Linking Tables Together</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/behaviors.html">Behaviors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/schema-system.html">Schema System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/console-and-shells/orm-cache.html">ORM Cache Shell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/controllers/components/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/bake.html">Bake Console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/caching.html">Caching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/console-and-shells.html">Shells, Tasks &amp; Console Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/development/debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/deployment.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/email.html">Email</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/development/errors.html">Error &amp; Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/events.html">Events System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/internationalization-and-localization.html">Internationalization &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/form.html">Modelless Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/controllers/components/pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/development/rest.html">REST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/development/sessions.html">Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/development/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/validation.html">Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/app.html">App Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/collections.html">Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/file-folder.html">Folder &amp; File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/hash.html">Hash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/httpclient.html">Http Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/inflector.html">Inflector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/number.html">Number</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/registry-objects.html">Registry Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/text.html">Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/time.html">Date &amp; Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/xml.html">Xml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/global-constants-and-functions.html">Constants &amp; Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/chronos.html">Chronos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/debug-kit.html">Debug Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/elasticsearch.html">ElasticSearch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/upgrade-tool.html">Upgrade Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/appendices.html">Appendices</a></li>
+</ul>
+
+</div>
+
+				</div>
+			</aside>
+			<aside class="sidebar">
+				<div class="mb30 row">
+				</div>
+			</aside>
+		</div>
+	</div>
+</div>
+
+<section id="socials" class="back-3">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-5  social text-center">
+				<div class="col-sm-3 col-xs-3">
+					<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Associations - Linking Tables Together_files/fTmIQU3LxvB.html" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Associations - Linking Tables Together_files/fTmIQU3LxvB(1).html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+						<script>(function(d, s, id) {
+						  var js, fjs = d.getElementsByTagName(s)[0];
+						  if (d.getElementById(id)) return;
+						  js = d.createElement(s); js.id = id;
+						  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+						  fjs.parentNode.insertBefore(js, fjs);
+						}(document, 'script', 'facebook-jssdk'));
+						</script>
+						<div id="fb-root-face" class="fb-like fb_iframe_widget" data-href="https://www.facebook.com/CakePHP/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=&amp;container_width=102&amp;href=https%3A%2F%2Fwww.facebook.com%2FCakePHP%2F&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;share=false&amp;show_faces=true"><span style="vertical-align: bottom; width: 85px; height: 20px;"><iframe name="f3fec7ada328de" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./Associations - Linking Tables Together_files/like.html" style="border: none; visibility: visible; width: 85px; height: 20px;" class=""></iframe></span></div>
+				</div>
+
+				<div class="col-sm-3 col-xs-3">
+					<iframe src="./Associations - Linking Tables Together_files/github-btn.html" frameborder="0" scrolling="0" width="120px" height="30px"></iframe>
+				</div>
+
+				<div class="col-sm-3 col-xs-3">
+					<iframe src="./Associations - Linking Tables Together_files/github-btn(1).html" frameborder="0" scrolling="0" width="120px" height="30px"></iframe>
+				</div>
+
+				<div class="col-sm-3 col-xs-3">
+					<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-follow-button twitter-follow-button-rendered" title="Twitter Follow Button" src="./Associations - Linking Tables Together_files/follow_button.f7908d4abf5ce27173c69bdbb93aedb6.en.html" style="position: static; visibility: visible; width: 62px; height: 20px;" data-screen-name="CakePHP"></iframe>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-7 social-footer text-center ">
+				<a href="https://twitter.com/cakephp" data-toggle="tooltip" title="" data-original-title="Twitter"><i class="fa icon-social fa-twitter"></i>
+				</a><a href="http://www.facebook.com/groups/cake.community" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa icon-social fa-facebook"></i></a>
+				<a href="http://goo.gl/mSC0s" data-toggle="tooltip" title="" data-original-title="Google Plus"><i class="fa icon-social  fa-google-plus"></i></a>
+				<a href="http://www.youtube.com/user/CakePHP" data-toggle="tooltip" title="" data-original-title="Youtube"><i class="fa icon-social fa-youtube-play"></i></a>
+				<a href="https://github.com/cakephp" data-toggle="tooltip" title="" data-original-title="Github"><i class="fa icon-social fa-git"></i></a>
+				<a href="http://cakesf.herokuapp.com/" target="_blank" title="" data-toggle="tooltip" data-original-title="Slack"><i class="fa fa-slack icon-social"></i></a>
+				<a href="http://stackoverflow.com/tags/cakephp" data-toggle="tooltip" title="" data-original-title="Stack Overflow"><i class="fa icon-social fa-stack-overflow"></i></a>
+				<a href="http://webchat.freenode.net/?channels=cakephp" data-toggle="tooltip" title="" class="icon-irc" data-original-title="IRC">#IRC</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer id="footer" class="footer-wrapper">
+	<div class="container">
+
+		<div class="row col-p30">
+			<div class="col-sm-12 col-md-3">
+				<div class="footer-widget t-footer">
+					<div class="col-md-12">
+						<a href="https://www.openhub.net/p/cakephp">
+							<img src="./Associations - Linking Tables Together_files/open-hub.png">
+						</a>
+						<div class="mt10">
+							<a href="https://www.rackspace.com/">
+								<img src="./Associations - Linking Tables Together_files/rackspace.png">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-12 col-md-9">
+				<div class="col-md-3 col-sm-6 business-solution">
+					<ul class="footer-menu">
+						<li class="menu-title">
+	<a href="http://cakephp.org/business-solutions"><i class="fa fa-menu-title fa-briefcase"></i>Business Solutions</a>
+</li>
+<li class="menu-title mt30">
+	<a href="http://cakephp.org/showcase"><i class="fa fa-menu-title fa-desktop"></i>Showcase</a>
+</li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<ul class="footer-menu">
+						
+<li class="menu-title">
+	<i class="fa fa-menu-title fa-book"></i>Documentation
+</li>
+
+<li><a href="http://book.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Book</a></li>
+<li><a href="http://api.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>API</a></li>
+
+<li><a href="http://cakephp.org/documentation/videos"><i class="fa fa-menu fa-chevron-right"></i>Videos</a></li>
+<li><a href="http://cakephp.org/privacy"><i class="fa fa-menu fa-chevron-right"></i>Privacy Policy</a></li>
+<li><a href="http://cakephp.org/pages/trademark"><i class="fa fa-menu fa-chevron-right"></i>Logos &amp; Trademarks</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<ul class="footer-menu">
+						
+<li class="menu-title"><i class="fa fa-menu-title fa-users"></i>Community</li>
+
+<li><a href="http://cakephp.org/team"><i class="fa fa-menu fa-chevron-right"></i>Team</a></li>
+<li><a href="https://github.com/cakephp/cakephp/issues"><i class="fa fa-menu fa-chevron-right"></i>Issues (Github)</a></li>
+<li><a href="http://www.youtube.com/user/CakePHP"><i class="fa fa-menu fa-chevron-right"></i>YouTube Channel</a></li>
+<li><a href="http://cakephp.org/get-involved"><i class="fa fa-menu fa-chevron-right"></i>Get Involved</a></li>
+
+<li><a href="http://bakery.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Bakery</a></li>
+<li><a href="https://github.com/FriendsOfCake/awesome-cakephp"><i class="fa fa-menu fa-chevron-right"></i>Featured Resources</a></li>
+<li><a href="http://cakephp.org/newsletter/signup"><i class="fa fa-menu fa-chevron-right"></i>Newsletter</a></li>
+<li><a href="http://certification.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Certification</a></li>
+<li><a href="http://my.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>My CakePHP</a></li>
+<li><a href="http://cakefest.org/"><i class="fa fa-menu fa-chevron-right"></i>CakeFest</a></li>
+<li><a href="http://www.facebook.com/groups/cake.community"><i class="fa fa-menu fa-chevron-right"></i>Facebook</a></li>
+<li><a href="http://twitter.com/cakephp"><i class="fa fa-menu fa-chevron-right"></i>Twitter</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<ul class="footer-menu">
+						
+<li class="menu-title"><i class="fa fa-menu-title fa-comments-o"></i>Help &amp; Support</li>
+
+<li><a href="http://discourse.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Forum</a></li>
+<li><a href="http://stackoverflow.com/tags/cakephp"><i class="fa fa-menu fa-chevron-right"></i>Stack Overflow</a></li>
+<li><a href="http://webchat.freenode.net/?channels=cakephp"><i class="fa fa-menu fa-chevron-right"></i>IRC</a></li>
+<li><a href="http://cakesf.herokuapp.com/"><i class="fa fa-menu fa-chevron-right"></i>Slack</a></li>
+<li><a href="http://cakedc.com/"><i class="fa fa-menu fa-chevron-right"></i>Paid Support</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 text-center mt30">
+				<p class="copyright">
+							© Copyright 2016, Cake Software Foundation, Inc.
+						Last updated on Nov 17, 2016.
+						Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.5.
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<div id="inline-search-results"></div>
+
+
+</div>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-743287-3']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+  
+</body></html>

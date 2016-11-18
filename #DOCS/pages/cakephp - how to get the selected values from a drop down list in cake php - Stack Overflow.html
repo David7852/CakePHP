@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<!-- saved from url=(0108)http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php -->
+<html itemscope="" itemtype="http://schema.org/QAPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com">
+    <meta property="og:type" content="website">
+
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&amp;a">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="how to get the selected values from a drop down list in cake php">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I’m new to cake php. I need to get the user selected value from a drop down list in cake php. my view code is :
+
+echo $this-&amp;gt;Form-&amp;gt;create(&#39;order&#39;);
+echo $this-&amp;gt;Form-&amp;gt;input(&#39;status&#39;, arr...">
+    <meta property="og:url" content="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php">
+    <link rel="canonical" href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php">
+
+    
+    
+    <script type="text/javascript" async="" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/ados"></script><script async="" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/quant.js.download"></script><script async="" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/beacon.js.download"></script><script async="" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/analytics.js.download"></script><script type="text/javascript" async="" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/ados.js.download"></script><script src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/jquery.min.js.download"></script>
+    <script src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/stub.en.js.download"></script>
+    <link rel="stylesheet" type="text/css" href="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/all.css">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;how to get the selected values from a drop down list in cake php&#39;" href="http://stackoverflow.com/feeds/question/18909899">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:1,shownCommentCount:1,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:18909899});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '18909899');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","serverTime":1479441189,"routeName":"Questions/Show","site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableInsertDocLinkDialog":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"3a8c9dcbe440a6d4837ca27138d759b0","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true,"ab":{"be_nice_anons_edit":{"v":"b","g":2}}},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}},"story":{"minCompleteBodyLength":75}}, {"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true,"enableNewLinkInsertDialog":true,"enableImgurHttps":true},"tags":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true},"flags":{"allowRetractingFlags":true},"snippets":{"snippetsEnabled":true,"renderDomain":"stacksnippets.net"},"markdown":{"asteriskIntraWordEmphasis":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"fc80de1d2e90","js/moderator.en.js":"14a3f77b39a8","js/full-anon.en.js":"35645d4b913c","js/full.en.js":"2a5f6b67ddbb","js/wmd.en.js":"cb5ed3fbf6f5","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"dbc0512bc7dd","js/help.en.js":"096be5f27774","js/tageditor.en.js":"9c6df10dabc4","js/tageditornew.en.js":"cf1c15dceeac","js/inline-tag-editing.en.js":"77dde44800e2","js/revisions.en.js":"47de10a8358f","js/review.en.js":"eb15d5068257","js/tagsuggestions.en.js":"78eee7c19ab2","js/post-validation.en.js":"8013567bb23d","js/explore-qlist.en.js":"88f824a42b1a","js/events.en.js":"4137a0ee0e95","js/keyboard-shortcuts.en.js":"08273b12c2b4","js/external-editor.en.js":"71095ef40e9d","js/external-editor.en.js":"71095ef40e9d","js/snippet-javascript.en.js":"bb9cbf50086e","js/snippet-javascript-codemirror.en.js":"f76da29165df"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+<script async="" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/full-anon.en.js.download"></script><script type="text/javascript" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/adFeedback.js.download"></script><link rel="stylesheet" href="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/adFeedback.css"><script async="" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/snippet-javascript.en.js.download"></script><script async="" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/post-validation.en.js.download"></script><script async="" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/prettify-full.en.js.download"></script><script async="" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/external-editor.en.js.download"></script><link type="text/css" rel="stylesheet" href="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/jobs-multi.min.css"></head>
+<body class="question-page new-topbar">
+    <noscript>&lt;div id="noscript-padding"&gt;&lt;/div&gt;</noscript>
+            <script>(function () { var old = $.fn.contents; $.fn.contents = function () { try { return old.apply(this, arguments); } catch (e) { return $([]); } } })()</script>
+        
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+    <div class="topbar-dialog siteSwitcher-dialog dno">
+        <div class="header">
+            <h3><a href="http://stackoverflow.com/">current community</a>
+            </h3>
+        </div>
+        <div class="modal-content current-site-container">
+            <ul class="current-site">
+                    <li>
+                            <div class="related-links">
+                    <a href="http://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })" data-vivaldi-spatnav-clickable="1">chat</a>
+            </div>
+
+
+
+
+    <a href="http://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="
+        site_switcher.click({ item_type:3 })" data-vivaldi-spatnav-clickable="1">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                    </li>
+                    <li class="related-site">
+                            <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                        
+
+
+
+    <a href="http://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })" data-vivaldi-spatnav-clickable="1">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                    </li>
+            </ul>
+        </div>
+
+        <div class="header" id="your-communities-header">
+            <h3>
+your communities            </h3>
+
+        </div>
+        <div class="modal-content" id="your-communities-section">
+
+                <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=%2fusers%2fstory%2fcurrent&amp;amp;utm_source=stackoverflow.com&amp;amp;utm_medium=dev-story&amp;amp;utm_campaign=signup-redirect" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })" data-vivaldi-spatnav-clickable="1">Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f18909899%2fhow-to-get-the-selected-values-from-a-drop-down-list-in-cake-php" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })" data-vivaldi-spatnav-clickable="1">log in</a> to customize your list.
+                </div>
+        </div>
+
+        <div class="header">
+            <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a>
+            </h3>
+            <a href="http://stackoverflow.blog/" class="fr">company blog</a>
+        </div>
+        <div class="modal-content">
+                <div class="child-content"></div>
+        </div>        
+    </div>
+        </div>
+
+        <div class="network-items">
+                <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 162 Stack Exchange sites" data-vivaldi-spatnav-clickable="1">
+                    <span class="hidden-text">Stack Exchange</span>
+                </a>
+
+    <a href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#" class="topbar-icon icon-inbox yes-hover js-inbox-button" title="Recent inbox messages" data-vivaldi-spatnav-clickable="1">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#" class="topbar-icon icon-achievements yes-hover js-achievements-button " data-unread-class="" title="Recent achievements: reputation, badges, and privileges earned" data-vivaldi-spatnav-clickable="1">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&amp;returnurl=%2fusers%2fstory%2fcurrent&amp;utm_source=stackoverflow.com&amp;utm_medium=dev-story&amp;utm_campaign=signup-redirect" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f18909899%2fhow-to-get-the-selected-values-from-a-drop-down-list-in-cake-php" class="login-link">log in</a>
+
+                            <a href="http://stackoverflow.com/tour">tour</a>
+        <a href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#" class="icon-help js-help-button" title="Help Center and other resources" data-vivaldi-spatnav-clickable="1">
+            help
+            <span class="triangle"></span>
+        </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })" data-vivaldi-spatnav-clickable="1">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })" data-vivaldi-spatnav-clickable="1">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="http://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })" data-vivaldi-spatnav-clickable="1">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })" data-vivaldi-spatnav-clickable="1">
+                                About Us
+                                <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://business.stackoverflow.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })" data-vivaldi-spatnav-clickable="1">
+                                Business
+                                <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+                                            </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="http://stackoverflow.com/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="Search Q&amp;A" value="" tabindex="1" autocomplete="off" maxlength="240">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stackoverflow.com/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                            <li class="youarehere">
+        <a id="nav-questions" href="http://stackoverflow.com/questions" class="js-gps-track" data-gps-track="top_nav.click({is_current:true, location:3, destination:1})" data-vivaldi-spatnav-clickable="1">
+        Questions
+        </a>
+    </li>
+
+    <li>
+        <a id="nav-jobs" href="http://stackoverflow.com/jobs?med=site-ui&amp;ref=jobs-tab" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:6})" data-vivaldi-spatnav-clickable="1">
+        Jobs
+        </a>
+    </li>
+                            <li>
+        <a id="nav-docs" href="http://stackoverflow.com/documentation" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:7})" data-vivaldi-spatnav-clickable="1">
+        Documentation
+        </a>
+    </li>
+                            <li>
+        <a id="nav-tags" href="http://stackoverflow.com/tags" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:2})" data-vivaldi-spatnav-clickable="1">
+        Tags
+        </a>
+    </li>
+
+                            <li>
+        <a id="nav-users" href="http://stackoverflow.com/users" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:3})" data-vivaldi-spatnav-clickable="1">
+        Users
+        </a>
+    </li>
+
+                            <li>
+        <a id="nav-badges" href="http://stackoverflow.com/help/badges" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:4})" data-vivaldi-spatnav-clickable="1">
+        Badges
+        </a>
+    </li>
+
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stackoverflow.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden" data-vivaldi-spatnav-clickable="1">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+
+    <div id="herobox" class="alternate">
+        <div class="test"></div>
+            <div id="close" data-vivaldi-spatnav-clickable="1">
+                <a title="click to minimize"><span>x</span> Dismiss</a>
+            </div>
+        <div class="content">
+            <b>Join the Stack Overflow Community</b>
+            <div class="separator"></div>
+            <div class="blurb">
+                Stack Overflow is a community of 6.3 million programmers, just like you, helping each other.
+                    <br>
+Join them; it only takes a minute:                    <br>
+            </div>
+            <a href="http://stackoverflow.com/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f18909899%2fhow-to-get-the-selected-values-from-a-drop-down-list-in-cake-php" id="tell-me-more" class="button" data-vivaldi-spatnav-clickable="1">Sign up</a>
+        </div>
+    </div>
+<script>
+    StackExchange.ready(function () {
+
+        var location = 0;
+        if ($("body").hasClass("questions-page")) {
+            location = 1;;
+        } else if ($("body").hasClass("question-page")) {
+            location = 1;;
+        } else if ($("body").hasClass("faq-page")) {
+            location = 5;;
+        } else if ($("body").hasClass("home-page")) {
+            location = 3;;
+        }
+
+        $('#tell-me-more').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+            });
+        });
+        $('#herobox #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+            });
+            $.cookie("hero", "mini", { path: "/", expires: 365 });
+            $.ajax({
+                url: "/hero-mini",
+                success: function (data) {
+                    $("#herobox").fadeOut("fast", function () {
+                        $("#herobox").replaceWith(data);
+                        $("#herobox-mini").fadeIn("fast");
+                    });
+                }
+            });
+            return false;
+        });
+    });
+
+</script>			<div id="question-header">
+                <h1 itemprop="name"><a href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php" class="question-hyperlink">how to get the selected values from a drop down list in cake php</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="18909899" id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1898326658",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk1898326658"><a href="http://engine.adzerk.net/r?e=eyJhdiI6MTMxNDE4LCJhdCI6NCwiYnQiOjAsImNtIjo0MDI0ODYsImNoIjoxMTc4LCJjayI6e30sImNyIjoxNDMyMDgzLCJkaSI6ImM5Zjg0ZGFjZWZhZjRlYWNiNWJjNmFkOWJhNDA1OWZiIiwiZG0iOjEsImZjIjoxNjQ0OTg4LCJmbCI6MTQyNzg4NiwiaXAiOiIxODEuMjA4Ljg3LjIwMSIsImt3IjoiY2FrZXBocCxkcm9wLWRvd24tbWVudSIsIm53IjoyMiwicGMiOjAsImVjIjowLCJwciI6MTYwNCwicnQiOjIsInJmIjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvLnZlLyIsInN0Ijo4Mjc3LCJ1ayI6InVlMS1hNGQ1MmZkM2ZkYjE0MjlmYmVjZjlhMGM5MDc2Y2NiZCIsInpuIjo0MywidHMiOjE0Nzk0NDExOTExNTEsImJmIjp0cnVlLCJwbiI6ImFkemVyazE4OTgzMjY2NTgiLCJ1ciI6Imh0dHA6Ly9lcy5zdGFja292ZXJmbG93LmNvbT91dG1fc291cmNlPXN0YWNrb3ZlcmZsb3cuY29tJnV0bV9tZWRpdW09YWQmdXRtX2NhbXBhaWduPXNvZXMtMSZ1dG1fY29udGVudD1sYi1pZGlvbWEifQ&amp;s=H9eevYLeE7YFWFMilMRB0LhNyzs" rel="nofollow" target="_blank" title=""><img src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/1c6790052ba547248865adfa4107c2ba.png" title="" alt="" border="0" width="728" height="90"></a><div class="adzerk-vote-controls" style="display:none;"><div class="adzerk-vote-option adzerk-vote-up" data-vivaldi-spatnav-clickable="1"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down" data-vivaldi-spatnav-clickable="1"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li data-vivaldi-spatnav-clickable="1"><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li data-vivaldi-spatnav-clickable="1"><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li data-vivaldi-spatnav-clickable="1"><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li data-vivaldi-spatnav-clickable="1"><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li><li data-vivaldi-spatnav-clickable="1"><label><input type="radio" value="16" name="downvoteReason">Other</label></li></ul><a href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#" class="adzerk-vote-cancel" data-vivaldi-spatnav-clickable="1">Oops! I didn't mean to do this.</a></form></div><img height="0px" width="0px" border="0" style="position:absolute;" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/i.gif"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="18909899">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear" data-vivaldi-spatnav-clickable="1">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful" data-vivaldi-spatnav-clickable="1">down vote</a>
+
+        <a class="star-off" href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#" data-vivaldi-spatnav-clickable="1">favorite</a>
+        <div class="favoritecount"><b></b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I’m new to cake php. I need to get the user selected value from a drop down list in cake php. my view code is :</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="pln">echo $this</span><span class="pun">-&gt;</span><span class="typ">Form</span><span class="pun">-&gt;</span><span class="pln">create</span><span class="pun">(</span><span class="str">'order'</span><span class="pun">);</span><span class="pln">
+echo $this</span><span class="pun">-&gt;</span><span class="typ">Form</span><span class="pun">-&gt;</span><span class="pln">input</span><span class="pun">(</span><span class="str">'status'</span><span class="pun">,</span><span class="pln"> array</span><span class="pun">(</span><span class="str">'options'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> $options</span><span class="pun">,</span><span class="pln"> </span><span class="str">'default'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="str">'--Select--'</span><span class="pun">));</span></code></pre>
+
+<p>please help me to get the values(not key).</p>
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/cakephp" class="post-tag js-gps-track" title="show questions tagged &#39;cakephp&#39;" rel="tag" data-vivaldi-spatnav-clickable="1">cakephp</a> <a href="http://stackoverflow.com/questions/tagged/drop-down-menu" class="post-tag js-gps-track" title="show questions tagged &#39;drop-down-menu&#39;" rel="tag" data-vivaldi-spatnav-clickable="1">drop-down-menu</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/q/18909899" title="short permalink to this question" class="short-link" id="link-post-18909899">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/18909899/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2013-09-20 06:04:34Z" class="relativetime">Sep 20 '13 at 6:04</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/2717623/user007"><div class="gravatar-wrapper-32"><img src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/iAQut.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/2717623/user007">user007</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">36</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="11 bronze badges"><span class="badge3"></span><span class="badgecount">11</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18909899" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-27923500" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Set the key the same as the value, that way you will get the same output the user selects.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1598113/matt-stephens" title="641 reputation" class="comment-user">Matt Stephens</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#comment27923500_18909899"><span title="2013-09-20 10:37:43Z" class="relativetime-clean">Sep 20 '13 at 10:37</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-18909899" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#" onclick=""></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								2 Answers
+                                <span style="display:none;" itemprop="answerCount">2</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a class="youarehere" href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="18911846"></a>
+<div id="answer-18911846" class="answer" data-answerid="18911846" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="18911846">
+        <a class="vote-up-off" title="This answer is useful" data-vivaldi-spatnav-clickable="1">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful" data-vivaldi-spatnav-clickable="1">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>You can simply get the user selected value into your controller's method using:</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="pln">$selected_value </span><span class="pun">=</span><span class="pln"> $this</span><span class="pun">-&gt;</span><span class="pln">request</span><span class="pun">-&gt;</span><span class="pln">data</span><span class="pun">[</span><span class="str">'order'</span><span class="pun">][</span><span class="str">'status'</span><span class="pun">];</span></code></pre>
+
+<p>You can either check the posted data into your controller's method using:</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="kwd">if</span><span class="pun">(</span><span class="pln">$this</span><span class="pun">-&gt;</span><span class="pln">request</span><span class="pun">-&gt;</span><span class="kwd">is</span><span class="pun">(</span><span class="str">'post'</span><span class="pun">))</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+   pr</span><span class="pun">(</span><span class="pln">$this</span><span class="pun">-&gt;</span><span class="pln">request</span><span class="pun">-&gt;</span><span class="pln">data</span><span class="pun">);</span><span class="kwd">die</span><span class="pun">;</span><span class="pln">
+   $selected_value </span><span class="pun">=</span><span class="pln"> $this</span><span class="pun">-&gt;</span><span class="pln">request</span><span class="pun">-&gt;</span><span class="pln">data</span><span class="pun">[</span><span class="str">'order'</span><span class="pun">][</span><span class="str">'status'</span><span class="pun">];</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/18911846" title="short permalink to this answer" class="short-link" id="link-post-18911846">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/18911846/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2013-09-20 08:11:37Z" class="relativetime">Sep 20 '13 at 8:11</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1355763/arun-jain"><div class="gravatar-wrapper-32"><img src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/ty2ff.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1355763/arun-jain">Arun Jain</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">4,241</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="12 silver badges"><span class="badge2"></span><span class="badgecount">12</span></span><span title="39 bronze badges"><span class="badge3"></span><span class="badgecount">39</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18911846" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-18911846" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk710880086",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk710880086"><a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjo0NzE0OTMsImNoIjoxMTc4LCJjayI6e30sImNyIjoxNjM4OTgyLCJkaSI6Ijk4OWQ0NjI4ODg2ZDRjMDhhNmVmMGIwN2JlZGEyYTc1IiwiZG0iOjEsImZjIjoxOTQzNDMwLCJmbCI6MjE0MjMxMiwiaXAiOiIxODEuMjA4Ljg3LjIwMSIsImt3IjoiY2FrZXBocCxkcm9wLWRvd24tbWVudSIsIm53IjoyMiwicGMiOjAsImVjIjowLCJwciI6MTYwNCwicnQiOjEsInJmIjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvLnZlLyIsInN0Ijo4Mjc3LCJ1ayI6InVlMS1hNGQ1MmZkM2ZkYjE0MjlmYmVjZjlhMGM5MDc2Y2NiZCIsInpuIjo0NCwidHMiOjE0Nzk0NDExOTExNTQsImJmIjp0cnVlLCJwbiI6ImFkemVyazcxMDg4MDA4NiIsInVyIjoiaHR0cDovL3N0YWNrb3ZlcmZsb3cuY29tL2pvYnM_dXRtX3NvdXJjZT13ZWJzaXRlJnV0bV9tZWRpdW09YmFubmVyJnV0bV9jb250ZW50PWxlYWRlcmJvYXJkXzYmdXRtX2NhbXBhaWduPWhvdXNlX2Fkc19ob3VzZV9hZHNfUk9TX1NPIn0&amp;s=0gmXU4YxcKOLStnXpZbFxGJaAI8" rel="nofollow" target="_blank" title=""><img src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/78e105390cf2426896c5fc38ae85a4f6.png" title="" alt="" border="0" width="728" height="90"></a><div class="adzerk-vote-controls" style="display: none;"><div class="adzerk-vote-option adzerk-vote-up" data-vivaldi-spatnav-clickable="1"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down" data-vivaldi-spatnav-clickable="1"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li data-vivaldi-spatnav-clickable="1"><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li data-vivaldi-spatnav-clickable="1"><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li data-vivaldi-spatnav-clickable="1"><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li data-vivaldi-spatnav-clickable="1"><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li><li data-vivaldi-spatnav-clickable="1"><label><input type="radio" value="16" name="downvoteReason">Other</label></li></ul><a href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#" class="adzerk-vote-cancel" data-vivaldi-spatnav-clickable="1">Oops! I didn't mean to do this.</a></form></div><img height="0px" width="0px" border="0" style="position:absolute;" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/i(1).gif"></div>
+  
+<a name="18910293"></a>
+<div id="answer-18910293" class="answer" data-answerid="18910293" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="18910293">
+        <a class="vote-up-off" title="This answer is useful" data-vivaldi-spatnav-clickable="1">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful" data-vivaldi-spatnav-clickable="1">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Do like this...</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="pln">echo $this</span><span class="pun">-&gt;</span><span class="typ">Form</span><span class="pun">-&gt;</span><span class="pln">input</span><span class="pun">(</span><span class="str">'type'</span><span class="pun">,</span><span class="pln"> array</span><span class="pun">(</span><span class="pln">
+</span><span class="str">'options'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> array</span><span class="pun">(</span><span class="str">'Appartment'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'Villa'</span><span class="pln"> </span><span class="pun">,</span><span class="pln"> </span><span class="str">'Residential'</span><span class="pln"> </span><span class="pun">,</span><span class="str">'Kiosk'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'Commercial'</span><span class="pun">),</span><span class="pln">
+</span><span class="str">'empty'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="str">'(choose one)'</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/18910293" title="short permalink to this answer" class="short-link" id="link-post-18910293">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/18910293/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-09-20 06:34:07Z" class="relativetime">Sep 20 '13 at 6:34</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1003729/summii"><div class="gravatar-wrapper-32"><img src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/11e9d5bce27b67ba2c8d9ebfb73957a7" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1003729/summii">summii</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">119</span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18910293" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-27916250" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">how to get the selected value sir??</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/2717623/user007" title="36 reputation" class="comment-user owner">user007</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#comment27916250_18910293"><span title="2013-09-20 06:42:29Z" class="relativetime-clean">Sep 20 '13 at 6:42</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27916585" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">use array_combine(<a href="http://fr.php.net/manual/en/function.array-combine.php" rel="nofollow noreferrer">fr.php.net/manual/en/function.array-combine.ph‌​p</a>)</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1003729/summii" title="119 reputation" class="comment-user">summii</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#comment27916585_18910293"><span title="2013-09-20 06:55:52Z" class="relativetime-clean">Sep 20 '13 at 6:55</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27916710" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">above code is working for me but you can do like this also....=&gt; $usernames = array_combine($usernames, $usernames);</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1003729/summii" title="119 reputation" class="comment-user">summii</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#comment27916710_18910293"><span title="2013-09-20 07:00:00Z" class="relativetime-clean">Sep 20 '13 at 7:00</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-18910293" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="http://stackoverflow.com/questions/18909899/answer/submit" method="post" class="post-form">
+						    <input type="hidden" id="post-id" value="18909899">
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false">
+                            <input type="hidden" name="referrer" value="https://www.google.co.ve/">
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.settings.snippets.snippetsEnabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li id="wmd-bold-button" class="wmd-button" style="left: 0px;"><span style="background-position: 0px -20px;"></span></li><li id="wmd-italic-button" class="wmd-button" style="left: 25px;"><span style="background-position: -20px -20px;"></span></li><li id="wmd-spacer1" class="wmd-spacer" style="left: 50px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-link-button" class="wmd-button" style="left: 75px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-quote-button" class="wmd-button" style="left: 100px;"><span style="background-position: -60px -20px;"></span></li><li id="wmd-code-button" class="wmd-button" style="left: 125px;"><span style="background-position: -80px -20px;"></span></li><li id="wmd-image-button" class="wmd-button" style="left: 150px;"><span style="background-position: -100px -20px;"></span></li><li id="wmd-spacer2" class="wmd-spacer" style="left: 175px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-olist-button" class="wmd-button" style="left: 200px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-ulist-button" class="wmd-button" style="left: 225px;"><span style="background-position: -140px -20px;"></span></li><li id="wmd-heading-button" class="wmd-button" style="left: 250px;"><span style="background-position: -160px -20px;"></span></li><li id="wmd-hr-button" class="wmd-button" style="left: 275px;"><span style="background-position: -180px -20px;"></span></li><li id="wmd-spacer3" class="wmd-spacer" style="left: 300px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-undo-button" class="wmd-button" style="left: 325px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-redo-button" class="wmd-button" style="left: 350px;"><span style="background-position: -220px -20px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="3a8c9dcbe440a6d4837ca27138d759b0">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="http://stackoverflow.com/users/login?ssrc=question_page&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f18909899%2fhow-to-get-the-selected-values-from-a-drop-down-list-in-cake-php%23new-answer" data-vivaldi-spatnav-clickable="1">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login" data-vivaldi-spatnav-clickable="1">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login" data-vivaldi-spatnav-clickable="1">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login" data-vivaldi-spatnav-clickable="1">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid">
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false">
+                    <input type="hidden" name="use-google" class="use-google" value="false">
+                    <input type="button" class="submit-openid" value="Submit" style="display:none">
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tbody><tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown">
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstackoverflow.com%2fquestions%2f18909899%2fhow-to-get-the-selected-values-from-a-drop-down-list-in-cake-php%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        &lt;h3&gt;Post as a guest&lt;/h3&gt;
+    &lt;div class="form-item"&gt;
+        &lt;table&gt;
+        &lt;tr&gt;
+                    &lt;td class="vm"&gt;
+                &lt;div&gt;
+                    &lt;label for="display-name"&gt;Name&lt;/label&gt;
+                    &lt;input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105"&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;label for="m-address"&gt;Email&lt;/label&gt;
+                    &lt;input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" /&gt;
+                &lt;/div&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#" class="btn-clear discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" target="_blank">terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1">								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1" data-vivaldi-spatnav-clickable="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/cakephp" class="post-tag" title="show questions tagged &#39;cakephp&#39;" rel="tag">cakephp</a> <a href="http://stackoverflow.com/questions/tagged/drop-down-menu" class="post-tag" title="show questions tagged &#39;drop-down-menu&#39;" rel="tag">drop-down-menu</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2013-09-20 06:04:34Z"><b>3 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>8132 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php?lastactivity" class="lastactivity-link" title="2013-09-20 08:11:37Z">3 years ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://stackoverflow.blog/2016/11/How-We-Make-Money-at-Stack-Overflow-2016-Edition/?cb=1" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://stackoverflow.blog/2016/11/How-We-Make-Money-at-Stack-Overflow-2016-Edition/?cb=1" class="question-hyperlink">How We Make Money at Stack Overflow: 2016 Edition</a>
+                </div>
+                <br class="cbt">
+            </div>
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr>
+    <div class="spacer bulletin-item-important">
+        
+    <div class="bulletin-item-type"><a href="http://stackoverflow.com/election?cb=1" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://stackoverflow.com/election?cb=1" class="question-hyperlink">2016 Community Moderator Election</a>
+        <div>ends <span title="2016-11-22 20:00:00Z" class="relativetime">in 5 days</span></div>
+    </div>
+    <br class="cbt">
+</div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk66988748",[5,17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk66988748"><div id="careersadsdoublehigh" style="display:none;"></div><div class="adzerk-vote-controls" style="display:none;"><div class="adzerk-vote-option adzerk-vote-up" data-vivaldi-spatnav-clickable="1"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down" data-vivaldi-spatnav-clickable="1"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li data-vivaldi-spatnav-clickable="1"><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li data-vivaldi-spatnav-clickable="1"><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li data-vivaldi-spatnav-clickable="1"><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li data-vivaldi-spatnav-clickable="1"><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li><li data-vivaldi-spatnav-clickable="1"><label><input type="radio" value="16" name="downvoteReason">Other</label></li></ul><a href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#" class="adzerk-vote-cancel" data-vivaldi-spatnav-clickable="1">Oops! I didn't mean to do this.</a></form></div><img height="0px" width="0px" border="0" style="position:absolute;" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/i(2).gif"></div>
+            <div id="hireme" class=" blue remote tagged clc-jobs-multi" data-vivaldi-spatnav-clickable="1"><a href="http://stackoverflow.com/jobs?allowsremote=true" target="_blank" data-at="0" data-tz="1" data-ti="14" class="top "><span>Work from anywhere</span></a><div class="middle"><ul class="jobs"><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" data-at="0" data-tz="3" data-ti="227837" href="http://stackoverflow.com/jobs/127837/quantitative-developer-currency-or-essential-algorithms-solutions" target="_blank" title="Quantitative developer - currency or cryptocurrency trading experience is a plus at Essential Algorithms Solutions. Click to learn more."><div class="title">Quantitative developer - currency or cryptocurrency trading experience is a plus</div><div><span class="company">Essential Algorithms Solutions</span><span class="location">No office location</span></div><div class="opts"><span class="opt remote">Remote</span></div><span class="post-tag">financial</span><span class="post-tag">c++</span></a></div><a class="clc-dismiss clc-non-ad" data-clc-url="//clc.stackoverflow.com/dismiss-job" data-clcparam-cid="227837" data-clc-tooltip="dismiss this job"><span class="clc-tooltip above-left">dismiss this job</span></a></li><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" data-at="0" data-tz="3" data-ti="227205" href="http://stackoverflow.com/jobs/127205/engineering-manager-formstack" target="_blank" title="Engineering Manager at Formstack. Click to learn more."><div class="title">Engineering Manager</div><div><span class="company">Formstack</span><span class="location">Columbus, OH</span></div><div class="opts"><span class="opt remote">Remote</span></div><span class="post-tag highlight">php</span><span class="post-tag">python</span></a></div><a class="clc-dismiss clc-non-ad" data-clc-url="//clc.stackoverflow.com/dismiss-job" data-clcparam-cid="227205" data-clc-tooltip="dismiss this job"><span class="clc-tooltip above-left">dismiss this job</span></a></li><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" data-at="0" data-tz="3" data-ti="227834" href="http://stackoverflow.com/jobs/127834/database-administrator-100k-crossover" target="_blank" title="Database Administrator - $100k at Crossover. Click to learn more."><div class="title">Database Administrator - $100k</div><div><span class="company">Crossover</span><span class="location">No office location</span></div><div class="opts"><span class="opt remote">Remote</span></div><span class="post-tag">database</span><span class="post-tag">sql</span></a></div><a class="clc-dismiss clc-non-ad" data-clc-url="//clc.stackoverflow.com/dismiss-job" data-clcparam-cid="227834" data-clc-tooltip="dismiss this job"><span class="clc-tooltip above-left">dismiss this job</span></a></li><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" data-at="0" data-tz="3" data-ti="183699" href="http://stackoverflow.com/jobs/97734/java-chief-software-architect-100k-crossover" target="_blank" title="Java Chief Software Architect - $100K at Crossover. Click to learn more."><div class="title">Java Chief Software Architect - $100K</div><div><span class="company">Crossover</span><span class="location">No office location</span></div><div class="opts"><span class="opt remote">Remote</span></div><span class="post-tag">java</span><span class="post-tag">cloud</span></a></div><a class="clc-dismiss clc-non-ad" data-clc-url="//clc.stackoverflow.com/dismiss-job" data-clcparam-cid="183699" data-clc-tooltip="dismiss this job"><span class="clc-tooltip above-left">dismiss this job</span></a></li></ul><div style="clear:both"></div></div><img class="impression" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/soi.gif" style="display:none;"></div>
+        <script>
+;(function(n){var u=Object.assign||function(n){for(var i,r,u,f,e=[],t=1;t<arguments.length;t++)e[t-1]=arguments[t];for(i=0,r=e;i<r.length;i++){u=r[i];for(f in u)n[f]=u[f]}return n},r,t,f,i;try{if(typeof[].indexOf!="function")return;if(window.attachEvent&&!window.addEventListener)return;if(r=["stackoverflow.com","serverfault.com","careers.stackoverflow.com","blog.codinghorror.com","joelonsoftware.com","www.joelonsoftware.com","talent.stackoverflow.com"],r[0]!=="*"&&r.indexOf(location.hostname)===-1)return;t=window;f=t.clc_opts?u({},window.clc_opts):{};t.clc_opts=u(n,f);void 0;t.clc_opts.autoload&&(t.clc_init=t.clc_init||[],t.clc_init.push(function(){return t.clc.load()}));i=document.createElement("script");i.async=!0;void 0;i.src=t.clc_opts.lib;document.body.appendChild(i)}catch(e){void 0}}).call(null, {"azw":true,"kt":2000,"tto":true,"autoload":true,"d":{"sb":["hireme","clc-sb"],"tlb":["careers1","clc-tlb"],"mlb":["careers3","clc-mlb"]},"allowed":["stackoverflow.com","serverfault.com","careers.stackoverflow.com","blog.codinghorror.com","joelonsoftware.com","www.joelonsoftware.com","talent.stackoverflow.com"],"h":"clc.stackoverflow.com","u":"//clc.stackoverflow.com/p.js","lib":"//cdn.sstatic.net/clc/clc.min.js?v=0b93ded9c111"});        </script>
+            <script>
+window.clcfl_request = 'AQAAAADLiiABAgAAAAIAAAABGAAAAHxjYWtlcGhwfGRyb3AtZG93bi1tZW51fACh5-KSsjEg3XFD';
+                ;(function(n){var t,i;try{if(typeof[].indexOf!="function")return;if(window.attachEvent&&!window.addEventListener)return;if(n.allowed[0]!=="*"&&n.allowed.indexOf(location.hostname)===-1)return;t=window;t.clcfl=t.clcfl||{};t.clcfl_request||void 0;t.clcfl.init=t.clcfl.init||[];t.clcfl.init.push(function(n){return n.load()});t.clcfl.options=n;i=document.createElement("script");i.async=!0;i.src=n.lib;document.body.appendChild(i)}catch(r){}}).call(null, {"azw":true,"kt":2000,"tto":true,"autoload":true,"d":{"sb":["hireme","clc-sb"],"tlb":["careers1","clc-tlb"],"mlb":["careers3","clc-mlb"]},"allowed":["stackoverflow.com","serverfault.com","careers.stackoverflow.com","blog.codinghorror.com","joelonsoftware.com","www.joelonsoftware.com","talent.stackoverflow.com"],"h":"clc.stackoverflow.com","u":"//clc.stackoverflow.com/fl/markup-bg.js","lib":"//cdn.sstatic.net/clc/fl/clc.min.js?v=896d1e931c04"});
+            </script>
+			
+
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/24652326?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/24652326/how-to-retrieve-a-value-from-a-query-string-that-stems-from-a-select-form-inpu?noredirect=1&amp;lq=1" class="question-hyperlink">How to retrieve a value from a query string that stems from a &lt;select&gt; form input?</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track" data-vivaldi-spatnav-clickable="1"><a href="http://stackoverflow.com/q/1643227?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted extra-large">1479</div></a><a href="http://stackoverflow.com/questions/1643227/get-selected-text-from-a-drop-down-list-select-box-using-jquery?rq=1" class="question-hyperlink">Get selected text from a drop-down list (select box) using jQuery</a></div><div class="spacer js-gps-track" data-vivaldi-spatnav-clickable="1"><a href="http://stackoverflow.com/q/6768585?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">1</div></a><a href="http://stackoverflow.com/questions/6768585/cakephp-select-list-of-numbers-with-corresponding-values?rq=1" class="question-hyperlink">Cakephp select list of numbers with corresponding values</a></div><div class="spacer js-gps-track" data-vivaldi-spatnav-clickable="1"><a href="http://stackoverflow.com/q/7599971?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="http://stackoverflow.com/questions/7599971/cake-php-how-to-populate-a-drop-down-selection-based-on-another-drop-down-selec?rq=1" class="question-hyperlink">cake php, how to populate a drop down selection based on another drop down selection?</a></div><div class="spacer js-gps-track" data-vivaldi-spatnav-clickable="1"><a href="http://stackoverflow.com/q/15676626?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">-5</div></a><a href="http://stackoverflow.com/questions/15676626/storing-the-selected-value-from-drop-down-list-to-a-variable-in-php?rq=1" class="question-hyperlink">storing the selected value from drop down list to a variable in php</a></div><div class="spacer js-gps-track" data-vivaldi-spatnav-clickable="1"><a href="http://stackoverflow.com/q/21086947?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stackoverflow.com/questions/21086947/cakephp-simple-drop-down-list-without-database-values?rq=1" class="question-hyperlink">Cakephp simple drop down list without database values</a></div><div class="spacer js-gps-track" data-vivaldi-spatnav-clickable="1"><a href="http://stackoverflow.com/q/25394852?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stackoverflow.com/questions/25394852/cakephp-drop-down-lists-using-displayed-value?rq=1" class="question-hyperlink">cakephp drop-down lists using displayed value</a></div><div class="spacer js-gps-track" data-vivaldi-spatnav-clickable="1"><a href="http://stackoverflow.com/q/27421764?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="http://stackoverflow.com/questions/27421764/how-to-get-drop-down-list-selected-value?rq=1" class="question-hyperlink">how to get drop down list selected value</a></div><div class="spacer js-gps-track" data-vivaldi-spatnav-clickable="1"><a href="http://stackoverflow.com/q/30611336?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="http://stackoverflow.com/questions/30611336/validating-mutiple-drop-downs-list-with-the-same-name-field-in-cakephp-2-x?rq=1" class="question-hyperlink">validating mutiple drop downs list with the same name field in CakePHP 2.x</a></div><div class="spacer js-gps-track" data-vivaldi-spatnav-clickable="1"><a href="http://stackoverflow.com/q/34170197?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stackoverflow.com/questions/34170197/drop-down-displaying-the-data-as-per-user-selection?rq=1" class="question-hyperlink">Drop down - Displaying the data as per user selection</a></div><div class="spacer js-gps-track" data-vivaldi-spatnav-clickable="1"><a href="http://stackoverflow.com/q/39234388?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stackoverflow.com/questions/39234388/how-to-make-a-cakephp-drop-down-list?rq=1" class="question-hyperlink">How to make a CakePHP drop down list</a></div>
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })" data-vivaldi-spatnav-clickable="1">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-graphicdesign" title="Graphic Design Stack Exchange"></div><a href="http://graphicdesign.stackexchange.com/questions/80320/would-this-be-considered-as-plagiarism" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:174 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Would this be considered as plagiarism?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/100205/do-matrix-multiplication" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Do Matrix Multiplication!
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/323845/whats-the-fastest-way-to-generate-a-1-gb-file-containing-only-random-numbers" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    What's the fastest way to generate a 1 GB file containing only random numbers?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/142879/how-worried-should-i-be-about-getting-hacked-with-poisontap" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    How worried should I be about getting hacked with PoisonTap?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/45795/a-short-riddle" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    A Short Riddle!
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/339698/why-rm-in-math-mode-works-in-some-tex-editors-and-not-in-others" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Why \rm in math mode works in some tex editors and not in others?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-lifehacks" title="Lifehacks Stack Exchange"></div><a href="http://lifehacks.stackexchange.com/questions/14477/how-do-i-get-the-last-lines-of-dust-into-the-dustpan" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:593 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    How do I get the last lines of dust into the dustpan?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/100122/finding-the-nth-prime-such-that-the-prime-1-is-divisible-by-n" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Finding The nth Prime such that the prime - 1 is divisible by n
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/100153/head-shoulders-knees-and-toes-knees-and-toes" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Head, Shoulders, Knees and Toes, Knees and Toes
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-politics" title="Politics Stack Exchange"></div><a href="http://politics.stackexchange.com/questions/13481/could-california-ratify-the-paris-agreement" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:475 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Could California Ratify the Paris Agreement?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-dba" title="Database Administrators Stack Exchange"></div><a href="http://dba.stackexchange.com/questions/155650/authoritative-source-that-and-are-identical-in-performance" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:182 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Authoritative source that &lt;&gt; and != are identical in performance
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/1146998/why-dont-my-users-have-separate-desktops-in-windows-10" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Why don't my users have separate desktops in Windows 10?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-outdoors" title="The Great Outdoors Stack Exchange"></div><a href="http://outdoors.stackexchange.com/questions/14312/mountainering-with-6-y-o-kid-in-winter" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:395 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Mountainering with 6 y.o. kid in winter
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/101546/why-do-most-of-us-wear-wristwatches-on-the-left-hand" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Why do most of us wear wristwatches on the left hand?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/147315/rounding-a-number-up-to-the-nearest-multiple-of-a-power-of-2" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Rounding a number up to the nearest multiple of a power of 2
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/142546/storing-passwords-in-access-restricted-google-spreadsheets" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Storing passwords in access-restricted Google spreadsheets?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/145361/who-created-the-secret-stairs-as-a-way-into-mordor-and-for-what-purpose" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Who created the Secret Stairs as a way into Mordor and for what purpose?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/61411/could-the-industrial-revolution-be-delayed-indefinitely-or-is-it-inevitable-onc" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Could the Industrial Revolution be delayed indefinitely? Or is it inevitable once a certain point in development is reached?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/850340/why-does-ubuntu-16-04-installation-create-an-extended-partition-besides-the-swap" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Why does Ubuntu 16.04 installation create an extended partition besides the swap?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/79881/how-to-respond-to-your-bosss-email-about-a-coworkers-accusation" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    How to respond to your boss's email about a coworker's accusation?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/292958/why-is-nuclear-waste-more-dangerous-than-the-original-nuclear-fuel" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Why is nuclear waste more dangerous than the original nuclear fuel?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/79940/how-to-politely-decline-compensation" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    How to politely decline compensation?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/100060/goodness-giza-golf" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Goodness Giza Golf!
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/850384/is-there-a-command-for-running-a-script-according-to-its-shebang-line" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })" data-vivaldi-spatnav-clickable="1">
+                    Is there a command for running a script according to its shebang line?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="http://stackoverflow.com/questions/18909899/how-to-get-the-selected-values-from-a-drop-down-list-in-cake-php#" class="show-more js-show-more js-gps-track" data-gps-track="posts_hot_network.click({ item_type:3, location:11 })" data-vivaldi-spatnav-clickable="1">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://stackoverflow.com/feeds/question/18909899" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/18909899/ivc/83eb');});
+</script>
+<noscript>
+    &lt;div&gt;&lt;img src="/posts/18909899/ivc/83eb" class="dno" alt="" width="0" height="0"&gt;&lt;/div&gt;
+</noscript><div style="display:none" id="prettify-lang">default</div></div>
+
+
+        </div>
+    </div><script async="" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/clc.min.js.download"></script><script async="" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/clc.min.js(1).download"></script>
+    <div id="footer" class="categories">
+        <div class="footerwrap">            
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                    <a href="http://stackoverflow.com/company/about">about us</a>
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="http://stackoverflow.blog/?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com/">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackoverflow.com/company/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick="StackExchange.switchMobile(&quot;on&quot;)">mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="4">
+                Technology
+            </th>
+            <th colspan="2">
+                Life / Arts
+            </th>
+            <th colspan="2">
+                Culture / Recreation
+            </th>
+            <th colspan="2">
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://softwareengineering.stackexchange.com/" title="professionals, academics, and students working within the systems development life cycle who care about creating, delivering, and maintaining software responsibly">Software Engineering</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                        <li><a href="http://crypto.stackexchange.com/" title="software developers, mathematicians and others interested in cryptography">Cryptography</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://codereview.stackexchange.com/" title="peer programmer code reviews">Code Review</a></li>
+                        <li><a href="http://magento.stackexchange.com/" title="users of the Magento e-Commerce platform">Magento</a></li>
+                        <li><a href="http://dsp.stackexchange.com/" title="practitioners of the art and science of signal, image and video processing">Signal Processing</a></li>
+                        <li><a href="http://raspberrypi.stackexchange.com/" title="users and developers of hardware and software for Raspberry Pi">Raspberry Pi</a></li>
+                        <li><a href="http://codegolf.stackexchange.com/" title="programming puzzle enthusiasts and code golfers">Programming Puzzles &amp; Code Golf</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://music.stackexchange.com/" title="musicians, students, and enthusiasts">Music: Practice &amp; Theory</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (8)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://ell.stackexchange.com/" title="speakers of other languages learning English">English Language Learners</a></li>
+                        <li><a href="http://japanese.stackexchange.com/" title="students, teachers, and linguists wanting to discuss the finer points of the Japanese language">Japanese Language</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                        <li><a href="http://anime.stackexchange.com/" title="anime and manga fans">Anime &amp; Manga</a></li>
+                        <li><a href="http://mechanics.stackexchange.com/" title="mechanics and DIY enthusiast owners of cars, trucks, and motorcycles">Motor Vehicle Maintenance &amp; Repair</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (17)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                        <li><a href="http://cs.stackexchange.com/" title="students, researchers and practitioners of computer science">Computer Science</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://philosophy.stackexchange.com/" title="those interested in the study of the fundamental nature of knowledge, reality, and existence">Philosophy</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (3)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://talent.stackoverflow.com/">Stack Overflow Talent</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+            <div id="copyright">
+                site design / logo © 2016 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.11.17.4216
+            </div>
+                </div>
+    </div>
+    <noscript>
+        &lt;div id="noscript-warning"&gt;Stack Overflow works best with JavaScript enabled&lt;img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"&gt;&lt;/div&gt;
+    </noscript>
+
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    
+    
+        
+        ados.run.push(function () {
+                setTimeout(function () { $("#adzerk-user-match").remove(); }, window.AUMIframeDone ? 0 : 2000);
+                ados_setKeywords('cakephp,drop-down-menu');; ados_load();
+        });   
+        
+</script>
+
+    <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            
+            ga('create', 'UA-5620270-1');
+            ga('set', 'dimension2', '|cakephp|drop-down-menu|');             ga('send', 'pageview');
+        
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+                qc.async = true;
+                qc.src = (ssl ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+                s.parentNode.insertBefore(qc, s);
+                _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+                            var sc=document.createElement('script');
+                sc.async=true;
+                sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+                s.parentNode.insertBefore(sc, s);
+                _comscore.push({ c1: "2", c2: "17440561" });
+        })();
+
+    </script>
+        
+    
+            <script type="text/javascript">
+                
+                (function(appendChild) {
+                    Node.prototype.appendChild = function() {
+                        var parent = this;
+                        var newNode = arguments[0];
+                        if (parent.nodeName === 'HEAD'
+                            && newNode
+                            && newNode.nodeName === 'SCRIPT'
+                            && newNode.src) {
+                            
+                            window.setTimeout(function() {
+                                var result = newNode.src.match(/^https:\/\/maps\.googleapis\.com\/maps\/api\/place\/js\/(\w+)Service\./i) || [];
+                                var service = result[1];
+                                if (service) {
+                                    if (service === 'Autocompletion') service =  2;
+                                    else if (service === 'Place') service = 1;
+                                    else service = 0;
+                                    StackExchange.using('gps', function() {
+                                        StackExchange.gps.track('google_maps_places_api.call', { service: service });
+                                    });
+                                }
+                            }, 0);
+                        }
+                        return appendChild.apply(this, arguments);
+                    };
+                })(Node.prototype.appendChild);
+            </script>
+    
+<script async="" src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/p.js.download"></script><img src="./cakephp - how to get the selected values from a drop down list in cake php - Stack Overflow_files/impression.gif" class="impression" style="display: none;"></body></html>
