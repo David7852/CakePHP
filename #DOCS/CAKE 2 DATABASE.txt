@@ -6,7 +6,7 @@ SET time_zone = "-04:00";
 create table if not exists articulos (
   id integer unsigned auto_increment primary key,
   serial varchar(50) unique not null,
-  modelo_id integer unsigned,
+  modelo_id integer unsigned not null,
   datos varchar(200),
   ubicacion varchar(50),
   estado enum("Nuevo","Usado","Roto","Reparado","Obsoleto") default "Nuevo",
@@ -158,7 +158,7 @@ create table if not exists usuarios(
   email varchar(50) unique not null,
   clave varchar(255) not null,
   funcion enum("Superadministrador","Administrador","Operador","Visitante") default "Visitante",
-  trabajador_id integer unsigned,
+  trabajador_id integer unsigned not null,
   imagen text,
   created datetime default null,
   modified datetime default null);

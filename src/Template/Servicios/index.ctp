@@ -22,6 +22,7 @@
         <tbody>
             <?php foreach ($servicios as $servicio): ?>
             <tr>
+                <td><?= $this->Number->format($servicio->id) ?></td>
                 <td><?= h($servicio->nombre) ?></td>
                 <td><?= h($servicio->cupo) ?></td>
                 <td><?= $servicio->has('renta') ? $this->Html->link($servicio->renta->nombre, ['controller' => 'Rentas', 'action' => 'view', $servicio->renta->id]) : '' ?></td>

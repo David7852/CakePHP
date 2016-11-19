@@ -14,7 +14,6 @@
                 <th scope="col"><?= $this->Paginator->sort('nombre_de_usuario') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('email') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('trabajador_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('funcion') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
         </thead>
@@ -24,7 +23,6 @@
                 <td><?= h($usuario->nombre_de_usuario) ?></td>
                 <td><?= h($usuario->email) ?></td>
                 <td><?= $usuario->has('trabajador') ? $this->Html->link($usuario->trabajador->titulo, ['controller' => 'Trabajadores', 'action' => 'view', $usuario->trabajador->id]) : '' ?></td>
-                <td><?= h($usuario->funcion) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $usuario->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $usuario->id]) ?>

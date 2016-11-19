@@ -1,5 +1,0 @@
-/tmp/*
-/vendor/*
-/composer.lock
-/plugins/DebugKit
-/phpunit.phar

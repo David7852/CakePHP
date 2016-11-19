@@ -20,11 +20,7 @@
             echo $this->Form->input('nombre_de_usuario');
             echo $this->Form->input('email');
             echo $this->Form->input('clave',['type'=>'password']);
-            $options = ["Superadministrador"=>"Superadministrador",
-            "Administrador"=>"Administrador",
-            "Operador"=>"Operador",
-            "Visitante"=>"Visitante"];
-            echo $this->Form->input('funcion', array('options'=>$options,'empty'=>false,'escape'=>false));
+            echo $this->Form->input('funcion');
             echo $this->Form->input('trabajador_id', ['options' => $trabajadores]);
             echo $this->Form->input('imagen');
         ?>

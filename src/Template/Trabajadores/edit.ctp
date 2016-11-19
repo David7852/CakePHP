@@ -28,7 +28,7 @@
 
             $options = ['M'=>'Hombre',
                         'F'=>'Mujer'];
-            echo $this->Form->input('sexo',array('options'=>$options,'empty'=>true,'label'=>'Genero'));
+            echo $this->Form->input('sexo',array('options'=>$options,'empty'=>true));
 
             $options=["IT"=>"IT",
                       "Recursos Humanos"=>"Recursos Humanos",

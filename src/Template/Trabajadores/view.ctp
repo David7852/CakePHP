@@ -67,7 +67,7 @@
             <td><?= $this->Number->format($trabajador->puesto_de_trabajo) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Genero') ?></th>
+            <th scope="row"><?= __('Sexo') ?></th>
             <td><?= h($trabajador->sexo) ?></td>
         </tr>
     </table>
