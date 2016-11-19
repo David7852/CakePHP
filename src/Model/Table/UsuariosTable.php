@@ -42,7 +42,7 @@ class UsuariosTable extends Table
 
         $this->belongsTo('Trabajadores', [
             'foreignKey' => 'trabajador_id',
-            'joinType' => 'INNER'
+            //'joinType' => 'INNER'//oculto, inner implica que si no hay trabajador asignado, el usuario no puede ser mostrado, visto ni editado
         ]);
     }
 

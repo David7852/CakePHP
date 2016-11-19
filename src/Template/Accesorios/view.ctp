@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Estado') ?></th>
-            <td><?= h($articulo->estado) ?></td>
+            <td><?= h($accesorio->estado) ?></td>
         </tr>
     </table>
 </div>

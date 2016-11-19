@@ -19,10 +19,6 @@ use Cake\ORM\Entity;
  */
 class Contrato extends Entity
 {
-    protected function _getTitulo()
-    {
-        return $this->_properties['titulo'];
-    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

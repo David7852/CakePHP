@@ -28,10 +28,6 @@ class Factura extends Entity
         $this->titulo=$value.' '/* mas el numero de la linea*/;
         return $value;
     }
-    protected function _getTitulo()
-    {
-        return $this->_properties['titulo'];
-    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

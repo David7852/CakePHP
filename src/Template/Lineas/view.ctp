@@ -43,11 +43,11 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Operadora') ?></th>
-            <td><?= h($this->operadora) ?></td>
+            <td><?= h($linea->operadora) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Estado') ?></th>
-            <td><?= h($this->estado) ?></td>
+            <td><?= h($linea->estado) ?></td>
         </tr>
     </table>
     <?php if (!empty($linea->facturas)): ?>
