@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://book.cakephp.org/3.0/en/orm/entities.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta content="Entities" lang="en" name="title">
+<meta content="entity, entities, single row, individual record" lang="en" name="keywords">
+
+    <title>Entities</title>
+    <link href="http://book.cakephp.org/3.0/en/_static/favicon.png" type="image/png" rel="icon">
+
+    
+    <link rel="stylesheet" href="./Entities_files/app.css" type="text/css">
+    
+    <script type="text/javascript" async="" src="./Entities_files/ga.js.download"></script><script id="twitter-wjs" src="./Entities_files/widgets.js.download"></script><script id="facebook-jssdk" src="./Entities_files/sdk.js.download"></script><script type="text/javascript" src="./Entities_files/app.js.download"></script>
+
+    <link rel="alternate" hreflang="pt" href="http://book.cakephp.org/3.0/pt/orm/entities.html"><link rel="alternate" hreflang="es" href="http://book.cakephp.org/3.0/es/orm/entities.html"><link rel="alternate" hreflang="ja" href="http://book.cakephp.org/3.0/ja/orm/entities.html"><link rel="alternate" hreflang="fr" href="http://book.cakephp.org/3.0/fr/orm/entities.html"><link rel="alternate" hreflang="zh" href="http://book.cakephp.org/3.0/zh/orm/entities.html"><link rel="alternate" hreflang="tr" href="http://book.cakephp.org/3.0/tr/orm/entities.html">
+
+    <link rel="search" type="application/opensearchdescription+xml" title="Search within CakePHP Cookbook 3.x documentation" href="http://book.cakephp.org/3.0/en/_static/opensearchdescription-book-3-x.xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="top" title="CakePHP Cookbook 3.x documentation" href="http://book.cakephp.org/3.0/en/index.html">
+    <link rel="up" title="Database Access &amp; ORM" href="http://book.cakephp.org/3.0/en/orm.html">
+    <link rel="next" title="Retrieving Data &amp; Results Sets" href="http://book.cakephp.org/3.0/en/orm/retrieving-data-and-resultsets.html">
+    <link rel="prev" title="Table Objects" href="http://book.cakephp.org/3.0/en/orm/table-objects.html">
+
+    <script type="text/javascript">
+    window.lang = "en";
+    </script>
+  <script type="text/javascript" charset="utf-8" async="" src="./Entities_files/button.5546439b5d743401ca910708312f6e81.js.download"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head>
+  <body>
+
+<div id="container">
+	
+	<header class="nav-up">
+		<div class="container-fluid hidden-xs hidden-sm">
+			<div class="row">
+				<div class="col-sm-3 col-md-3">
+					<a class="logo-cake" href="http://cakephp.org/">
+						<img src="./Entities_files/logo-cake.png" alt="CakePHP">
+					</a>
+				</div>
+
+				<div class="col-sm-9 col-md-9">
+					<nav class="navbar-right">
+						<ul class="menu">
+							<li class="first" style="">
+								<a href="http://book.cakephp.org/3.0/en/orm/entities.html#"><i class="fa fa-menu fa-chevron-down"></i>Documentation</a>
+								<ul class="submenu">
+									
+<li><a href="http://book.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Book</a></li>
+<li><a href="http://api.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>API</a></li>
+
+<li><a href="http://cakephp.org/documentation/videos"><i class="fa fa-menu fa-chevron-right"></i>Videos</a></li>
+<li><a href="http://cakephp.org/privacy"><i class="fa fa-menu fa-chevron-right"></i>Privacy Policy</a></li>
+<li><a href="http://cakephp.org/pages/trademark"><i class="fa fa-menu fa-chevron-right"></i>Logos &amp; Trademarks</a></li>
+								</ul>
+							</li>
+
+							<li style=""><a href="http://cakephp.org/business-solutions">Business Solutions</a></li>
+							<li style=""><a href="http://cakephp.org/showcase">Showcase</a></li>
+
+							<li style="">
+								<a href="http://book.cakephp.org/3.0/en/orm/entities.html#"><i class="fa fa-menu fa-chevron-down"></i>Community</a>
+								<div class="megamenu full">
+									<div class="row">
+										<div class="col-6 pl30">
+											<ul class="megamenu-list">
+												
+<li class="menu-title"><i class="fa fa-menu-title fa-users"></i>Community</li>
+
+<li><a href="http://cakephp.org/team"><i class="fa fa-menu fa-chevron-right"></i>Team</a></li>
+<li><a href="https://github.com/cakephp/cakephp/issues"><i class="fa fa-menu fa-chevron-right"></i>Issues (Github)</a></li>
+<li><a href="http://www.youtube.com/user/CakePHP"><i class="fa fa-menu fa-chevron-right"></i>YouTube Channel</a></li>
+<li><a href="http://cakephp.org/get-involved"><i class="fa fa-menu fa-chevron-right"></i>Get Involved</a></li>
+
+<li><a href="http://bakery.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Bakery</a></li>
+<li><a href="https://github.com/FriendsOfCake/awesome-cakephp"><i class="fa fa-menu fa-chevron-right"></i>Featured Resources</a></li>
+<li><a href="http://cakephp.org/newsletter/signup"><i class="fa fa-menu fa-chevron-right"></i>Newsletter</a></li>
+<li><a href="http://certification.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Certification</a></li>
+<li><a href="http://my.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>My CakePHP</a></li>
+<li><a href="http://cakefest.org/"><i class="fa fa-menu fa-chevron-right"></i>CakeFest</a></li>
+<li><a href="http://www.facebook.com/groups/cake.community"><i class="fa fa-menu fa-chevron-right"></i>Facebook</a></li>
+<li><a href="http://twitter.com/cakephp"><i class="fa fa-menu fa-chevron-right"></i>Twitter</a></li>
+											</ul>
+										</div>
+										<div class="col-6 pl30">
+											<ul class="megamenu-list">
+												
+<li class="menu-title"><i class="fa fa-menu-title fa-comments-o"></i>Help &amp; Support</li>
+
+<li><a href="http://discourse.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Forum</a></li>
+<li><a href="http://stackoverflow.com/tags/cakephp"><i class="fa fa-menu fa-chevron-right"></i>Stack Overflow</a></li>
+<li><a href="http://webchat.freenode.net/?channels=cakephp"><i class="fa fa-menu fa-chevron-right"></i>IRC</a></li>
+<li><a href="http://cakesf.herokuapp.com/"><i class="fa fa-menu fa-chevron-right"></i>Slack</a></li>
+<li><a href="http://cakedc.com/"><i class="fa fa-menu fa-chevron-right"></i>Paid Support</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="container-fluid hidden-md hidden-lg">
+			<div class="row">
+				<div class="col-sm-6 col-xs-6">
+					<a class="logo-cake" href="http://cakephp.org/">
+						<img src="./Entities_files/logo-cake.png" alt="CakePHP">
+					</a>
+				</div>
+
+				<div class="col-sm-6 col-xs-6">
+					<div class="navbar-right">
+						<button id="btn-menu" class="btn-menu" data-toggle="modal" data-target="#modal">
+							<i class="fa fa-bars toggle-modal"></i>
+						</button>
+					</div>
+					<div id="wrap">
+						<form class="search" action="http://book.cakephp.org/3.0/en/search.html" method="get">
+							<span class="twitter-typeahead" style="position: relative; display: inline-block;"><input name="q" type="search" placeholder="What are you looking for?" class="tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Raleway, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div class="tt-dataset tt-dataset-es"></div></div></span>
+							<input id="search_submit" value="Search" type="submit">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+		<section id="nav-cook" class="hidden-xs hidden-sm">
+			<div class="container-fluid ">
+				<div class="row ">
+					<div class="col-md-12 back-book">
+						<div class="col-md-4 col-md-offset-1 text-center t-cook-nav p0 hidden-sm hidden-xs">
+							<h2>
+								<a href="http://book.cakephp.org/3.0/en/contents.html">
+									<span class="glyph_range icon-submenu icon-submenu-cook">B</span>
+									CakePHP 3.3 Red Velvet <strong>Cookbook</strong>
+								</a>
+							</h2>
+						</div>
+
+						<div class="col-md-4 hidden-sm">
+							<form class="search" action="http://book.cakephp.org/3.0/en/search.html" method="get">
+								<input type="hidden" name="check_keywords" value="yes">
+								<input type="hidden" name="area" value="default">
+
+								<div class="col-md-10 p0">
+									<span class="twitter-typeahead" style="position: relative; display: inline-block;"><input class="form-control form-cook tt-input" autocomplete="off" type="search" name="q" size="18" placeholder="Cookbook Search" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Raleway, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 500; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div class="tt-dataset tt-dataset-es"></div></div></span>
+								</div>
+								<div class="col-md-2 p0 search-cook">
+									<button type="submit">
+										<span class="glyph_range icon-submenu icon-submenu-cook">A</span>
+									</button>
+								</div>
+							</form>
+						</div>
+
+						
+						<div class="col-md-3">
+							<div class="col-md-6 p0">
+								<div class="col-md-7 t-language p0">
+									<h6>Language:</h6>
+								</div>
+								<div class="col-md-5 p0">
+									<ul class="nav navbar-nav">
+										<li class="dropdown">
+											<a class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="http://book.cakephp.org/3.0/en/orm/entities.html#">
+														en
+														<i class="fa fa-menu-en fa-chevron-down"></i>
+													</a>
+											<ul class="dropdown-menu">
+											
+												<li></li>
+											
+												<li><a href="http://book.cakephp.org/3.0/pt/orm/entities.html">pt</a></li>
+											
+												<li><a href="http://book.cakephp.org/3.0/es/orm/entities.html">es</a></li>
+											
+												<li><a href="http://book.cakephp.org/3.0/ja/orm/entities.html">ja</a></li>
+											
+												<li><a href="http://book.cakephp.org/3.0/fr/orm/entities.html">fr</a></li>
+											
+												<li><a href="http://book.cakephp.org/3.0/zh/orm/entities.html">zh</a></li>
+											
+												<li><a href="http://book.cakephp.org/3.0/tr/orm/entities.html">tr</a></li>
+											
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="col-md-6 p0">
+								<div class="col-md-7 t-language p0">
+									<h6>Version:</h6>
+								</div>
+								<div class="col-md-5 p0">
+									<ul class="nav navbar-nav">
+										<li class="dropdown">
+											<a href="http://book.cakephp.org/3.0/en/orm/entities.html#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">3.x <i class="fa fa-menu-en fa-chevron-down"></i></a>
+											<ul class="dropdown-menu">
+												<li><a href="http://book.cakephp.org/3.0/en">3.x Book</a></li>
+												<li><a href="http://book.cakephp.org/2.0/en">2.x Book</a></li>
+												<li><a href="http://book.cakephp.org/1.3/en/">1.3 Book</a></li>
+												<li><a href="http://book.cakephp.org/1.2/en/">1.2 Book</a></li>
+												<li><a href="http://book.cakephp.org/1.1/en">1.1 Book</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+	</header>
+
+	
+	<section class="nav-btn visible-sm visible-xs">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-xs-6 text-center">
+					<button id="btn-nav" class="btn btn-b btn-nav" data-toggle="modal" data-target="#modal"><strong>Nav</strong></button>
+				</div>
+
+				<div class="col-sm-6 col-xs-6 text-center">
+					<button id="btn-toc" class="btn btn-b btn-nav" data-toggle="modal" data-target="#modal"><strong>Table of Contents</strong></button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	
+	<div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-header">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title-cookbook" id="modal-header"></h4>
+				</div>
+				<div class="modal-body"></div>
+			</div>
+		</div>
+	</div>
+
+<div class="container page-container"><div id="improve-slideout">
+		<i class="fa fa-pencil icon-improve"></i>
+		<a href="https://github.com/cakephp/docs/edit/3.0/en/orm/entities.rst" target="_blank">
+			<div id="improve-slideout-inner"><h6>Improve This Doc <i class="fa fa-github git-improve"></i></h6></div>
+		</a>
+	</div><a id="back-to-contents" href="http://book.cakephp.org/3.0/en/orm/entities.html#page-contents"><i class="fa fa-arrow-circle-up icon-improve" title="Back to Contents"></i></a>
+
+	
+	<div class="row">
+		<div class="col-sm-12 col-md-9 col-md-push-3 space-left push-off"><div class="page-contents col-sm-5">
+				<h3>Page Contents</h3>
+				<ul>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#">Entities</a><ul>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#creating-entity-classes">Creating Entity Classes</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#creating-entities">Creating Entities</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#accessing-entity-data">Accessing Entity Data</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#accessors-mutators">Accessors &amp; Mutators</a><ul>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#creating-virtual-fields">Creating Virtual Fields</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#checking-if-an-entity-has-been-modified">Checking if an Entity Has Been Modified</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#validation-errors">Validation Errors</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#mass-assignment">Mass Assignment</a><ul>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#avoiding-mass-assignment-protection">Avoiding Mass Assignment Protection</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#modifying-the-guarded-fields-at-runtime">Modifying the Guarded Fields at Runtime</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#bypassing-field-guarding">Bypassing Field Guarding</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#checking-if-an-entity-was-persisted">Checking if an Entity was Persisted</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#lazy-loading-associations">Lazy Loading Associations</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#creating-re-usable-code-with-traits">Creating Re-usable Code with Traits</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#converting-to-arrays-json">Converting to Arrays/JSON</a><ul>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#exposing-virtual-properties">Exposing Virtual Properties</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#hiding-properties">Hiding Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#storing-complex-types">Storing Complex Types</a></li>
+</ul>
+</li>
+</ul>
+
+			</div><div class="document-body">
+			
+  <div class="section" id="namespace-Cake\ORM">
+<span id="entities"></span><h1>Entities<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#namespace-Cake\ORM" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="Cake\ORM\Entity">
+<em class="property">class </em><code class="descclassname">Cake\ORM\</code><code class="descname">Entity</code><a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#Cake\ORM\Entity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>While <a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/table-objects.html"><span class="doc">Table Objects</span></a> represent and provide access to a collection of
+objects, entities represent individual rows or domain objects in your
+application. Entities contain persistent properties and methods to manipulate and
+access the data they contain.</p>
+<p>Entities are created for you by CakePHP each time you use <code class="docutils literal"><span class="pre">find()</span></code> on a table
+object.</p>
+<div class="section" id="creating-entity-classes">
+<h2>Creating Entity Classes<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#creating-entity-classes" title="Permalink to this headline">¶</a></h2>
+<p>You don’t need to create entity classes to get started with the ORM in CakePHP.
+However, if you want to have custom logic in your entities you will need to
+create classes. By convention entity classes live in <strong>src/Model/Entity/</strong>. If
+our application had an <code class="docutils literal"><span class="pre">articles</span></code> table we could create the following entity:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="c1">// src/Model/Entity/Article.php</span>
+<span class="k">namespace</span> <span class="nx">App\Model\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Cake\ORM\Entity</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Article</span> <span class="k">extends</span> <span class="nx">Entity</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Right now this entity doesn’t do very much. However, when we load data from our
+articles table, we’ll get instances of this class.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you don’t define an entity class CakePHP will use the basic Entity class.</p>
+</div>
+</div>
+<div class="section" id="creating-entities">
+<h2>Creating Entities<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#creating-entities" title="Permalink to this headline">¶</a></h2>
+<p>Entities can be directly instantiated:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">App\Model\Entity\Article</span><span class="p">;</span>
+
+<span class="nv">$article</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Article</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>When instantiating an entity you can pass the properties with the data you want
+to store in them:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">App\Model\Entity\Article</span><span class="p">;</span>
+
+<span class="nv">$article</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Article</span><span class="p">([</span>
+    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'New Article'</span><span class="p">,</span>
+    <span class="s1">'created'</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">'now'</span><span class="p">)</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<p>Another way of getting new entities is using the <code class="docutils literal"><span class="pre">newEntity()</span></code> method from the
+<code class="docutils literal"><span class="pre">Table</span></code> objects:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">Cake\ORM\TableRegistry</span><span class="p">;</span>
+
+<span class="nv">$article</span> <span class="o">=</span> <span class="nx">TableRegistry</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">'Articles'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">newEntity</span><span class="p">();</span>
+<span class="nv">$article</span> <span class="o">=</span> <span class="nx">TableRegistry</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">'Articles'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">newEntity</span><span class="p">([</span>
+    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'New Article'</span><span class="p">,</span>
+    <span class="s1">'created'</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">'now'</span><span class="p">)</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="accessing-entity-data">
+<h2>Accessing Entity Data<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#accessing-entity-data" title="Permalink to this headline">¶</a></h2>
+<p>Entities provide a few ways to access the data they contain. Most commonly you
+will access the data in an entity using object notation:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">App\Model\Entity\Article</span><span class="p">;</span>
+
+<span class="nv">$article</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Article</span><span class="p">;</span>
+<span class="nv">$article</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">=</span> <span class="s1">'This is my first post'</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$article</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can also use the <code class="docutils literal"><span class="pre">get()</span></code> and <code class="docutils literal"><span class="pre">set()</span></code> methods:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nv">$article</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">'title'</span><span class="p">,</span> <span class="s1">'This is my first post'</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$article</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'title'</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>When using <code class="docutils literal"><span class="pre">set()</span></code> you can update multiple properties at once using an array:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nv">$article</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">([</span>
+    <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'My first post'</span><span class="p">,</span>
+    <span class="s1">'body'</span> <span class="o">=&gt;</span> <span class="s1">'It is the best ever!'</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When updating entities with request data you should whitelist which fields
+can be set with mass assignment.</p>
+</div>
+</div>
+<div class="section" id="accessors-mutators">
+<h2>Accessors &amp; Mutators<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#accessors-mutators" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the simple get/set interface, entities allow you to provide
+accessors and mutator methods. These methods let you customize how properties
+are read or set.</p>
+<p>Accessors use the convention of <code class="docutils literal"><span class="pre">_get</span></code> followed by the CamelCased version of
+the field name.</p>
+<dl class="method">
+<dt id="Cake\ORM\Entity::get">
+<code class="descclassname">Cake\ORM\Entity::</code><code class="descname">get</code><span class="sig-paren">(</span><em>$field</em><span class="sig-paren">)</span><a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#Cake\ORM\Entity::get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>They receive the basic value stored in the <code class="docutils literal"><span class="pre">_properties</span></code> array
+as their only argument. Accessors will be used when saving entities, so be
+careful when defining methods that format data, as the formatted data will be
+persisted. For example:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">App\Model\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Cake\ORM\Entity</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Article</span> <span class="k">extends</span> <span class="nx">Entity</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">_getTitle</span><span class="p">(</span><span class="nv">$title</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">ucwords</span><span class="p">(</span><span class="nv">$title</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The accessor would be run when getting the property through any of these two ways:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'title'</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can customize how properties get set by defining a mutator:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="nx">php</span><span class="o">:</span><span class="nx">method</span><span class="o">::</span> <span class="na">set</span><span class="p">(</span><span class="nv">$field</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$value</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Mutator methods should always return the value that should be stored in the
+property. As you can see above, you can also use mutators to set other
+calculated properties. When doing this, be careful to not introduce any loops,
+as CakePHP will not prevent infinitely looping mutator methods.</p>
+<p>Mutators allow you to convert properties as they are set, or create calculated
+data. Mutators and accessors are applied when properties are read using object
+notation, or using <code class="docutils literal"><span class="pre">get()</span></code> and <code class="docutils literal"><span class="pre">set()</span></code>. For example:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">App\Model\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Cake\ORM\Entity</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Cake\Utility\Text</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Article</span> <span class="k">extends</span> <span class="nx">Entity</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">_setTitle</span><span class="p">(</span><span class="nv">$title</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">'slug'</span><span class="p">,</span> <span class="nx">Text</span><span class="o">::</span><span class="na">slug</span><span class="p">(</span><span class="nv">$title</span><span class="p">));</span>
+        <span class="k">return</span> <span class="nv">$title</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The mutator would be run when setting the property through any of these two
+ways:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">=</span> <span class="s1">'foo'</span><span class="p">;</span> <span class="c1">// slug is set as well</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">'title'</span><span class="p">,</span> <span class="s1">'foo'</span><span class="p">);</span> <span class="c1">// slug is set as well</span>
+</pre></div>
+</div>
+<div class="section" id="creating-virtual-fields">
+<span id="entities-virtual-properties"></span><h3>Creating Virtual Fields<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#creating-virtual-fields" title="Permalink to this headline">¶</a></h3>
+<p>By defining accessors you can provide access to fields/properties that do not
+actually exist. For example if your users table has <code class="docutils literal"><span class="pre">first_name</span></code> and
+<code class="docutils literal"><span class="pre">last_name</span></code> you could create a method for the full name:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">App\Model\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Cake\ORM\Entity</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Entity</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">_getFullName</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_properties</span><span class="p">[</span><span class="s1">'first_name'</span><span class="p">]</span> <span class="o">.</span> <span class="s1">'  '</span> <span class="o">.</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_properties</span><span class="p">[</span><span class="s1">'last_name'</span><span class="p">];</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can access virtual fields as if they existed on the entity. The property
+name will be the lower case and underscored version of the method:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">full_name</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Do bear in mind that virtual fields cannot be used in finds.</p>
+</div>
+</div>
+<div class="section" id="checking-if-an-entity-has-been-modified">
+<h2>Checking if an Entity Has Been Modified<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#checking-if-an-entity-has-been-modified" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="Cake\ORM\Entity::dirty">
+<code class="descclassname">Cake\ORM\Entity::</code><code class="descname">dirty</code><span class="sig-paren">(</span><em>$field = null</em>, <em>$dirty = null</em><span class="sig-paren">)</span><a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#Cake\ORM\Entity::dirty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>You may want to make code conditional based on whether or not properties have
+changed in an entity. For example, you may only want to validate fields when
+they change:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="c1">// See if the title has been modified.</span>
+<span class="nv">$article</span><span class="o">-&gt;</span><span class="na">dirty</span><span class="p">(</span><span class="s1">'title'</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can also flag fields as being modified. This is handy when appending into
+array properties:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="c1">// Add a comment and mark the field as changed.</span>
+<span class="nv">$article</span><span class="o">-&gt;</span><span class="na">comments</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$newComment</span><span class="p">;</span>
+<span class="nv">$article</span><span class="o">-&gt;</span><span class="na">dirty</span><span class="p">(</span><span class="s1">'comments'</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In addition you can also base your conditional code on the original property
+values by using the <code class="docutils literal"><span class="pre">getOriginal()</span></code> method. This method will either return
+the original value of the property if it has been modified or its actual value.</p>
+<p>You can also check for changes to any property in the entity:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="c1">// See if the entity has changed</span>
+<span class="nv">$article</span><span class="o">-&gt;</span><span class="na">dirty</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>To remove the dirty mark from fields in an entity, you can use the <code class="docutils literal"><span class="pre">clean()</span></code>
+method:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nv">$article</span><span class="o">-&gt;</span><span class="na">clean</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>When creating a new entity, you can avoid the fields from being marked as dirty
+by passing an extra option:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nv">$article</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Article</span><span class="p">([</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'New Article'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'markClean'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="validation-errors">
+<h2>Validation Errors<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#validation-errors" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="Cake\ORM\Entity::errors">
+<code class="descclassname">Cake\ORM\Entity::</code><code class="descname">errors</code><span class="sig-paren">(</span><em>$field = null</em>, <em>$errors = null</em><span class="sig-paren">)</span><a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#Cake\ORM\Entity::errors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>After you <a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/saving-data.html#saving-entities"><span class="std std-ref">save an entity</span></a> any validation errors will be
+stored on the entity itself. You can access any validation errors using the
+<code class="docutils literal"><span class="pre">errors()</span></code> method:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="c1">// Get all the errors</span>
+<span class="nv">$errors</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">errors</span><span class="p">();</span>
+
+<span class="c1">// Get the errors for a single field.</span>
+<span class="nv">$errors</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">errors</span><span class="p">(</span><span class="s1">'password'</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">errors()</span></code> method can also be used to set the errors on an entity, making
+it easier to test code that works with error messages:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">errors</span><span class="p">(</span><span class="s1">'password'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'Password is required.'</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mass-assignment">
+<span id="entities-mass-assignment"></span><h2>Mass Assignment<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#mass-assignment" title="Permalink to this headline">¶</a></h2>
+<p>While setting properties to entities in bulk is simple and convenient, it can
+create significant security issues. Bulk assigning user data from the request
+into an entity allows the user to modify any and all columns. When using
+anonymous entity classes or creating the entity class with the <a class="reference internal" href="http://book.cakephp.org/3.0/en/bake.html"><span class="doc">Bake Console</span></a>
+CakePHP does not protect against mass-assignment.</p>
+<p>The <code class="docutils literal"><span class="pre">_accessible</span></code> property allows you to provide a map of properties and
+whether or not they can be mass-assigned. The values <code class="docutils literal"><span class="pre">true</span></code> and <code class="docutils literal"><span class="pre">false</span></code>
+indicate whether a field can or cannot be mass-assigned:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">App\Model\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Cake\ORM\Entity</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Article</span> <span class="k">extends</span> <span class="nx">Entity</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$_accessible</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+        <span class="s1">'body'</span> <span class="o">=&gt;</span> <span class="k">true</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In addition to concrete fields there is a special <code class="docutils literal"><span class="pre">*</span></code> field which defines the
+fallback behavior if a field is not specifically named:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">App\Model\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Cake\ORM\Entity</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Article</span> <span class="k">extends</span> <span class="nx">Entity</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$_accessible</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+        <span class="s1">'body'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+        <span class="s1">'*'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the <code class="docutils literal"><span class="pre">*</span></code> property is not defined it will default to <code class="docutils literal"><span class="pre">false</span></code>.</p>
+</div>
+<div class="section" id="avoiding-mass-assignment-protection">
+<h3>Avoiding Mass Assignment Protection<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#avoiding-mass-assignment-protection" title="Permalink to this headline">¶</a></h3>
+<p>When creating a new entity using the <code class="docutils literal"><span class="pre">new</span></code> keyword you can tell it to not
+protect itself against mass assignment:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">App\Model\Entity\Article</span><span class="p">;</span>
+
+<span class="nv">$article</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Article</span><span class="p">([</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Foo'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'guard'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="modifying-the-guarded-fields-at-runtime">
+<h3>Modifying the Guarded Fields at Runtime<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#modifying-the-guarded-fields-at-runtime" title="Permalink to this headline">¶</a></h3>
+<p>You can modify the list of guarded fields at runtime using the <code class="docutils literal"><span class="pre">accessible</span></code>
+method:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="c1">// Make user_id accessible.</span>
+<span class="nv">$article</span><span class="o">-&gt;</span><span class="na">accessible</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+
+<span class="c1">// Make title guarded.</span>
+<span class="nv">$article</span><span class="o">-&gt;</span><span class="na">accessible</span><span class="p">(</span><span class="s1">'title'</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Modifying accessible fields effects only the instance the method is called
+on.</p>
+</div>
+<p>When using the <code class="docutils literal"><span class="pre">newEntity()</span></code> and <code class="docutils literal"><span class="pre">patchEntity()</span></code> methods in the <code class="docutils literal"><span class="pre">Table</span></code>
+objects you can customize mass assignment protection with options. Please refer
+to the <a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/saving-data.html#changing-accessible-fields"><span class="std std-ref">Changing Accessible Fields</span></a> section for more information.</p>
+</div>
+<div class="section" id="bypassing-field-guarding">
+<h3>Bypassing Field Guarding<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#bypassing-field-guarding" title="Permalink to this headline">¶</a></h3>
+<p>There are some situations when you want to allow mass-assignment to guarded
+fields:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nv">$article</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nv">$properties</span><span class="p">,</span> <span class="p">[</span><span class="s1">'guard'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>By setting the <code class="docutils literal"><span class="pre">guard</span></code> option to <code class="docutils literal"><span class="pre">false</span></code>, you can ignore the accessible
+field list for a single call to <code class="docutils literal"><span class="pre">set()</span></code>.</p>
+</div>
+<div class="section" id="checking-if-an-entity-was-persisted">
+<h3>Checking if an Entity was Persisted<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#checking-if-an-entity-was-persisted" title="Permalink to this headline">¶</a></h3>
+<p>It is often necessary to know if an entity represents a row that is already
+in the database. In those situations use the <code class="docutils literal"><span class="pre">isNew()</span></code> method:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$article</span><span class="o">-&gt;</span><span class="na">isNew</span><span class="p">())</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'This article was saved already!'</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you are certain that an entity has already been persisted, you can use
+<code class="docutils literal"><span class="pre">isNew()</span></code> as a setter:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nv">$article</span><span class="o">-&gt;</span><span class="na">isNew</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+
+<span class="nv">$article</span><span class="o">-&gt;</span><span class="na">isNew</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="lazy-loading-associations">
+<span id="lazy-load-associations"></span><h2>Lazy Loading Associations<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#lazy-loading-associations" title="Permalink to this headline">¶</a></h2>
+<p>While eager loading associations is generally the most efficient way to access
+your associations, there may be times when you need to lazily load associated
+data. Before we get into how to lazy load associations, we should discuss the
+differences between eager loading and lazy loading associations:</p>
+<dl class="docutils">
+<dt>Eager loading</dt>
+<dd>Eager loading uses joins (where possible) to fetch data from the
+database in as <em>few</em> queries as possible. When a separate query is required,
+like in the case of a HasMany association, a single query is emitted to
+fetch <em>all</em> the associated data for the current set of objects.</dd>
+<dt>Lazy loading</dt>
+<dd>Lazy loading defers loading association data until it is absolutely
+required. While this can save CPU time because possibly unused data is not
+hydrated into objects, it can result in many more queries being emitted to
+the database. For example looping over a set of articles &amp; their comments
+will frequently emit N queries where N is the number of articles being
+iterated.</dd>
+</dl>
+<p>While lazy loading is not included by CakePHP’s ORM, you can just use one of the
+community plugins to do so. We recommend <a class="reference external" href="https://github.com/jeremyharris/cakephp-lazyload">the LazyLoad Plugin</a></p>
+<p>After adding the plugin to your entity, you will be able to do the following:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nv">$article</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Articles</span><span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+<span class="c1">// The comments property was lazy loaded</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$article</span><span class="o">-&gt;</span><span class="na">comments</span> <span class="k">as</span> <span class="nv">$comment</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$comment</span><span class="o">-&gt;</span><span class="na">body</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-re-usable-code-with-traits">
+<h2>Creating Re-usable Code with Traits<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#creating-re-usable-code-with-traits" title="Permalink to this headline">¶</a></h2>
+<p>You may find yourself needing the same logic in multiple entity classes. PHP’s
+traits are a great fit for this. You can put your application’s traits in
+<strong>src/Model/Entity</strong>. By convention traits in CakePHP are suffixed with
+<code class="docutils literal"><span class="pre">Trait</span></code> so they can be discernible from classes or interfaces. Traits are
+often a good complement to behaviors, allowing you to provide functionality for
+the table and entity objects.</p>
+<p>For example if we had SoftDeletable plugin, it could provide a trait. This trait
+could give methods for marking entities as ‘deleted’, the method <code class="docutils literal"><span class="pre">softDelete</span></code>
+could be provided by a trait:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="c1">// SoftDelete/Model/Entity/SoftDeleteTrait.php</span>
+
+<span class="k">namespace</span> <span class="nx">SoftDelete\Model\Entity</span><span class="p">;</span>
+
+<span class="k">trait</span> <span class="nx">SoftDeleteTrait</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">softDelete</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">'deleted'</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You could then use this trait in your entity class by importing it and including
+it:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">App\Model\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Cake\ORM\Entity</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">SoftDelete\Model\Entity\SoftDeleteTrait</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Article</span> <span class="k">extends</span> <span class="nx">Entity</span>
+<span class="p">{</span>
+    <span class="k">use</span> <span class="nx">SoftDeleteTrait</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="converting-to-arrays-json">
+<h2>Converting to Arrays/JSON<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#converting-to-arrays-json" title="Permalink to this headline">¶</a></h2>
+<p>When building APIs, you may often need to convert entities into arrays or JSON
+data. CakePHP makes this simple:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="c1">// Get an array.</span>
+<span class="c1">// Associations will be converted with toArray() as well.</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
+
+<span class="c1">// Convert to JSON</span>
+<span class="c1">// Associations will be converted with jsonSerialize hook as well.</span>
+<span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>When converting an entity to an JSON the virtual &amp; hidden field lists are
+applied. Entities are recursively converted to JSON as well. This means that if you
+eager loaded entities and their associations CakePHP will correctly handle
+converting the associated data into the correct format.</p>
+<div class="section" id="exposing-virtual-properties">
+<h3>Exposing Virtual Properties<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#exposing-virtual-properties" title="Permalink to this headline">¶</a></h3>
+<p>By default virtual properties are not exported when converting entities to
+arrays or JSON. In order to expose virtual properties you need to make them
+visible. When defining your entity class you can provide a list of virtual
+properties that should be exposed:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">App\Model\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Cake\ORM\Entity</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Entity</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$_virtual</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'full_name'</span><span class="p">];</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This list can be modified at runtime using <code class="docutils literal"><span class="pre">virtualProperties</span></code>:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">virtualProperties</span><span class="p">([</span><span class="s1">'full_name'</span><span class="p">,</span> <span class="s1">'is_admin'</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hiding-properties">
+<h3>Hiding Properties<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#hiding-properties" title="Permalink to this headline">¶</a></h3>
+<p>There are often fields you do not want exported in JSON or array formats. For
+example it is often unwise to expose password hashes or account recovery
+questions. When defining an entity class, define which properties should be
+hidden:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">App\Model\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Cake\ORM\Entity</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Entity</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$_hidden</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'password'</span><span class="p">];</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This list can be modified at runtime using <code class="docutils literal"><span class="pre">hiddenProperties</span></code>:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span></span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">hiddenProperties</span><span class="p">([</span><span class="s1">'password'</span><span class="p">,</span> <span class="s1">'recovery_question'</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="storing-complex-types">
+<h2>Storing Complex Types<a class="headerlink" href="http://book.cakephp.org/3.0/en/orm/entities.html#storing-complex-types" title="Permalink to this headline">¶</a></h2>
+<p>Accessor &amp; Mutator methods on entities are not intended to contain the logic for
+serializing and unserializing complex data coming from the database. Refer to
+the <a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/saving-data.html#saving-complex-types"><span class="std std-ref">Saving Complex Types</span></a> section to understand how your application can
+store more complex data types like arrays and objects.</p>
+</div>
+</div>
+
+
+			</div>
+		</div>
+
+		
+		<div class="col-md-3 col-md-pull-9 pull-off hidden-xs hidden-sm" lang="en">
+			<aside class="sidebar">
+				<div class="mb30 row">
+<div id="sidebar-navigation" class="hidden-xs">
+	<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/intro.html">CakePHP at a Glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/appendices/3-x-migration-guide.html">3.x Migration Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/tutorials-and-examples.html">Tutorials &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/development/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/development/routing.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/controllers/request-response.html">Request &amp; Response Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/controllers/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/views.html">Views</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm.html">Database Access &amp; ORM</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/database-basics.html">Database Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/query-builder.html">Query Builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/table-objects.html">Table Objects</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="http://book.cakephp.org/3.0/en/orm/entities.html#">Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/retrieving-data-and-resultsets.html">Retrieving Data &amp; Results Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/validation.html">Validating Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/saving-data.html">Saving Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/deleting-data.html">Deleting Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/associations.html">Associations - Linking Tables Together</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/behaviors.html">Behaviors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/orm/schema-system.html">Schema System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/3.0/en/console-and-shells/orm-cache.html">ORM Cache Shell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/controllers/components/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/bake.html">Bake Console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/caching.html">Caching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/console-and-shells.html">Shells, Tasks &amp; Console Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/development/debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/deployment.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/email.html">Email</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/development/errors.html">Error &amp; Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/events.html">Events System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/internationalization-and-localization.html">Internationalization &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/form.html">Modelless Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/controllers/components/pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/development/rest.html">REST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/development/sessions.html">Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/development/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/validation.html">Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/app.html">App Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/collections.html">Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/file-folder.html">Folder &amp; File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/hash.html">Hash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/httpclient.html">Http Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/inflector.html">Inflector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/number.html">Number</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/registry-objects.html">Registry Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/text.html">Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/time.html">Date &amp; Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/xml.html">Xml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/core-libraries/global-constants-and-functions.html">Constants &amp; Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/chronos.html">Chronos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/debug-kit.html">Debug Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/elasticsearch.html">ElasticSearch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/upgrade-tool.html">Upgrade Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/3.0/en/appendices.html">Appendices</a></li>
+</ul>
+
+</div>
+
+				</div>
+			</aside>
+			<aside class="sidebar">
+				<div class="mb30 row">
+				</div>
+			</aside>
+		</div>
+	</div>
+</div>
+
+<section id="socials" class="back-3">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-5  social text-center">
+				<div class="col-sm-3 col-xs-3">
+					<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Entities_files/fTmIQU3LxvB.html" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Entities_files/fTmIQU3LxvB(1).html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+						<script>(function(d, s, id) {
+						  var js, fjs = d.getElementsByTagName(s)[0];
+						  if (d.getElementById(id)) return;
+						  js = d.createElement(s); js.id = id;
+						  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+						  fjs.parentNode.insertBefore(js, fjs);
+						}(document, 'script', 'facebook-jssdk'));
+						</script>
+						<div id="fb-root-face" class="fb-like fb_iframe_widget" data-href="https://www.facebook.com/CakePHP/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=&amp;container_width=102&amp;href=https%3A%2F%2Fwww.facebook.com%2FCakePHP%2F&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;share=false&amp;show_faces=true"><span style="vertical-align: bottom; width: 85px; height: 20px;"><iframe name="f2f5633f6efa904" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./Entities_files/like.html" style="border: none; visibility: visible; width: 85px; height: 20px;" class=""></iframe></span></div>
+				</div>
+
+				<div class="col-sm-3 col-xs-3">
+					<iframe src="./Entities_files/github-btn.html" frameborder="0" scrolling="0" width="120px" height="30px"></iframe>
+				</div>
+
+				<div class="col-sm-3 col-xs-3">
+					<iframe src="./Entities_files/github-btn(1).html" frameborder="0" scrolling="0" width="120px" height="30px"></iframe>
+				</div>
+
+				<div class="col-sm-3 col-xs-3">
+					<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-follow-button twitter-follow-button-rendered" title="Twitter Follow Button" src="./Entities_files/follow_button.f7908d4abf5ce27173c69bdbb93aedb6.en.html" style="position: static; visibility: visible; width: 62px; height: 20px;" data-screen-name="CakePHP"></iframe>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-7 social-footer text-center ">
+				<a href="https://twitter.com/cakephp" data-toggle="tooltip" title="" data-original-title="Twitter"><i class="fa icon-social fa-twitter"></i>
+				</a><a href="http://www.facebook.com/groups/cake.community" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa icon-social fa-facebook"></i></a>
+				<a href="http://goo.gl/mSC0s" data-toggle="tooltip" title="" data-original-title="Google Plus"><i class="fa icon-social  fa-google-plus"></i></a>
+				<a href="http://www.youtube.com/user/CakePHP" data-toggle="tooltip" title="" data-original-title="Youtube"><i class="fa icon-social fa-youtube-play"></i></a>
+				<a href="https://github.com/cakephp" data-toggle="tooltip" title="" data-original-title="Github"><i class="fa icon-social fa-git"></i></a>
+				<a href="http://cakesf.herokuapp.com/" target="_blank" title="" data-toggle="tooltip" data-original-title="Slack"><i class="fa fa-slack icon-social"></i></a>
+				<a href="http://stackoverflow.com/tags/cakephp" data-toggle="tooltip" title="" data-original-title="Stack Overflow"><i class="fa icon-social fa-stack-overflow"></i></a>
+				<a href="http://webchat.freenode.net/?channels=cakephp" data-toggle="tooltip" title="" class="icon-irc" data-original-title="IRC">#IRC</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer id="footer" class="footer-wrapper">
+	<div class="container">
+
+		<div class="row col-p30">
+			<div class="col-sm-12 col-md-3">
+				<div class="footer-widget t-footer">
+					<div class="col-md-12">
+						<a href="https://www.openhub.net/p/cakephp">
+							<img src="./Entities_files/open-hub.png">
+						</a>
+						<div class="mt10">
+							<a href="https://www.rackspace.com/">
+								<img src="./Entities_files/rackspace.png">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-12 col-md-9">
+				<div class="col-md-3 col-sm-6 business-solution">
+					<ul class="footer-menu">
+						<li class="menu-title">
+	<a href="http://cakephp.org/business-solutions"><i class="fa fa-menu-title fa-briefcase"></i>Business Solutions</a>
+</li>
+<li class="menu-title mt30">
+	<a href="http://cakephp.org/showcase"><i class="fa fa-menu-title fa-desktop"></i>Showcase</a>
+</li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<ul class="footer-menu">
+						
+<li class="menu-title">
+	<i class="fa fa-menu-title fa-book"></i>Documentation
+</li>
+
+<li><a href="http://book.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Book</a></li>
+<li><a href="http://api.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>API</a></li>
+
+<li><a href="http://cakephp.org/documentation/videos"><i class="fa fa-menu fa-chevron-right"></i>Videos</a></li>
+<li><a href="http://cakephp.org/privacy"><i class="fa fa-menu fa-chevron-right"></i>Privacy Policy</a></li>
+<li><a href="http://cakephp.org/pages/trademark"><i class="fa fa-menu fa-chevron-right"></i>Logos &amp; Trademarks</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<ul class="footer-menu">
+						
+<li class="menu-title"><i class="fa fa-menu-title fa-users"></i>Community</li>
+
+<li><a href="http://cakephp.org/team"><i class="fa fa-menu fa-chevron-right"></i>Team</a></li>
+<li><a href="https://github.com/cakephp/cakephp/issues"><i class="fa fa-menu fa-chevron-right"></i>Issues (Github)</a></li>
+<li><a href="http://www.youtube.com/user/CakePHP"><i class="fa fa-menu fa-chevron-right"></i>YouTube Channel</a></li>
+<li><a href="http://cakephp.org/get-involved"><i class="fa fa-menu fa-chevron-right"></i>Get Involved</a></li>
+
+<li><a href="http://bakery.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Bakery</a></li>
+<li><a href="https://github.com/FriendsOfCake/awesome-cakephp"><i class="fa fa-menu fa-chevron-right"></i>Featured Resources</a></li>
+<li><a href="http://cakephp.org/newsletter/signup"><i class="fa fa-menu fa-chevron-right"></i>Newsletter</a></li>
+<li><a href="http://certification.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Certification</a></li>
+<li><a href="http://my.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>My CakePHP</a></li>
+<li><a href="http://cakefest.org/"><i class="fa fa-menu fa-chevron-right"></i>CakeFest</a></li>
+<li><a href="http://www.facebook.com/groups/cake.community"><i class="fa fa-menu fa-chevron-right"></i>Facebook</a></li>
+<li><a href="http://twitter.com/cakephp"><i class="fa fa-menu fa-chevron-right"></i>Twitter</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<ul class="footer-menu">
+						
+<li class="menu-title"><i class="fa fa-menu-title fa-comments-o"></i>Help &amp; Support</li>
+
+<li><a href="http://discourse.cakephp.org/"><i class="fa fa-menu fa-chevron-right"></i>Forum</a></li>
+<li><a href="http://stackoverflow.com/tags/cakephp"><i class="fa fa-menu fa-chevron-right"></i>Stack Overflow</a></li>
+<li><a href="http://webchat.freenode.net/?channels=cakephp"><i class="fa fa-menu fa-chevron-right"></i>IRC</a></li>
+<li><a href="http://cakesf.herokuapp.com/"><i class="fa fa-menu fa-chevron-right"></i>Slack</a></li>
+<li><a href="http://cakedc.com/"><i class="fa fa-menu fa-chevron-right"></i>Paid Support</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 text-center mt30">
+				<p class="copyright">
+							© Copyright 2016, Cake Software Foundation, Inc.
+						Last updated on Nov 17, 2016.
+						Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.5.
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<div id="inline-search-results"></div>
+
+
+</div>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-743287-3']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+  
+<iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./Entities_files/saved_resource.html"></iframe></body></html>

@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Entity;
 
+use App\Controller\ConsumosController;
 use Cake\ORM\Entity;
 
 /**
