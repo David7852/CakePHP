@@ -50,6 +50,8 @@ Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $r
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'index']);});
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/ingresar/*', ['action' => 'login']);});
+Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/salir', ['action' => 'logout']);});
+
 //trabajadores
 Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
@@ -128,7 +130,9 @@ Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilde
 Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
 Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
 Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'index']);});
-
+//general
+Router::scope('/',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/salir', ['action' => 'logout']);});
+Router::scope('/',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/ingresar/*', ['action' => 'login']);});
 Router::scope('/', function (RouteBuilder $routes) {
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',

@@ -27,6 +27,13 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
+    public function isAuthorized($user)
+    {
+        if (isset($user['id'])) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Initialization hook method.
@@ -53,10 +60,11 @@ class AppController extends Controller
                     ]
                 ]
             ],
+            'authorize' => 'Controller',
             'loginAction' => [
                 'controller' => 'Usuarios',
                 'action' => 'login'
-            ],
+            ],//this work for an especific logout page
             'logoutRedirect' => [
                 'controller' => 'Pages',
                 'action' => 'display',
@@ -76,6 +84,7 @@ class AppController extends Controller
      */
     public function beforeRender(Event $event)
     {
+
         if (!array_key_exists('_serialize', $this->viewVars) &&
             in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {

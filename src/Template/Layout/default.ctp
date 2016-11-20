@@ -12,8 +12,8 @@
  * @since         0.10.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-use Cake\Controller\Component\AuthComponent;
 $cakeDescription = 'Fertinv';
+$session = $this->request->session();
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,7 +42,7 @@ $cakeDescription = 'Fertinv';
         </ul>
         <div class="top-bar-section">
             <ul class="right">
-                <?php if(false):?>
+                <?php if(!$session->read('Auth.User')):?>
                 <li><?= $this->Html->link('Ingresar',['controller' => 'Usuarios', 'action' => 'login']) ?></li>
                 <li><?= $this->Html->link('Registrarse',['controller' => 'Usuarios', 'action' => 'add']) ?></li>
                 <?php else: ?>
