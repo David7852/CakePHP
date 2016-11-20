@@ -26,6 +26,11 @@ class ComposerStaticInit8897b636ce7394b72139800f7a67659d
         array (
             'XdgBaseDir\\' => 11,
         ),
+        'T' => 
+        array (
+            'Twit\\Test\\' => 10,
+            'Twit\\' => 5,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -79,6 +84,14 @@ class ComposerStaticInit8897b636ce7394b72139800f7a67659d
         'XdgBaseDir\\' => 
         array (
             0 => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src',
+        ),
+        'Twit\\Test\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/plugins/Twit/tests',
+        ),
+        'Twit\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/plugins/Twit/src',
         ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (

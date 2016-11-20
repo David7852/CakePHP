@@ -222,3 +222,5 @@ if (Configure::read('debug')) {
 }
 
 Plugin::load('Migrations');
+
+Plugin::load('Twit', ['bootstrap' => false, 'routes' => true]);
