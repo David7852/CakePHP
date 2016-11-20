@@ -1,304 +1,282 @@
-# LANGUAGE translation of CakePHP Application
-# Copyright YEAR NAME <EMAIL@ADDRESS>
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-07-21 14:57+0200\n"
-"PO-Revision-Date: 2016-07-21 15:15+0200\n"
-"Language-Team: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-06-26 21:34+0000\n"
+"PO-Revision-Date: 2016-06-26 18:43-0300\n"
+"Last-Translator: Raúl Arellano <raul338@elhacker.net>\n"
+"Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.4\n"
-"Last-Translator: \n"
-"Language: pl\n"
-
-#: Template/Error/error400.ctp:36 Template/Error/error500.ctp:41
-msgid "Error"
-msgstr "Błąd"
-
-#: Template/Error/error400.ctp:38
-msgid "The requested address %s was not found on this server."
-msgstr "Żądany adres %s nie został odnaleziony na tym serwerze."
-
-#: Template/Error/error500.ctp:39
-msgid "An Internal Error Has Occurred"
-msgstr "Wystąpił błąd wewnętrzny"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 2.0\n"
 
 #: Controller/Component/AuthComponent.php:454
 msgid "You are not authorized to access that location."
-msgstr "Nie masz uprawnień, aby przeglądać te lokalizację."
+msgstr "No tienes permisos para acceder a dicha ubicación."
 
 #: Controller/Component/CsrfComponent.php:154
 msgid "Missing CSRF token cookie"
-msgstr "Brakuje tokena CSRF"
+msgstr "Falta la cookie del CSRF token"
 
 #: Controller/Component/CsrfComponent.php:158
 msgid "CSRF token mismatch."
-msgstr "Token CSRF nie pasuje"
+msgstr "Los token CSRF no concuerdan."
 
 #: Error/ExceptionRenderer.php:247
 msgid "Not Found"
-msgstr "Nie znaleziono"
+msgstr "No encontrado"
 
 #: Error/ExceptionRenderer.php:249
 msgid "An Internal Error Has Occurred."
-msgstr "Wystąpił błąd wewnętrzny"
+msgstr "Ha ocurrido un error interno."
 
 #: I18n/Number.php:89
 msgid "{0,number,#,###.##} KB"
-msgstr "{0,number,#,###.##} KB"
+msgstr ""
 
 #: I18n/Number.php:91
 msgid "{0,number,#,###.##} MB"
-msgstr "{0,number,#,###.##} MB"
+msgstr ""
 
 #: I18n/Number.php:93
 msgid "{0,number,#,###.##} GB"
-msgstr "{0,number,#,###.##} GB"
+msgstr ""
 
 #: I18n/Number.php:95
 msgid "{0,number,#,###.##} TB"
-msgstr "{0,number,#,###.##} TB"
+msgstr ""
 
 #: I18n/Number.php:87
 msgid "{0,number,integer} Byte"
 msgid_plural "{0,number,integer} Bytes"
-msgstr[0] "{0,number,integer} bajt"
-msgstr[1] "{0,number,integer} bajty"
-msgstr[2] "{0,number,integer} bajtów"
+msgstr[0] ""
+msgstr[1] ""
 
 #: I18n/RelativeTimeFormatter.php:80
 msgid "{0} from now"
-msgstr "{0} od teraz"
+msgstr "{0} desde ahora"
 
 #: I18n/RelativeTimeFormatter.php:80
 msgid "{0} ago"
-msgstr "{0} temu"
+msgstr "hace {0}"
 
 #: I18n/RelativeTimeFormatter.php:82
 msgid "{0} after"
-msgstr "{0} po"
+msgstr "{0} después"
 
 #: I18n/RelativeTimeFormatter.php:82
 msgid "{0} before"
-msgstr "{0} przed"
+msgstr "{0} antes"
 
 #: I18n/RelativeTimeFormatter.php:113
 msgid "just now"
-msgstr "przed chwilą"
+msgstr "justo ahora"
 
 #: I18n/RelativeTimeFormatter.php:150
 msgid "about a second ago"
-msgstr "sekundę temu"
+msgstr "hace un segundo"
 
 #: I18n/RelativeTimeFormatter.php:151
 msgid "about a minute ago"
-msgstr "minutę temu"
+msgstr "hace un minuto"
 
 #: I18n/RelativeTimeFormatter.php:152
 msgid "about an hour ago"
-msgstr "godzinę temu"
+msgstr "hace una hora"
 
 #: I18n/RelativeTimeFormatter.php:153;328
 msgid "about a day ago"
-msgstr "wczoraj"
+msgstr "hace un día"
 
 #: I18n/RelativeTimeFormatter.php:154;329
 msgid "about a week ago"
-msgstr "tydzień temu"
+msgstr "hace una semana"
 
 #: I18n/RelativeTimeFormatter.php:155;330
 msgid "about a month ago"
-msgstr "miesiąc temu"
+msgstr "hace un mes"
 
 #: I18n/RelativeTimeFormatter.php:156;331
 msgid "about a year ago"
-msgstr "rok temu"
+msgstr "hace un año"
 
 #: I18n/RelativeTimeFormatter.php:166
 msgid "in about a second"
-msgstr "w sekundę"
+msgstr "en un segundo"
 
 #: I18n/RelativeTimeFormatter.php:167
 msgid "in about a minute"
-msgstr "w około jedną minutę"
+msgstr "en un minuto"
 
 #: I18n/RelativeTimeFormatter.php:168
 msgid "in about an hour"
-msgstr "w ciągu godziny"
+msgstr "en una hora"
 
 #: I18n/RelativeTimeFormatter.php:169;341
 msgid "in about a day"
-msgstr "w około jeden dzień"
+msgstr "en un día"
 
 #: I18n/RelativeTimeFormatter.php:170;342
 msgid "in about a week"
-msgstr "w ciągu tygodnia"
+msgstr "en una semana"
 
 #: I18n/RelativeTimeFormatter.php:171;343
 msgid "in about a month"
-msgstr "w około jeden miesiąc"
+msgstr "en un mes"
 
 #: I18n/RelativeTimeFormatter.php:172;344
 msgid "in about a year"
-msgstr "w rok"
+msgstr "en un año"
 
 #: I18n/RelativeTimeFormatter.php:300
 msgid "today"
-msgstr "dzisiaj"
+msgstr "hoy"
 
 #: I18n/RelativeTimeFormatter.php:364
 msgid "%s ago"
-msgstr "%s temu"
+msgstr "hace %s"
 
 #: I18n/RelativeTimeFormatter.php:365
 msgid "on %s"
-msgstr "%s"
+msgstr "el %s"
 
 #: I18n/RelativeTimeFormatter.php:47;125;312
 msgid "{0} year"
 msgid_plural "{0} years"
-msgstr[0] "{0} rok"
-msgstr[1] "{0} lata"
-msgstr[2] "{0} lat"
+msgstr[0] "{0} año"
+msgstr[1] "{0} años"
 
 #: I18n/RelativeTimeFormatter.php:51;128;315
 msgid "{0} month"
 msgid_plural "{0} months"
-msgstr[0] "{0} miesiąc"
-msgstr[1] "{0} miesiące"
-msgstr[2] "{0} miesięcy"
+msgstr[0] "{0} mes"
+msgstr[1] "{0} meses"
 
 #: I18n/RelativeTimeFormatter.php:57;131;318
 msgid "{0} week"
 msgid_plural "{0} weeks"
-msgstr[0] "{0} tydzień"
-msgstr[1] "{0} tygodnie"
-msgstr[2] "{0} tygodni"
+msgstr[0] "{0} semana"
+msgstr[1] "{0} semanas"
 
 #: I18n/RelativeTimeFormatter.php:59;134;321
 msgid "{0} day"
 msgid_plural "{0} days"
-msgstr[0] "{0} dzień"
-msgstr[1] "{0} dni"
-msgstr[2] "{0} dni"
+msgstr[0] "{0} día"
+msgstr[1] "{0} días"
 
 #: I18n/RelativeTimeFormatter.php:64;137
 msgid "{0} hour"
 msgid_plural "{0} hours"
-msgstr[0] "{0} godzinę"
-msgstr[1] "{0} godziny"
-msgstr[2] "{0} godzin"
+msgstr[0] "{0} hora"
+msgstr[1] "{0} horas"
 
 #: I18n/RelativeTimeFormatter.php:68;140
 msgid "{0} minute"
 msgid_plural "{0} minutes"
-msgstr[0] "{0} minute"
-msgstr[1] "{0} minuty"
-msgstr[2] "{0} minut"
+msgstr[0] "{0} minuto"
+msgstr[1] "{0} minutos"
 
 #: I18n/RelativeTimeFormatter.php:72;143
 msgid "{0} second"
 msgid_plural "{0} seconds"
-msgstr[0] "{0} sekunda"
-msgstr[1] "{0} sekudny"
-msgstr[2] "{0} sekund"
+msgstr[0] "{0} segundo"
+msgstr[1] "{0} segundos"
 
 #: Network/Response.php:1417
 msgid "The requested file was not found"
-msgstr "Żądany plik nie został znaleziony"
+msgstr "No se encontró el archivo solicitado"
 
 #: ORM/RulesChecker.php:50
 msgid "This value is already in use"
-msgstr "Wartość jest już w użyciu"
+msgstr "Este valor ya está en uso"
 
 #: ORM/RulesChecker.php:84
 msgid "This value does not exist"
-msgstr "Wartość nie istnieje"
+msgstr "Este valor no existe"
 
 #: ORM/RulesChecker.php:107
 msgid "The count does not match {0}{1}"
-msgstr "Liczba nie pasuje {0}{1}"
+msgstr "El recuento no coincide {0}{1}"
 
 #: Utility/Text.php:744
 msgid "and"
-msgstr "i"
+msgstr "y"
 
 #: Validation/Validator.php:103
 msgid "This field is required"
-msgstr "To pole jest wymagane"
+msgstr "Este campo es obligatorio"
 
 #: Validation/Validator.php:104
 msgid "This field cannot be left empty"
-msgstr "To pole nie może być puste"
+msgstr "Este campo no puede quedar vacío"
 
 #: Validation/Validator.php:1501
 msgid "The provided value is invalid"
-msgstr "Podana wartość jest nieprawidłowa"
+msgstr "Los valores proporcionados no son válidos"
 
 #: View/Helper/FormHelper.php:947
 msgid "New %s"
-msgstr "Nowy %s"
+msgstr "Nuevo registro"
 
 #: View/Helper/FormHelper.php:950
 msgid "Edit %s"
-msgstr "Edytuj %s"
+msgstr "Editar %s"
 
 #: View/Helper/FormHelper.php:1770
 msgid "Submit"
-msgstr "Zatwierdź"
+msgstr "Enviar"
 
 #: View/Helper/HtmlHelper.php:770
 msgid "Home"
-msgstr "Strona główna"
+msgstr "Inicio"
 
 #: View/Widget/DateTimeWidget.php:530
 msgid "January"
-msgstr "styczeń"
+msgstr "Enero"
 
 #: View/Widget/DateTimeWidget.php:531
 msgid "February"
-msgstr "luty"
+msgstr "Febrero"
 
 #: View/Widget/DateTimeWidget.php:532
 msgid "March"
-msgstr "marzec"
+msgstr "Marzo"
 
 #: View/Widget/DateTimeWidget.php:533
 msgid "April"
-msgstr "kwiecień"
+msgstr "Abril"
 
 #: View/Widget/DateTimeWidget.php:534
 msgid "May"
-msgstr "maj"
+msgstr "Mayo"
 
 #: View/Widget/DateTimeWidget.php:535
 msgid "June"
-msgstr "czerwiec"
+msgstr "Junio"
 
 #: View/Widget/DateTimeWidget.php:536
 msgid "July"
-msgstr "lipiec"
+msgstr "Julio"
 
 #: View/Widget/DateTimeWidget.php:537
 msgid "August"
-msgstr "sierpień"
+msgstr "Agosto"
 
 #: View/Widget/DateTimeWidget.php:538
 msgid "September"
-msgstr "wrzesień"
+msgstr "Septiembre"
 
 #: View/Widget/DateTimeWidget.php:539
 msgid "October"
-msgstr "październik"
+msgstr "Octubre"
 
 #: View/Widget/DateTimeWidget.php:540
 msgid "November"
-msgstr "listopad"
+msgstr "Noviembre"
 
 #: View/Widget/DateTimeWidget.php:541
 msgid "December"
-msgstr "grudzień"
+msgstr "Diciembre"
+
