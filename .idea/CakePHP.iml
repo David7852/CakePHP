@@ -8,6 +8,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/cakephp/cakephp" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cakephp/chronos" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cakephp/debug_kit" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/cakephp/localized" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cakephp/migrations" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cakephp/plugin-installer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
@@ -41,6 +42,7 @@
           <root url="file://$MODULE_DIR$/vendor/cakephp/cakephp" />
           <root url="file://$MODULE_DIR$/vendor/cakephp/chronos" />
           <root url="file://$MODULE_DIR$/vendor/cakephp/debug_kit" />
+          <root url="file://$MODULE_DIR$/vendor/cakephp/localized" />
           <root url="file://$MODULE_DIR$/vendor/cakephp/migrations" />
           <root url="file://$MODULE_DIR$/vendor/cakephp/plugin-installer" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
@@ -70,6 +72,7 @@
           <root url="file://$MODULE_DIR$/vendor/cakephp/cakephp" />
           <root url="file://$MODULE_DIR$/vendor/cakephp/chronos" />
           <root url="file://$MODULE_DIR$/vendor/cakephp/debug_kit" />
+          <root url="file://$MODULE_DIR$/vendor/cakephp/localized" />
           <root url="file://$MODULE_DIR$/vendor/cakephp/migrations" />
           <root url="file://$MODULE_DIR$/vendor/cakephp/plugin-installer" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
