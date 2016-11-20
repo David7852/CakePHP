@@ -222,3 +222,4 @@ if (Configure::read('debug')) {
 }
 
 Plugin::load('Migrations');
+

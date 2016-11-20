@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\Event\Event;
 /**
  * Usuarios Controller
  *
@@ -16,6 +16,12 @@ class UsuariosController extends AppController
         parent::initialize();
         $this->Auth->allow(['logout','add']);
     }
+
+    /**
+     * Logout  method
+     *
+     *
+     */
     public function logout()
     {
         $this->Flash->success('Has cerrado seccion.');

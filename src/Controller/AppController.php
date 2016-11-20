@@ -27,7 +27,6 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
-    public $ext = '.php';
 
     /**
      * Initialization hook method.
@@ -57,6 +56,11 @@ class AppController extends Controller
             'loginAction' => [
                 'controller' => 'Usuarios',
                 'action' => 'login'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Pages',
+                'action' => 'display',
+                'home'
             ]
         ]);
         // Allow the display action so our pages controller

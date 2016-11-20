@@ -77,6 +77,8 @@ class TrabajadoresTable extends Table
 
         $validator
             ->requirePresence('cedula', 'create')
+            ->nonNegativeInteger('cedula')
+            ->minLength('cedula',7)
             ->notEmpty('cedula')
             ->add('cedula', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
