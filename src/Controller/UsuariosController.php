@@ -15,7 +15,7 @@ class UsuariosController extends AppController
         parent::initialize();
         $this->Auth->allow(['logout','add']);
     }
-    
+
     /**
      * Logout  method
      *
