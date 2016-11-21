@@ -13,10 +13,9 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 $cakeDescription = 'Fertinv';
-$session = $this->request->session();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,10 +41,11 @@ $session = $this->request->session();
         </ul>
         <div class="top-bar-section">
             <ul class="right">
-                <?php if(!$session->read('Auth.User')):?>
+                <?php if(!$this->request->session()->read('Auth.User')):?>
                 <li><?= $this->Html->link('Ingresar',['controller' => 'Usuarios', 'action' => 'login']) ?></li>
                 <li><?= $this->Html->link('Registrarse',['controller' => 'Usuarios', 'action' => 'add']) ?></li>
                 <?php else: ?>
+                <li><?= $this->Html->link($this->request->session()->read('Auth.User.nombre_de_usuario'),['controller' => 'Usuarios', 'action' => 'view', $this->request->session()->read('Auth.User.id')]) ?></li>
                 <li><?= $this->Html->link('Salir',['controller' => 'Usuarios', 'action' => 'logout']) ?></li>
                 <?php endif; ?>
             </ul>

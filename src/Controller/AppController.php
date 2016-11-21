@@ -63,13 +63,14 @@ class AppController extends Controller
             'authorize' => 'Controller',
             'loginAction' => [
                 'controller' => 'Usuarios',
-                'action' => 'login'
-            ],//this work for an especific logout page
-            'logoutRedirect' => [
-                'controller' => 'Pages',
-                'action' => 'display',
-                'home'
-            ]
+                'action' => 'login',
+            ],
+            //this work for an especific logout page
+            //'logoutRedirect' => [
+            //    'controller' => 'Pages',
+            //    'action' => 'display',
+            //    'home'
+            //]
         ]);
         // Allow the display action so our pages controller
         // continues to work.
@@ -84,7 +85,7 @@ class AppController extends Controller
      */
     public function beforeRender(Event $event)
     {
-
+        //$this->viewBuilder()->theme('Twit');
         if (!array_key_exists('_serialize', $this->viewVars) &&
             in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {
