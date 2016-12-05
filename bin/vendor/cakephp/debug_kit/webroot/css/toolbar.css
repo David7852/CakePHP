@@ -8,11 +8,10 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
 body {
 	padding: 0;
 	margin: 0;
-	font-family: "Helvetica-Neue", Helvetica, Arial, sans-serif;
+	font-family: raleway, Roboto, Arial, sans-serif;
 	overflow: hidden;
 }
 
@@ -23,7 +22,7 @@ h1,
 h2,
 h3,
 h4 {
-	font-family: 'CakeFont', sans-serif;
+	font-family: raleway, CakeFont, Roboto, Arial, sans-serif;
 	margin: 15px 0;
 	font-weight: 300;
 	line-height: 20px;
@@ -61,13 +60,17 @@ p {
 	background: #D33C44;
 	height: 40px;
 	position: absolute;
+	border: 0;
+	verflow: hidden;
+	font-family: raleway, Roboto, Arial, sans-serif;
 	bottom: 0;
 	left: 0;
 	right: 0;
 }
 .toolbar.open {
 	border-radius: 0;
-	overflow: auto;
+	overflow: hidden;
+	font-family: raleway, Roboto, Arial, sans-serif;
 }
 
 .hidden {
@@ -82,12 +85,15 @@ p {
 	text-align: center;
 	cursor: pointer;
 	float: left;
+	overflow: hidden;
 }
 #panel-button {
 	line-height: 20px;
 	height: 40px;
 	width: 40px;
 	position: absolute;
+
+	overflow: hidden;
 	right: 0;
 	bottom: 0;
 }
@@ -97,7 +103,7 @@ p {
 }
 .panel-button {
 	color: #fff;
-	font-family: CakeFont, Helvetica, Arial, sans-serif;
+	font-family: raleway, CakeFont, Roboto, Arial, sans-serif;
 }
 .panel-summary {
 	background: rgba(60, 60, 60, 0.3);
@@ -124,6 +130,7 @@ p {
 }
 .panel-active .panel-button {
 	color: #D33C44;
+
 }
 
 .history-mode .panel-active .panel-button {
@@ -140,7 +147,7 @@ p {
 	bottom: 40px;
 	left: 0;
 	right: 0;
-	overflow-y: auto;
+	overflow: hidden;
 	transition: top 0.25s ease-out;
 }
 
@@ -160,7 +167,7 @@ p {
 
 .panel-title {
 	color: #fff;
-	font-family: CakeFont, sans-serif;
+	font-family: raleway, CakeFont, Roboto, Arial, sans-serif;
 	font-weight: normal;
 	background: #D33C44;
 	padding: 10px;
@@ -233,7 +240,7 @@ table th {
 
 pre,
 .debug-table td {
-	font-family: Monaco, Consolas, mono-space;
+	font-family: raleway, CakeFont, Roboto, Arial, sans-serif;
 }
 
 /* X column tables have the 2nd+ cell right aligned */
@@ -256,6 +263,8 @@ pre,
 
 .list {
 	list-style: disc;
+
+	overflow: hidden;
 	margin: 10px 0 10px 20px;
 }
 
@@ -401,7 +410,7 @@ pre,
 }
 .history-url {
 	font-size: 14px;
-	font-family: Monaco, Consolas, mono-space;
+	font-family: raleway, CakeFont, Roboto, Arial, sans-serif;
 }
 
 
@@ -426,7 +435,7 @@ pre,
 	padding: 8px;
 	line-height: 12px;
 	font-size: 20px;
-	font-family: "CakeFont";
+	font-family: raleway, CakeFont, Roboto, Arial, sans-serif;
 	font-weight: bold;
 	height: 12px;
 	width: 12px;
@@ -525,4 +534,18 @@ pre,
 .panel-content .filtered-credentials {
     text-decoration: underline;
     cursor:pointer;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'raleway';
+	font-style: normal;
+	font-weight: 400;
+	src: url(./raleway_latin-ext.woff2) format('woff2');
+}
+/* latin */
+@font-face {
+	font-family: 'raleway';
+	font-style: normal;
+	font-weight: 400;
+	src: url(./raleway_latin.woff2) format('woff2');
 }

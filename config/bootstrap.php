@@ -223,4 +223,6 @@ if (Configure::read('debug')) {
 
 Plugin::load('Migrations');
 
-Plugin::load('Twit', ['bootstrap' => false, 'routes' => true]);
+//Plugin::load('Twit', ['bootstrap' => false, 'routes' => true]);
+//Plugin::load('AdminLTE', ['bootstrap' => true, 'routes' => true]);
+
