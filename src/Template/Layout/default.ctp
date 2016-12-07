@@ -33,20 +33,18 @@ $cakeDescription = 'Fertinv';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
+    <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area large-2 medium-4 columns">
+            <h1><a href="../">Wit</a></h1>
         </ul>
         <div class="top-bar-section">
-            <ul class="right">
+            <ul class="right" style="margin-top: 7.5px">
                 <?php if(!$this->request->session()->read('Auth.User')):?>
                 <li><?= $this->Html->link('Ingresar',['controller' => 'Usuarios', 'action' => 'login']) ?></li>
                 <li><?= $this->Html->link('Registrarse',['controller' => 'Usuarios', 'action' => 'add']) ?></li>
                 <?php else: ?>
                 <li><?= $this->Html->link($this->request->session()->read('Auth.User.nombre_de_usuario'),['controller' => 'Usuarios', 'action' => 'view', $this->request->session()->read('Auth.User.id')]) ?></li>
-                <li><?= $this->Html->link('Salir',['controller' => 'Usuarios', 'action' => 'logout']) ?></li>
+                <li id="salir"><?= $this->Html->link('SALIR',['controller' => 'Usuarios', 'action' => 'logout']) ?></li>
                 <?php endif; ?>
             </ul>
         </div>
@@ -55,7 +53,15 @@ $cakeDescription = 'Fertinv';
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
     </div>
-    <footer>
+    <footer >
+        <div style="vertical-align: middle">
+            <h4 class="title-area large-2 medium-3 columns" style="color:red;font-family:arial;margin-top: 7px">
+                    Pequiven
+            </h4>
+            <h4 class="title-area large-2 medium-3 columns right" style="color:#006600;font-family: 'Segoe UI Black';margin-top: 7px">
+                    FertiNitro
+            </h4>
+        </div>
     </footer>
 </body>
 </html>
