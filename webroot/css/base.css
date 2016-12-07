@@ -53,6 +53,13 @@ summary {
     display: block;
 }
 
+footer{
+    text-align: center;
+    height: 7vh;
+    z-index: 1;
+    line-height: 3rem;
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
 
 /**
  * 1. Correct `inline-block` display not defined in IE 8/9.
@@ -1739,7 +1746,7 @@ button,
 .button {
     -webkit-appearance: none;
     -moz-appearance: none;
-    border-radius: 0;
+    border-radius: 2px;
     border-style: solid;
     border-width: 0;
     cursor: pointer;
@@ -1756,7 +1763,9 @@ button,
     background-color: #008CBA;
     border-color: #007095;
     color: #fff;
-    transition: background-color 300ms ease-out
+    transition: background-color 300ms ease-out;
+    z-index: 1;
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
 button:hover,
@@ -2802,16 +2811,19 @@ meta.foundation-mq-topbar {
 
 .top-bar {
     background: #333;
-    height: 2.8125rem;
-    line-height: 2.8125rem;
+    height: 10vh;
+    line-height: 5rem;
     margin-bottom: 0;
     overflow: hidden;
-    position: relative
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
 .top-bar ul {
     list-style: none;
-    margin-bottom: 0
+    margin-bottom: 0;
+    height: 10vh;
 }
 
 .top-bar .row {
@@ -2961,7 +2973,7 @@ meta.foundation-mq-topbar {
     left: 0;
     position: relative;
     width: auto;
-    transition: left 300ms ease-out
+    transition: left 300ms ease-out;
 }
 
 .top-bar-section ul {
@@ -5685,6 +5697,7 @@ ul.pagination li {
     list-style-type: none;
     margin: 0;
     padding: 0.875rem 0
+
 }
 
 .side-nav li {

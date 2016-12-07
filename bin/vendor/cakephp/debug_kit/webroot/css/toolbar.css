@@ -8,6 +8,9 @@
 	font-weight: normal;
 	font-style: normal;
 }
+#main {
+    overflow: hidden;
+}
 body {
 	padding: 0;
 	margin: 0;
@@ -61,7 +64,7 @@ p {
 	height: 40px;
 	position: absolute;
 	border: 0;
-	verflow: hidden;
+	overflow: hidden;
 	font-family: raleway, Roboto, Arial, sans-serif;
 	bottom: 0;
 	left: 0;
@@ -92,7 +95,6 @@ p {
 	height: 40px;
 	width: 40px;
 	position: absolute;
-
 	overflow: hidden;
 	right: 0;
 	bottom: 0;
@@ -100,10 +102,12 @@ p {
 #panel-button img {
 	margin: 0;
 	display: block;
+    overflow: hidden;
 }
 .panel-button {
 	color: #fff;
 	font-family: raleway, CakeFont, Roboto, Arial, sans-serif;
+    overflow: hidden;
 }
 .panel-summary {
 	background: rgba(60, 60, 60, 0.3);
@@ -113,12 +117,14 @@ p {
 	padding: 4px;
 	border-radius: 4px;
 	vertical-align: middle;
+    overflow: hidden;
 }
 
 
 .panel {
 	border-left: 1px solid rgba(0, 0, 0, 0.075);
 	padding: 0px 9px;
+    overflow: hidden;
 }
 .panel:first-child {
 	border-left: 0;
@@ -127,6 +133,7 @@ p {
 	background: #fff;
 	color: #D33C44;
 	transition: background-color 300ms linear;
+    overflow: hidden;
 }
 .panel-active .panel-button {
 	color: #D33C44;
@@ -154,6 +161,7 @@ p {
 #panel-content-container.enabled {
 	top: 0;
 	transition: top 0.25s ease-out-expo;
+    overflow: hidden;
 }
 
 @keyframes slideup {
@@ -173,12 +181,14 @@ p {
 	padding: 10px;
 	margin: 0;
 	transition: background-color 300ms linear;
+    overflow: hidden;
 }
 .history-mode .panel-title {
 	background: #ab47bc;
 }
 .panel-content {
 	padding: 10px;
+    overflow: hidden;
 }
 
 .button-close {
@@ -198,6 +208,7 @@ p {
 	-webkit-border-radius: 15px;
 	vertical-align: middle;
 	cursor: pointer;
+    overflow: hidden;
 }
 .button-close:hover {
 	background: rgba(0, 0, 0, 0.5);
@@ -208,6 +219,7 @@ p {
 	float: left;
 	width: 50%;
 	padding: 10px;
+    overflow: hidden;
 }
 
 
@@ -220,6 +232,7 @@ table {
 	clear: both;
 	margin: 10px 0;
 	border-spacing: 0;
+    overflow: hidden;
 }
 table td,
 table th {
@@ -227,43 +240,50 @@ table th {
 	border: 0;
 	padding: 9px;
 	margin: 0;
+    overflow: hidden;
 }
 table td {
 	border-bottom: 1px solid #ccc;
+    overflow: hidden;
 }
 table th {
 	border-bottom: 3px solid #2a6496;
 	color: #111;
 	font-weight: bold;
 	line-height: 16px;
+    overflow: hidden;
 }
 
 pre,
 .debug-table td {
 	font-family: raleway, CakeFont, Roboto, Arial, sans-serif;
+    overflow: hidden;
 }
 
 /* X column tables have the 2nd+ cell right aligned */
 .debug-table th:nth-child(n+2),
 .debug-table td:nth-child(n+2) {
 	text-align:right;
+    overflow: hidden;
 }
 .debug-table td:nth-child(n+2) {
 	word-wrap: break-word;
 	word-break: break-all;
 	word-break: break-word; /* Not standard for webkit */
+    overflow: hidden;
 }
 .debug-table th.left,
 .debug-table td.left {
     text-align: left;
+    overflow: hidden;
 }
 .debug-table .highlighted td {
 	background: #e7e9fd;
+    overflow: hidden;
 }
 
 .list {
 	list-style: disc;
-
 	overflow: hidden;
 	margin: 10px 0 10px 20px;
 }
@@ -275,17 +295,20 @@ pre,
 .neat-array li {
 	list-style:none;
 	list-style-image:none;
+    overflow: hidden;
 }
 .neat-array {
 	padding: 1px 2px 1px 20px;
 	background: #eaeae7;
 	list-style: none;
 	margin: 0 0 1em 0;
+    overflow: hidden;
 }
 .neat-array .neat-array {
 	padding: 0 0 0 20px;
 	margin: 0;
 	border-top: 1px solid #eaeae7;
+    overflow: hidden;
 }
 .neat-array li {
 	border-top: 1px solid #eaeae7;
@@ -293,30 +316,37 @@ pre,
 	background: rgba(255, 255, 255, 0.95);
 	margin: 0;
 	line-height: 1.5em;
+    overflow: hidden;
 }
 .neat-array li:hover {
 	background: #fff;
+    overflow: hidden;
 }
 .neat-array li strong {
 	padding: 0 8px;
 	font-weight: bold;
+    overflow: hidden;
 }
 .neat-array li > strong:before {
 	position: relative;
 	left: -3px;
 	content: "\2003 ";
+    overflow: hidden;
 }
 
 /* expandable sections */
 .neat-array li.expandable {
 	cursor: pointer;
+    overflow: hidden;
 }
 .neat-array .expanded {
 	border-bottom:0;
+    overflow: hidden;
 }
 .neat-array li.expandable.expanded > strong:before {
 	position: relative;
 	left: -3px;
+    overflow: hidden;
 	content: "\2937 ";
 }
 .neat-array li.expandable.collapsed > strong:before,
@@ -324,9 +354,11 @@ pre,
 	position: relative;
 	left: -3px;
 	content: "\2192 ";
+    overflow: hidden;
 }
 .neat-array li {
 	cursor: default;
+    overflow: hidden;
 }
 
 .toggle-checkbox {
@@ -334,10 +366,12 @@ pre,
 	margin-bottom: 10px;
 	font-size: 12px;
 	color: #666;
+    overflow: hidden;
 }
 .toggle-checkbox input[type=checkbox] {
 	vertical-align: middle;
 	margin-top: 0;
+    overflow: hidden;
 }
 
 
@@ -367,6 +401,7 @@ pre,
 	padding-left: 10px;
 	border-bottom: 1px solid #ccc;
 	position: relative;
+    overflow: hidden;
 }
 .history-list .active:before {
 	content: "\2022 ";
@@ -377,12 +412,15 @@ pre,
 	top: 38%;
 	left: 0;
 	vertical-align: middle;
+    overflow: hidden;
 }
 .history-list li:last-child {
 	border-bottom: 0;
+    overflow: hidden;
 }
 .history-list li:hover {
 	background-color: #e7e9fd;
+    overflow: hidden;
 }
 
 .history-link {
@@ -498,6 +536,7 @@ pre,
 #loader.loading {
 	display: block;
 	opacity: 1;
+    overflow: hidden;
 }
 
 #loader .indicator {
@@ -510,6 +549,7 @@ pre,
 	-webkit-animation: spin 4s linear infinite;
 	-moz-animation: spin 4s linear infinite;
 	animation: spin 4s linear infinite;
+    overflow: hidden;
 }
 
 @-moz-keyframes spin {
@@ -534,6 +574,7 @@ pre,
 .panel-content .filtered-credentials {
     text-decoration: underline;
     cursor:pointer;
+    overflow: hidden;
 }
 /* latin-ext */
 @font-face {

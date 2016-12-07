@@ -11,7 +11,7 @@
         <?= $this->Html->css('DebugKit.toolbar') ?>
     </head>
     <body>
-    <?= $this->fetch('content') ?>
+    <?//= $this->fetch('content') ?>
     <div id="loader">
         <?= $this->Html->image('DebugKit.cake.icon.png', ['class' => 'indicator'])?>
     </div>

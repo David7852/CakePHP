@@ -1,7 +1,7 @@
 <?=$this->assign('title',"Trabajadores de Fertinitro")?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Acciones') ?></li>
+        <li class="heading"><?= $this->fetch('title') ?></li>
         <li><?= $this->Html->link(__('Listar Trabajadores'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Listar Contratos'), ['controller' => 'Contratos', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Nuevo Contrato'), ['controller' => 'Contratos', 'action' => 'add']) ?></li>

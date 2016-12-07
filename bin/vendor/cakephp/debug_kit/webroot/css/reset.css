@@ -24,6 +24,9 @@ time, mark, audio, video {
 
 	overflow: hidden;
 }
+#main {
+    overflow: hidden;
+}
 .hidden {
 	display: none;
 }
@@ -31,7 +34,6 @@ time, mark, audio, video {
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
-
 	overflow: hidden;
 }
 body {
@@ -40,24 +42,20 @@ body {
 }
 ol, ul {
 	list-style: none;
-
 	overflow: hidden;
 }
 blockquote, q {
 	quotes: none;
-
 	overflow: hidden;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
-
 	overflow: hidden;
 }
 table {
 	border-collapse: collapse;
-
 	overflow: hidden;
 	border-spacing: 0;
 }

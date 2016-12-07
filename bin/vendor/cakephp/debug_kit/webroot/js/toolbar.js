@@ -9,7 +9,7 @@ if (elem) {
 
 (function(win, doc) {
   var iframe;
-  var bodyOverflow;
+  var bodyOverflow='hidden';
 
   var onMessage = function(event) {
     if (event.data === 'collapse') {
@@ -52,7 +52,7 @@ if (elem) {
     iframe.src = __debugKitBaseUrl + 'debug_kit/toolbar/' + __debugKitId;
 
     body.appendChild(iframe);
-    bodyOverflow = body.style.overflow;
+    bodyOverflow = 'hidden';
 
     window.addEventListener('message', onMessage, false);
   };
