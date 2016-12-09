@@ -30,8 +30,13 @@ class Trabajador extends Entity
 {
     protected function _getTitulo()
     {
-        return
-            $this->_properties['nombre'] . ' ' . $this->_properties['apellido'];
+        return $this->_properties['nombre'] . ' ' . $this->_properties['apellido'];
+    }
+    protected function _getPuesto()
+    {
+        if($this->_properties['area']!='')
+            return $this->_properties['cargo'].' de '.$this->_properties['area'];
+        return $this->_properties['cargo'];
     }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

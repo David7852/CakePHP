@@ -14,7 +14,8 @@
 <div class="trabajadores form large-9 medium-8 columns content">
     <?= $this->Form->create($trabajador) ?>
     <fieldset>
-        <legend><?= __('Agregar Trabajador') ?></legend>
+        <legend><?= __('Agregar Trabajador') ?><div class="gradient-line"></div></legend>
+
         <?php
             echo $this->Form->input('nombre');
             echo $this->Form->input('apellido');

@@ -18,16 +18,11 @@
     <h3><?= h($trabajador->titulo) ?></h3>
     <table class="vertical-table">
         <div class="row">
-            <h4><?= __('Gerencia: ').h($trabajador->gerencia) ?></h4>
-        </div>
+            <h4><?=h($trabajador->puesto) ?> </h4>
+        </div><div class="gradient-line-red"></div>
         <div class="row">
-            <h4><?= __('Cargo: ').h($trabajador->cargo) ?></h4>
+            <h4><?= h($trabajador->gerencia) ?></h4>
         </div>
-        <?php if($trabajador->area!=''):?>
-            <div class="row">
-                <h4><?= __('Area: ').h($trabajador->area) ?></h4>
-            </div>
-        <?php endif; ?>
         <tr>
             <th scope="row"><?= __('Nombre') ?></th>
             <td><?= h($trabajador->nombre) ?></td>
@@ -64,7 +59,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Puesto de trabajo') ?></th>
-            <td><?= $this->Number->format($trabajador->puesto_de_trabajo) ?></td>
+            <td><?= h($trabajador->puesto_de_trabajo) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Genero') ?></th>

@@ -35,6 +35,8 @@ header .header-title {
 
 legend {
     color: #15848F;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .row {
@@ -404,6 +406,7 @@ pre {
     font-size: 98%;
     font-weight: 600;
     text-transform: capitalize;
+    letter-spacing: 0.5px;
 }
 
 .top-bar-section li:not(.has-form) a:not(.button):hover {
@@ -416,7 +419,8 @@ pre {
     /* background-color: #308e97;*/
     /*background: #308e97;*/
     background: #116d76;
-    color: #ff8d8b;
+    color: #ff6464;
+    text-shadow: -1px 0 rgba(23,152,165,0.2), 0 1px rgba(229,224,229,0.2), 1px 0 rgba(229,224,229,0.2), 0 -1px rgba(23,152,165,0.2);
 }
 
 .side-nav li.heading {
@@ -475,9 +479,40 @@ fieldset {
 }
 
 fieldset legend {
-    border-bottom: 2px solid #1798A5;
+    /*border-bottom: 2px solid #1798A5;*/
     width: 100%;
     line-height: 2rem;
+}
+.gradient-line{
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.05);
+    background: -moz-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(1,122,138,0.16) 5%, rgba(1,122,138,0.59) 25%, rgba(1,122,138,0.8) 35%, rgba(1,122,138,1) 50%, rgba(1,122,138,0.8) 66%, rgba(1,122,138,0.57) 76%, rgba(1,122,138,0.13) 95%, rgba(255,255,255,0.01) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,0.05)), color-stop(5%, rgba(1,122,138,0.16)), color-stop(25%, rgba(1,122,138,0.59)), color-stop(35%, rgba(1,122,138,0.8)), color-stop(50%, rgba(1,122,138,1)), color-stop(66%, rgba(1,122,138,0.8)), color-stop(76%, rgba(1,122,138,0.57)), color-stop(95%, rgba(1,122,138,0.13)), color-stop(100%, rgba(255,255,255,0.01)));
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(1,122,138,0.16) 5%, rgba(1,122,138,0.59) 25%, rgba(1,122,138,0.8) 35%, rgba(1,122,138,1) 50%, rgba(1,122,138,0.8) 66%, rgba(1,122,138,0.57) 76%, rgba(1,122,138,0.13) 95%, rgba(255,255,255,0.01) 100%);
+    background: -o-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(1,122,138,0.16) 5%, rgba(1,122,138,0.59) 25%, rgba(1,122,138,0.8) 35%, rgba(1,122,138,1) 50%, rgba(1,122,138,0.8) 66%, rgba(1,122,138,0.57) 76%, rgba(1,122,138,0.13) 95%, rgba(255,255,255,0.01) 100%);
+    background: -ms-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(1,122,138,0.16) 5%, rgba(1,122,138,0.59) 25%, rgba(1,122,138,0.8) 35%, rgba(1,122,138,1) 50%, rgba(1,122,138,0.8) 66%, rgba(1,122,138,0.57) 76%, rgba(1,122,138,0.13) 95%, rgba(255,255,255,0.01) 100%);
+    background: linear-gradient(to right, rgba(255,255,255,0.05) 0%, rgba(1,122,138,0.16) 5%, rgba(1,122,138,0.59) 25%, rgba(1,122,138,0.8) 35%, rgba(1,122,138,1) 50%, rgba(1,122,138,0.8) 66%, rgba(1,122,138,0.57) 76%, rgba(1,122,138,0.13) 95%, rgba(255,255,255,0.01) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=1 );
+}
+.gradient-line-red{
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.05);
+    background: -moz-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(195,35,46,0.16) 5%, rgba(190,20,11,0.59) 25%, rgba(190,20,11,0.8) 35%, rgba(190,20,11,1) 50%, rgba(190,20,11,0.8) 66%, rgba(190,20,11,0.57) 76%, rgba(195,35,46,0.13) 95%, rgba(255,255,255,0) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,0.05)), color-stop(5%, rgba(195,35,46,0.16)), color-stop(25%, rgba(190,20,11,0.59)), color-stop(35%, rgba(190,20,11,0.8)), color-stop(50%, rgba(190,20,11,1)), color-stop(66%, rgba(190,20,11,0.8)), color-stop(76%, rgba(190,20,11,0.57)), color-stop(95%, rgba(195,35,46,0.13)), color-stop(100%, rgba(255,255,255,0)));
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(195,35,46,0.16) 5%, rgba(190,20,11,0.59) 25%, rgba(190,20,11,0.8) 35%, rgba(190,20,11,1) 50%, rgba(190,20,11,0.8) 66%, rgba(190,20,11,0.57) 76%, rgba(195,35,46,0.13) 95%, rgba(255,255,255,0) 100%);
+    background: -o-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(195,35,46,0.16) 5%, rgba(190,20,11,0.59) 25%, rgba(190,20,11,0.8) 35%, rgba(190,20,11,1) 50%, rgba(190,20,11,0.8) 66%, rgba(190,20,11,0.57) 76%, rgba(195,35,46,0.13) 95%, rgba(255,255,255,0) 100%);
+    background: -ms-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(195,35,46,0.16) 5%, rgba(190,20,11,0.59) 25%, rgba(190,20,11,0.8) 35%, rgba(190,20,11,1) 50%, rgba(190,20,11,0.8) 66%, rgba(190,20,11,0.57) 76%, rgba(195,35,46,0.13) 95%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(to right, rgba(255,255,255,0.05) 0%, rgba(195,35,46,0.16) 5%, rgba(190,20,11,0.59) 25%, rgba(190,20,11,0.8) 35%, rgba(190,20,11,1) 50%, rgba(190,20,11,0.8) 66%, rgba(190,20,11,0.57) 76%, rgba(195,35,46,0.13) 95%, rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=1 );
+}
+.delicate-text{
+    width: 97%;
+    font-weight: lighter;
+    text-align: center;
+    text-transform: none;
+    color: rgba(0,0,0,0.5)
 }
 
 .form button[type="submit"] {
@@ -604,14 +639,17 @@ div.message.hidden {
 .content h3 {
     color: #be140b;
     padding-bottom: 0.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 .content h4 {
     color: #be140b;
     padding-bottom: 0.5rem;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #be140b;
+    margin-bottom: 4px;
+    padding-top: 2px;
+    text-align: center;
+    /*border-bottom: 2px solid #be140b;*/
 }
 
 .content .related h4 {

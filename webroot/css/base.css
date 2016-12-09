@@ -2811,13 +2811,13 @@ meta.foundation-mq-topbar {
 
 .top-bar {
     background: #333;
-    height: 10vh;
+    height: initial;
     line-height: 5rem;
     margin-bottom: 0;
     overflow: hidden;
     position: relative;
     z-index: 1;
-    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 10px 30px -12px rgba(0, 0, 0, 0.42), 0px 4px 25px 0px rgba(0, 0, 0, 0.12), 0px 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
 .top-bar ul {
@@ -3384,7 +3384,9 @@ meta.foundation-mq-topbar {
     .top-bar-section ul {
         display: inline;
         height: auto !important;
-        width: auto
+        width: auto;
+        padding-right: 15px;
+        margin-top: 9px
     }
     .top-bar-section ul li {
         float: left
@@ -3399,8 +3401,8 @@ meta.foundation-mq-topbar {
     }
     .top-bar-section li:not(.has-form) a:not(.button) {
         background: #333;
-        line-height: 2.8125rem;
-        padding: 0 0.9375rem
+       /* line-height: 2.8125rem;*/
+        padding-left: 0 0.9375rem
     }
     .top-bar-section li:not(.has-form) a:not(.button):hover {
         background-color: #555;

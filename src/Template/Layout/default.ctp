@@ -38,7 +38,7 @@ $cakeDescription = 'Fertinv';
             <h1><a href="../">Wit</a></h1>
         </ul>
         <div class="top-bar-section">
-            <ul class="right" style="margin-top: 7.5px">
+            <ul class="right">
                 <?php if(!$this->request->session()->read('Auth.User')):?>
                 <li><?= $this->Html->link('Ingresar',['controller' => 'Usuarios', 'action' => 'login']) ?></li>
                 <li><?= $this->Html->link('Registrarse',['controller' => 'Usuarios', 'action' => 'add']) ?></li>
