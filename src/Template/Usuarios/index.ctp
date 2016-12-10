@@ -17,6 +17,7 @@
                 <th scope="col"><?= $this->Paginator->sort('funcion') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
+
         </thead>
         <tbody>
             <?php foreach ($usuarios as $usuario): ?>

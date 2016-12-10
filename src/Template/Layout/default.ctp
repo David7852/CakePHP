@@ -35,7 +35,7 @@ $cakeDescription = 'Fertinv';
 <body>
     <nav class="top-bar" data-topbar role="navigation">
         <ul class="title-area large-2 medium-4 columns">
-            <h1><a href="../">Wit</a></h1>
+            <h1><a href="/">Wit</a></h1>
         </ul>
         <div class="top-bar-section">
             <ul class="right">

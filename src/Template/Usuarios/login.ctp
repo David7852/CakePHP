@@ -1,7 +1,7 @@
 <?=$this->assign('title',"Sistema de inventario")?>
 <div class="large-3 medium-4 columns" id="actions-sidebar">
-    <fieldset>
-    <h1 class="delicate-text" >¡Bienvenido!<div class="gradient-line"></h1><br>
+    <fieldset style="padding-top: 0;padding-right: 15px; padding-left: 15px">
+    <h1 class="delicate-text" >¡Bienvenido!<div class="gradient-line" style="height: 1px"></h1><br>
     <?= $this->Form->create() ?>
     <?= $this->Form->input('nombre_de_usuario') ?>
     <?= $this->Form->input('clave',['label'=>'Contraseña','type'=>'password']) ?>
