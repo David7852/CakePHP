@@ -479,6 +479,7 @@ table tbody::before{
     content:"";
     position: absolute;
     box-sizing: content-box;
+    width: 94%;
     height: 1px;
     background: rgba(255,255,255,0.05);
     background: -moz-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(1,122,138,0.16) 5%, rgba(1,122,138,0.59) 25%, rgba(1,122,138,0.8) 35%, rgba(1,122,138,1) 50%, rgba(1,122,138,0.8) 66%, rgba(1,122,138,0.57) 76%, rgba(1,122,138,0.13) 95%, rgba(255,255,255,0.01) 100%);
