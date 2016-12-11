@@ -55,12 +55,44 @@ summary {
 
 footer{
     text-align: center;
-    height: 7vh;
-    z-index: 1;
+    //background-color: white;
     line-height: 3rem;
     box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 5em;
+    margin-top: 0em;
 }
 
+.triangle {
+    margin: 0 auto;
+    text-align: center;
+    width: 0;
+    height: 0;
+    background-color: transparent;
+    border-top: 30px solid #181A1C;
+    position: relative;
+
+}
+.animated {
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -ms-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -ms-animation-duration: 1s;
+    -o-animation-duration: 1s;
+    animation-duration: 1s;
+}
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    -moz-animation-name: fadeInDown;
+    -o-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+}
 /**
  * 1. Correct `inline-block` display not defined in IE 8/9.
  * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
@@ -604,7 +636,9 @@ body {
     line-height: 1.5;
     margin: 0;
     padding: 0;
-    position: relative
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 a:hover {
@@ -670,7 +704,8 @@ img {
 
 textarea {
     height: auto;
-    min-height: 50px
+    min-height: 50px;
+    resize:vertical;
 }
 
 select {
@@ -1746,6 +1781,8 @@ button,
 .button {
     -webkit-appearance: none;
     -moz-appearance: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     border-radius: 2px;
     border-style: solid;
     border-width: 0;
@@ -1754,6 +1791,7 @@ button,
     font-weight: normal;
     line-height: normal;
     margin: 0 0 1.25rem;
+    margin-right: 1.25rem;
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -2259,7 +2297,8 @@ label {
     font-size: 0.875rem;
     font-weight: normal;
     line-height: 1.5;
-    margin-bottom: 0
+    margin-bottom: 1px;
+    margin-top: 5px;
 }
 
 label.right {
@@ -2395,10 +2434,11 @@ textarea {
     -ms-transition: border-color 0.15s linear, background 0.15s linear;
     -o-transition: border-color 0.15s linear, background 0.15s linear;
     transition: background-color 0.2s linear, background 0.15s linear, border-radius 0.4s linear,box-shadow 0.5s linear,border-color 0.2s;
-
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16),0 0 0 0px rgba(0,0,0,0.08);
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16),0 0 0 0px rgba(0,0,0,0.08);
-
+    border:hidden;
     border-radius: 2px;
 }
 
@@ -2413,9 +2453,10 @@ input[type="color"]:hover,
 textarea:hover{
     border-color: #e3e3e3;
     background-color: #f3f3f3;
-    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16),0 0 0 0px rgba(0,0,0,0.08);
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16),0 0 0 1px rgba(0,0,0,0.08);
     border-radius: 1px;
 }
+
 
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -2635,14 +2676,16 @@ select {
     -webkit-appearance: none !important;
     -moz-appearance: none !important;
     background-color: #FAFAFA;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+    background-image: url(../img/select_arrow.png);
     background-position: 100% center;
     background-repeat: no-repeat;
-    border-style: solid;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     border-width: 1px;
     border-color: #dcdcdc;
     color: rgba(0, 0, 0, 0.75);
     font-family: inherit;
+    text-decoration: none;
     font-size: 0.875rem;
     line-height: normal;
     padding: 0.5rem;
@@ -2650,6 +2693,7 @@ select {
     border-radius: 2px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16),0 0 0 0px rgba(0,0,0,0.08);
     transition: box-shadow 400ms cubic-bezier(0.4, 0.0, 0.2, 1), background-color 250ms linear, border 500ms linear;
+    border:hidden;
 }
 
 select::-ms-expand {
@@ -2662,7 +2706,7 @@ select.radius {
 
 select:hover {
     background-color: #f3f3f3;
-    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
     border: 0;
     border-color: #dcdcdc;
 }
@@ -2673,7 +2717,7 @@ select:disabled {
 }
 
 select[multiple] {
-    height: auto
+    height: auto;
 }
 
 input[type="file"],
@@ -2904,6 +2948,8 @@ meta.foundation-mq-topbar {
 .top-bar .name h4,
 .top-bar .name p,
 .top-bar .name span {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-size: 1.0625rem;
     line-height: 2.8125rem;
     margin: 0
@@ -2915,6 +2961,8 @@ meta.foundation-mq-topbar {
 .top-bar .name h4 a,
 .top-bar .name p a,
 .top-bar .name span a {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     color: #fff;
     display: block;
     font-weight: normal;
@@ -3033,6 +3081,8 @@ meta.foundation-mq-topbar {
     padding-left: 0.9375rem;
     padding: 12px 0 12px 0.9375rem;
     text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     width: 100%
 }
 
@@ -3043,6 +3093,7 @@ meta.foundation-mq-topbar {
     background-color: #008CBA;
     border-color: #007095;
     color: #fff
+
 }
 
 .top-bar-section ul li>a.button:hover,
@@ -5545,7 +5596,9 @@ button.dropdown.secondary:after {
     color: #222;
     font-family: poiret, raleway, Roboto, Arial, sans-serif;
     font-size: 1rem;
-    padding: 1rem 2rem
+    padding: 1rem 2rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .tabs dd>a:hover,
@@ -6062,7 +6115,9 @@ h6 {
     line-height: 1.4;
     margin-bottom: 0.5rem;
     margin-top: 0.2rem;
-    text-rendering: optimizeLegibility
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 h1 small,

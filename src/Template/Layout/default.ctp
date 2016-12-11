@@ -53,15 +53,17 @@ $cakeDescription = 'Fertinv';
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
     </div>
-    <footer >
-        <div style="vertical-align: middle">
-            <h4 class="title-area large-2 medium-3 columns" style="color:red;font-family:arial;margin-top: 7px">
-                    Pequiven
-            </h4>
-            <h4 class="title-area large-2 medium-3 columns right" style="color:#006600;font-family: 'Segoe UI Black';margin-top: 7px">
-                    FertiNitro
-            </h4>
-        </div>
-    </footer>
+
+        <footer >
+            <div style="vertical-align: middle">
+                <h4 class="title-area large-2 medium-3 columns" style="color:red;font-family:arial;margin-top: 7px;padding: 0.75em;">
+                        Pequiven
+                </h4>
+                <h4 class="title-area large-2 medium-3 columns right" style="color:#006600;font-family: 'Segoe UI Black';margin-top: 7px;padding: 0.5em;">
+                        FertiNitro
+                </h4>
+            </div>
+        </footer>
+
 </body>
 </html>
