@@ -644,6 +644,10 @@ fieldset legend {
     -webkit-font-smoothing: antialiased;
 }
 @-moz-document url-prefix() {
+    footer{
+        height: 5.3em;
+        box-shadow: 15px -10px 20px -18px rgba(0, 0, 0, 0.42);
+    }
     .top-bar-section li:not(.has-form) a:not(.button){
         font-style: normal;
         font-weight: normal;
@@ -723,12 +727,14 @@ fieldset legend {
 
 .form button:hover,
 .form button:focus {
-    background: #BE840B;
-    box-shadow: none;
-}
+    background: #017A8A;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border: 0;
+    }
 
 button {
-    background: #966600;
+    background: #116d76;
+    transition: box-shadow 400ms cubic-bezier(0.4, 0.0, 0.2, 1), background-color 250ms linear, border 500ms linear;
 }
 
 div.message {
