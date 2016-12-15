@@ -148,23 +148,52 @@ ul.pagination .disabled:hover a {
 .desc:after {
     content: " \2191";
 }
-
+/*
 button {
     background: #8D6E65;
 }
-
 .form button:hover,
 .form button:focus {
     background: #7A6058;
     z-index: 1;
     box-shadow: 0 10px 10px -12px rgba(0, 0, 0, 0.42), 0 4px 15px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2) !important;
+}*/
+
+.form button:hover,
+.form button:focus {
+    background-color: #e3e9e6;
+    border: 0;
+    font-size: 103%;
+    -webkit-box-shadow: 0 5px 11px 0 rgba(10,100,75,0.3), 0 4px 15px 0 rgba(1,122,100, 0.2);
+    -moz-box-shadow: 0 5px 11px 0 rgba(10,100,75,0.3), 0 4px 15px 0 rgba(1,122,100, 0.2);
+    box-shadow: 0 5px 11px 0 rgba(10,100,75,0.3), 0 4px 15px 0 rgba(1,122,100, 0.2);
+    color: #015b54;
 }
 
-.form button[type="submit"] {
-    float: right;
+.form button {
+    font-size: 101%;
+    font-weight: 600;
+    text-decoration: none;
+    color: #417576;
+    background-color: #efefef;
+    text-align: center;
     text-transform: uppercase;
+    letter-spacing: 0.75px;
+    transition: box-shadow 400ms cubic-bezier(0.4, 0.0, 0.2, 1), background-color 250ms linear, font-size 0.5s cubic-bezier(0, 0, 0.2, 1),color 0.75s;
+    cursor: pointer;
+    float: right;
     z-index: 1;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    outline: 0;
+    padding: 0 2rem;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
 }
 
 .form .error-message {
@@ -584,7 +613,8 @@ table tr:nth-of-type(even) {
 fieldset {
     border: none;
     padding: 1.25rem;
-    margin: 1.125rem 0;
+    margin-top: 1.125rem;
+    margin-bottom: 0.75rem;
 }
 
 fieldset legend {
@@ -627,22 +657,6 @@ fieldset legend {
     color: rgba(0,0,0,0.5)
 }
 
-.form button[type="submit"] {
-    float: right;
-    text-transform: uppercase;
-    z-index: 1;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
-    border: none;
-    border-radius: 2px;
-    display: inline-block;
-    height: 36px;
-    line-height: 36px;
-    outline: 0;
-    padding: 0 2rem;
-    vertical-align: middle;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-font-smoothing: antialiased;
-}
 @-moz-document url-prefix() {
     footer{
         height: 5.3em;
@@ -723,18 +737,6 @@ fieldset legend {
         letter-spacing: 0.75pt;
         text-shadow: 0px 0px 1px rgba(250,250,250,1);
     }
-}
-
-.form button:hover,
-.form button:focus {
-    background: #017A8A;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
-    border: 0;
-    }
-
-button {
-    background: #116d76;
-    transition: box-shadow 400ms cubic-bezier(0.4, 0.0, 0.2, 1), background-color 250ms linear, border 500ms linear;
 }
 
 div.message {
