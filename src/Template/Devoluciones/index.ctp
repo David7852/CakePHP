@@ -15,7 +15,7 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('proceso_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('articulo_id') ?></th>
-                <th scope="col" class="actions"><?= __('Accioness') ?></th>
+                <th scope="col" class="actions"><?= __('Aciones') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -35,9 +35,9 @@
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->prev('< ' . __('<')) ?>
-            <?= str_replace("of","de",$this->Paginator->numbers()) ?>
+            <?= str_replace("of","de",$this->Paginator->numbers()) ." ". str_replace("of","de",$this->Paginator->counter()) ?>
             <?= $this->Paginator->next(__('>') . ' >') ?>
         </ul>
-        <p><?= str_replace("of","de",$this->Paginator->counter()) ?></p>
+
     </div>
 </div>

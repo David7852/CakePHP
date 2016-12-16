@@ -70,7 +70,7 @@
     
     <?php if (!empty($trabajador->contratos)): ?>
     <div class="related">
-        <h4><?= __('Sus contratos:') ?></h4>
+        <h4><?= __('Sus contratos') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Fecha De Inicio') ?></th>

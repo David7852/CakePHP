@@ -1,6 +1,6 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Acciones') ?></li>
+        <li class="heading"><?= __('title') ?></li>
         <li><?= $this->Html->link(__('Nuevo Usuario'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('Listar Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Nuevo Trabajador'), ['controller' => 'Trabajadores', 'action' => 'add']) ?></li>
@@ -38,9 +38,9 @@
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->prev('< ' . __('<')) ?>
-            <?= str_replace("of","de",$this->Paginator->numbers()) ?>
+            <?= str_replace("of","de",$this->Paginator->numbers()) ." ". str_replace("of","de",$this->Paginator->counter()) ?>
             <?= $this->Paginator->next(__('>') . ' >') ?>
         </ul>
-        <p><?= str_replace("of","de",$this->Paginator->counter()) ?></p>
+
     </div>
 </div>

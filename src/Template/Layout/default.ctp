@@ -35,9 +35,9 @@ $cakeDescription = 'Fertinv';
 <body>
     <nav class="top-bar" data-topbar role="navigation">
         <ul class="title-area large-2 medium-4 columns">
-            <h1><a href="/">Wit</a></h1>
+            <h1><a href="/CakePHP">Wit</a></h1>
         </ul>
-        <div class="top-bar-section">
+        <nav class="top-bar-section">
             <ul class="right">
                 <?php if(!$this->request->session()->read('Auth.User')):?>
                 <!--<li><?/*echo $this->Html->link('Ingresar',['controller' => 'Usuarios', 'action' => 'login']);*/ ?></li>-->
@@ -47,7 +47,7 @@ $cakeDescription = 'Fertinv';
                 <li id="salir"><?= $this->Html->link('SALIR',['controller' => 'Usuarios', 'action' => 'logout']) ?></li>
                 <?php endif; ?>
             </ul>
-        </div>
+        </nav>
     </nav>
     <?= $this->Flash->render() ?>
     <div class="container clearfix">

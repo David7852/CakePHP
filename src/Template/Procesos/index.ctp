@@ -47,9 +47,9 @@
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->prev('< ' . __('<')) ?>
-            <?= str_replace("of","de",$this->Paginator->numbers()) ?>
+            <?= str_replace("of","de",$this->Paginator->numbers()) ." ". str_replace("of","de",$this->Paginator->counter()) ?>
             <?= $this->Paginator->next(__('>') . ' >') ?>
         </ul>
-        <p><?= str_replace("of","de",$this->Paginator->counter()) ?></p>
+
     </div>
 </div>
