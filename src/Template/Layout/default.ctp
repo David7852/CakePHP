@@ -40,7 +40,7 @@ $cakeDescription = 'Fertinv';
         <div class="top-bar-section">
             <ul class="right">
                 <?php if(!$this->request->session()->read('Auth.User')):?>
-                <li><?= $this->Html->link('Ingresar',['controller' => 'Usuarios', 'action' => 'login']) ?></li>
+                <!--<li><?/*echo $this->Html->link('Ingresar',['controller' => 'Usuarios', 'action' => 'login']);*/ ?></li>-->
                 <li><?= $this->Html->link('Registrarse',['controller' => 'Usuarios', 'action' => 'add']) ?></li>
                 <?php else: ?>
                 <li><?= $this->Html->link($this->request->session()->read('Auth.User.nombre_de_usuario'),['controller' => 'Usuarios', 'action' => 'view', $this->request->session()->read('Auth.User.id')]) ?></li>
