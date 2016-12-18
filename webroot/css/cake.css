@@ -38,7 +38,7 @@ table tbody tr td a:hover{
     color: #15868c;
     font-size: 103%;
     text-shadow: 0 0 1px rgba(10,107,76,0.5);
-    transition: color 0.2s ease-in-out, font-size 0.75s cubic-bezier(0.39, 0.58, 0.57, 1), background-color 0.6s cubic-bezier(0.4, 0, 1, 1), box-shadow 0.65s cubic-bezier(0.4, 0, 1, 1);
+    transition: color 0.2s ease-in-out, font-size 0.75s cubic-bezier(0.39, 0.58, 0.57, 1), background-color 0.60s cubic-bezier(0.4, 0, 1, 1), box-shadow 0.66s cubic-bezier(0.4, 0, 1, 1);
     -webkit-font-smoothing: antialiased;
 }
 
@@ -46,7 +46,11 @@ table tbody tr td a:hover{
     color: #015b54;
     font-size: 104%;
     background-color: #fafafa;
+    background-image: url(../img/selectTexture.png);
+    background-position: 100% center;
+    background-repeat: repeat;
     box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07);
+    border-radius: 3px;
   }
 
 nav ul h1{
@@ -209,6 +213,8 @@ button {
     color: #417664;
     text-shadow: 0 0 2px rgba(65,118,100,0.35);
     background-color: #efefef;
+    background-image: url(../img/sideBarTexture.png);
+    background-repeat: repeat;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.75px;
@@ -584,6 +590,10 @@ pre {
 
 #actions-sidebar {
     background: #efefef;
+    background-image: url(../img/sideBarTexture.png);
+    background-repeat: repeat;
+    box-shadow: 0 2px 2px 2px rgba(0,0,0,0.04),0 0 0 1px rgba(0,0,0,0.04);
+
 }
 
 .index table {

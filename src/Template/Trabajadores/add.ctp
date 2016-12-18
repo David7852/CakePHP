@@ -1,7 +1,7 @@
 <?=$this->assign('title',"Trabajadores")?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= $this->fetch('title') ?></li>
+        <li class="heading"><?= $this->fetch('Title') ?></li>
         <li><?= $this->Html->link(__('Listar Trabajadores'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Listar Contratos'), ['controller' => 'Contratos', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Nuevo Contrato'), ['controller' => 'Contratos', 'action' => 'add']) ?></li>

@@ -14,6 +14,7 @@ class UsuariosController extends AppController
     {
         parent::initialize();
         $this->Auth->allow(['logout','add']);
+        $this->set('title', 'Usuarios');
     }
 
     /**
@@ -23,7 +24,7 @@ class UsuariosController extends AppController
      */
     public function logout()
     {
-        $this->Flash->success('Has cerrado seccion.');
+        $this->Flash->success('Has cerrado sesion.');
         return $this->redirect($this->Auth->logout());
     }
 

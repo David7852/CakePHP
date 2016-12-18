@@ -628,6 +628,8 @@ body {
 
 body {
     background: #fbfcfc;
+    background-image: url(../img/bodyTexture.png);
+    background-repeat: repeat;
     color: #121212;
     cursor: auto;
     font-family: raleway, Roboto, Arial, sans-serif;
@@ -1810,7 +1812,9 @@ button,
     text-decoration: none;
     color: #417664;
     text-shadow: 0 0 2px rgba(65,118,100,0.35);
-    background-color: #efefef;
+    background-color: #fdfbfd;
+    background-image: url(../img/topBarTexture.png);
+    background-repeat: repeat;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.75px;
@@ -2444,9 +2448,10 @@ input[type="color"],
 textarea {
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: #FAFAFA;
+    background: #F6F6F6;
     background-position: 100% center;
-    background-repeat: no-repeat;
+    background-image: url(../img/selectTexture.png);
+    background-repeat: repeat;
     color: rgba(0, 0, 0, 0.92);
     text-shadow: 0 0 1px rgba(0,0,0,0.18);
     display: block;
@@ -2465,8 +2470,8 @@ textarea {
     transition: background 0.33s cubic-bezier(0.18, 0.89, 0.32, 1.28), box-shadow 0.66s ease-in-out;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16),0 0 0 1px rgba(0,0,0,0.03);
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16),0 0 0 1px rgba(0,0,0,0.03);
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16),0 -1px 0 1px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16),0 -1px 1px 1px rgba(0,0,0,0.04);
     border:hidden;
     border-radius: 2px;
 
@@ -2481,9 +2486,14 @@ input[type="tel"]:hover,
 input[type="url"]:hover,
 input[type="color"]:hover,
 textarea:hover{
-    background-color: #f3f3f3;
-    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16),0 0 0 1px rgba(0,0,0,0.08);
+    background-color: #efefef;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16),0 0 0 1px rgba(0,0,0,0.1);
     border-radius: 1px;
+    -webkit-transition:  background 0.33s linear, box-shadow 0.66s linear;
+    -moz-transition: background 0.33s linear, box-shadow 0.66s linear;
+    -o-transition: background 0.33s linear, box-shadow 0.66s linear;
+    transition: background 0.33s cubic-bezier(0.18, 0.89, 0.32, 1.28), box-shadow 0.66s ease-in-out;
+
 }
 
 
@@ -2502,10 +2512,18 @@ input[type="time"]:focus,
 input[type="url"]:focus,
 input[type="color"]:focus,
 textarea:focus {
-    background: #fafafa;
+    background: #ffffff;
+    background-position: 100% center;
+    background-image: url(../img/selectTexture.png);
+    background-repeat: repeat;
     box-shadow: 0 3px 4px 0 rgba(0,0,0,0.16),0 0 0 1px rgba(0,0,0,0.1);
     /*box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);*/
-    outline: none
+    outline: none;
+    -webkit-transition:  background 0.33s linear, box-shadow 0.66s linear;
+    -moz-transition: background 0.33s linear, box-shadow 0.66s linear;
+    -o-transition: background 0.33s linear, box-shadow 0.66s linear;
+    transition: background 0.33s cubic-bezier(0.18, 0.89, 0.32, 1.28), box-shadow 0.66s ease-in-out;
+
 }
 
 input[type="text"]:disabled,
@@ -2703,10 +2721,10 @@ textarea {
 select {
     -webkit-appearance: none !important;
     -moz-appearance: none !important;
-    background-color: #FAFAFA;
-    background-image: url(../img/select_arrow.png);
+    background-color: #F6F6F6;
+    background-image: url(../img/select_arrow.png),url(../img/selectTexture.png);
     background-position: 100% center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat, repeat;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: rgba(0, 0, 0, 0.92);
