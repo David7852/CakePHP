@@ -1817,7 +1817,7 @@ button,
     background-repeat: repeat;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 0.75px;
+    letter-spacing: 0.06em;
     transition: box-shadow 600ms cubic-bezier(0.4, 0.0, 0.2, 1), background-color 300ms linear, font-size 0.75s cubic-bezier(0, 0, 0.2, 1),color 0.5s;
     cursor: pointer;
     float: left;
@@ -2934,7 +2934,8 @@ meta.foundation-mq-topbar {
     /*box-shadow: -10px -10px 100px 18px rgba(0, 0, 0, 0.1), -4px -11px 15px 20px rgba(0, 0, 0, 0.03), -10px -15px 13px 20px rgba(0, 0, 0, 0.05)*/
     -webkit-box-shadow: 0 3px 10px 0 rgba(65,118,100,0.3), 0 4px 15px 0 rgba(46,139,87, 0.2);
     -moz-box-shadow: 0 3px 10px 0 rgba(65,118,100,0.3), 0 4px 15px 0 rgba(46,139,87, 0.2);
-    box-shadow: 0 3px 10px 0 rgba(65,118,100,0.3), 0 4px 15px 0 rgba(46,139,87, 0.2);
+    /*box-shadow: 0 3px 10px 0 rgba(65,118,100,0.3), 0 4px 15px 0 rgba(46,139,87, 0.2);*/
+    box-shadow: 0 3px 10px 0 rgba(65,118,100,0.25), 0 4px 15px 0 rgba(46,110,87, 0.2);
 }
 
 .top-bar ul {

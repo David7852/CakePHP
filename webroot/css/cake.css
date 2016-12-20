@@ -217,7 +217,7 @@ button {
     background-repeat: repeat;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 0.75px;
+    letter-spacing: 0.06em;
     transition: box-shadow 600ms cubic-bezier(0.4, 0.0, 0.2, 1), background-color 300ms linear, font-size 0.75s cubic-bezier(0, 0, 0.2, 1),color 0.5s;
     cursor: pointer;
     float: right;
@@ -559,7 +559,7 @@ pre {
 }
 .top-bar.expanded,
 .top-bar{
-    background-color: #dce6e3;;
+    background-color: #dee6e3;;
     background-image: url(../img/topBarTexture.png);
     background-repeat: repeat;
     width: 100%;
@@ -592,8 +592,7 @@ pre {
     background: #efefef;
     background-image: url(../img/sideBarTexture.png);
     background-repeat: repeat;
-    box-shadow: 0 2px 2px 2px rgba(0,0,0,0.04),0 0 0 1px rgba(0,0,0,0.04);
-
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
 .index table {
@@ -884,12 +883,88 @@ div.message.hidden {
     margin-bottom: -99999px;
     padding-bottom: 99999px;
 }
-
+/*important*/
 @media(max-width: 640px) {
     #actions-sidebar {
         padding-bottom: 2rem;
         margin-bottom: 0;
+        z-index: 1;
     }
+    .side-nav li a:not(.button) {
+        width: 30%;
+        font-size: 0.8rem;
+        float: left;
+        display: inline-table;
+        margin-bottom: 0.3rem;
+        margin-right: 0.2rem;
+        margin-left: 0.2rem;
+        text-align: center;
+        box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.05);
+        border-radius: 2px;
+    }
+    .side-nav li a:not(.button):hover
+    {
+        font-size: 0.81rem;
+    }
+    .side-nav li.heading{
+        /*height: 0;
+        padding: 0;
+        font-size: 0;
+        float: left;
+        display: inline-table;*/
+        height: 0;
+        font-size: 0;
+        padding: 0;
+        width: 50%;
+        margin: 0;
+    }
+    nav ul.right {
+        float: right;
+        width: 70%;
+        display: inline-block;
+        height: 100%;
+    }
+    nav ul.right li{
+        width: 30%;
+        margin-right: 0;
+        display: inline-block;
+        float: right;
+        text-align: right;
+        height: 100%;
+        vertical-align: middle;
+    }
+    nav ul.right li a{
+        height: 100%;
+        vertical-align: middle;
+        padding-top: 2rem;
+    }
+    .top-bar-section{
+        height: 100%;
+        border-right: 0;
+        border-left: 0;
+        border-top: 0;
+        border-style: double;
+        border-color: rgba(0,0,0,0.06);
+    }
+    #salir a:not(.button):hover{
+        display: inline-block;
+        float: right;
+        text-align: right;
+    }
+    nav ul h1 a{
+        display: inline-block;
+        float: left;
+        width: 25%;
+        height: 100%;
+        vertical-align: middle;
+        font-size: -webkit-xxx-large;
+        padding-top: 0.5rem;
+    }
+    nav ul.title-area.large-2.medium-4.columns{
+        width: 26%;
+        height: 100%;
+    }
+
 }
 
 .content h3 {

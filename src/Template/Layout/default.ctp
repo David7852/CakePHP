@@ -53,7 +53,6 @@ $cakeDescription = 'Fertinv';
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
     </div>
-
         <footer >
             <div style="vertical-align: middle">
                 <h4 class="title-area large-2 medium-3 columns" style="color:red;font-family:arial;margin-top: 7px;padding: 0.75em;">
@@ -64,6 +63,5 @@ $cakeDescription = 'Fertinv';
                 </h4>
             </div>
         </footer>
-
 </body>
 </html>
