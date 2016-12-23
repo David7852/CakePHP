@@ -12,7 +12,7 @@
  * @since         0.10.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-$cakeDescription = 'Fertinv';
+$cakeDescription = 'WIT ';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -35,16 +35,29 @@ $cakeDescription = 'Fertinv';
 <body>
     <nav class="top-bar" data-topbar role="navigation">
         <ul class="title-area large-2 medium-4 columns">
-            <h1><a href="/CakePHP">Wit</a></h1>
+            <h1>
+                <a href="/WIT">
+                    <img src="/WIT\webroot\img\Wit.png" alt="WiT" >
+                </a>
+            </h1>
         </ul>
         <nav class="top-bar-section">
             <ul class="right">
                 <?php if(!$this->request->session()->read('Auth.User')):?>
-                <!--<li><?/*echo $this->Html->link('Ingresar',['controller' => 'Usuarios', 'action' => 'login']);*/ ?></li>-->
-                <li><?= $this->Html->link('Registrarse',['controller' => 'Usuarios', 'action' => 'add']) ?></li>
+                    <?php if($this->request->action=='signup'): ?>
+                        <li><?= $this->Html->link('Ingresar',['controller' => 'Usuarios', 'action' => 'login']) ?></li>
+                    <?php else: ?>
+                    <li>
+                        <?= $this->Html->link('Registrarse',['controller' => 'Usuarios', 'action' => 'signup']) ?>
+                    </li>
+                    <?php endif; ?>
                 <?php else: ?>
-                <li><?= $this->Html->link($this->request->session()->read('Auth.User.nombre_de_usuario'),['controller' => 'Usuarios', 'action' => 'view', $this->request->session()->read('Auth.User.id')]) ?></li>
-                <li id="salir"><?= $this->Html->link('SALIR',['controller' => 'Usuarios', 'action' => 'logout']) ?></li>
+                    <li>
+                        <?= $this->Html->link($this->request->session()->read('Auth.User.nombre_de_usuario'),['controller' => 'Usuarios', 'action' => 'view', $this->request->session()->read('Auth.User.id')]) ?>
+                    </li>
+                    <li id="salir">
+                        <?= $this->Html->link('SALIR',['controller' => 'Usuarios', 'action' => 'logout']) ?>
+                    </li>
                 <?php endif; ?>
             </ul>
         </nav>

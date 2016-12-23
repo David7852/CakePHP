@@ -13,7 +13,7 @@ class UsuariosController extends AppController
     public function initialize()
     {
         parent::initialize();
-        $this->Auth->allow(['logout','add']);
+        $this->Auth->allow(['logout','add','signup']);
         $this->set('title', 'Usuarios');
     }
 
@@ -45,6 +45,21 @@ class UsuariosController extends AppController
             }
             $this->Flash->error('El nombre de usuario o contraseña son incorrectos.');
         }
+    }
+    /**
+     * Signing up medthod
+     *
+     *
+     */
+    public function signup()
+    {
+        if($this->request->session()->read('Auth.User'))
+            return $this->redirect(['action' => 'view', $this->request->session()->read('Auth.User.id')]);
+        $usuario = $this->Usuarios->newEntity();
+        $trabajadores = $this->Usuarios->Trabajadores->find('list', ['limit' => 200]);
+        $this->set(compact('usuario', 'trabajadores'));
+        $this->set('_serialize', ['usuario']);
+/*if cedula is not found, set a flash to show, "Su cedula no se encuentra registrada. procesa a registrarse en el sistema"*/
     }
 
     /**

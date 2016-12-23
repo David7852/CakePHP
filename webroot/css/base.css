@@ -57,7 +57,7 @@ footer{
     //background-color: white;
     line-height: 3rem;
     //box-shadow: 10px -10px 30px -12px rgba(0, 0, 0, 0.42);
-    box-shadow: 10px -18px 30px -25px rgba(0, 0, 0, 0.42);
+    box-shadow: 1px -18px 30px -25px rgba(0, 0, 0, 0.42);
     clear: both;
     position: relative;
     z-index: 10;
@@ -6128,7 +6128,17 @@ a:focus {
 }
 
 a img {
-    border: none
+    opacity: 1.0;
+    vertical-align: inherit;
+    width: 8rem;
+    transition: opacity 0.5s linear;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+a img:hover {
+    opacity: 0.75;
+    filter: alpha(opacity=100);
 }
 
 p {
@@ -8308,7 +8318,11 @@ table tr td {
     color: #222;
     font-size: 0.875rem;
     padding: 0.5625rem 0.625rem;
-    text-align: left
+    text-align: left;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 table tr.even,
