@@ -1,5 +1,5 @@
 <?=$this->assign('title',"Sistema de inventario")?>
-<div class="large-4 medium-4 columns" id="actions-sidebar">
+<div class="large-4 medium-6 columns" id="actions-sidebar">
     <fieldset style="padding-top: 0;padding-right: 15px; padding-left: 15px">
     <h1 class="delicate-text" >¡Bienvenido!<div class="gradient-line" style="height: 1px"></h1><br>
     <?= $this->Form->create() ?>

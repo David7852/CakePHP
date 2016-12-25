@@ -1,5 +1,6 @@
 {
     "require": {
-        "cakephp/localized": "^3.0"
+        "cakephp/localized": "^3.0",
+        "cakedc/search": "3.0.*-dev"
     }
 }

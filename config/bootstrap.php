@@ -223,6 +223,7 @@ if (Configure::read('debug')) {
 }
 
 Plugin::load('Migrations');
+Plugin::load('Search');
 
 //Plugin::load('Twit', ['bootstrap' => false, 'routes' => true]);
 //Plugin::load('AdminLTE', ['bootstrap' => true, 'routes' => true]);

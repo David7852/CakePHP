@@ -18,7 +18,7 @@ a {
     text-shadow: 0 0 1px rgba(10,107,76,0.25);
     transition: color 0.3s ease-in-out;
     -webkit-font-smoothing: antialiased;
- }
+}
 .actions a:hover{
     color: #0ab6aa;
     text-shadow: 0 0 1px rgba(10,107,76,0.5);
@@ -51,7 +51,7 @@ table tbody tr td a:hover{
     background-repeat: repeat;
     box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07);
     border-radius: 3px;
-  }
+}
 
 nav ul h1{
 
@@ -319,7 +319,7 @@ div .date {/*to right*/
     padding-left: 1rem;
     position: inherit;
     display: inline-block;
-    //margin-bottom: 4px;
+//margin-bottom: 4px;
     border-right-width: 0;
     border-bottom: 0;
     border-style: solid;
@@ -566,7 +566,7 @@ pre {
 }
 
 .top-bar-section li:not(.has-form) a:not(.button):hover {
-   /* background-color: #308e97;*/
+    /* background-color: #308e97;*/
     /*background: #308e97;*/
     background: none;
     color: #fefefe;
