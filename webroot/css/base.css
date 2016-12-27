@@ -6159,7 +6159,7 @@ p {
 }
 
 table tbody tr td p{
-    display: table-cell;
+    display: initial;
     line-height: 1.125rem;
     color: #222;
     font-size: 0.875rem;
@@ -8287,7 +8287,7 @@ ul.off-canvas-list li a:active {
 table {
     border: solid 1px rgba(0,0,0,0.1);
     margin-bottom: 1.25rem;
-    table-layout: auto
+    table-layout: auto;
 }
 
 table caption {
@@ -8303,10 +8303,14 @@ table thead {
 
 table thead tr th,
 table thead tr td {
-    color: #222;
+    color: rgba(10,128,76,0.75);
     font-size: 0.875rem;
     font-weight: bold;
-    padding: 0.5rem 0.625rem 0.625rem
+    text-shadow: 0 0 1px rgba(10,107,76,0.05);
+    padding: 0.5rem 0.625rem 0.625rem;
+}
+table tbody tr td:last-child a:last-child {
+    color: #BE140B;
 }
 
 table tfoot {
@@ -8346,7 +8350,8 @@ table tbody tr th,
 table tbody tr td,
 table tr td {
     display: table-cell;
-    line-height: 1.125rem
+    line-height: 1.125rem;
+    text-align: center;
 }
 
 .range-slider {
