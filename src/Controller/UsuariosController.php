@@ -53,13 +53,61 @@ class UsuariosController extends AppController
      */
     public function signup()
     {
-        if($this->request->session()->read('Auth.User'))
-            return $this->redirect(['action' => 'view', $this->request->session()->read('Auth.User.id')]);
         $usuario = $this->Usuarios->newEntity();
         $trabajadores = $this->Usuarios->Trabajadores->find('list', ['limit' => 200]);
         $this->set(compact('usuario', 'trabajadores'));
         $this->set('_serialize', ['usuario']);
-/*if cedula is not found, set a flash to show, "Su cedula no se encuentra registrada. procesa a registrarse en el sistema"*/
+
+        if ($this->request->is('post')) {
+            $usuario = $this->Usuarios->patchEntity($usuario, $this->request->data);
+            if ($this->Usuarios->save($usuario)) {
+                $this->Flash->success(__('El usuario a sido registrado.'));
+
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('El nuevo usuario no pudo ser guardado. Intente nuevamente.'));
+            }
+        }
+
+        /*
+     ///in the view:///
+    <div class="container">
+    <a href='#'><div class="search-tab active_search_tab">Property Search</div></a>
+
+    <div class="col-md-12 purple search_box">
+    <?php
+    echo $this->Form->create('Properties', array('type' => 'get'));
+    echo $this->Form->input('search', array('between'=>'<label for="search" class="main_search">Search</label><br>','label'=>false));
+    echo $this->Form->button('Search', array('class'=>'btn btn-success'));
+    echo $this->Form->end
+    ?>
+    </div>
+    </div>
+    //in the controller//
+    if(isset($this->params['url']['search'])){
+    echo 'search text has been found';
+    }
+         *
+         *
+         *
+         * <?php
+class ItemsController extends AppController {
+
+    public function index() {
+        $conditions = array();
+
+        if (isset($this->request->query['search'])) {//si el search se lleno
+            $conditions['Item.title'] = $this->request->query['search'];//condiciones = search
+        }
+
+        $items = $this->Item->find('all', array(  //busqueda con condiciones
+            'conditions' => $conditions
+        ));
+
+        $this->set(compact('items'));
+    }
+}*/
+        /*if cedula is not found, set a flash to show, "Su cedula no se encuentra registrada. procesa a registrarse en el sistema"*/
     }
 
     /**

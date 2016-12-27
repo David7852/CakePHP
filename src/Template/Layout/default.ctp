@@ -19,6 +19,7 @@ $cakeDescription = 'WIT ';
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
@@ -31,13 +32,15 @@ $cakeDescription = 'WIT ';
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    <?= $this->Html->script('scripts')?>
 </head>
 <body>
     <nav class="top-bar" data-topbar role="navigation">
         <ul class="title-area large-2 medium-4 columns">
-            <h1>
-                <a href="/WIT">
-                    <img src="/WIT\webroot\img\Wit.png" alt="WiT" >
+            <h1 style="height: 5rem;width:8rem">
+                <a href="/WIT" style="height: 100%; position: relative; width: 100%">
+                    <img  src="/WIT/webroot/img/Wit.png" alt="WiT" >
+                    <p>Sistema web de inventario y telefonía</p>
                 </a>
             </h1>
         </ul>
