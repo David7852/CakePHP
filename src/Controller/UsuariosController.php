@@ -1,8 +1,9 @@
 <?php
 namespace App\Controller;
-
 use App\Controller\AppController;
-use Cake\Event\Event;
+use Cake\Event\Event;use Cake\Routing\Router;
+
+use Cake\ORM\TableRegistry;
 /**
  * Usuarios Controller
  *
@@ -52,62 +53,47 @@ class UsuariosController extends AppController
      *
      */
     public function signup()
-    {
-        $usuario = $this->Usuarios->newEntity();
-        $trabajadores = $this->Usuarios->Trabajadores->find('list', ['limit' => 200]);
-        $this->set(compact('usuario', 'trabajadores'));
-        $this->set('_serialize', ['usuario']);
+    {/*
 
-        if ($this->request->is('post')) {
-            $usuario = $this->Usuarios->patchEntity($usuario, $this->request->data);
-            if ($this->Usuarios->save($usuario)) {
-                $this->Flash->success(__('El usuario a sido registrado.'));
+    IMPORTANT. SINCE THE CONTROLLER WILL EVENTUALLY BLOCK VISITOR AND UNAUTHORIZED USER TO ACCESS OTHER PROFILES, AN
+    UNIVERSAL ACCESSOR MUST BE GIVEN FOR CAKE LEVEL ACTIONS. THIS CREDENTIAL MUST BE HIDDEN.
 
-                return $this->redirect(['action' => 'index']);
+    */
+        if ($this->request->is('post'))
+        {
+            $trabajadores = TableRegistry::get('Trabajadores');
+            $query = $trabajadores->find();
+            $found=false;
+            $userid=-1;
+            foreach ($query as $row)
+                if( $row->cedula==$this->request->data['cedula'])//if a worker with this ci exits...
+                {
+                    $found = true;
+                    $usuarios = TableRegistry::get('Usuarios');
+                    $query = $usuarios->find();
+                    foreach ($query as $userrow)
+                    {
+                        if($userrow->trabajador_id==$row->id)//and if at least an user happens to belong to said worker
+                        {
+                            //redirect to the view of that user.
+                        }
+                    }
+                    //but if there are no users belonging to said worker
+                    //search for an user which username is equal to lastname and first latter of name of worker,
+                    // if no results are found, create said user an redirect to its view.
+                    break;
+                }
+            if ($found) {
+                $this->Flash->success(__('Un trabajador con la cédula ' .$this->request->data['cedula'].' esta presente.'));
+
+                $url = array('controller' => 'usuarios', 'action' => 'login');
+                $second = '1.25';
+                $this->response->header("refresh:$second; url='" . Router::url($url) . "'");
+                $this->set(compact('url', 'second'));
             } else {
                 $this->Flash->error(__('El nuevo usuario no pudo ser guardado. Intente nuevamente.'));
             }
         }
-
-        /*
-     ///in the view:///
-    <div class="container">
-    <a href='#'><div class="search-tab active_search_tab">Property Search</div></a>
-
-    <div class="col-md-12 purple search_box">
-    <?php
-    echo $this->Form->create('Properties', array('type' => 'get'));
-    echo $this->Form->input('search', array('between'=>'<label for="search" class="main_search">Search</label><br>','label'=>false));
-    echo $this->Form->button('Search', array('class'=>'btn btn-success'));
-    echo $this->Form->end
-    ?>
-    </div>
-    </div>
-    //in the controller//
-    if(isset($this->params['url']['search'])){
-    echo 'search text has been found';
-    }
-         *
-         *
-         *
-         * <?php
-class ItemsController extends AppController {
-
-    public function index() {
-        $conditions = array();
-
-        if (isset($this->request->query['search'])) {//si el search se lleno
-            $conditions['Item.title'] = $this->request->query['search'];//condiciones = search
-        }
-
-        $items = $this->Item->find('all', array(  //busqueda con condiciones
-            'conditions' => $conditions
-        ));
-
-        $this->set(compact('items'));
-    }
-}*/
-        /*if cedula is not found, set a flash to show, "Su cedula no se encuentra registrada. procesa a registrarse en el sistema"*/
     }
 
     /**

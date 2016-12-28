@@ -40,7 +40,8 @@ $cakeDescription = 'WIT ';
             <h1 style="height: 5rem;width:8rem">
                 <a href="/WIT" style="height: 100%; position: relative; width: 100%">
                     <img  src="/WIT/webroot/img/Wit.png" alt="WiT" >
-                    <p>Sistema web de inventario y telefonía</p>
+                    <!--[if IE]><p></p><![endif]-->
+                    <!--[if !IE]>--><p>Sistema web de inventario y telefonía</p><!--<![endif]-->
                 </a>
             </h1>
         </ul>

@@ -632,7 +632,7 @@ body {
     background-repeat: repeat;
     color: #121212;
     cursor: auto;
-    font-family: raleway, Roboto, Segoe ui, sans-serif;
+    font-family: raleway, Roboto, Century gothic, Segoe ui, sans-serif;
     font-style: normal;
     font-weight: normal;
     line-height: 1.5;
@@ -1812,7 +1812,7 @@ button,
     -webkit-appearance: none;
     -moz-appearance: none;
     -moz-osx-font-smoothing: grayscale;
-    font-family: raleway,poiret,  Roboto, Segoe ui, sans-serif;
+    font-family: raleway,poiret,  Roboto, Century gothic, Segoe ui, sans-serif;
     margin: 0 1.25rem 2.75rem 0;
     position: relative;
 }
@@ -3110,7 +3110,7 @@ meta.foundation-mq-topbar {
 .top-bar-section ul li>a {
     color: #fff;
     display: block;
-    font-family: raleway, poiret, Roboto, Segoe ui, sans-serif;
+    font-family: raleway, poiret, Roboto, Century gothic, Segoe ui, sans-serif;
     font-size: 0.8125rem;
     font-weight: normal;
     padding-left: 0.9375rem;
@@ -4759,7 +4759,7 @@ button.dropdown.secondary:after {
 .pricing-table .title {
     background-color: #333;
     color: #eee;
-    font-family: Raleway,"Helvetica Neue", Helvetica, Roboto, Segoe ui, sans-serif;
+    font-family: Raleway,"Helvetica Neue", Helvetica, Roboto, Century gothic, Segoe ui, sans-serif;
     font-size: 1rem;
     font-weight: normal;
     padding: 0.9375rem 1.25rem;
@@ -4769,7 +4769,7 @@ button.dropdown.secondary:after {
 .pricing-table .price {
     background-color: #F6F6F6;
     color: #333;
-    font-family: Raleway, "Helvetica Neue", Helvetica, Roboto, Segoe ui, sans-serif;
+    font-family: Raleway, "Helvetica Neue", Helvetica, Roboto, Century gothic, Segoe ui, sans-serif;
     font-size: 2rem;
     font-weight: normal;
     padding: 0.9375rem 1.25rem;
@@ -5629,7 +5629,7 @@ button.dropdown.secondary:after {
     display: block;
     background-color: #EFEFEF;
     color: #222;
-    font-family: poiret, raleway, Roboto, Segoe ui, sans-serif;
+    font-family: poiret, raleway, Roboto, Century gothic, Segoe ui, sans-serif;
     font-size: 1rem;
     padding: 1rem 2rem;
     -webkit-font-smoothing: antialiased;
@@ -5810,7 +5810,7 @@ ul.pagination li {
 
 .side-nav {
     display: block;
-    font-family: raleway, Roboto, Segoe ui, sans-serif;
+    font-family: raleway, Roboto, Century gothic, Segoe ui, sans-serif;
     list-style-position: outside;
     list-style-type: none;
     margin: 0;
@@ -5843,7 +5843,7 @@ ul.pagination li {
 
 .side-nav li.active>a:first-child:not(.button) {
     color: #1cc7ff;
-    font-family:raleway, Roboto, Segoe ui, sans-serif;
+    font-family:raleway, Roboto, Century gothic, Segoe ui, sans-serif;
     font-weight: normal
 }
 
@@ -5892,7 +5892,7 @@ ul.pagination li {
     background: #EFEFEF;
     color: #222;
     display: block;
-    font-family:Raleway, "Helvetica Neue", Helvetica, Roboto, Segoe ui, sans-serif;
+    font-family:Raleway, "Helvetica Neue", Helvetica, Roboto, Century gothic, Segoe ui, sans-serif;
     font-size: 1rem;
     padding: 1rem
 }
@@ -6186,9 +6186,10 @@ h4,
 h5,
 h6 {
     color: #222;
-    font-family: poiret, raleway, Roboto, Segoe ui, sans-serif;
+    font-family: poiret, raleway, Roboto, Century gothic, Segoe ui, sans-serif;
     font-style: normal;
     font-weight: 600;
+    font-weight: normal\9;
     line-height: 1.4;
     margin-bottom: 0.5rem;
     margin-top: 0.2rem;
@@ -7152,7 +7153,7 @@ blockquote p {
 .sub-nav li {
     color: #999;
     float: left;
-    font-family: raleway, Roboto, Segoe ui, sans-serif;
+    font-family: raleway, Roboto, Century gothic, Segoe ui, sans-serif;
     font-size: 0.875rem;
     font-weight: normal;
     margin-left: 1rem;
@@ -7374,7 +7375,7 @@ blockquote p {
 
 .label {
     display: inline-block;
-    font-family: raleway, Roboto, Segoe ui, sans-serif;
+    font-family: raleway, Roboto, Century gothic, Segoe ui, sans-serif;
     font-weight: normal;
     line-height: 1;
     margin-bottom: auto;
@@ -8327,7 +8328,10 @@ table tfoot tr td {
 
 table tr th,
 table tr td {
-    color: #222;
+    color: rgba(0,0,0,0.98);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: 0 0 1px rgba(0,0,0,0.1);
     font-size: 0.875rem;
     padding: 0.5625rem 0.625rem;
     text-align: left;

@@ -3,7 +3,7 @@
     <form method="post" accept-charset="utf-8" action="/WIT/usuarios/registrarse">
     <div style="display:none;"><input type="hidden" name="_method" value="POST"></div>
         <fieldset>
-            <legend><h1 style="color: #0a6b4c; font-weight: lighter; margin-bottom: 1rem; line-height: normal; text-transform: none" >¿Ya eres un trabajador <br>registrado de FertiNitro?</h1></legend>
+            <legend><h1 style="color: #0a6b4c; font-weight: lighter; margin-bottom: 1rem; line-height: normal; text-transform: none" >¿Ya eres trabajador de FertiNitro?</h1></legend>
             <div style='display: inline-block; width:100%'>
                 <br>
                 <?="<h4 style=\"color: #417664; margin-bottom: 0;padding-bottom: 0; font-family: 'Raleway','CakeFont', sans-serif;font-weight: 400;text-shadow: 0px 0px 1px rgba(65, 118, 100, 0.3)\">Si es asi, ingresa tu cedula. </h4>";?>
@@ -29,7 +29,7 @@
             </div>
             <br><br><br>
             <div class="gradient-line-red" style="width: 75%;display: block; text-align: center;margin: auto;float: none;"></div>
-            <?php echo "<h4 style='padding-bottom: 0;  font-family: Raleway; font-weight: 400'>¿No es asi? Entonces... </h4>";?>
+            <?php echo "<h4 style='padding-bottom: 0;  font-family: Raleway; font-weight: 400'>Si no es asi... </h4>";?>
             <a href="<?=Router::url(array('controller' => 'trabajadores', 'action' => 'add'))?>" id="red-button" class="button" style="display: block; text-align: center; margin: auto;float: none; width: 12rem; border-radius: 5px">¡Registrate!</a>
         </fieldset>
     </form>

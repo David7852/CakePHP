@@ -5,7 +5,9 @@
     <?= $this->Form->create() ?>
     <?= $this->Form->input('nombre_de_usuario') ?>
     <?= $this->Form->input('clave',['label'=>'Contraseña','type'=>'password']) ?>
+    <br>
     <?= $this->Form->button('Ingresar') ?>
+        <!-- Falta boton de olvide mi clave, color rojo al lado derecho de ingresar -->
     <?= $this->Form->end() ?>
     </fieldset>
 </div>
