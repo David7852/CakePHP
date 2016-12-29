@@ -25,9 +25,9 @@
             <th scope="row"><?= __('Fecha De Culminacion') ?></th>
             <td><?= h($contrato->fecha_de_culminacion) ?></td>
         </tr>
+        <tr>
+            <th scope="row"><?= __('Tipo De Contrato') ?></th>
+            <td><?= h($contrato->tipo_de_contrato) ?></td>
+        </tr>
     </table>
-    <div class="row">
-        <h4><?= __('Tipo De Contrato') ?></h4>
-        <?= $this->Text->autoParagraph(h($contrato->tipo_de_contrato)); ?>
-    </div>
 </div>

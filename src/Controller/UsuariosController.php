@@ -4,6 +4,8 @@ use App\Controller\AppController;
 use Cake\Event\Event;use Cake\Routing\Router;
 
 use Cake\ORM\TableRegistry;
+use PhpParser\Node\Stmt\Else_;
+
 /**
  * Usuarios Controller
  *
@@ -14,7 +16,7 @@ class UsuariosController extends AppController
     public function initialize()
     {
         parent::initialize();
-        $this->Auth->allow(['logout','add','signup']);
+        $this->Auth->allow(['logout','add','signup','view']);
         $this->set('title', 'Usuarios');
     }
 
@@ -47,6 +49,13 @@ class UsuariosController extends AppController
             $this->Flash->error('El nombre de usuario o contraseña son incorrectos.');
         }
     }
+
+    private function getnewname()
+    {
+
+        return "";
+    }
+
     /**
      * Signing up medthod
      *
@@ -54,21 +63,17 @@ class UsuariosController extends AppController
      */
     public function signup()
     {/*
-
     IMPORTANT. SINCE THE CONTROLLER WILL EVENTUALLY BLOCK VISITOR AND UNAUTHORIZED USER TO ACCESS OTHER PROFILES, AN
     UNIVERSAL ACCESSOR MUST BE GIVEN FOR CAKE LEVEL ACTIONS. THIS CREDENTIAL MUST BE HIDDEN.
-
     */
         if ($this->request->is('post'))
         {
             $trabajadores = TableRegistry::get('Trabajadores');
             $query = $trabajadores->find();
             $found=false;
-            $userid=-1;
             foreach ($query as $row)
                 if( $row->cedula==$this->request->data['cedula'])//if a worker with this ci exits...
                 {
-                    $found = true;
                     $usuarios = TableRegistry::get('Usuarios');
                     $query = $usuarios->find();
                     foreach ($query as $userrow)
@@ -76,23 +81,52 @@ class UsuariosController extends AppController
                         if($userrow->trabajador_id==$row->id)//and if at least an user happens to belong to said worker
                         {
                             //redirect to the view of that user.
+                            $this->Flash->success(__('Trabajador y usuario encontrados...'));
+                            $url = array('controller' => 'usuarios', 'action' => 'view',$userrow->id);//an special action can be created so that it displays flashes with instructions
+                            $second = '1.25';
+                            $this->response->header("refresh:$second; url='" . Router::url($url) . "'");
+                            $this->set(compact('url', 'second'));
+                            return;
+                        }
+                        //but if there are no users belonging to said worker, one should be prepared and created for it...
+                        //first, search for an user which username is equal to last name and first latter of name.
+                        if($userrow->nombre_de_usuario==$row->apellido.$row->nombre[0])
+                        {
+                            //if a result is found, it means there is a coincidence of names and the default naming rule for users
+                            //can't be applied, thus an alternative name should be generated. (use the second later and if still
+                            //the same append)
+                            $found=true;//se hara igual al nuevo posible nombre.
                         }
                     }
-                    //but if there are no users belonging to said worker
-                    //search for an user which username is equal to lastname and first latter of name of worker,
-                    // if no results are found, create said user an redirect to its view.
+                    $usuario = $this->Usuarios->newEntity();
+                    if(!$found)
+                    {
+                        // if no coincidence is found, create an user with the default rule and redirect to its view.
+                        $usuario = $this->Usuarios->patchEntity($usuario,
+                            ['nombre_de_usuario'=>$row->apellido.$row->nombre[0],
+                                'email'=>$row->apellido.$row->nombre[0].'@fertinitro.com',
+                                'clave'=>$row->cedula,
+                                'funcion'=>'Visitante',
+                                'trabajador_id'=>$row->id]);
+                    }else
+                    {
+                        $usuario = $this->Usuarios->patchEntity($usuario,
+                            ['nombre_de_usuario'=>$found,
+                                'email'=>$found.'@fertinitro.com',
+                                'clave'=>$row->cedula,
+                                'funcion'=>'Visitante',
+                                'trabajador_id'=>$row->id]);
+                    }
+                        if ($this->Usuarios->save($usuario)) {
+                            $this->Flash->success(__('Un nuevo nombre de usuario fue creado para usted: '.$row->apellido.$row->nombre[0]));
+                            $this->Auth->setUser($usuario);
+                            return $this->redirect(['action' => 'view',$usuario->id]);
+                        } else {
+                            $this->Flash->error(__('Usted es un trabajador registrado, pero el intento de crear su usuario fallo. Contacte a IT soporte.'));
+                        }
                     break;
                 }
-            if ($found) {
-                $this->Flash->success(__('Un trabajador con la cédula ' .$this->request->data['cedula'].' esta presente.'));
-
-                $url = array('controller' => 'usuarios', 'action' => 'login');
-                $second = '1.25';
-                $this->response->header("refresh:$second; url='" . Router::url($url) . "'");
-                $this->set(compact('url', 'second'));
-            } else {
-                $this->Flash->error(__('El nuevo usuario no pudo ser guardado. Intente nuevamente.'));
-            }
+            $this->Flash->error(__('Ningún trabajador fue previamente registrado con esa cédula. por favor, registrese.'));
         }
     }
 

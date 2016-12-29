@@ -3,19 +3,18 @@
     <form method="post" accept-charset="utf-8" action="/WIT/usuarios/registrarse">
     <div style="display:none;"><input type="hidden" name="_method" value="POST"></div>
         <fieldset>
-            <legend><h1 style="color: #0a6b4c; font-weight: lighter; margin-bottom: 1rem; line-height: normal; text-transform: none" >¿Ya eres trabajador de FertiNitro?</h1></legend>
-            <div style='display: inline-block; width:100%'>
+            <legend><h1 style="color: #0a6b4c; font-weight: lighter; margin-bottom: 1rem; line-height: normal; text-transform: none;" >¿Ya eres un trabajador de FertiNitro?</h1></legend>
+            <div style='display: inline-block; width:100%; margin-bottom:-0.4rem'>
                 <br>
-                <?="<h4 style=\"color: #417664; margin-bottom: 0;padding-bottom: 0; font-family: 'Raleway','CakeFont', sans-serif;font-weight: 400;text-shadow: 0px 0px 1px rgba(65, 118, 100, 0.3)\">Si es asi, ingresa tu cedula. </h4>";?>
+                <?="<h4 style=\"color: #417664; margin-bottom: 0;padding-bottom: 0; font-family: raleway, Roboto, Century gothic, Segoe ui, sans-serif, sans-serif;font-weight: 400;text-shadow: 0px 0px 1px rgba(65, 118, 100, 0.3)\">Si es asi, ingresa tu cedula. </h4>";?>
                 <div style="text-align: center; height: 5rem; position: relative;">
                     <?php echo str_replace(
                             "input type=\"text\" name=\"cedula\" id=\"cedula\"",
-                            "input type=\"text\" name=\"cedula\" id=\"cedula\" style=\"text-align:center;\"",
+                            "input type=\"text\" name=\"cedula\" maxlength=\"8\" id=\"cedula\" style=\"text-align:center;\"",
                             str_replace("class=\"input text\"",
-                                "class=\"input text\" style=\" display: inline-block; text-align: center; margin: auto; width: 25rem; \"",
+                                "class=\"input text\" style=\" display: inline-block; text-align: center; margin: auto;margin-left: -1.05rem;\"",
                                 $this->Form->input('cedula',['label'=>""])));?>
-                    <!--<a href="/WIT">-->
-                        <button id="dif" type="submit" style="display: inline; position: absolute; margin-left: -21px; width: 5rem; top: -3%;" class="_W6g _S6g _ufp nb-fades">
+                        <button id="dif" type="submit" style="display: inline; position: absolute; margin-left: -1.75rem; top: -2%;" class="_W6g _S6g _ufp nb-fades">
                             <g-fab class="_jAg">
                                 <span class="_HAg _wtf">
                                     <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -24,13 +23,12 @@
                                 </span>
                             </g-fab>
                         </button>
-                    <!--</a>-->
                 </div>
             </div>
             <br><br><br>
             <div class="gradient-line-red" style="width: 75%;display: block; text-align: center;margin: auto;float: none;"></div>
-            <?php echo "<h4 style='padding-bottom: 0;  font-family: Raleway; font-weight: 400'>Si no es asi... </h4>";?>
-            <a href="<?=Router::url(array('controller' => 'trabajadores', 'action' => 'add'))?>" id="red-button" class="button" style="display: block; text-align: center; margin: auto;float: none; width: 12rem; border-radius: 5px">¡Registrate!</a>
+            <?php echo "<h4 style='padding-bottom: 0;  font-family: raleway, Roboto, Century gothic, Segoe ui, sans-serif; font-weight: 400'>Si no es asi... </h4>";?>
+            <a href="<?=Router::url(array('controller' => 'trabajadores', 'action' => 'add'))?>" id="red-button" class="button" style="display: block; text-align: center; margin: auto;float: none; width: 10.6rem; border-radius: 4px">Registrate</a>
         </fieldset>
     </form>
 </div>

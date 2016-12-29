@@ -60,7 +60,7 @@ $cakeDescription = 'WIT ';
                         <?= $this->Html->link($this->request->session()->read('Auth.User.nombre_de_usuario'),['controller' => 'Usuarios', 'action' => 'view', $this->request->session()->read('Auth.User.id')]) ?>
                     </li>
                     <li id="salir">
-                        <?= $this->Html->link('SALIR',['controller' => 'Usuarios', 'action' => 'logout']) ?>
+                        <?= $this->Html->link('Salir',['controller' => 'Usuarios', 'action' => 'logout']) ?>
                     </li>
                 <?php endif; ?>
             </ul>

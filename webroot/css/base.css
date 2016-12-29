@@ -1818,7 +1818,9 @@ button,
 }
 
 #red-button {
+    transition: box-shadow 600ms cubic-bezier(0.4, 0.0, 0.2, 1), background-color 300ms linear, font-size 0.75s cubic-bezier(0, 0, 0.2, 1),color 0.5s;
     color: #C3232D;
+    font-size: 90%;
 }
 
 #red-button:hover{
@@ -1827,6 +1829,7 @@ button,
     -webkit-box-shadow: 0 5px 11px 0 rgba(225,55,71,0.3), 0 4px 15px 0 rgba(225,90,81, 0.2);
     -moz-box-shadow: 0 5px 11px 0 rgba(225,55,71,0.3), 0 4px 15px 0 rgba(225,90,81, 0.2);
     box-shadow: 0 5px 11px 0 rgba(225,55,71,0.3), 0 4px 15px 0 rgba(225,90,81, 0.2);
+    font-size: 92%;
 }
 
 button:hover,
@@ -3111,7 +3114,7 @@ meta.foundation-mq-topbar {
     color: #fff;
     display: block;
     font-family: raleway, poiret, Roboto, Century gothic, Segoe ui, sans-serif;
-    font-size: 0.8125rem;
+    font-size: 0.85rem;
     font-weight: normal;
     padding-left: 0.9375rem;
     padding: 12px;
@@ -3122,7 +3125,7 @@ meta.foundation-mq-topbar {
 }
 
 .top-bar-section ul li>a.button {
-    font-size: 0.8125rem;
+    font-size: 0.85rem;
     padding-left: 0.9375rem;
     padding-right: 0.9375rem;
     background-color: #008CBA;
@@ -3222,7 +3225,7 @@ meta.foundation-mq-topbar {
 }
 
 .top-bar-section ul li>button {
-    font-size: 0.8125rem;
+    font-size: 0.85rem;
     padding-left: 0.9375rem;
     padding-right: 0.9375rem;
     background-color: #008CBA;
@@ -6136,12 +6139,13 @@ nav ul h1 a p{
     font-size: 0.72rem;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    text-align: -webkit-center;
+    text-align: center;
     width: 8rem;
     opacity: 0;
     margin: 0;
     line-height: 0.75rem;
     transition: opacity 0.35s ease-in, transform 0.45s cubic-bezier(0.47, 0.1, 0.75, 0.72);
+    text-shadow: 0 0 1px rgba(1,91,84,0.55);
 }
 nav ul h1 a:hover p{
     opacity: 1;
@@ -6155,6 +6159,8 @@ p {
     font-weight: normal;
     line-height: 1.6;
     margin-bottom: 1.25rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility
 }
 
@@ -6275,6 +6281,7 @@ code {
     font-family: Consolas, "Liberation Mono", Courier, monospace;
     font-weight: normal;
     padding: 0.125rem 0.3125rem 0.0625rem
+
 }
 
 ul,
@@ -8310,7 +8317,7 @@ table thead tr td {
     text-shadow: 0 0 1px rgba(10,107,76,0.05);
     padding: 0.5rem 0.625rem 0.625rem;
 }
-table tbody tr td:last-child a:last-child {
+table tbody tr td.actions:last-child a:last-child {
     color: #BE140B;
 }
 
