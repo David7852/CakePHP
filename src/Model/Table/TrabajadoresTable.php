@@ -70,11 +70,13 @@ class TrabajadoresTable extends Table
 
         $validator
             ->requirePresence('nombre', 'create')
-            ->notEmpty('nombre');
+            ->notEmpty('nombre')
+            ->minLength('nombre',2);
 
         $validator
             ->requirePresence('apellido', 'create')
-            ->notEmpty('apellido');
+            ->notEmpty('apellido')
+            ->minLength('apellido',2);
 
         $validator
             ->requirePresence('cedula', 'create')

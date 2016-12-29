@@ -20,7 +20,6 @@ use Cake\ORM\Entity;
  */
 class Usuario extends Entity
 {
-
     protected function _setClave($value)
     {
         $hasher = new DefaultPasswordHasher();

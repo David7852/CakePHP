@@ -13,7 +13,7 @@
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
 namespace App\Controller;
-
+use Cake\Routing\Router;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\Core\Configure;

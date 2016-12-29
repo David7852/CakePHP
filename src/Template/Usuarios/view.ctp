@@ -21,4 +21,8 @@
             <td><?= h($usuario->email) ?></td>
         </tr>
     </table>
+    <?php use Cake\Auth\DefaultPasswordHasher;
+        $hasher = new DefaultPasswordHasher();
+        if($hasher->check($usuario->trabajador->cedula,$usuario->clave))
+        echo "<p id='warningnote'>Actualmente la clave de su usuario coincide con su numero de cédula de identidad. Recomendamos editar su usuario para cambiar su contraseña.</p>";?>
 </div>

@@ -28,6 +28,15 @@ use Cake\ORM\Entity;
  */
 class Trabajador extends Entity
 {
+    protected function _setNombre($value)
+    {
+        return trim($value);
+    }
+    protected function _setApellido($value)
+    {
+        return trim($value);
+    }
+    //Methods for set gerencia and set cargo should be created aswell
     protected function _getTitulo()
     {
         return $this->_properties['nombre'] . ' ' . $this->_properties['apellido'];
@@ -37,6 +46,10 @@ class Trabajador extends Entity
         if($this->_properties['area']!='')
             return $this->_properties['cargo'].' de '.$this->_properties['area'];
         return $this->_properties['cargo'];
+    }
+    protected function _getCargogerencial()
+    {
+        return $this->_properties['cargo'].' de '.$this->_properties['gerencia'];
     }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
