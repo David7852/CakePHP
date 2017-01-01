@@ -16,7 +16,7 @@
     <?php use Cake\Auth\DefaultPasswordHasher;
     $hasher = new DefaultPasswordHasher();
     if($hasher->check($usuario->trabajador->cedula,$usuario->clave))
-        echo "<p id='removablewarningnote'>La clave de su usuario coincide con su numero de cédula de identidad. Es recomendable evitar incluir datos personales en su contraseña.</p>";?>
+    echo "<p class='removablewarningnote' id='removable' onclick='removeFadeOut(document.getElementById(\"removable\"), 666);'>La clave de su usuario coincide con su numero de cédula de identidad. Es recomendable evitar incluir datos personales en su contraseña.</p>";?>
     <?= $this->Form->create($usuario) ?>
     <fieldset>
         <legend><?= __('Editando a ').h($usuario->nombre_de_usuario) ?></legend>

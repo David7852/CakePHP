@@ -48,11 +48,12 @@ $cakeDescription = 'WIT ';
         <nav class="top-bar-section">
             <ul class="right">
                 <?php if(!$this->request->session()->read('Auth.User')):?>
-                    <?php if($this->request->action=='signup'): ?>
+
+                    <?php if($this->request->action=='signup'||$this->request->action=='reset'): ?>
                         <li><?= $this->Html->link('Ingresar',['controller' => 'Usuarios', 'action' => 'login']) ?></li>
                     <?php else: ?>
                     <li>
-                        <?= $this->Html->link('Registrarse',['controller' => 'Usuarios', 'action' => 'signup']) ?>
+                        <?= $this->Html->link('Registrate',['controller' => 'Usuarios', 'action' => 'signup']) ?>
                     </li>
                     <?php endif; ?>
                 <?php else: ?>

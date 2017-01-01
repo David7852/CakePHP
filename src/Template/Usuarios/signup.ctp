@@ -1,6 +1,6 @@
 <?php use Cake\Routing\Router;?>
-<div class="usuarios form large-12 medium-11 columns content">
-    <form method="post" accept-charset="utf-8" action="/WIT/usuarios/registrarse">
+<div class="usuarios form large-12 medium-11 columns content" style="width: 100%">
+    <form method="post" accept-charset="utf-8" action="/WIT/usuarios/registrate">
     <div style="display:none;"><input type="hidden" name="_method" value="POST"></div>
         <fieldset>
             <legend><h1 style="color: #0a6b4c; font-weight: lighter; margin-bottom: 1rem; line-height: normal; text-transform: none;" >¿Ya eres un trabajador de FertiNitro?</h1></legend>
@@ -28,7 +28,7 @@
             <br><br><br>
             <div class="gradient-line-red" style="width: 75%;display: block; text-align: center;margin: auto;float: none;"></div>
             <?php echo "<h4 style='padding-bottom: 0;  font-family: raleway, Roboto, Century gothic, Segoe ui, sans-serif; font-weight: 400'>Si no es asi... </h4>";?>
-            <a href="<?=Router::url(array('controller' => 'trabajadores', 'action' => 'add'))?>" id="red-button" class="button" style="display: block; text-align: center; margin: auto;float: none; width: 10.6rem; border-radius: 4px">Registrate</a>
+            <a href="<?=Router::url(array('controller' => 'trabajadores', 'action' => 'add'))?>" id="red-button" class="button" style="display: block; width: 10.6rem;">Registrate</a>
         </fieldset>
     </form>
 </div>

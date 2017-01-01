@@ -64,7 +64,7 @@ footer{
     height: 5em;
     margin-top: 0em;
 }
-
+/*
 .triangle {
     margin: 0 auto;
     text-align: center;
@@ -73,7 +73,6 @@ footer{
     background-color: transparent;
     border-top: 30px solid #181A1C;
     position: relative;
-
 }
 .animated {
     -webkit-animation-fill-mode: both;
@@ -92,7 +91,7 @@ footer{
     -moz-animation-name: fadeInDown;
     -o-animation-name: fadeInDown;
     animation-name: fadeInDown;
-}
+}*/
 /**
  * 1. Correct `inline-block` display not defined in IE 8/9.
  * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
@@ -374,9 +373,7 @@ html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
     -webkit-appearance: button;
-    /* 2 */
     cursor: pointer;
-    /* 3 */
 }
 
 
@@ -1043,6 +1040,7 @@ select {
 }
 
 @media only screen and (min-width: 40.0625em) {
+
     .medium-push-0 {
         position: relative;
         left: 0;
@@ -1411,6 +1409,7 @@ select {
 }
 
 @media only screen and (min-width: 64.0625em) {
+
     .large-push-0 {
         position: relative;
         left: 0;
@@ -1786,20 +1785,20 @@ button,
     font-weight: 500;
     text-decoration: none;
     color: #417664;
-    text-shadow: 0 0 2px rgba(65,118,100,0.35);
+    text-shadow: 0 0 2px rgba(65,118,100,0.5);
     background-color: #fdfbfd;
     background-image: url(../img/topBarTexture.png);
     background-repeat: repeat;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     transition: box-shadow 600ms cubic-bezier(0.4, 0.0, 0.2, 1), background-color 300ms linear, font-size 0.75s cubic-bezier(0, 0, 0.2, 1),color 0.5s;
     cursor: pointer;
     float: left;
     z-index: 1;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
     border: none;
-    border-radius: 2px;
+    border-radius: 4px;
     display: inline-block;
     height: 36px;
     line-height: 36px;
@@ -1807,8 +1806,7 @@ button,
     padding: 0 2rem;
     vertical-align: middle;
     -webkit-tap-highlight-color: transparent;
-    -webkit-font-smoothing: antialiased;
-
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     -webkit-appearance: none;
     -moz-appearance: none;
     -moz-osx-font-smoothing: grayscale;
@@ -1820,7 +1818,12 @@ button,
 #red-button {
     transition: box-shadow 600ms cubic-bezier(0.4, 0.0, 0.2, 1), background-color 300ms linear, font-size 0.75s cubic-bezier(0, 0, 0.2, 1),color 0.5s;
     color: #C3232D;
-    font-size: 90%;
+    padding: 0 0.5rem;
+    text-align: center;
+    margin: auto;
+    float: none;
+    display: block;
+    font-size: 88%;
 }
 
 #red-button:hover{
@@ -1836,8 +1839,6 @@ button:hover,
 button:focus,
 .button:hover,
 .button:focus {
-    /*background-color: #007095;
-    color: #fff;*/
     background-color: #e3e9e6;
     border: 0;
     font-size: 103%;
@@ -2275,12 +2276,7 @@ button::-moz-focus-inner {
     padding: 0
 }
 
-@media only screen and (min-width: 40.0625em) {
-    button,
-    .button {
-        display: inline-block
-    }
-}
+
 
 form {
     margin: 0 0 1rem
@@ -2507,7 +2503,6 @@ textarea:focus {
     background-image: url(../img/selectTexture.png);
     background-repeat: repeat;
     box-shadow: 0 3px 4px 0 rgba(0,0,0,0.16),0 0 0 1px rgba(0,0,0,0.1);
-    /*box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);*/
     outline: none;
     -webkit-transition:  background 0.33s linear, box-shadow 0.66s linear;
     -moz-transition: background 0.33s linear, box-shadow 0.66s linear;
@@ -2681,7 +2676,6 @@ form .row .postfix-round.row.collapse .postfix {
 input[type="submit"] {
     -webkit-appearance: none;
     -moz-appearance: none;
-    border-radius: 0
 }
 
 textarea[rows] {
@@ -2921,10 +2915,8 @@ meta.foundation-mq-topbar {
     overflow: hidden;
     position: relative;
     z-index: 1;
-    /*box-shadow: -10px -10px 100px 18px rgba(0, 0, 0, 0.1), -4px -11px 15px 20px rgba(0, 0, 0, 0.03), -10px -15px 13px 20px rgba(0, 0, 0, 0.05)*/
     -webkit-box-shadow: 0 3px 10px 0 rgba(65,118,100,0.3), 0 4px 15px 0 rgba(46,139,87, 0.2);
     -moz-box-shadow: 0 3px 10px 0 rgba(65,118,100,0.3), 0 4px 15px 0 rgba(46,139,87, 0.2);
-    /*box-shadow: 0 3px 10px 0 rgba(65,118,100,0.3), 0 4px 15px 0 rgba(46,139,87, 0.2);*/
     box-shadow: 0 3px 10px 0 rgba(65,118,100,0.25), 0 4px 15px 0 rgba(46,110,87, 0.2);
 }
 
@@ -3450,6 +3442,11 @@ meta.foundation-mq-topbar {
 }
 
 @media only screen and (min-width: 40.0625em) {
+
+    button,
+    .button {
+        display: inline-block
+    }
     .top-bar {
         background: #333;
         overflow: visible
@@ -6138,7 +6135,7 @@ nav ul h1 a:hover img {
 nav ul h1 a p{
     font-size: 0.72rem;
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     text-align: center;
     width: 8rem;
     opacity: 0;
@@ -9318,6 +9315,7 @@ kbd {
     .show-for-xxlarge-down {
         display: inherit !important
     }
+
     .show-for-small-only,
     .hide-for-small-up,
     .show-for-small,
@@ -9525,6 +9523,8 @@ kbd {
 }
 
 @media only screen and (min-width: 64.0625em) {
+
+
     .hide-for-small-only,
     .show-for-small-up,
     .hide-for-small,

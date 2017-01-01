@@ -6,7 +6,7 @@ a.disabled {
 a:hover {
     color: rgba(1,91,84,0.8);
     transition: color 0.2s ease-in-out,text-shadow 0.4s ease-in-out;
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -17,7 +17,7 @@ a {
     color: #15868c;
     text-shadow: 0 0 1px rgba(10,107,76,0.25);
     transition: color 0.2s ease-in-out,text-shadow 0.4s ease-in-out;
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
  }
 .actions a:hover{
     color: #0ab6aa;
@@ -27,7 +27,7 @@ table tbody tr td a{
     color: rgba(10,128,92,0.85);
     text-shadow: 0 0 1px rgba(10,107,76,0.25);
     transition: color 0.2s ease-in-out,text-shadow 0.4s ease-in-out;
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 table tbody tr td a:hover{
     color: #3cae71;
@@ -39,7 +39,7 @@ table tbody tr td a:hover{
     font-size: 103%;
     text-shadow: 0 0 1px rgba(10,107,76,0.5);
     transition: color 0.2s ease-in-out, font-size 0.75s cubic-bezier(0.39, 0.58, 0.57, 1), background-color 0.60s cubic-bezier(0.4, 0, 1, 1), box-shadow 0.66s cubic-bezier(0.4, 0, 1, 1);
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
 .side-nav li a:not(.button):hover {
@@ -221,7 +221,7 @@ ul.pagination .disabled:hover a {
     padding: 0 2rem;
     vertical-align: middle;
     -webkit-tap-highlight-color: transparent;
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     -webkit-appearance: none;
     -moz-appearance: none;
     -moz-osx-font-smoothing: grayscale;
@@ -635,7 +635,7 @@ table tr th {
     color: rgba(10,128,92,0.75);
     text-shadow: 0 0 1px rgba(10,107,76,0.05);
     transition: color 0.3s ease-in-out;
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     text-align: left;
     /*border-bottom: 2px solid #1798A5;*/
 }
@@ -655,7 +655,7 @@ fieldset legend {
     /*border-bottom: 2px solid #1798A5;*/
     width: 100%;
     line-height: 2rem;
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
 .gradient-line{
@@ -684,12 +684,20 @@ fieldset legend {
     width: 97%;
     font-weight: lighter;
     text-align: center;
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+
     text-transform: none;
     color: rgba(0,0,0,0.5)
 }
 
 @-moz-document url-prefix() {
+    .delicate-text{
+
+    }
+    nav ul h1 a p{
+        width: 8.08rem;
+        text-shadow: 0 0 1px rgba(1,91,84,0.1);
+    }
     footer{
         height: 5.3em;
         box-shadow: 15px -10px 20px -18px rgba(0, 0, 0, 0.42);
@@ -1027,8 +1035,8 @@ div.message.hidden {
 }
 
 /*change warning notes as classs and removable as id */
-#removablewarningnote,
-#warningnote{
+.removablewarningnote,
+.warningnote{
     font-family: raleway, poiret, Roboto, Century gothic, Segoe ui, sans-serif;
     color: #be140b;
     font-size: small;
@@ -1037,10 +1045,10 @@ div.message.hidden {
     border-width: 1px;
     border-color: rgba(190,20,11,0.5);
     box-shadow: 0 2px 3px -2px rgba(0,0,0,0.12);
-    transition: 1s;
+    transition: 0.55s cubic-bezier(0.6, -0.28, 0.74, 0.05);
 }
-#removablewarningnote::before,
-#warningnote::before {
+.removablewarningnote::before,
+.warningnote::before {
     content: "!";
     line-height: 0px;
     font-size: 18px;
@@ -1058,6 +1066,58 @@ div.message.hidden {
     padding: 12px 14px 12px 10px;
     text-shadow: 0 0 1px rgba(255, 0, 0, 0.25);
     color: #be140b;
+}
+.removablewarningnote:hover{
+    opacity: .75;
+    -webkit-transform: scale(1.005,1.001);
+    -moz-transform: scale(1.005,1.001);
+    -ms-transform: scale(1.005,1.001);
+    -o-transform: scale(1.005,1.001);
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,0.18);
+}
+.sidenote-center,
+.buttonsidenote-center{
+    padding: 0.25rem 0.1rem 0.25rem 0.1rem;
+    color: rgba(1,91,84,0.5);
+    text-shadow: 0 0 1px rgba(1,91,84,0.3);
+    margin:auto;
+    display:block;
+    float:none;
+    text-align: center;
+}
+.buttonsidenote-center{
+    background: none;
+    border: 0;
+    box-shadow: unset;
+    line-height: inherit;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none;
+    font-size: inherit;
+    letter-spacing: inherit;
+    width: auto;
+}
+.buttonsidenote-center:focus,
+.buttonsidenote-center:hover{
+    background: none;
+    color: rgba(1,91,84,0.75);
+    border: 0;
+    box-shadow: unset;
+    line-height: inherit;
+    letter-spacing: inherit;
+    width: auto;
+}
+.center-image{
+    margin: auto;
+    float: none;
+    display: block;
+    overflow: hidden;
+    width: auto;
+    size: auto;
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
 }
 
 /* latin-ext */

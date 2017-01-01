@@ -16,7 +16,7 @@ class UsuariosController extends AppController
     public function initialize()
     {
         parent::initialize();
-        $this->Auth->allow(['logout','signup']);
+        $this->Auth->allow(['logout','signup','reset']);
         $this->set('title', 'Usuarios');
     }
 
@@ -40,14 +40,29 @@ class UsuariosController extends AppController
     {
         if($this->request->session()->read('Auth.User'))
             return $this->redirect(['action' => 'view', $this->request->session()->read('Auth.User.id')]);
-        if ($this->request->is('post')) {
-            $user = $this->Auth->identify();
-            if ($user) {
-                $this->Auth->setUser($user);
-                return $this->redirect($this->Auth->redirectUrl());
+        if($this->request->is('post'))
+            if (array_key_exists('btn',$this->request->data)&&$this->request->data['btn'] == 'Ingresar') {
+                $user = $this->Auth->identify();
+                if ($user) {
+                    $this->Auth->setUser($user);
+                    return $this->redirect($this->Auth->redirectUrl());
+                }
+                $this->Flash->error('El nombre de usuario o contraseña son incorrectos.');
+            }else
+            {
+                $usuarios = TableRegistry::get('Usuarios');
+                $query = $usuarios->find();
+                $found=false;
+                foreach ($query as $userrow){
+                    if($userrow->nombre_de_usuario==$this->request->data['nombre_de_usuario'])
+                        $found=$userrow->id;
+                }
+                if($found)
+                {
+                    return $this->redirect(['action' => 'reset',$found]);
+                }
+                $this->Flash->error('Ningun nombre de usuario coincide con el nombre ingresado');
             }
-            $this->Flash->error('El nombre de usuario o contraseña son incorrectos.');
-        }
     }
 
     protected function getnewname($username)
@@ -98,6 +113,7 @@ class UsuariosController extends AppController
                             $this->Flash->success(__('Trabajador y usuario encontrados. Redireccionando...'));
                             $url = array('controller' => 'usuarios', 'action' => 'view',$userrow->id);//an special action can be created so that it displays flashes with instructions
                             $second = '1.25';
+                            $this->Auth->setUser($usuarios->get($userrow->id));
                             $this->response->header("refresh:$second; url='" . Router::url($url) . "'");
                             $this->set(compact('url', 'second'));
                             return;
@@ -131,6 +147,30 @@ class UsuariosController extends AppController
                     break;
                 }//if no worker found with such ci, echo
             $this->Flash->error(__('Ningún trabajador fue previamente registrado con esa cédula. por favor, registrese.'));
+        }
+    }
+
+    /**
+     * Reset method
+     *
+     *
+     */
+    public function reset($id = null)
+    {
+        if($this->request->session()->read('Auth.User'))
+            return $this->redirect(['action' => 'view', $this->request->session()->read('Auth.User.id')]);
+        if ($this->request->is('post'))
+        {
+            $usuario = TableRegistry::get('Usuarios')->get($id);
+            $trabajador = TableRegistry::get('Trabajadores')->get($usuario->id);
+            if($this->request->data['nombre']==$trabajador->nombre&&$this->request->data['apellido']==$trabajador->apellido&&$this->request->data['cedula']==$trabajador->cedula)
+            {
+                $this->Flash->success(('clave restaurada, Intente ingresar con ..'));
+                $usuario->clave='fertinitro';
+                return $this->redirect(['action' => 'login']);
+            }
+            else
+                return $this->Flash->error(('Los datos que ingreso no son correctos, su clave no pudo ser reiniciada'));
         }
     }
 
