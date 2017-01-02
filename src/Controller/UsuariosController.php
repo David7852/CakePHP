@@ -1,11 +1,9 @@
 <?php
 namespace App\Controller;
-use App\Controller\AppController;
-use Cake\Event\Event;
 use Cake\Routing\Router;
 use Cake\ORM\TableRegistry;
-use PhpParser\Node\Stmt\Else_;
-
+use Cake\Auth\DefaultPasswordHasher;
+use Cake\Mailer\Email;
 /**
  * Usuarios Controller
  *
@@ -162,15 +160,20 @@ class UsuariosController extends AppController
         if ($this->request->is('post'))
         {
             $usuario = TableRegistry::get('Usuarios')->get($id);
-            $trabajador = TableRegistry::get('Trabajadores')->get($usuario->id);
-            if($this->request->data['nombre']==$trabajador->nombre&&$this->request->data['apellido']==$trabajador->apellido&&$this->request->data['cedula']==$trabajador->cedula)
+            $trabajador = TableRegistry::get('Trabajadores')->get($usuario->trabajador_id);
+            if(strcasecmp($this->request->data['nombre'],$trabajador->nombre)==0&&
+                strcasecmp($this->request->data['apellido'],$trabajador->apellido)==0&&
+                $this->request->data['cedula']==$trabajador->cedula)
             {
-                $this->Flash->success(('clave restaurada, Intente ingresar con ..'));
-                $usuario->clave='fertinitro';
+                $this->Flash->success(('Se le asigno la contraseña temporal "fertinitro'.date("Y").'". Ingrese a su perfil y cámbiela lo antes posible.'));
+                $usuarios = TableRegistry::get('Usuarios');
+                $usuario->set('clave','fertinitro'.date("Y"));
+                $usuarios->save($usuario);
                 return $this->redirect(['action' => 'login']);
+                /*$this->correo('dyd785265@gmail.com','testx','I am testing this out');*/
             }
             else
-                return $this->Flash->error(('Los datos que ingreso no son correctos, su clave no pudo ser reiniciada'));
+                $this->Flash->error(('Los datos que ingreso no son correctos, su clave no pudo ser reiniciada'));
         }
     }
 
@@ -246,14 +249,24 @@ class UsuariosController extends AppController
         $usuario = $this->Usuarios->get($id, [
             'contain' => ['Trabajadores']
         ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $usuario = $this->Usuarios->patchEntity($usuario, $this->request->data);
-            if ($this->Usuarios->save($usuario)) {
-                $this->Flash->success(__('El usuario se modifico correctamente.'));
-
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('Los cambios no pudieron guardarse, Intente nuevamente.'));
+        if ($this->request->is(['patch', 'post', 'put']))
+        {
+            $hasher = new DefaultPasswordHasher();
+            if($hasher->check($this->request->data['clave_anterior'],$usuario->clave)&&($this->request->data['clave']==$this->request->data['conf_clave']))
+            {
+                $usuario = $this->Usuarios->patchEntity($usuario, $this->request->data);
+                if ($this->Usuarios->save($usuario)) {
+                    $this->Flash->success(__('El usuario se modifico correctamente.'));
+                    return $this->redirect(['action' => 'index']);
+                } else {
+                    $this->Flash->error(__('Los cambios no pudieron guardarse, Intente nuevamente.'));
+                }
+            } else
+            {
+                if(($this->request->data['clave']!=$this->request->data['conf_clave']))
+                    $this->Flash->error(__('Su nueva clave no fue confirmada correctamente. Intente nuevamente'));
+                else
+                    $this->Flash->error(__('Debe Ingresar correctamente su clave anterior antes de poder cambiarla.'));
             }
         }
         $trabajadores = $this->Usuarios->Trabajadores->find('list', ['limit' => 200]);
@@ -279,5 +292,52 @@ class UsuariosController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function correo($to,$subject,$content){
+        /*Para este ejemplo no necesito de renderizar
+          una vista por lo que autorender lo pongo a false
+         */
+        //$this->autoRender = false;
+        /*configuramos las opciones para conectarnos al servidor
+          smtp de Gmail
+         */
+        Email::configTransport('mail', [
+            'host' => 'ssl://smtp.gmail.com', //servidor smtp con encriptacion ssl
+            'port' => 465, //puerto de conexion
+            //'tls' => true, //true en caso de usar encriptacion tls
+            //cuenta de correo gmail completa desde donde enviaran el correo
+            'username' => 'witfertinitro@gmail.com',
+            'password' => 'Psvvv-cC-h2.031.', //contrasena
+            //Establecemos que vamos a utilizar el envio de correo por smtp
+            'className' => 'Smtp',
+            //evitar verificacion de certificado ssl ---IMPORTANTE---
+            'context' => [
+              'ssl' => [
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+              ]
+            ]
+        ]);
+        /*fin configuracion de smtp*/
+        /*enviando el correo*/
+        $correo = new Email(); //instancia de correo
+        $correo
+            ->transport('mail') //nombre del configTrasnport que acabamos de configurar
+            ->template('correo_plantilla') //plantilla a utilizar
+            ->emailFormat('html') //formato de correo
+            ->to($to) //correo para
+            ->from('witfertinitro@gmail.com') //correo de
+            ->subject($subject) //asunto
+            ->viewVars([ //enviar variables a la plantilla
+                'var1' => $content,
+            ]);
+        if($correo->send()){
+            $this->Flash->success(__('Un correo electrónico a sido enviado a '.$to));
+        }else{
+            $this->Flash->error(__('Un correo electrónico iba a ser enviado a usted, Sin embargo este no pudo ser entregado.'));
+        }
+        return;
     }
 }

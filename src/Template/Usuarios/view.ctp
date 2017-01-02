@@ -24,5 +24,8 @@
     <?php use Cake\Auth\DefaultPasswordHasher;
         $hasher = new DefaultPasswordHasher();
         if($hasher->check($usuario->trabajador->cedula,$usuario->clave))
-        echo "<p class='warningnote'>Actualmente la clave de su usuario coincide con su numero de cédula de identidad. Recomendamos editar su usuario y cambiar su contraseña.</p>";?>
+        echo "<p class='warningnote'>Actualmente la clave de su usuario coincide con su numero de cédula de identidad. Recomendamos editar su usuario y cambiar su contraseña.</p>";
+        if($hasher->check('fertinitro'.date("Y"),$usuario->clave))
+        echo "<p class='warningnote'>Actualmente tiene asignada una clave poco segura. Consideré actualizar su clave cuanto antes.</p>";
+        ?>
 </div>
