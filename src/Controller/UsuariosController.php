@@ -184,6 +184,10 @@ class UsuariosController extends AppController
      */
     public function index()
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->paginate = [
             'contain' => ['Trabajadores']
         ];
@@ -202,6 +206,12 @@ class UsuariosController extends AppController
      */
     public function view($id = null)
     {
+        if(($this->request->session()->read('Auth.User.funcion')!='Administrador'&&
+                $this->request->session()->read('Auth.User.funcion')!='Superadministrador')&&
+            ($this->request->session()->read('Auth.User.id')!=$id)){
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $usuario = $this->Usuarios->get($id, [
             'contain' => ['Trabajadores']
         ]);
@@ -246,6 +256,12 @@ class UsuariosController extends AppController
      */
     public function edit($id = null)
     {
+        if(($this->request->session()->read('Auth.User.funcion')!='Administrador'&&
+            $this->request->session()->read('Auth.User.funcion')!='Superadministrador')&&
+            ($this->request->session()->read('Auth.User.id')!=$id)){
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $usuario = $this->Usuarios->get($id, [
             'contain' => ['Trabajadores']
         ]);
@@ -264,9 +280,9 @@ class UsuariosController extends AppController
             } else
             {
                 if(($this->request->data['clave']!=$this->request->data['conf_clave']))
-                    $this->Flash->error(__('Su nueva clave no fue confirmada correctamente. Intente nuevamente'));
+                    $this->Flash->error(__('Su clave no fue confirmada correctamente y por tanto no se efectuaron los cambios. Intente nuevamente para'));
                 else
-                    $this->Flash->error(__('Debe Ingresar correctamente su clave anterior antes de poder cambiarla.'));
+                    $this->Flash->error(__('Debe Ingresar correctamente su clave anterior antes de poder efectuar los cambios.'));
             }
         }
         $trabajadores = $this->Usuarios->Trabajadores->find('list', ['limit' => 200]);
@@ -283,6 +299,10 @@ class UsuariosController extends AppController
      */
     public function delete($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')!='Administrador'&&$this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->request->allowMethod(['post', 'delete']);
         $usuario = $this->Usuarios->get($id);
         if ($this->Usuarios->delete($usuario)) {

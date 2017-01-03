@@ -182,7 +182,7 @@ return [
             // The following keys are used in SMTP transports
             'host' => 'ssl://smtp.gmail.com',
             'port' => 25,
-            'timeout' => 30,
+            'timeout' => 60,
             'username' => 'WITfertinitro@gmail.com',
             'password' => 'Psvvv-cC-h2.031.',
             'client' => null,

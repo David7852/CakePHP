@@ -48,21 +48,26 @@ $cakeDescription = 'WIT ';
         <nav class="top-bar-section">
             <ul class="right">
                 <?php if(!$this->request->session()->read('Auth.User')):?>
-
                     <?php if($this->request->action=='signup'||$this->request->action=='reset'): ?>
-                        <li><?= $this->Html->link('Ingresar',['controller' => 'Usuarios', 'action' => 'login']) ?></li>
+                        <li>
+                            <a href="/WIT/ingresar" class="button">Ingresar</a>
+                        </li>
                     <?php else: ?>
-                    <li>
-                        <?= $this->Html->link('Registrate',['controller' => 'Usuarios', 'action' => 'signup']) ?>
-                    </li>
+                        <li>
+                            <a href="/WIT/registrate" class="button">Registrate</a>
+                        </li>
                     <?php endif; ?>
                 <?php else: ?>
                     <li>
-                        <?= $this->Html->link($this->request->session()->read('Auth.User.nombre_de_usuario'),['controller' => 'Usuarios', 'action' => 'view', $this->request->session()->read('Auth.User.id')]) ?>
-                        
-                    </li>
-                    <li id="salir">
-                        <?= $this->Html->link('Salir',['controller' => 'Usuarios', 'action' => 'logout']) ?>
+                        <div class="dropdownx" style="float:right;">
+                            <button class="dropbtnx"><?= $this->request->session()->read('Auth.User.nombre_de_usuario')?></button>
+                            <div class="dropdownx-content">
+                                <div class="dropdownx-content-background">
+                                <?= $this->Html->link('Mi perfil',['controller' => 'Usuarios', 'action' => 'view', $this->request->session()->read('Auth.User.id')]) ?>
+                                <a id="salir" href="/WIT/usuarios/salir">Salir</a>
+                                <div>
+                            </div>
+                        </div>
                     </li>
                 <?php endif; ?>
             </ul>

@@ -22,7 +22,7 @@
                 echo $this->Form->input('funcion', array('options'=>$options,'empty'=>false,'escape'=>false));
             }
             echo $this->Form->input('trabajador_id', ['options' => $trabajadores]);
-            echo $this->Form->input('imagen');
+            /*echo $this->Form->input('imagen');*/
         ?>
     </fieldset>
     <?= $this->Form->button(__('Aceptar')) ?>

@@ -135,7 +135,7 @@ Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilde
 //general
 Router::scope('/',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/salir', ['action' => 'logout']);});
 Router::scope('/',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/ingresar/*', ['action' => 'login']);});
-Router::scope('/',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/registrarse/*', ['action' => 'login']);});
+Router::scope('/',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/registrate/*', ['action' => 'signup']);});
 Router::scope('/', function (RouteBuilder $routes) {
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',

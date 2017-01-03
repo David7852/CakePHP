@@ -16,7 +16,7 @@
     <?php use Cake\Auth\DefaultPasswordHasher;
     $hasher = new DefaultPasswordHasher();
     if($hasher->check($usuario->trabajador->cedula,$usuario->clave))
-    echo "<p class='removablewarningnote' id='removable' onclick='removeFadeOut(document.getElementById(\"removable\"), 666);'>La clave de su usuario coincide con su numero de cédula de identidad. Es recomendable evitar incluir datos personales en su contraseña.</p>";
+        echo "<p class='removablewarningnote' id='removable' onclick='removeFadeOut(document.getElementById(\"removable\"), 666);'>La clave de su usuario coincide con su numero de cédula de identidad. Es recomendable evitar incluir datos personales en su contraseña.</p>";
     if($hasher->check('fertinitro'.date("Y"),$usuario->clave))
         echo "<p class='removablewarningnote' id='removable' onclick='removeFadeOut(document.getElementById(\"removable\"), 666);'>Actualmente tiene asignada una clave poco segura. Consideré actualizar su clave cuanto antes.</p>";
         ?>
@@ -27,8 +27,8 @@
             echo $this->Form->input('nombre_de_usuario');
             echo $this->Form->input('email');
             echo $this->Form->input('clave_anterior',['type'=>'password','value'=>'','required'=>true]);
-            echo $this->Form->input('clave',['label'=>'Nueva Clave','type'=>'password','value'=>'']);
-            echo $this->Form->input('conf_clave',['label'=>'Reingrese Su Nueva Clave','type'=>'password','value'=>'']);
+            echo $this->Form->input('clave',['label'=>'Clave','type'=>'password','value'=>'']);
+            echo $this->Form->input('conf_clave',['label'=>'Reingrese Su Clave','type'=>'password','value'=>'']);
             if($this->request->session()->read('Auth.User.funcion')=='Superadministrador')
             {
                 $options = ["Superadministrador" => "Superadministrador",
@@ -37,7 +37,7 @@
                     "Visitante" => "Visitante"];
                 echo $this->Form->input('funcion', array('options'=>$options,'empty'=>false,'escape'=>false));
             }
-            echo $this->Form->input('imagen');
+            /*echo $this->Form->input('imagen', ['type' => 'file']);*/
         ?>
         <table>
         <tr>
