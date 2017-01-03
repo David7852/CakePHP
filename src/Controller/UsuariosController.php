@@ -198,6 +198,21 @@ class UsuariosController extends AppController
     }
 
     /**
+     * Index method
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function menu()
+    {
+        $this->paginate = [
+            'contain' => ['Trabajadores']
+        ];
+        $usuarios = $this->paginate($this->Usuarios);
+
+        $this->set(compact('usuarios'));
+        $this->set('_serialize', ['usuarios']);
+    }
+    /**
      * View method
      *
      * @param string|null $id Usuario id.

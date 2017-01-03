@@ -19,3 +19,11 @@ function removeFadeOut( el, speed ) {
         el.parentNode.removeChild(el);
     }, speed);
 }
+
+function refreshimage()
+{
+    var el=document.getElementById("imagen");
+    var file= el.options[el.selectedIndex].text;
+    var image=document.getElementById("freshimage").src="/WIT/webroot/img/Modelos/"+file;
+    image.style.transition = "all "+seconds+"s  cubic-bezier(0.6, -0.28, 0.74, 0.05)";
+}
