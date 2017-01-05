@@ -24,6 +24,14 @@ class Modelo extends Entity
     {
         return $this->_properties['tipo_de_articulo']. ' ' . $this->_properties['marca'] . ', ' . $this->_properties['modelo'];
     }
+    protected function _getTipo()
+    {
+        return $this->_properties['tipo_de_articulo']. ' ' . $this->_properties['marca'];
+    }
+    protected function _getMarcamodelo()
+    {
+        return $this->_properties['marca'] . ', ' . $this->_properties['modelo'];
+    }
 
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

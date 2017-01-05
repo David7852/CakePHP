@@ -73,21 +73,18 @@ class ArticulosTable extends Table
         $validator
             ->integer('id')
             ->allowEmpty('id', 'create');
-
         $validator
             ->requirePresence('serial', 'create')
             ->notEmpty('serial')
             ->add('serial', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
-
         $validator
             ->allowEmpty('datos');
-
+        $validator
+            ->allowEmpty('titulo');
         $validator
             ->allowEmpty('ubicacion');
-
         $validator
             ->allowEmpty('estado');
-
         $validator
             ->date('fecha_de_compra')
             ->allowEmpty('fecha_de_compra');

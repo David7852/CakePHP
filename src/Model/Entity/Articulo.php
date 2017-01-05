@@ -1,9 +1,8 @@
 <?php
 namespace App\Model\Entity;
 
-use App\Model\Table\ArticulosTable;
-use App\Model\Table\ModelosTable;
 use Cake\ORM\Entity;
+use App\Controller\ArticulosController;
 
 /**
  * Articulo Entity
@@ -28,9 +27,28 @@ class Articulo extends Entity
 {
     protected function _getTitulo()
     {
-        return $this->_properties['serial'];//mas titulo de modelo
+        $c = new ArticulosController();
+        $related=$c->getRelated($this->_properties['id']);
+        return "S/N: ".$this->_properties['serial']." (". h($related->modelo->tipo).")";
     }//ubicacion deberia tener un metodo set o get tal que cuando se asigne un articulo a alguien cambie a la ubicacion de la persona.
-
+/*
+    protected function _setModeloId($value)
+    {
+        $mo=TableRegistry::get('Modelos')->get($value);
+        $this->_setTitulo($mo->tipo.". S/N: ".$this->_properties['serial']);
+        return $value;
+    }
+    protected function _setModelo_Id($value)
+    {
+        $mo=TableRegistry::get('Modelos')->get($value);
+        $this->_setTitulo($mo->tipo.". S/N: ".$this->_properties['serial']);
+        return $value;
+    }
+    protected function _setTitulo($value)
+    {
+        return $value;
+    }
+*/
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

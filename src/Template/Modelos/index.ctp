@@ -12,18 +12,20 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
+                <th scope="col"><?= $this->Paginator->sort('tipo_de_articulo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('marca') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modelo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('tipo_de_articulo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('imagen') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($modelos as $modelo): ?>
             <tr>
+                <td><?= h($modelo->tipo_de_articulo) ?></td>
                 <td><?= h($modelo->marca) ?></td>
                 <td><?= h($modelo->modelo) ?></td>
-                <td><?= h($modelo->tipo_de_articulo) ?></td>
+                <td id="overlayed"><?= '<figure><img src="/WIT/webroot/img/Modelos/'.$modelo->imagen.'"></figure>' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $modelo->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $modelo->id]) ?>

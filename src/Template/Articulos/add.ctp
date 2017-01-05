@@ -22,7 +22,7 @@
             echo $this->Form->input('serial');
             echo $this->Form->input('modelo_id', ['options' => $modelos]);
             echo $this->Form->input('datos');//datos solo deberia aparecer si el abstracto del modelo no es null?
-            echo $this->Form->input('ubicacion');
+            echo $this->Form->input('ubicacion',['label'=>'Ubicacion Actual']);
             $options = ["Nuevo"=>"Nuevo",
                         "Usado"=>"Usado",
                         "Roto"=>"Roto",

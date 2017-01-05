@@ -10,7 +10,13 @@ use App\Controller\AppController;
  */
 class ArticulosController extends AppController
 {
-
+    public function getRelated($id)
+    {
+        $articulo = $this->Articulos->get($id, [
+            'contain' => ['Modelos']
+        ]);
+        return $articulo;
+    }
     /**
      * Index method
      *
@@ -23,7 +29,7 @@ class ArticulosController extends AppController
         ];
         $articulos = $this->paginate($this->Articulos);
 
-        $this->set(compact('articulos'));
+        $this->set(compact('articulos','modelos'));
         $this->set('_serialize', ['articulos']);
     }
     public function menu()

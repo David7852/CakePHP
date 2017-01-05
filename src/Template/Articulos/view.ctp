@@ -18,24 +18,43 @@
     </ul>
 </nav>
 <div class="articulos view large-9 medium-8 columns content">
-    <h3><?= h($articulo->modelo->tipo_de_articulo).h($articulo->modelo->marca).'<br>S/N: '.h($articulo->titulo) ?></h3>
+
+    <div class="imagedisplay">
+        <table >
+            <tr>
+                <td>
+                    <h4><?= h($articulo->modelo->tipo_de_articulo) ?></h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4><?= "Marca: ". h($articulo->modelo->marca) ?></h4><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4><?= "Modelo: ". h($articulo->modelo->modelo) ?></h4><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 style="color:#be140b;text-shadow: 0 0 2px rgba(190,20,11,0.2)"><?= "Serial: ". h($articulo->titulo) ?></h4><br>
+                </td>
+            </tr>
+        </table>
+        <figure>
+            <img src="/WIT/webroot/img/Modelos/<?= h($articulo->modelo->imagen) ?>">
+        </figure>
+    </div>
     <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Serial') ?></th>
-            <td><?= h($articulo->serial) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modelo') ?></th>
-            <td><?= $articulo->has('modelo') ? $this->Html->link($articulo->modelo->titulo, ['controller' => 'Modelos', 'action' => 'view', $articulo->modelo->id]) : '' ?></td>
-        </tr>
         <?php if($articulo->datos!=''||$articulo->modelo->abstracto!=''): ?>
         <tr>
-            <th scope="row"><?php if($articulo->modelo->abstracto=='') __('Datos adicionales'); else echo(h($articulo->modelo->abstracto));?></th>
+            <th scope="row"><?php if($articulo->modelo->abstracto=='') echo('Datos adicionales'); else echo(h($articulo->modelo->abstracto));?></th>
             <td><?= h($articulo->datos) ?></td>
         </tr>
         <?php endif; ?>
         <tr>
-            <th scope="row"><?= __('Ubicacion') ?></th>
+            <th scope="row"><?= __('Ubicacion Actual') ?></th>
             <td><?= h($articulo->ubicacion) ?></td>
         </tr>
         <tr>

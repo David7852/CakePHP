@@ -20,10 +20,11 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('serial') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('tipo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modelo_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('imagen') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('ubicacion') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('estado')?></th>
-                <th scope="col"><?= $this->Paginator->sort('fecha_de_compra') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('datos') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
@@ -32,10 +33,11 @@
             <?php foreach ($articulos as $articulo): ?>
             <tr>
                 <td><?= h($articulo->serial) ?></td>
-                <td><?= $articulo->has('modelo') ? $this->Html->link($articulo->modelo->titulo, ['controller' => 'Modelos', 'action' => 'view', $articulo->modelo->id]) : '' ?></td>
+                <td><?= $articulo->has('modelo') ? $articulo->modelo->tipo_de_articulo : '' ?></td>
+                <td><?= $articulo->has('modelo') ? $this->Html->link($articulo->modelo->marcamodelo, ['controller' => 'Modelos', 'action' => 'view', $articulo->modelo->id]) : '' ?></td>
+                <td id="overlayed"><?= '<figure><img src="/WIT/webroot/img/Modelos/'.$articulo->modelo->imagen.'"></figure>' ?></td>
                 <td><?= h($articulo->ubicacion) ?></td>
                 <td><?= h($articulo->estado) ?></td>
-                <td><?= h($articulo->fecha_de_compra) ?></td>
                 <td><?= h($articulo->datos) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $articulo->id]) ?>

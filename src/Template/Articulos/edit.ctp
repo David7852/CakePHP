@@ -29,7 +29,7 @@
             echo $this->Form->input('modelo_id', ['options' => $modelos]);
             if($articulo->datos!=''||$articulo->modelo->abstracto!='')
                 echo $this->Form->input('datos');
-            echo $this->Form->input('ubicacion');
+            echo $this->Form->input('ubicacion',['label'=>'Ubicacion Actual']);
             $options = ["Nuevo"=>"Nuevo",
                         "Usado"=>"Usado",
                         "Roto"=>"Roto",
