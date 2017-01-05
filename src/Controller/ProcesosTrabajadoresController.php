@@ -26,6 +26,16 @@ class ProcesosTrabajadoresController extends AppController
         $this->set(compact('procesosTrabajadores'));
         $this->set('_serialize', ['procesosTrabajadores']);
     }
+    public function menu()
+    {
+        $this->paginate = [
+            'contain' => ['Trabajadores', 'Procesos']
+        ];
+        $procesosTrabajadores = $this->paginate($this->ProcesosTrabajadores);
+
+        $this->set(compact('procesosTrabajadores'));
+        $this->set('_serialize', ['procesosTrabajadores']);
+    }
 
     /**
      * View method

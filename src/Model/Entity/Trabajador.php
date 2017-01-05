@@ -36,6 +36,26 @@ class Trabajador extends Entity
     {
         return trim($value);
     }
+    protected function _setCargo($value)
+    {
+        if($this->_properties['sexo']=='F')
+        {
+        switch ($value) {
+            case "Supervisor":
+                return "Supervisora";
+            case "Jefe de planta":
+                return "Jefa de planta";
+            case "Secretario":
+                return "Secretaria";
+            case "Consultor":
+                return "Consultora";
+            case "Consejero":
+                return "Consejera";
+            default:
+                return $value;}
+        }
+        return $value;
+    }
     //Methods for set gerencia and set cargo should be created aswell
     protected function _getTitulo()
     {

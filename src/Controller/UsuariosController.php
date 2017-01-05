@@ -82,6 +82,8 @@ class UsuariosController extends AppController
                     $bol = true;
                 }
         }
+        if($c==2)
+            return $username;
         return $username.$c;
     }
     protected function lastnamefixer($lastname)
@@ -196,12 +198,6 @@ class UsuariosController extends AppController
         $this->set(compact('usuarios'));
         $this->set('_serialize', ['usuarios']);
     }
-
-    /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
-     */
     public function menu()
     {
         $this->paginate = [

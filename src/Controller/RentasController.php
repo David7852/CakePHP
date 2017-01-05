@@ -23,6 +23,13 @@ class RentasController extends AppController
         $this->set(compact('rentas'));
         $this->set('_serialize', ['rentas']);
     }
+    public function menu()
+    {
+        $rentas = $this->paginate($this->Rentas);
+
+        $this->set(compact('rentas'));
+        $this->set('_serialize', ['rentas']);
+    }
 
     /**
      * View method

@@ -34,6 +34,16 @@ class ConsumosController extends AppController
         $this->set(compact('consumos'));
         $this->set('_serialize', ['consumos']);
     }
+    public function menu()
+    {
+        $this->paginate = [
+            'contain' => ['Facturas', 'Servicios']
+        ];
+        $consumos = $this->paginate($this->Consumos);
+
+        $this->set(compact('consumos'));
+        $this->set('_serialize', ['consumos']);
+    }
 
     /**
      * View method

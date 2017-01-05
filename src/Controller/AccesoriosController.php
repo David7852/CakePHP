@@ -26,6 +26,16 @@ class AccesoriosController extends AppController
         $this->set(compact('accesorios'));
         $this->set('_serialize', ['accesorios']);
     }
+    public function menu()
+    {
+        $this->paginate = [
+            'contain' => ['Articulos']
+        ];
+        $accesorios = $this->paginate($this->Accesorios);
+
+        $this->set(compact('accesorios'));
+        $this->set('_serialize', ['accesorios']);
+    }
 
     /**
      * View method

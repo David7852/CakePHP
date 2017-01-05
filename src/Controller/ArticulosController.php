@@ -26,6 +26,16 @@ class ArticulosController extends AppController
         $this->set(compact('articulos'));
         $this->set('_serialize', ['articulos']);
     }
+    public function menu()
+    {
+        $this->paginate = [
+            'contain' => ['Modelos']
+        ];
+        $articulos = $this->paginate($this->Articulos);
+
+        $this->set(compact('articulos'));
+        $this->set('_serialize', ['articulos']);
+    }
 
     /**
      * View method

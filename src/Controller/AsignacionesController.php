@@ -26,6 +26,16 @@ class AsignacionesController extends AppController
         $this->set(compact('asignaciones'));
         $this->set('_serialize', ['asignaciones']);
     }
+    public function menu()
+    {
+        $this->paginate = [
+            'contain' => ['Procesos', 'Articulos']
+        ];
+        $asignaciones = $this->paginate($this->Asignaciones);
+
+        $this->set(compact('asignaciones'));
+        $this->set('_serialize', ['asignaciones']);
+    }
 
     /**
      * View method

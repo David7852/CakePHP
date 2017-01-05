@@ -28,7 +28,7 @@
             <br><br><br>
             <div class="gradient-line-red" style="width: 75%;display: block; text-align: center;margin: auto;float: none;"></div>
             <?php echo "<h4 style='padding-bottom: 0;  font-family: raleway, Roboto, Century gothic, Segoe ui, sans-serif; font-weight: 400'>Si no es asi... </h4>";?>
-            <a href="<?=Router::url(array('controller' => 'trabajadores', 'action' => 'add'))?>" id="red-button" class="button" style="display: block; width: 10.6rem;">Registrate</a>
+            <a href="<?=Router::url(array('controller' => 'trabajadores', 'action' => 'nuevo'))?>" id="red-button" class="button" style="display: block; width: 10.6rem;">Registrate</a>
         </fieldset>
     </form>
 </div>

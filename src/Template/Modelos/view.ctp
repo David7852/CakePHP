@@ -11,20 +11,29 @@
     </ul>
 </nav>
 <div class="modelos view large-9 medium-8 columns content">
-    <h3><?= h($modelo->titulo) ?></h3>
-    <table class="vertical-table">
-        <tr><!-- La marca podría traer sugerencias. segun los registros previos-->
-            <th scope="row"><?= __('Marca') ?></th>
-            <td><?= h($modelo->marca) ?></td>
+    <div class="imagedisplay">
+    <table >
+        <tr>
+            <td>
+                <h4><?= h($modelo->tipo_de_articulo) ?></h4>
+            </td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Modelo') ?></th>
-            <td><?= h($modelo->modelo) ?></td>
+            <td>
+                <h4><?= "Marca: ". h($modelo->marca) ?></h4><br>
+            </td>
         </tr>
-        <tr><!-- El tipo de articulo podria traer sugerencias. segun los registros previos-->
-            <th scope="row"><?= __('Tipo De Articulo') ?></th>
-            <td><?= h($modelo->tipo_de_articulo) ?></td>
+        <tr>
+            <td>
+                <h4><?= "Modelo: ". h($modelo->modelo) ?></h4><br>
+            </td>
         </tr>
+    </table>
+        <figure>
+            <img src="/WIT/webroot/img/Modelos/<?= h($modelo->imagen) ?>">
+        </figure>
+    </div>
+    <table class="vertical-table">
         <?php if($modelo->abstracto!=''): ?>
             <tr>
                 <th scope="row"><?= __('Campo extra') ?></th>
@@ -32,10 +41,6 @@
             </tr>
         <?php endif; ?>
     </table>
-    <div class="row"><!-- debería ir en la cabecera, junto con el titulo del modelo -->
-        <h4><?= __('Imagen') ?></h4>
-        <?= $this->Text->autoParagraph(h($modelo->imagen)); ?>
-    </div>
     <?php if (!empty($modelo->articulos)): ?>
     <div class="related">
         <h4><?= __('Articulos de este modelo') ?></h4>

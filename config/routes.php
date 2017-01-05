@@ -53,12 +53,12 @@ Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $r
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/salir', ['action' => 'logout']);});
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/registrate', ['action' => 'signup']);});
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/reiniciar/*', ['action' => 'reset']);});
-
 //trabajadores
 Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
 Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
+Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/bienvenido/', ['action' => 'nuevo']);});
 Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
 //Servicios
 Router::scope('/servicios',['controller' => 'Servicios'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});

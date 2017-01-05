@@ -26,6 +26,16 @@ class ServiciosController extends AppController
         $this->set(compact('servicios'));
         $this->set('_serialize', ['servicios']);
     }
+    public function menu()
+    {
+        $this->paginate = [
+            'contain' => ['Rentas']
+        ];
+        $servicios = $this->paginate($this->Servicios);
+
+        $this->set(compact('servicios'));
+        $this->set('_serialize', ['servicios']);
+    }
 
     /**
      * View method

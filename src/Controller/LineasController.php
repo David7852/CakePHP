@@ -27,6 +27,17 @@ class LineasController extends AppController
         $this->set('_serialize', ['lineas']);
     }
 
+    public function menu()
+    {
+        $this->paginate = [
+            'contain' => ['Articulos']
+        ];
+        $lineas = $this->paginate($this->Lineas);
+
+        $this->set(compact('lineas'));
+        $this->set('_serialize', ['lineas']);
+    }
+
     /**
      * View method
      *

@@ -27,6 +27,17 @@ class LineasRentasController extends AppController
         $this->set('_serialize', ['lineasRentas']);
     }
 
+    public function menu()
+    {
+        $this->paginate = [
+            'contain' => ['Lineas', 'Rentas']
+        ];
+        $lineasRentas = $this->paginate($this->LineasRentas);
+
+        $this->set(compact('lineasRentas'));
+        $this->set('_serialize', ['lineasRentas']);
+    }
+
     /**
      * View method
      *

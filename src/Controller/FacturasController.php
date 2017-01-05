@@ -27,6 +27,16 @@ class FacturasController extends AppController
         $this->set('_serialize', ['facturas']);
     }
 
+    public function menu()
+    {
+        $this->paginate = [
+            'contain' => ['Lineas']
+        ];
+        $facturas = $this->paginate($this->Facturas);
+
+        $this->set(compact('facturas'));
+        $this->set('_serialize', ['facturas']);
+    }
     /**
      * View method
      *
