@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\ORM\TableRegistry;
 /**
  * Devoluciones Controller
  *
@@ -18,6 +18,10 @@ class DevolucionesController extends AppController
      */
     public function index()
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->paginate = [
             'contain' => ['Procesos', 'Articulos']
         ];
@@ -46,6 +50,23 @@ class DevolucionesController extends AppController
      */
     public function view($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $devolucion=TableRegistry::get('Devoluviones')->get($id);
+            $pro_trab=TableRegistry::get('ProcesosTrabajadores')->find();
+            if($pro_trab->isEmpty()){
+                $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+                return $this->redirect($this->referer());
+            }
+            $found=false;
+            foreach ($pro_trab as $rowpt)
+                if($rowpt->proceso_id==$devolucion->proceso_id&&$rowpt->trabajador_id==$this->request->session()->read('Auth.User.trabajador_id'))
+                    $found=true;
+            if(!$found){
+                $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+                return $this->redirect($this->referer());
+            }
+        }
+
         $devolucion = $this->Devoluciones->get($id, [
             'contain' => ['Procesos', 'Articulos']
         ]);
@@ -61,6 +82,10 @@ class DevolucionesController extends AppController
      */
     public function add()
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $devolucion = $this->Devoluciones->newEntity();
         if ($this->request->is('post')) {
             $devolucion = $this->Devoluciones->patchEntity($devolucion, $this->request->data);
@@ -87,6 +112,10 @@ class DevolucionesController extends AppController
      */
     public function edit($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $devolucion = $this->Devoluciones->get($id, [
             'contain' => []
         ]);
@@ -115,6 +144,10 @@ class DevolucionesController extends AppController
      */
     public function delete($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la accion solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->request->allowMethod(['post', 'delete']);
         $devolucion = $this->Devoluciones->get($id);
         if ($this->Devoluciones->delete($devolucion)) {

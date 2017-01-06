@@ -14,7 +14,7 @@ class UsuariosController extends AppController
     public function initialize()
     {
         parent::initialize();
-        $this->Auth->allow(['logout','signup','reset']);
+        $this->Auth->allow(['logout','signup','reset','login']);
         $this->set('title', 'Usuarios');
     }
 
@@ -311,7 +311,7 @@ class UsuariosController extends AppController
     public function delete($id = null)
     {
         if($this->request->session()->read('Auth.User.funcion')!='Administrador'&&$this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
-            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la accion solicitada.'));
             return $this->redirect($this->referer());
         }
         $this->request->allowMethod(['post', 'delete']);
