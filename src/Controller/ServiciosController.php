@@ -18,6 +18,10 @@ class ServiciosController extends AppController
      */
     public function index()
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->paginate = [
             'contain' => ['Rentas']
         ];
@@ -46,6 +50,10 @@ class ServiciosController extends AppController
      */
     public function view($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $servicio = $this->Servicios->get($id, [
             'contain' => ['Rentas', 'Consumos']
         ]);
@@ -61,6 +69,10 @@ class ServiciosController extends AppController
      */
     public function add()
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $servicio = $this->Servicios->newEntity();
         if ($this->request->is('post')) {
             $servicio = $this->Servicios->patchEntity($servicio, $this->request->data);
@@ -86,6 +98,10 @@ class ServiciosController extends AppController
      */
     public function edit($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $servicio = $this->Servicios->get($id, [
             'contain' => []
         ]);
@@ -113,6 +129,10 @@ class ServiciosController extends AppController
      */
     public function delete($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la accion solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->request->allowMethod(['post', 'delete']);
         $servicio = $this->Servicios->get($id);
         if ($this->Servicios->delete($servicio)) {

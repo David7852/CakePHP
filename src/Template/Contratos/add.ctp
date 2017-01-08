@@ -13,8 +13,8 @@
         <legend><?= __('Nuevo Contrato') ?></legend>
         <?php
             echo $this->Form->input('trabajador_id', ['options' => $trabajadores]);
-            echo $this->Form->input('fecha_de_inicio');
-            echo $this->Form->input('fecha_de_culminacion', ['empty' => true]);
+            echo $this->Form->input('fecha_de_inicio',['minYear'=>1998,'maxYear'=>date("Y")]);
+            echo $this->Form->input('fecha_de_culminacion', ['empty' => true,'minYear'=>1998,'maxYear'=>2030]);
             $options = ['Temporal'=>'Temporal',
                         'Permanente'=>'Permanente'];
             echo $this->Form->input('tipo_de_contrato',array('options'=>$options,'empty'=>false,'escape'=>false));

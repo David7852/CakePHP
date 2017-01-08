@@ -18,6 +18,10 @@ class LineasController extends AppController
      */
     public function index()
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->paginate = [
             'contain' => ['Articulos']
         ];
@@ -45,8 +49,12 @@ class LineasController extends AppController
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
+    public function view($id = null)/*Si esta linea esta asignada a un equipo que esta asignado a quien desea ver.. dar permiso.*/
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $linea = $this->Lineas->get($id, [
             'contain' => ['Articulos', 'Rentas', 'Facturas']
         ]);
@@ -62,6 +70,10 @@ class LineasController extends AppController
      */
     public function add()
     {
+        if($this->request->session()->read('Auth.User.funcion')!='Administrador'&&$this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la accion solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $linea = $this->Lineas->newEntity();
         if ($this->request->is('post')) {
             $linea = $this->Lineas->patchEntity($linea, $this->request->data);
@@ -88,6 +100,10 @@ class LineasController extends AppController
      */
     public function edit($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')!='Administrador'&&$this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la accion solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $linea = $this->Lineas->get($id, [
             'contain' => ['Rentas']
         ]);
@@ -116,6 +132,10 @@ class LineasController extends AppController
      */
     public function delete($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la accion solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->request->allowMethod(['post', 'delete']);
         $linea = $this->Lineas->get($id);
         if ($this->Lineas->delete($linea)) {

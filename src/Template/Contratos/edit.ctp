@@ -20,8 +20,8 @@
         <?php
             echo $this->Form->input('titulo');
             echo $this->Form->input('trabajador_id', ['options' => $trabajadores]);
-            echo $this->Form->input('fecha_de_inicio');
-            echo $this->Form->input('fecha_de_culminacion', ['empty' => true]);
+            echo $this->Form->input('fecha_de_inicio',['minYear'=>1998,'maxYear'=>date("Y")]);
+            echo $this->Form->input('fecha_de_culminacion', ['empty' => true,'minYear'=>1998,'maxYear'=>2030]);
             echo $this->Form->input('tipo_de_contrato');
         ?>
     </fieldset>

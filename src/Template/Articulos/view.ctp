@@ -103,13 +103,9 @@
             </tr>
             <?php foreach ($articulo->asignaciones as $asignaciones): ?>
             <tr>
-                <td><?= h($asignaciones->id) ?></td>
-                <td><?= h($asignaciones->titulo) ?></td>
                 <td><?= h($asignaciones->proceso_id) ?></td>
                 <td><?= h($asignaciones->articulo_id) ?></td>
                 <td><?= h($asignaciones->hasta) ?></td>
-                <td><?= h($asignaciones->created) ?></td>
-                <td><?= h($asignaciones->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Asignaciones', 'action' => 'view', $asignaciones->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Asignaciones', 'action' => 'edit', $asignaciones->id]) ?>

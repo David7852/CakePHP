@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\ORM\TableRegistry;
 /**
  * Procesos Controller
  *
@@ -18,8 +18,11 @@ class ProcesosController extends AppController
      */
     public function index()
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $procesos = $this->paginate($this->Procesos);
-
         $this->set(compact('procesos'));
         $this->set('_serialize', ['procesos']);
     }
@@ -40,6 +43,19 @@ class ProcesosController extends AppController
      */
     public function view($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                ->where(['proceso_id ='=>$id])
+                ->andWhere(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')]);
+            if($pro_tra==null||$pro_tra->isEmpty()){
+                $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+                return $this->redirect($this->referer());
+            }
+        }
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $proceso = $this->Procesos->get($id, [
             'contain' => ['Trabajadores', 'Asignaciones', 'Devoluciones']
         ]);
@@ -55,6 +71,10 @@ class ProcesosController extends AppController
      */
     public function add()
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $proceso = $this->Procesos->newEntity();
         if ($this->request->is('post')) {
             $proceso = $this->Procesos->patchEntity($proceso, $this->request->data);
@@ -80,6 +100,10 @@ class ProcesosController extends AppController
      */
     public function edit($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $proceso = $this->Procesos->get($id, [
             'contain' => ['Trabajadores']
         ]);
@@ -107,6 +131,10 @@ class ProcesosController extends AppController
      */
     public function delete($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')!='Administrador'&&$this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la accion solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->request->allowMethod(['post', 'delete']);
         $proceso = $this->Procesos->get($id);
         if ($this->Procesos->delete($proceso)) {

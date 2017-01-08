@@ -18,6 +18,10 @@ class RentasController extends AppController
      */
     public function index()
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $rentas = $this->paginate($this->Rentas);
 
         $this->set(compact('rentas'));
@@ -40,6 +44,10 @@ class RentasController extends AppController
      */
     public function view($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $renta = $this->Rentas->get($id, [
             'contain' => ['Lineas', 'Servicios']
         ]);
@@ -55,6 +63,10 @@ class RentasController extends AppController
      */
     public function add()
     {
+        if($this->request->session()->read('Auth.User.funcion')!='Administrador'&&$this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la accion solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $renta = $this->Rentas->newEntity();
         if ($this->request->is('post')) {
             $renta = $this->Rentas->patchEntity($renta, $this->request->data);
@@ -80,6 +92,10 @@ class RentasController extends AppController
      */
     public function edit($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')!='Administrador'&&$this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la accion solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $renta = $this->Rentas->get($id, [
             'contain' => ['Lineas']
         ]);
@@ -107,6 +123,10 @@ class RentasController extends AppController
      */
     public function delete($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la accion solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->request->allowMethod(['post', 'delete']);
         $renta = $this->Rentas->get($id);
         if ($this->Rentas->delete($renta)) {

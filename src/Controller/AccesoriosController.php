@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\ORM\TableRegistry;
 /**
  * Accesorios Controller
  *
@@ -18,6 +18,10 @@ class AccesoriosController extends AppController
      */
     public function index()
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->paginate = [
             'contain' => ['Articulos']
         ];
@@ -49,7 +53,29 @@ class AccesoriosController extends AppController
         $accesorio = $this->Accesorios->get($id, [
             'contain' => ['Articulos']
         ]);
-
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $asig=TableRegistry::get('Asignaciones')->find('all')
+                ->where(['articulo_id ='=>$accesorio->articulo_id])
+                ->andWhere(['hasta >='=>date('Y-m-d')]);
+            if($asig->isEmpty()){
+                $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+                return $this->redirect($this->referer());
+            }
+            $found=false;
+            foreach ($asig as $row){
+                $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                    ->where(['proceso_id ='=>$row->proceso_id])
+                    ->andWhere(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')]);
+                if($pro_tra!=null&&!$pro_tra->isEmpty()){
+                    $found=true;
+                    break;
+                }
+            }
+            if(!$found){
+                $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+                return $this->redirect($this->referer());
+            }
+        }
         $this->set('accesorio', $accesorio);
         $this->set('_serialize', ['accesorio']);
     }
@@ -61,6 +87,10 @@ class AccesoriosController extends AppController
      */
     public function add()
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $accesorio = $this->Accesorios->newEntity();
         if ($this->request->is('post')) {
             $accesorio = $this->Accesorios->patchEntity($accesorio, $this->request->data);
@@ -86,6 +116,10 @@ class AccesoriosController extends AppController
      */
     public function edit($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $accesorio = $this->Accesorios->get($id, [
             'contain' => []
         ]);
@@ -113,6 +147,10 @@ class AccesoriosController extends AppController
      */
     public function delete($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->request->allowMethod(['post', 'delete']);
         $accesorio = $this->Accesorios->get($id);
         if ($this->Accesorios->delete($accesorio)) {

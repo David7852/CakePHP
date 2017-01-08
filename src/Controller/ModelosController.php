@@ -18,6 +18,10 @@ class ModelosController extends AppController
      */
     public function index()
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $modelos = $this->paginate($this->Modelos);
 
         $this->set(compact('modelos'));
@@ -40,6 +44,10 @@ class ModelosController extends AppController
      */
     public function view($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $modelo = $this->Modelos->get($id, [
             'contain' => ['Articulos']
         ]);
@@ -55,6 +63,10 @@ class ModelosController extends AppController
      */
     public function add()
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $modelo = $this->Modelos->newEntity();
         if ($this->request->is('post')) {
             $modelo = $this->Modelos->patchEntity($modelo, $this->request->data);
@@ -79,6 +91,10 @@ class ModelosController extends AppController
      */
     public function edit($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $modelo = $this->Modelos->get($id, [
             'contain' => []
         ]);
@@ -105,6 +121,10 @@ class ModelosController extends AppController
      */
     public function delete($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')!='Administrador'&&$this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la accion solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->request->allowMethod(['post', 'delete']);
         $modelo = $this->Modelos->get($id);
         if ($this->Modelos->delete($modelo)) {

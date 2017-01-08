@@ -18,6 +18,10 @@ class ContratosController extends AppController
      */
     public function index()
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->paginate = [
             'contain' => ['Trabajadores']
         ];
@@ -46,6 +50,12 @@ class ContratosController extends AppController
      */
     public function view($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
+            if($this->request->session()->read('Auth.User.trabajador_id')!=$this->Contratos->get($id)->trabajador_id){
+                $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+                return $this->redirect($this->referer());
+            }
+        }
         $contrato = $this->Contratos->get($id, [
             'contain' => ['Trabajadores']
         ]);
@@ -61,6 +71,10 @@ class ContratosController extends AppController
      */
     public function add()
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $contrato = $this->Contratos->newEntity();
         if ($this->request->is('post')) {
             $contrato = $this->Contratos->patchEntity($contrato, $this->request->data);
@@ -86,6 +100,10 @@ class ContratosController extends AppController
      */
     public function edit($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $contrato = $this->Contratos->get($id, [
             'contain' => []
         ]);
@@ -113,6 +131,10 @@ class ContratosController extends AppController
      */
     public function delete($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la accion solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->request->allowMethod(['post', 'delete']);
         $contrato = $this->Contratos->get($id);
         if ($this->Contratos->delete($contrato)) {

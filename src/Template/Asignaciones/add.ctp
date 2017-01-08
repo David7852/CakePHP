@@ -16,7 +16,7 @@
             echo $this->Form->input('titulo');
             echo $this->Form->input('proceso_id', ['options' => $procesos]);
             echo $this->Form->input('articulo_id', ['options' => $articulos]);
-            echo $this->Form->input('hasta', ['empty' => true]);
+            echo $this->Form->input('hasta', ['empty' => true,'minYear'=>2010,'maxYear'=>2030]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Aceptar')) ?>

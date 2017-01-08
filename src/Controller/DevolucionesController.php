@@ -18,7 +18,7 @@ class DevolucionesController extends AppController
      */
     public function index()
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
             $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
             return $this->redirect($this->referer());
         }
@@ -51,15 +51,15 @@ class DevolucionesController extends AppController
     public function view($id = null)
     {
         if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
-            $devolucion=TableRegistry::get('Devoluviones')->get($id);
-            $pro_trab=TableRegistry::get('ProcesosTrabajadores')->find();
-            if($pro_trab->isEmpty()){
+            $devo=TableRegistry::get('Devoluviones')->get($id);
+            $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find();
+            if($pro_tra->isEmpty()){
                 $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
                 return $this->redirect($this->referer());
             }
             $found=false;
-            foreach ($pro_trab as $rowpt)
-                if($rowpt->proceso_id==$devolucion->proceso_id&&$rowpt->trabajador_id==$this->request->session()->read('Auth.User.trabajador_id'))
+            foreach ($pro_tra as $rowpt)
+                if($rowpt->proceso_id==$devo->proceso_id&&$rowpt->trabajador_id==$this->request->session()->read('Auth.User.trabajador_id'))
                     $found=true;
             if(!$found){
                 $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));

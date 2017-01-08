@@ -83,7 +83,15 @@ class TrabajadoresController extends AppController
             $trabajador = $this->Trabajadores->patchEntity($trabajador, $this->request->data);
             if ($this->Trabajadores->save($trabajador)) {
                 $this->Flash->success(__('El trabajador ha sido registrado.'));
-
+                $contrato=TableRegistry::get('Contratos')->newEntity();
+                $contrato=TableRegistry::get('Contratos')->patchEntity($contrato,
+                [
+                    'trabajador_id'=>$trabajador->id,
+                    'fecha_de_inicio'=>date('Y-m-d'),
+                    'tipo_de_contrato'=>'Temporal',
+                ]);
+                if(!TableRegistry::get('Contratos')->save($contrato))
+                    $this->Flash->error('El intento de registrar el contrato para este trabajador fallo.');
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('El trabajador no pudo ser guardado. Intente nuevamente.'));
@@ -130,7 +138,16 @@ class TrabajadoresController extends AppController
         if ($this->request->is('post')) {
             $trabajador = $this->Trabajadores->patchEntity($trabajador, $this->request->data);
             if ($this->Trabajadores->save($trabajador)) {
-                $this->Flash->success(__('El trabajador ha sido registrado.'));
+                $this->Flash->success(__('Su registro como trabajador de FertiNitro ha sido exitoso.'));
+                $contrato=TableRegistry::get('Contratos')->newEntity();
+                $contrato=TableRegistry::get('Contratos')->patchEntity($contrato,
+                    [
+                        'trabajador_id'=>$trabajador->id,
+                        'fecha_de_inicio'=>date('Y-m-d'),
+                        'tipo_de_contrato'=>'Temporal',
+                    ]);
+                if(!TableRegistry::get('Contratos')->save($contrato))
+                    $this->Flash->error('El intento de registrar el contrato para este trabajador fallo.');
                 $usuario = TableRegistry::get('Usuarios')->newEntity();
                 $username=$this->request->data['apellido'].$this->request->data['nombre'][0];
                 $username=$this->getnewname($username);
@@ -149,7 +166,7 @@ class TrabajadoresController extends AppController
                     return $this->redirect(['action' => 'view',$trabajador->id]);
                 }
             } else {
-                $this->Flash->error(__('El trabajador no pudo ser guardado. Intente nuevamente.'));
+                $this->Flash->error(__('Usted no pudo ser registrado. Intente nuevamente.'));
             }
         }
         $procesos = $this->Trabajadores->Procesos->find('list', ['limit' => 200]);
@@ -210,7 +227,6 @@ class TrabajadoresController extends AppController
         } else {
             $this->Flash->error(__('El trabajador no pudo eliminarse. Intente nuevamente.'));
         }
-
         return $this->redirect(['action' => 'index']);
     }
 }

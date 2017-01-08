@@ -36,7 +36,7 @@
                         "Reparado"=>"Reparado",
                         "Obsoleto"=>"Obsoleto"];
             echo $this->Form->input('estado', array('options'=>$options,'empty'=>false,'escape'=>false));
-            echo $this->Form->input('fecha_de_compra', ['empty' => true]);
+            echo $this->Form->input('fecha_de_compra', ['empty' => true,'minYear'=>1998,'maxYear'=>date("Y")]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Aceptar')) ?>
