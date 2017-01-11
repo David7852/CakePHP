@@ -8,7 +8,6 @@ use Cake\ORM\Entity;
  * Proceso Entity
  *
  * @property int $id
- * @property string $titulo
  * @property string $motivo
  * @property string $tipo
  * @property \Cake\I18n\Time $fecha_de_aprobacion
@@ -28,9 +27,17 @@ class Proceso extends Entity
             $this->fecha_de_aprobacion=$value;
         return $value;
     }
+    protected function _setEstado($value)
+    {
+        if(($this->_properties['estado']=='pendiente'||$this->_properties['estado']=='')&&($value=='Aprobado'||$value=='Completado'))
+        {
+
+        }
+        return $value;
+    }
     protected function _getTitulo()
     {
-        return $this->_properties['titulo'];
+        return $this->_properties['tipo']." ".$this->_properties['estado'];
     }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

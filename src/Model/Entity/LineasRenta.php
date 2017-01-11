@@ -26,7 +26,7 @@ class LineasRenta extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'linea_id' => false,
-        'renta_id' => false
+        'linea_id' => true,
+        'renta_id' => true
     ];
 }

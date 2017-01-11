@@ -12,7 +12,7 @@
     </ul>
 </nav>
 <div class="asignaciones view large-9 medium-8 columns content">
-    <h3><?= h($asignacion->id) ?></h3>
+    <h3><?= h($asignacion->titulo) ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Proceso') ?></th>
@@ -25,6 +25,10 @@
         <tr>
             <th scope="row"><?= __('Hasta') ?></th>
             <td><?= h($asignacion->hasta) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Estado') ?></th>
+            <td style="color: #be140b"><?= h($asignacion->estado) ?></td>
         </tr>
     </table>
 </div>

@@ -64,9 +64,6 @@ class ConsumosTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('titulo');
-
-        $validator
             ->allowEmpty('cupo');
 
         $validator

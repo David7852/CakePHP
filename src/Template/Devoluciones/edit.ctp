@@ -19,7 +19,6 @@
     <fieldset>
         <legend><?= __('Editando Devolucion ').h($devolucion->titulo) ?></legend>
         <?php
-            echo $this->Form->input('titulo');
             echo $this->Form->input('proceso_id', ['options' => $procesos]);
             echo $this->Form->input('articulo_id', ['options' => $articulos]);
         ?>

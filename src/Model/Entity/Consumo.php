@@ -8,7 +8,6 @@ use Cake\ORM\Entity;
  * Consumo Entity
  *
  * @property int $id
- * @property string $titulo
  * @property int $factura_id
  * @property int $servicio_id
  * @property string $cupo

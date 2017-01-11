@@ -11,6 +11,18 @@ use Cake\ORM\TableRegistry;
 class AsignacionesController extends AppController
 {
 
+    public function getRelated($id)
+    {
+
+        if($id==null)
+            return null;
+        $asignacion = $this->Asignaciones->get($id, [
+            'contain' => ['Procesos']
+        ]);
+
+        return $asignacion;
+    }
+
     /**
      * Index method
      *

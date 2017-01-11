@@ -29,7 +29,9 @@ class Articulo extends Entity
     {
         $c = new ArticulosController();
         $related=$c->getRelated($this->_properties['id']);
-        return "S/N: ".$this->_properties['serial']." (". h($related->modelo->tipo).")";
+        if($related==null)
+            return '';
+        return  h($related->modelo->tipo)." S/N: ".$this->_properties['serial'];
     }//ubicacion deberia tener un metodo set o get tal que cuando se asigne un articulo a alguien cambie a la ubicacion de la persona.
 
     /**

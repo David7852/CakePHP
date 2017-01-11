@@ -64,9 +64,6 @@ class AsignacionesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('titulo');
-
-        $validator
             ->date('hasta')
             ->allowEmpty('hasta');
 

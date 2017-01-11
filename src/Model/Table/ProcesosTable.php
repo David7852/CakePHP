@@ -68,10 +68,8 @@ class ProcesosTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('titulo');
-
-        $validator
-            ->allowEmpty('motivo');
+            ->requirePresence('motivo', 'create')
+            ->notEmpty('motivo');
 
         $validator
             ->allowEmpty('tipo');

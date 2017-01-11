@@ -15,16 +15,16 @@
     <h3><?= h($devolucion->titulo) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('Titulo') ?></th>
-            <td><?= h($devolucion->titulo) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Proceso') ?></th>
             <td><?= $devolucion->has('proceso') ? $this->Html->link($devolucion->proceso->titulo, ['controller' => 'Procesos', 'action' => 'view', $devolucion->proceso->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Articulo') ?></th>
             <td><?= $devolucion->has('articulo') ? $this->Html->link($devolucion->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $devolucion->articulo->id]) : '' ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Estado') ?></th>
+            <td style="color: #be140b"><?= h($devolucion->estado) ?></td>
         </tr>
     </table>
 </div>

@@ -19,7 +19,7 @@ class Accesorio extends Entity
 {
     protected function _getTitulo()
     {
-        return h($this->_properties['descripcion']).' '.h($this->_properties['estado']);
+        return h($this->_properties['descripcion']).' de '.h($this->articulo->$titulo);
     }
 
     /**

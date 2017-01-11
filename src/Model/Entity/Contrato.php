@@ -7,7 +7,6 @@ use Cake\ORM\Entity;
  * Contrato Entity
  *
  * @property int $id
- * @property string $titulo
  * @property int $trabajador_id
  * @property \Cake\I18n\Time $fecha_de_inicio
  * @property \Cake\I18n\Time $fecha_de_culminacion

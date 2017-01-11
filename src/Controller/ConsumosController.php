@@ -13,6 +13,9 @@ class ConsumosController extends AppController
 
     public function getRelated($id)
     {
+
+        if($id==null)
+            return null;
         $consumo = $this->Consumos->get($id, [
             'contain' => ['Facturas', 'Servicios']
         ]);

@@ -13,15 +13,15 @@
 <div class="procesos form large-9 medium-8 columns content">
     <?= $this->Form->create($proceso) ?>
     <fieldset>
-        <legend><?= __('Nuevo proceso') ?></legend>
+        <legend><?= __('Solicitud de procesos') ?></legend>
         <?php
-            echo $this->Form->input('motivo');
-            echo $this->Form->input('observaciones');
-            $options = ['Asignacion'=>'Asignacion',
-                        'Devolucion'=>'Devolucion',
-                        'Mixto'=>'Mixto'];
-            echo $this->Form->input('tipo',array('options'=>$options,'empty'=>false,'escape'=>false));
-            echo $this->Form->input('trabajadores._ids', ['options' => $trabajadores]);
+        echo $this->Form->input('motivo');
+        echo $this->Form->input('observaciones');
+        $options = ['Asignacion'=>'Asignacion',
+            'Devolucion'=>'Devolucion',
+            'Mixto'=>'Mixto'];
+        echo $this->Form->input('tipo',array('options'=>$options,'empty'=>false,'escape'=>false));
+        echo "<p class='removablewarningnote' id='removable' onclick='removeFadeOut(document.getElementById(\"removable\"), 666);'>Su solicitud sera evaluada por el personal de IT antes de hacerse efectiva.</p>";
         ?>
     </fieldset>
     <?= $this->Form->button(__('Aceptar')) ?>

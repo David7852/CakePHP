@@ -12,6 +12,8 @@ class ArticulosController extends AppController
 {
     public function getRelated($id)
     {
+        if($id==null)
+            return null;
         $articulo = $this->Articulos->get($id, [
             'contain' => ['Modelos']
         ]);

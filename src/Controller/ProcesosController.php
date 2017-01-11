@@ -11,6 +11,35 @@ use Cake\ORM\TableRegistry;
 class ProcesosController extends AppController
 {
 
+    public function solicitar()
+    {
+        $proceso = $this->Procesos->newEntity();
+        if ($this->request->is('post')) {
+            $proceso = $this->Procesos->patchEntity($proceso, $this->request->data);
+            if ($this->Procesos->save($proceso)) {
+                $this->Flash->success(__('La solicitud del proceso fue registrada.'));
+                $p_t=TableRegistry::get('ProcesosTrabajadores')->newEntity();
+                $p_t=TableRegistry::get('ProcesosTrabajadores')->patchEntity($p_t,
+                    [
+                        'trabajador_id'=>$this->request->session()->read('Auth.User.trabajador_id'),
+                        'proceso_id'=>$proceso->id,
+                        'rol'=>'Solicitante',
+                    ]);
+                if(!TableRegistry::get('ProcesosTrabajadores')->save($p_t))
+                {
+                    TableRegistry::get('Procesos')->delete($proceso);/////important
+                    $this->Flash->error('El intento de registrar la solicitud fallo.');
+                }
+                return $this->redirect(['action' => 'menu']);
+            } else {
+                $this->Flash->error(__('El proceso no pudo ser guardado. Intente nuevamente.'));
+            }
+        }
+        $trabajadores = $this->Procesos->Trabajadores->find('list', ['limit' => 200]);
+        $this->set(compact('proceso', 'trabajadores'));
+        $this->set('_serialize', ['proceso']);
+    }
+
     /**
      * Index method
      *

@@ -9,7 +9,6 @@ use Cake\ORM\Entity;
  * Factura Entity
  *
  * @property int $id
- * @property string $titulo
  * @property int $linea_id
  * @property \Cake\I18n\Time $paguese_antes_de
  * @property float $balance

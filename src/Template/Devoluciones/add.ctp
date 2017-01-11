@@ -13,7 +13,6 @@
     <fieldset>
         <legend><?= __('Formar Devolucion') ?></legend>
         <?php
-            echo $this->Form->input('titulo');
             echo $this->Form->input('proceso_id', ['options' => $procesos]);
             echo $this->Form->input('articulo_id', ['options' => $articulos]);
         ?>

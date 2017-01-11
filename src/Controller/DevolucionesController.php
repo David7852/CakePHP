@@ -11,6 +11,15 @@ use Cake\ORM\TableRegistry;
 class DevolucionesController extends AppController
 {
 
+    public function getRelated($id)
+    {
+        if($id==null)
+            return null;
+        $devolucion = $this->Devoluciones->get($id, [
+            'contain' => ['Procesos']
+        ]);
+        return $devolucion;
+    }
     /**
      * Index method
      *

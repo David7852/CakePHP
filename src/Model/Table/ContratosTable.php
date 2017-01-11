@@ -59,9 +59,6 @@ class ContratosTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('titulo');
-
-        $validator
             ->date('fecha_de_inicio')
             ->requirePresence('fecha_de_inicio', 'create')
             ->notEmpty('fecha_de_inicio');

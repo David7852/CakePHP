@@ -27,7 +27,6 @@ create table if not exists modelos (
 
 create table if not exists asignaciones (
   id integer unsigned auto_increment primary key,
-  titulo varchar(255),
   proceso_id integer unsigned not null,
   articulo_id integer unsigned not null,
   hasta date,
@@ -36,7 +35,6 @@ create table if not exists asignaciones (
 
 create table if not exists devoluciones (
   id integer unsigned auto_increment primary key,
-  titulo varchar(255),
   proceso_id integer unsigned not null,
   articulo_id integer unsigned not null,
   created datetime default null,
@@ -61,7 +59,6 @@ create table if not exists trabajadores (
 
 create table if not exists procesos (
   id integer unsigned auto_increment primary key,
-  titulo varchar(255),
   motivo varchar(255),
   tipo enum("Asignacion","Devolucion","Mixto"),
   fecha_de_aprobacion date,
@@ -78,7 +75,6 @@ create table if not exists procesos_trabajadores(
 
 create table if not exists contratos (
   id integer unsigned auto_increment primary key,
-  titulo varchar(255),
   trabajador_id integer unsigned not null,
   fecha_de_inicio date not null,
   fecha_de_culminacion date,
@@ -117,7 +113,6 @@ create table if not exists servicios (
 
 create table if not exists consumos (
   id integer unsigned auto_increment primary key,
-  titulo varchar(255),
   factura_id integer unsigned not null,
   servicio_id integer unsigned not null,
   cupo varchar(20) default "0",
@@ -129,7 +124,6 @@ create table if not exists consumos (
 
 create table if not exists facturas (
   id integer unsigned auto_increment primary key,
-  titulo varchar(255),
   linea_id integer unsigned not null,
   paguese_antes_de date,
   balance float unsigned not null default 0,
@@ -242,7 +236,6 @@ create table if not exists softwares (
 
 create table if not exists instalaciones (
   id integer unsigned primary key,
-  titulo varchar(255),
   articulo_id integer unsigned not null,
   software_id integer unsigned not null,
   fecha_de_instalacion date not null,

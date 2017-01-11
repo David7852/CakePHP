@@ -2,12 +2,11 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
-
+use App\Controller\AsignacionesController;
 /**
  * Asignacion Entity
  *
  * @property int $id
- * @property string $titulo
  * @property int $proceso_id
  * @property int $articulo_id
  * @property \Cake\I18n\Time $hasta
@@ -20,6 +19,25 @@ use Cake\ORM\Entity;
 class Asignacion extends Entity
 {
 
+    protected function _getEstado()
+    {
+        $c = new AsignacionesController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
+        return h($related->proceso->estado);
+    }
+    protected function _getTitulo()
+    {
+        $c = new AsignacionesController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
+        if($related->proceso->estado!='Aprobado')
+            return 'Asignacion del '.$this->articulo->titulo.  h($related->proceso->estado);
+        return 'Asignacion del '.$this->articulo->titulo;
+        //return 'Asignacion del'.$this->articulo->titulo. h($related->proceso->estado); //nombre del trabajador con el proceso_trabajador rol solicitante
+    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

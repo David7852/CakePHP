@@ -1052,12 +1052,13 @@ div.message.hidden {
     font-family: raleway, poiret, Roboto, Century gothic, Segoe ui, sans-serif;
     color: #be140b;
     font-size: small;
-    padding: 2rem;
+    padding: 1rem;
     border-style: dashed;
     border-width: 1px;
     border-color: rgba(190,20,11,0.5);
     box-shadow: 0 2px 3px -2px rgba(0,0,0,0.12);
     transition: 0.55s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+    opacity: 0.92;
 }
 .removablewarningnote::before,
 .warningnote::before {
@@ -1071,7 +1072,7 @@ div.message.hidden {
     text-align: center;
     display: inline-block;
     position: relative;
-    left: -11px;
+    left: -5px;
     background: #efefef;
     background-image: url(../img/sideBarTexture.png);
     background-repeat: repeat;
@@ -1081,7 +1082,7 @@ div.message.hidden {
     color: #be140b;
 }
 .removablewarningnote:hover{
-    opacity: .75;
+    opacity: 1;
     -webkit-transform: scale(1.005,1.001);
     -moz-transform: scale(1.005,1.001);
     -ms-transform: scale(1.005,1.001);
@@ -1273,6 +1274,7 @@ div.message.hidden {
     height: auto;
 }
 .imagedisplay td h4{
+    font-family: raleway, poiret, Roboto, Century gothic, Segoe ui, sans-serif;
     text-align: left;
     float: left;
     color: #22a25a;

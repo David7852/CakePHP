@@ -27,7 +27,7 @@ class ProcesosTrabajadore extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'trabajador_id' => false,
-        'proceso_id' => false
+        'trabajador_id' => true,
+        'proceso_id' => true
     ];
 }

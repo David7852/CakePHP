@@ -80,8 +80,6 @@ class ArticulosTable extends Table
         $validator
             ->allowEmpty('datos');
         $validator
-            ->allowEmpty('titulo');
-        $validator
             ->allowEmpty('ubicacion');
         $validator
             ->allowEmpty('estado');

@@ -18,8 +18,7 @@
     <?= $this->Form->create($asignacion) ?>
     <fieldset>
         <legend><?= __('Editando Asignacion de ').h($asignacion->titulo) ?></legend>
-        <?php
-            echo $this->Form->input('titulo');
+        <?php;
             echo $this->Form->input('proceso_id', ['options' => $procesos]);
             echo $this->Form->input('articulo_id', ['options' => $articulos]);
             echo $this->Form->input('hasta', ['empty' => true,'minYear'=>2010,'maxYear'=>2030]);

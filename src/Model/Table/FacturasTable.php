@@ -36,7 +36,7 @@ class FacturasTable extends Table
         parent::initialize($config);
 
         $this->table('facturas');
-        $this->displayField('titulo');//titulo seria factura:  "fecha, numero de linea"
+        $this->displayField('titulo');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
@@ -61,9 +61,6 @@ class FacturasTable extends Table
         $validator
             ->integer('id')
             ->allowEmpty('id', 'create');
-
-        $validator
-            ->allowEmpty('titulo');
 
         $validator
             ->date('paguese_antes_de')
