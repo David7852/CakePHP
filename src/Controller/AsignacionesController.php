@@ -17,7 +17,7 @@ class AsignacionesController extends AppController
         if($id==null)
             return null;
         $asignacion = $this->Asignaciones->get($id, [
-            'contain' => ['Procesos']
+            'contain' => ['Procesos', 'Articulos']
         ]);
 
         return $asignacion;
@@ -152,6 +152,7 @@ class AsignacionesController extends AppController
      * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
+
     public function delete($id = null)
     {
         if($this->request->session()->read('Auth.User.funcion')=='Visitante') {

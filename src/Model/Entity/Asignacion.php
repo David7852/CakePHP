@@ -34,10 +34,12 @@ class Asignacion extends Entity
         if($related==null)
             return '';
         if($related->proceso->estado!='Aprobado')
-            return 'Asignacion del '.$this->articulo->titulo.  h($related->proceso->estado);
-        return 'Asignacion del '.$this->articulo->titulo;
+            return 'Asignacion del '.$related->articulo->titulo.  h($related->proceso->estado);
+        return 'Asignacion del '.$related->articulo->titulo;
         //return 'Asignacion del'.$this->articulo->titulo. h($related->proceso->estado); //nombre del trabajador con el proceso_trabajador rol solicitante
     }
+
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

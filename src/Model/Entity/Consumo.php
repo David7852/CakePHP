@@ -30,6 +30,8 @@ class Consumo extends Entity
     {
         $c = new ConsumosController();
         $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
         return h($this->_properties['monto_bs']).' en la factura del '.h($related->factura->titulo);
     }
 

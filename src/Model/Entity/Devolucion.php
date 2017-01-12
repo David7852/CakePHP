@@ -33,8 +33,8 @@ class Devolucion extends Entity
         if($related==null)
             return '';
         if($related->proceso->estado!='Aprobado')
-            return 'Devolucion de '.$this->articulo->titulo.  h($related->proceso->estado);
-        return 'Devolucion de '.$this->articulo->titulo;
+            return 'Devolucion de '.$related->articulo->titulo.  h($related->proceso->estado);
+        return 'Devolucion de '.$related->articulo->titulo;
         //return 'Devolucion del'.$this->articulo->titulo. h($related->proceso->estado); //nombre del trabajador con el proceso_trabajador rol solicitante
     }
     /**

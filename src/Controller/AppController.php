@@ -28,6 +28,9 @@ use Cake\Core\Configure;
  */
 class AppController extends Controller
 {
+
+
+
     public function isAuthorized($user)
     {
         if (isset($user['id'])) {
@@ -48,7 +51,6 @@ class AppController extends Controller
     public function initialize()
     {
         parent::initialize();
-
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
@@ -86,13 +88,11 @@ class AppController extends Controller
      */
     public function beforeRender(Event $event)
     {
-        //$this->viewBuilder()->theme('Twit');
-        //$this->viewBuilder()->theme('AdminLTE');
-        //$this->set('theme', Configure::read('Theme'));
         if (!array_key_exists('_serialize', $this->viewVars) &&
             in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {
             $this->set('_serialize', true);
         }
+
     }
 }

@@ -238,7 +238,8 @@ class UsuariosController extends AppController
      */
     public function add()
     {
-        if($this->request->session()->read('Auth.User.funcion')!='Administrador'&&$this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
+        if($this->request->session()->read('Auth.User.funcion')!='Administrador'&&
+            $this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
             $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
             return $this->redirect($this->referer());
         }
@@ -279,7 +280,8 @@ class UsuariosController extends AppController
         if ($this->request->is(['patch', 'post', 'put']))
         {
             $hasher = new DefaultPasswordHasher();
-            if($hasher->check($this->request->data['clave_anterior'],$usuario->clave)&&($this->request->data['clave']==$this->request->data['conf_clave']))
+            if($hasher->check($this->request->data['clave_anterior'],$usuario->clave)&&
+                ($this->request->data['clave']==$this->request->data['conf_clave']))
             {
                 $usuario = $this->Usuarios->patchEntity($usuario, $this->request->data);
                 if ($this->Usuarios->save($usuario)) {
@@ -310,7 +312,8 @@ class UsuariosController extends AppController
      */
     public function delete($id = null)
     {
-        if($this->request->session()->read('Auth.User.funcion')!='Administrador'&&$this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
+        if($this->request->session()->read('Auth.User.funcion')!='Administrador'&&
+            $this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
             $this->Flash->error(__('Usted no tiene permiso para acceder a la accion solicitada.'));
             return $this->redirect($this->referer());
         }

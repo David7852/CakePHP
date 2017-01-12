@@ -74,7 +74,8 @@ class TrabajadoresController extends AppController
      */
     public function add()
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||
+            $this->request->session()->read('Auth.User.funcion')=='Operador') {
             $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
             return $this->redirect($this->referer());
         }

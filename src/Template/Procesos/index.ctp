@@ -15,7 +15,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('titulo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort(' ') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('motivo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created',['label'=>'Fecha de Solicitud']) ?></th>
                 <th scope="col"><?= $this->Paginator->sort('fecha_de_aprobacion') ?></th>
@@ -25,7 +25,17 @@
         <tbody>
             <?php foreach ($procesos as $proceso): ?>
             <tr>
-                <td><?= h($proceso->titulo) ?></td>
+                <?php
+                $titulo=h($proceso->titulo);
+                if(strpos($titulo, 'Pendiente'))
+                    echo "<td id='pendiente'>".$titulo."</td>";
+                if(strpos($titulo, 'Aprobado'))
+                    echo "<td id='aprobado'>".$titulo."</td>";
+                if(strpos($titulo, 'Rechazado'))
+                    echo "<td id='rechazado'>".$titulo."</td>";
+                if(strpos($titulo, 'Completado'))
+                    echo "<td id='completado'>".$titulo."</td>";
+                ?>
                 <td><?= h($proceso->motivo) ?></td>
                 <td><?= h($proceso->created) ?></td>
                 <td>

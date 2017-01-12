@@ -2,7 +2,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
-
+use App\Controller\AccesoriosController;
 /**
  * Accesorio Entity
  *
@@ -19,7 +19,11 @@ class Accesorio extends Entity
 {
     protected function _getTitulo()
     {
-        return h($this->_properties['descripcion']).' de '.h($this->articulo->$titulo);
+        $c = new AccesoriosController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
+        return h($this->_properties['descripcion']).' de '.h($related->articulo->titulo);
     }
 
     /**

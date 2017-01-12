@@ -11,6 +11,17 @@ use Cake\ORM\TableRegistry;
 class ProcesosController extends AppController
 {
 
+    public function getRelated($id)
+    {
+
+        if($id==null)
+            return null;
+        $proceso = $this->Procesos->get($id, [
+            'contain' => ['Trabajadores', 'Asignaciones', 'Devoluciones']
+        ]);
+        return $proceso;
+    }
+
     public function solicitar()
     {
         $proceso = $this->Procesos->newEntity();
@@ -27,7 +38,7 @@ class ProcesosController extends AppController
                     ]);
                 if(!TableRegistry::get('ProcesosTrabajadores')->save($p_t))
                 {
-                    TableRegistry::get('Procesos')->delete($proceso);/////important
+                    TableRegistry::get('Procesos')->delete($proceso);
                     $this->Flash->error('El intento de registrar la solicitud fallo.');
                 }
                 return $this->redirect(['action' => 'menu']);

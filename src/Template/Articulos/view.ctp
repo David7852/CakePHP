@@ -120,7 +120,7 @@
     <div class="related">
         <h4><?= __('Devoluciones') ?></h4>
         <table cellpadding="0" cellspacing="0">
-            <tr>th>
+            <tr>
                 <th scope="col"><?= __('Proceso Id') ?></th>
                 <th scope="col"><?= __('Articulo Id') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>

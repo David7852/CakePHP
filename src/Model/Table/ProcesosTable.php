@@ -37,7 +37,7 @@ class ProcesosTable extends Table
         parent::initialize($config);
 
         $this->table('procesos');
-        $this->displayField('titulo');
+        $this->displayField('motivo');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
@@ -72,7 +72,8 @@ class ProcesosTable extends Table
             ->notEmpty('motivo');
 
         $validator
-            ->allowEmpty('tipo');
+            ->requirePresence('tipo', 'create')
+            ->notEmpty('tipo');
 
         $validator
             ->date('fecha_de_aprobacion')

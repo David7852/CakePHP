@@ -8,7 +8,7 @@ create table if not exists articulos (
   serial varchar(50) unique not null,
   modelo_id integer unsigned,
   datos varchar(200),
-  ubicacion varchar(50),
+  ubicacion varchar(50) default "Deposito IT",
   estado enum("Nuevo","Usado","Roto","Reparado","Obsoleto") default "Nuevo",
   fecha_de_compra date,
   created datetime default null,
@@ -60,7 +60,7 @@ create table if not exists trabajadores (
 create table if not exists procesos (
   id integer unsigned auto_increment primary key,
   motivo varchar(255),
-  tipo enum("Asignacion","Devolucion","Mixto"),
+  tipo enum("Asignacion","Devolucion","Mixto") not null default "Asignacion"
   fecha_de_aprobacion date,
   estado enum("Pendiente","Aprobado","Rechazado","Completado") default "Pendiente",
   observaciones text,

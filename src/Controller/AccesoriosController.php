@@ -11,6 +11,15 @@ use Cake\ORM\TableRegistry;
 class AccesoriosController extends AppController
 {
 
+    public function getRelated($id)
+    {
+        if($id==null)
+            return null;
+        $accesorio = $this->Accesorios->get($id, [
+            'contain' => ['Articulos']
+        ]);
+        return $accesorio;
+    }
     /**
      * Index method
      *

@@ -16,7 +16,7 @@ class DevolucionesController extends AppController
         if($id==null)
             return null;
         $devolucion = $this->Devoluciones->get($id, [
-            'contain' => ['Procesos']
+            'contain' => ['Procesos','Articulos']
         ]);
         return $devolucion;
     }
