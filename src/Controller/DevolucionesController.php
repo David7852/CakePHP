@@ -100,13 +100,39 @@ class DevolucionesController extends AppController
             $devolucion = $this->Devoluciones->patchEntity($devolucion, $this->request->data);
             if ($this->Devoluciones->save($devolucion)) {
                 $this->Flash->success(__('La devolucion ha sido guardada'));
-
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller'=>'Procesos','action' => 'view',$devolucion->proceso_id]);
             } else {
                 $this->Flash->error(__('La devolucion no pudo ser guardada. Intente nuevamente.'));
             }
         }
         $procesos = $this->Devoluciones->Procesos->find('list', ['limit' => 200]);
+        $articulos = $this->Devoluciones->Articulos->find('list', ['limit' => 200]);
+        $this->set(compact('devolucion', 'procesos', 'articulos'));
+        $this->set('_serialize', ['devolucion']);
+    }
+    /**
+     * Asociar method
+     *
+     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
+     */
+    public function asociar($id = null)
+    {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
+        $devolucion = $this->Devoluciones->newEntity();
+        if ($this->request->is('post')) {
+            $devolucion = $this->Devoluciones->patchEntity($devolucion, $this->request->data);
+            if ($this->Devoluciones->save($devolucion)) {
+                $this->Flash->success(__('La devolucion ha sido guardada'));
+                return $this->redirect(['controller'=>'Procesos','action' => 'view',$id]);
+            } else {
+                $this->Flash->error(__('La devolucion no pudo ser guardada. Intente nuevamente.'));
+            }
+        }
+        $procesos = $this->Devoluciones->Procesos->find('list')
+        ->where(['id ='=>$id]);
         $articulos = $this->Devoluciones->Articulos->find('list', ['limit' => 200]);
         $this->set(compact('devolucion', 'procesos', 'articulos'));
         $this->set('_serialize', ['devolucion']);

@@ -161,7 +161,7 @@ class TrabajadoresController extends AppController
                 if (TableRegistry::get('Usuarios')->save($usuario)) {
                     $this->Flash->success(__('Adicionalmente, Un nuevo nombre de usuario fue creado para usted: '.$usuario->nombre_de_usuario));
                     $this->Auth->setUser($usuario);
-                    return $this->redirect(['action' => 'view',$usuario->id]);
+                    return $this->redirect(['controller'=>'Usuarios', 'action' => 'view',$usuario->id]);
                 }else{
                     $this->Flash->error(__('Usted es un trabajador registrado, pero el intento de crear su usuario fallo. Contacte a IT soporte.'));
                     return $this->redirect(['action' => 'view',$trabajador->id]);

@@ -102,6 +102,7 @@ Router::scope('/facturas',['controller' => 'Facturas'],function (RouteBuilder $r
 Router::scope('/devoluciones',['controller' => 'Devoluciones'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/devoluciones',['controller' => 'Devoluciones'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/devoluciones',['controller' => 'Devoluciones'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
+Router::scope('/devoluciones',['controller' => 'Devoluciones'],function (RouteBuilder $routes) {    $routes->connect('/asociar/*', ['action' => 'asociar']);});
 Router::scope('/devoluciones',['controller' => 'Devoluciones'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
 Router::scope('/devoluciones',['controller' => 'Devoluciones'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
 //contratos
@@ -120,6 +121,7 @@ Router::scope('/consumos',['controller' => 'Consumos'],function (RouteBuilder $r
 Router::scope('/asignaciones',['controller' => 'Asignaciones'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/asignaciones',['controller' => 'Asignaciones'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/asignaciones',['controller' => 'Asignaciones'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
+Router::scope('/asignaciones',['controller' => 'Asignaciones'],function (RouteBuilder $routes) {    $routes->connect('/asociar/*', ['action' => 'asociar']);});
 Router::scope('/asignaciones',['controller' => 'Asignaciones'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
 Router::scope('/asignaciones',['controller' => 'Asignaciones'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
 //articulos

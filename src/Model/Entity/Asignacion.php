@@ -19,6 +19,14 @@ use App\Controller\AsignacionesController;
 class Asignacion extends Entity
 {
 
+    protected function _getArt()
+    {
+        $c = new AsignacionesController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return ' ';
+        return h($related->articulo->titulo);
+    }
     protected function _getEstado()
     {
         $c = new AsignacionesController();

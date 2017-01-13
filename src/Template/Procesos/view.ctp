@@ -1,20 +1,22 @@
+<?php use Cake\Routing\Router;?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Acciones') ?></li>
+        <li><?= $this->Html->link(__('Asociar Asignacion'), ['controller' => 'Asignaciones', 'action' => 'asociar',$proceso->id],['id'=>'aprobado']) ?> </li>
+        <li><?= $this->Html->link(__('Asociar Devolucion'), ['controller' => 'Devoluciones', 'action' => 'asociar',$proceso->id],['id'=>'rechazado']) ?> </li>
+
         <li><?= $this->Html->link(__('Editar este Proceso'), ['action' => 'edit', $proceso->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Eliminar este Proceso'), ['action' => 'delete', $proceso->id], ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $proceso->titulo)]) ?> </li>
         <li><?= $this->Html->link(__('Listar Procesos'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Nuevo Proceso'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('Listar Asignaciones'), ['controller' => 'Asignaciones', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Nueva Asignacion'), ['controller' => 'Asignaciones', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('Listar Devoluciones'), ['controller' => 'Devoluciones', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Nueva Devolucion'), ['controller' => 'Devoluciones', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('Listar Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Nuevo Trabajador'), ['controller' => 'Trabajadores', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="procesos view large-9 medium-8 columns content">
-    <h3><?= 'Proceso '.h($proceso->titulo) ?></h3>
+    <h3><?= 'Proceso '.h($proceso->motivo) ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Motivo') ?></th>
@@ -53,13 +55,13 @@
         <h4><?= __('Asignaciones') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Articulo Id') ?></th>
+                <th scope="col"><?= __('Articulo') ?></th>
                 <th scope="col"><?= __('Hasta') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($proceso->asignaciones as $asignaciones): ?>
             <tr>
-                <td><?= h($asignaciones->articulo_id) ?></td>
+                <td><?= $this->Html->link($asignaciones->art, ['controller' => 'Articulos', 'action' => 'view', $asignaciones->articulo_id]) ?></td>
                 <td><?= h($asignaciones->hasta) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Asignaciones', 'action' => 'view', $asignaciones->id]) ?>
@@ -78,12 +80,12 @@
         <h4><?= __('Devoluciones') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Articulo Id') ?></th>
+                <th scope="col"><?= __('Articulo') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($proceso->devoluciones as $devoluciones): ?>
             <tr>
-                <td><?= h($devoluciones->articulo_id) ?></td>
+                <td><?= $this->Html->link($devoluciones->art, ['controller' => 'Articulos', 'action' => 'view', $devoluciones->articulo_id]) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Devoluciones', 'action' => 'view', $devoluciones->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Devoluciones', 'action' => 'edit', $devoluciones->id]) ?>

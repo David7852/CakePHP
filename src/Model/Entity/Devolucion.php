@@ -18,6 +18,14 @@ use App\Controller\DevolucionesController;
 class Devolucion extends Entity
 {
 
+    protected function _getArt()
+    {
+        $c = new DevolucionesController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
+        return h($related->articulo->titulo);
+    }
     protected function _getEstado()
     {
         $c = new DevolucionesController();

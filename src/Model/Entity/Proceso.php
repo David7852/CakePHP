@@ -31,10 +31,6 @@ class Proceso extends Entity
     {
         if(($this->_properties['estado']=='Pendiente'||$this->_properties['estado']=='Aprobado')&&$value=='Completado')
         {
-            $c = new ProcesosController();
-            $related=$c->getRelated($this->_properties['id']);
-            if($related==null)
-                return $value;
             $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
                 ->where(['proceso_id ='=>$this->_properties['id']])
                 ->andWhere(['rol ='=>'Solicitante']);
@@ -42,26 +38,28 @@ class Proceso extends Entity
                 return $value;
             foreach ($pro_tra as $solicitante)
             {
-                $trabajador=TableRegistry::get('Trabajador')->get($solicitante->trabajador_id);
-                if ($related->proceso->tipo != 'Devolucion')
+                $trabajador=TableRegistry::get('Trabajadores')->get($solicitante->trabajador_id);
+                if ($this->_properties['tipo'] != 'Devolucion')
                 {
                     $asig = TableRegistry::get('Asignaciones')->find('all')
-                    ->where(['proceso_id =' => $solicitante->proceso_id]);
+                    ->where(['proceso_id =' => $this->_properties['id']]);
                     if($trabajador->puesto_de_trabajo!=null&&($asig!=null&&!$asig->isEmpty()))
                         foreach ($asig as $a)
                         {
                             $articulo = TableRegistry::get('Articulos')->get($a->articulo_id);
                             $articulo->ubicacion = $trabajador->puesto_de_trabajo;
+                            TableRegistry::get('Articulos')->save($articulo);
                         }
                 }
-                if ($related->proceso->tipo != 'Asignacion'){
-                    $dev = TableRegistry::get('Devolucion')->find('all')
-                    ->where(['proceso_id =' => $solicitante->proceso_id]);
+                if ($this->_properties['tipo'] != 'Asignacion'){
+                    $dev = TableRegistry::get('Devoluciones')->find('all')
+                    ->where(['proceso_id =' => $this->_properties['id']]);
                     if($dev!=null&&!$dev->isEmpty())
                         foreach ($dev as $d)
                         {
                             $articulo = TableRegistry::get('Articulos')->get($d->articulo_id);
                             $articulo->ubicacion = 'Deposito IT';
+                            TableRegistry::get('Articulos')->save($articulo);
                         }
                 }
             }

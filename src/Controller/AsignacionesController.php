@@ -102,12 +102,39 @@ class AsignacionesController extends AppController
             $asignacion = $this->Asignaciones->patchEntity($asignacion, $this->request->data);
             if ($this->Asignaciones->save($asignacion)) {
                 $this->Flash->success(__('La asignacion ha sido guardada.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller'=>'Procesos','action' => 'view',$asignacion->proceso_id]);
             } else {
                 $this->Flash->error(__('La asignacion no pudo ser guardada. Intente nuevamente.'));
             }
         }
         $procesos = $this->Asignaciones->Procesos->find('list', ['limit' => 200]);
+        $articulos = $this->Asignaciones->Articulos->find('list', ['limit' => 200]);
+        $this->set(compact('asignacion', 'procesos', 'articulos'));
+        $this->set('_serialize', ['asignacion']);
+    }
+    /**
+     * Asociar method
+     *
+     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
+     */
+    public function asociar($id = null)
+    {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
+        $asignacion = $this->Asignaciones->newEntity();
+        if ($this->request->is('post')) {
+            $asignacion = $this->Asignaciones->patchEntity($asignacion, $this->request->data);
+            if ($this->Asignaciones->save($asignacion)) {
+                $this->Flash->success(__('La asignacion ha sido guardada.'));
+                return $this->redirect(['controller'=>'Procesos','action' => 'view',$id]);
+            } else {
+                $this->Flash->error(__('La asignacion no pudo ser guardada. Intente nuevamente.'));
+            }
+        }
+        $procesos = $this->Asignaciones->Procesos->find('list')
+            ->where(['id ='=>$id]);
         $articulos = $this->Asignaciones->Articulos->find('list', ['limit' => 200]);
         $this->set(compact('asignacion', 'procesos', 'articulos'));
         $this->set('_serialize', ['asignacion']);
