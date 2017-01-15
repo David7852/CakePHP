@@ -17,6 +17,7 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort(' ') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('motivo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Solicitante') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created',['label'=>'Fecha de Solicitud']) ?></th>
                 <th scope="col"><?= $this->Paginator->sort('fecha_de_aprobacion') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
@@ -26,17 +27,23 @@
             <?php foreach ($procesos as $proceso): ?>
             <tr>
                 <?php
-                $titulo=h($proceso->titulo);
-                if(strpos($titulo, 'Pendiente'))
+                $titulo= $proceso->tipo.' '.$proceso->estado;
+                if($proceso->tipo!='Mixto')
+                {
+                    if(substr($titulo,-1)=="o")
+                        $titulo=substr($titulo,0,-1)."a";
+                }
+                if($proceso->estado=='Pendiente')
                     echo "<td id='pendiente'>".$titulo."</td>";
-                if(strpos($titulo, 'Aprobado'))
+                if($proceso->estado=='Aprobado')
                     echo "<td id='aprobado'>".$titulo."</td>";
-                if(strpos($titulo, 'Rechazado'))
+                if($proceso->estado=='Rechazado')
                     echo "<td id='rechazado'>".$titulo."</td>";
-                if(strpos($titulo, 'Completado'))
+                if($proceso->estado=='Completado')
                     echo "<td id='completado'>".$titulo."</td>";
                 ?>
                 <td><?= h($proceso->motivo) ?></td>
+                <td><?= $proceso->solicitanteid!=null ? $this->Html->link($proceso->solicitante, ['controller'=> 'Trabajadores','action' => 'view', $proceso->solicitanteid]):'Sin solicitante' ?></td>
                 <td><?= h($proceso->created) ?></td>
                 <td>
                     <?php if($proceso->fecha_de_aprobacion!=''):?>

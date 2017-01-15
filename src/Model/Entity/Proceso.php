@@ -22,11 +22,46 @@ use Cake\ORM\TableRegistry;
  */
 class Proceso extends Entity
 {
+
+    protected function _getTitulo()
+    {
+        if($this->_properties['tipo']=='Asignacion')
+            return "de ".$this->_properties['tipo']." para ".$this->_getSolicitante();
+        return "de ".$this->_properties['tipo']." de ".$this->_getSolicitante();
+    }
+    protected function _getSolicitante()
+    {
+        $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+            ->where(['proceso_id ='=>$this->_properties['id']])
+            ->andWhere(['rol ='=>'Solicitante']);
+        if($pro_tra==null||$pro_tra->isEmpty())
+            return 'Sin solicitante';
+        $solicitantes='';
+        foreach ($pro_tra as $solicitante)
+        {
+            if($solicitantes!='')
+                $solicitantes=$solicitantes.', ';
+            $trabajador=TableRegistry::get('Trabajadores')->get($solicitante->trabajador_id);
+            $solicitantes=$trabajador->nombre.' '.$trabajador->apellido;
+        }
+        return $solicitantes;
+    }
+    protected function _getSolicitanteid()
+    {
+        $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+            ->where(['proceso_id ='=>$this->_properties['id']])
+            ->andWhere(['rol ='=>'Solicitante']);
+        if($pro_tra==null||$pro_tra->isEmpty())
+            return null;
+        return $pro_tra->first()->trabajador_id;
+    }
+
     protected function _setModified($value){
         if($this->fecha_de_aprobacion==''&&($this->estado=='Aprobado'||$this->estado=='Completado'))
             $this->fecha_de_aprobacion=$value;
         return $value;
     }
+
     protected function _setEstado($value)
     {
         if(($this->_properties['estado']=='Pendiente'||$this->_properties['estado']=='Aprobado')&&$value=='Completado')
@@ -63,15 +98,8 @@ class Proceso extends Entity
                         }
                 }
             }
-        }/*else
-            if($this->_properties['estado']=='Pendiente'&&$value=='Aprobado'){
-
-            }*/
+        }
         return $value;
-    }
-    protected function _getTitulo()
-    {
-        return $this->_properties['tipo']." ".$this->_properties['estado'];
     }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

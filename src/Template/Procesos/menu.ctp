@@ -14,35 +14,42 @@
     <h3><?= __('Procesos') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort(' ') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('motivo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created',['label'=>'Fecha de Solicitud']) ?></th>
-                <th scope="col"><?= $this->Paginator->sort('fecha_de_aprobacion') ?></th>
-                <th scope="col" class="actions"><?= __('Acciones') ?></th>
-            </tr>
+        <tr>
+            <th scope="col"><?= $this->Paginator->sort(' ') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('motivo') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('Solicitante') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('created',['label'=>'Fecha de Solicitud']) ?></th>
+            <th scope="col"><?= $this->Paginator->sort('fecha_de_aprobacion') ?></th>
+            <th scope="col" class="actions"><?= __('Acciones') ?></th>
+        </tr>
         </thead>
         <tbody>
-            <?php foreach ($procesos as $proceso): ?>
+        <?php foreach ($procesos as $proceso): ?>
             <tr>
                 <?php
-                    $titulo=h($proceso->titulo);
-                    if(strpos($titulo, 'Pendiente'))
-                        echo "<td id='pendiente'>".$titulo."</td>";
-                    if(strpos($titulo, 'Aprobado'))
-                        echo "<td id='aprobado'>".$titulo."</td>";
-                    if(strpos($titulo, 'Rechazado'))
-                        echo "<td id='rechazado'>".$titulo."</td>";
-                    if(strpos($titulo, 'Completado'))
-                        echo "<td id='completado'>".$titulo."</td>";
+                $titulo= $proceso->tipo.' '.$proceso->estado;
+                if($proceso->tipo!='Mixto')
+                {
+                    if(substr($titulo,-1)=="o")
+                        $titulo=substr($titulo,0,-1)."a";
+                }
+                if($proceso->estado=='Pendiente')
+                    echo "<td id='pendiente'>".$titulo."</td>";
+                if($proceso->estado=='Aprobado')
+                    echo "<td id='aprobado'>".$titulo."</td>";
+                if($proceso->estado=='Rechazado')
+                    echo "<td id='rechazado'>".$titulo."</td>";
+                if($proceso->estado=='Completado')
+                    echo "<td id='completado'>".$titulo."</td>";
                 ?>
                 <td><?= h($proceso->motivo) ?></td>
+                <td><?= $proceso->solicitanteid!=null ? $this->Html->link($proceso->solicitante, ['controller'=> 'Trabajadores','action' => 'view', $proceso->solicitanteid]):'Sin solicitante' ?></td>
                 <td><?= h($proceso->created) ?></td>
                 <td>
                     <?php if($proceso->fecha_de_aprobacion!=''):?>
-                    <?= h($proceso->fecha_de_aprobacion) ?>
+                        <?= h($proceso->fecha_de_aprobacion) ?>
                     <?php else: ?>
-                    <?= h('Sin aprobar') ?>
+                        <?= h('Sin aprobar') ?>
                     <?php endif; ?>
                 </td>
                 <td class="actions">
@@ -51,7 +58,7 @@
                     <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $proceso->id], ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $proceso->titulo)]) ?>
                 </td>
             </tr>
-            <?php endforeach; ?>
+        <?php endforeach; ?>
         </tbody>
     </table>
     <div class="paginator">

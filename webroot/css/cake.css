@@ -1366,6 +1366,18 @@ table tbody tr td figure img {
     text-shadow: 0 0 2px rgba(10,105,100,0.4);
     text-align: left;
 }
+#asignacion{
+    color: #24a65c;
+    text-shadow: 0 0 2px rgba(10,105,100,0.4);
+    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07);
+    border-radius: 4px;
+}
+#devolucion{
+    color: rgba(195, 35, 45, 0.82);
+    text-shadow: 0 0 2px rgba(190,20,22,0.4);
+    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07);
+    border-radius: 4px;
+}
 
 /* latin-ext */
 @font-face {

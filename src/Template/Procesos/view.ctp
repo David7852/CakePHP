@@ -2,9 +2,11 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Acciones') ?></li>
-        <li><?= $this->Html->link(__('Asociar Asignacion'), ['controller' => 'Asignaciones', 'action' => 'asociar',$proceso->id],['id'=>'aprobado']) ?> </li>
-        <li><?= $this->Html->link(__('Asociar Devolucion'), ['controller' => 'Devoluciones', 'action' => 'asociar',$proceso->id],['id'=>'rechazado']) ?> </li>
-
+        <?php if($proceso->tipo!='Devolucion'): ?>
+            <li><?= $this->Html->link(__('Asociar Asignacion'), ['controller' => 'Asignaciones', 'action' => 'asociar',$proceso->id],['id'=>'asignacion']) ?> </li>
+        <?php endif; if($proceso->tipo!='Asignacion'):?>
+            <li><?= $this->Html->link(__('Asociar Devolucion'), ['controller' => 'Devoluciones', 'action' => 'asociar',$proceso->id],['id'=>'devolucion']) ?> </li>
+        <?php endif; ?>
         <li><?= $this->Html->link(__('Editar este Proceso'), ['action' => 'edit', $proceso->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Eliminar este Proceso'), ['action' => 'delete', $proceso->id], ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $proceso->titulo)]) ?> </li>
         <li><?= $this->Html->link(__('Listar Procesos'), ['action' => 'index']) ?> </li>
@@ -16,12 +18,11 @@
     </ul>
 </nav>
 <div class="procesos view large-9 medium-8 columns content">
-    <h3><?= 'Proceso '.h($proceso->motivo) ?></h3>
+    <div class="row">
+        <h3><?= h(ucfirst($proceso->motivo)) ?></h3>
+        <?= $this->Text->autoParagraph(h($proceso->observaciones)); ?>
+    </div>
     <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Motivo') ?></th>
-            <td><?= h($proceso->motivo) ?></td>
-        </tr>
         <tr>
             <th scope="row"><?= __('Fecha De Solicitud') ?></th>
             <td><?= h($proceso->created) ?></td>
@@ -46,10 +47,7 @@
         </tr>
     </table>
 
-    <div class="row">
-        <h4><?= __('Observaciones') ?></h4>
-        <?= $this->Text->autoParagraph(h($proceso->observaciones)); ?>
-    </div>
+
     <?php if (!empty($proceso->asignaciones)): ?>
     <div class="related">
         <h4><?= __('Asignaciones') ?></h4>
@@ -96,11 +94,11 @@
         </table>
     </div>
     <?php elseif($proceso->tipo=='Devolucion'||$proceso->tipo=='Mixto'): ?>
-        <h3><?= h('El proceso aun no tiene Devoluciones.') ?></h3>
+        <h4><?= h('El proceso aun no tiene Devoluciones.') ?></h4>
     <?php endif; ?>
     <?php if (!empty($proceso->trabajadores)): ?>
     <div class="related">
-        <h3><?= __('Personal involucrado:') ?></h3>
+        <h4><?= __('Personal involucrado:') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <!-- Aca podria ir el rol del trabajador -->
@@ -109,8 +107,6 @@
                 <th scope="col"><?= __('Cedula') ?></th>
                 <th scope="col"><?= __('Gerencia') ?></th>
                 <th scope="col"><?= __('Cargo') ?></th>
-                <th scope="col"><?= __('Sede') ?></th>
-                <th scope="col"><?= __('Numero De Oficina') ?></th>
                 <th scope="col"><?= __('Telefono Personal') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
@@ -122,19 +118,9 @@
                 <td><?= h($trabajadores->cedula) ?></td>
                 <td><?= h($trabajadores->gerencia) ?></td>
                 <td><?= h($trabajadores->cargo) ?></td>
-                <td>
-                    <?php if ($trabajadores->sede==0): ?>
-                        <?= h('Sede del complejo Jose') ?>
-                    <?php else: ?>
-                        <?= h('Sede edificio Laguna') ?>
-                    <?php endif; ?>
-                </td>
-                <td><?= h($trabajadores->puesto_de_trabajo) ?></td>
                 <td><?= h($trabajadores->telefono_personal) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Trabajadores', 'action' => 'view', $trabajadores->id]) ?>
-                    <?= $this->Html->link(__('Editar'), ['controller' => 'Trabajadores', 'action' => 'edit', $trabajadores->id]) ?>
-                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Trabajadores', 'action' => 'delete', $trabajadores->id], ['confirm' => __('¿Confirma querer eliminar al trabajador {0}?', $trabajadores->titulo)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

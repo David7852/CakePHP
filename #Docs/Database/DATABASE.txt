@@ -70,7 +70,7 @@ create table if not exists procesos (
 create table if not exists procesos_trabajadores(
   trabajador_id integer unsigned not null,
   proceso_id integer unsigned not null,
-  rol enum("Solicitante","Supervisor","Encargado"),
+  rol enum("Solicitante","Supervisor","Encargado") default "Encargado",
   primary key (trabajador_id,proceso_id));
 
 create table if not exists contratos (

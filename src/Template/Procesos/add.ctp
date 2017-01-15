@@ -22,6 +22,7 @@
                         'Mixto'=>'Mixto'];
             echo $this->Form->input('tipo',array('options'=>$options,'empty'=>false,'escape'=>false));
             echo $this->Form->input('trabajadores._ids', ['options' => $trabajadores]);
+            echo $this->Form->input('trabajadores._ids', ['options' => $trabajadores]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Aceptar')) ?>

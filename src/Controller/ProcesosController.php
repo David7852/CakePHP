@@ -126,8 +126,11 @@ class ProcesosController extends AppController
                 $this->Flash->error(__('El proceso no pudo ser guardado. Intente nuevamente.'));
             }
         }
-        $trabajadores = $this->Procesos->Trabajadores->find('list', ['limit' => 200]);
-        $this->set(compact('proceso', 'trabajadores'));
+        $trabajadores = $this->Procesos->Trabajadores->find('list')
+            ->where(['gerencia =' => 'IT'])
+            ->andWhere(['id !='=>$this->request->session()->read('Auth.User.trabajador_id')]);
+        $solicitantes= $this->Procesos->Trabajadores->find('list', ['limit' => 200]);
+        $this->set(compact('proceso', 'trabajadores', 'solicitantes'));
         $this->set('_serialize', ['proceso']);
     }
 
@@ -143,23 +146,80 @@ class ProcesosController extends AppController
         if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
             $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
             return $this->redirect($this->referer());
+        }else
+        {
+            $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                ->where(['proceso_id ='=>$id])
+                ->andWhere(['trabajador_id =' => $this->request->session()->read('Auth.User.trabajador_id')])
+                ->andWhere(['rol ='=>'Solicitante']);
+            if($pro_tra!=null&&!$pro_tra->isEmpty()){
+                $this->Flash->error(__('Usted es el solicitante de este proceso, por tanto no puede editarlo'));
+                return $this->redirect($this->referer());
+            }
+            $solicitantes=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                ->where(['proceso_id ='=>$id])
+                ->andWhere(['rol ='=>'Solicitante']);
+            $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                ->where(['proceso_id ='=>$id])
+                ->andWhere(['rol ='=>'Supervisor']);
+            if(($pro_tra!=null&&!$pro_tra->isEmpty())&&$pro_tra->first()->trabajador_id!=$this->request->session()->read('Auth.User.trabajador_id')){
+                $this->Flash->error(__('Usted no es el supervisor encargado de este proceso y por tanto no puede editarlo.'));
+                return $this->redirect($this->referer());
+            }
         }
         $proceso = $this->Procesos->get($id, [
             'contain' => ['Trabajadores']
         ]);
+        $trabajadores = $this->Procesos->Trabajadores->find('list')
+            ->where(['gerencia =' => 'IT'])
+            ->andWhere(['id !='=>$this->request->session()->read('Auth.User.trabajador_id')]);
+        $this->set(compact('proceso', 'trabajadores'));
+        $this->set('_serialize', ['proceso']);
+        $oldstate=$proceso->estado;
+        if($solicitantes!=null&&!$solicitantes->isEmpty())
         if ($this->request->is(['patch', 'post', 'put'])) {
             $proceso = $this->Procesos->patchEntity($proceso, $this->request->data);
-            if ($this->Procesos->save($proceso)) {
+            if ($this->Procesos->save($proceso))
+            {
+                $s=TableRegistry::get('ProcesosTrabajadores')->newEntity();
+                $s=TableRegistry::get('ProcesosTrabajadores')->patchEntity($s,
+                    [
+                        'trabajador_id'=>$solicitantes->first()->trabajador_id,
+                        'proceso_id'=>$id,
+                        'rol'=>'Solicitante',
+                    ]);
+                TableRegistry::get('ProcesosTrabajadores')->save($s, ['checkExisting' => false]);
+                $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                    ->where(['proceso_id ='=>$id])
+                    ->andWhere(['rol ='=>'Supervisor']);
+                if(($oldstate=='Pendiente'&&$this->request->data['estado']!='Pendiente')&&($pro_tra==null||$pro_tra->isEmpty()))
+                {
+                    $p_t=TableRegistry::get('ProcesosTrabajadores')->newEntity();
+                    $p_t=TableRegistry::get('ProcesosTrabajadores')->patchEntity($p_t,
+                        [
+                            'trabajador_id'=>$this->request->session()->read('Auth.User.trabajador_id'),
+                            'proceso_id'=>$id,
+                            'rol'=>'Supervisor',
+                        ]);
+                    TableRegistry::get('ProcesosTrabajadores')->save($p_t);
+                }elseif($pro_tra==null||$pro_tra->isEmpty()&&$this->request->data['estado']!='Pendiente')
+                {
+                    $p_t=TableRegistry::get('ProcesosTrabajadores')->newEntity();
+                    $p_t=TableRegistry::get('ProcesosTrabajadores')->patchEntity($p_t,
+                        [
+                            'trabajador_id'=>$this->request->session()->read('Auth.User.trabajador_id'),
+                            'proceso_id'=>$id,
+                            'rol'=>'Supervisor',
+                        ]);
+                    TableRegistry::get('ProcesosTrabajadores')->save($p_t);
+                }
                 $this->Flash->success(__('Los cambios en el proceso fueron registrados.'));
-
                 return $this->redirect(['action' => 'index']);
-            } else {
+            } else
+            {
                 $this->Flash->error(__('Los cambios no pudieron guardarse. Intente nuevamente.'));
             }
         }
-        $trabajadores = $this->Procesos->Trabajadores->find('list', ['limit' => 200]);
-        $this->set(compact('proceso', 'trabajadores'));
-        $this->set('_serialize', ['proceso']);
     }
 
     /**
