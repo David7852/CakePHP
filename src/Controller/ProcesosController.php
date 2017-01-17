@@ -83,12 +83,16 @@ class ProcesosController extends AppController
      */
     public function view($id = null)
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador')
+        {
             $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
                 ->where(['proceso_id ='=>$id])
                 ->andWhere(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')]);
             if($pro_tra==null||$pro_tra->isEmpty()){
-                $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+                if($this->request->session()->read('Auth.User.funcion')=='Operador')
+                    $this->Flash->error(__('Usted no esta asignado a este proceso y por tanto no puede verlo en detalle.'));
+                else
+                    $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
                 return $this->redirect($this->referer());
             }
         }
@@ -118,9 +122,25 @@ class ProcesosController extends AppController
         $proceso = $this->Procesos->newEntity();
         if ($this->request->is('post')) {
             $proceso = $this->Procesos->patchEntity($proceso, $this->request->data);
-            if ($this->Procesos->save($proceso)) {
+            if ($this->request->data['solicitantes']!=null&&$this->Procesos->save($proceso))
+            {
+                $p_t=TableRegistry::get('ProcesosTrabajadores')->newEntity();
+                $p_t=TableRegistry::get('ProcesosTrabajadores')->patchEntity($p_t,
+                    [
+                        'trabajador_id'=>$this->request->session()->read('Auth.User.trabajador_id'),
+                        'proceso_id'=>$proceso->id,
+                        'rol'=>'Supervisor',
+                    ]);
+                TableRegistry::get('ProcesosTrabajadores')->save($p_t);
+                $p_t=TableRegistry::get('ProcesosTrabajadores')->newEntity();
+                $p_t=TableRegistry::get('ProcesosTrabajadores')->patchEntity($p_t,
+                    [
+                        'trabajador_id'=>$this->request->data['solicitantes'],
+                        'proceso_id'=>$proceso->id,
+                        'rol'=>'Solicitante',
+                    ]);
+                TableRegistry::get('ProcesosTrabajadores')->save($p_t);
                 $this->Flash->success(__('El proceso fue registrado.'));
-
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('El proceso no pudo ser guardado. Intente nuevamente.'));
@@ -132,6 +152,11 @@ class ProcesosController extends AppController
         $solicitantes= $this->Procesos->Trabajadores->find('list', ['limit' => 200]);
         $this->set(compact('proceso', 'trabajadores', 'solicitantes'));
         $this->set('_serialize', ['proceso']);
+    }
+
+    public function asociarequipo()
+    {
+
     }
 
     /**
@@ -173,22 +198,26 @@ class ProcesosController extends AppController
         $trabajadores = $this->Procesos->Trabajadores->find('list')
             ->where(['gerencia =' => 'IT'])
             ->andWhere(['id !='=>$this->request->session()->read('Auth.User.trabajador_id')]);
+        //!!!!!no mostrar solicitante, quitarlos de la lista...
         $this->set(compact('proceso', 'trabajadores'));
         $this->set('_serialize', ['proceso']);
         $oldstate=$proceso->estado;
-        if($solicitantes!=null&&!$solicitantes->isEmpty())
         if ($this->request->is(['patch', 'post', 'put'])) {
             $proceso = $this->Procesos->patchEntity($proceso, $this->request->data);
             if ($this->Procesos->save($proceso))
-            {
+            {//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!revisar si desetea cuando desmarco el user
                 $s=TableRegistry::get('ProcesosTrabajadores')->newEntity();
                 $s=TableRegistry::get('ProcesosTrabajadores')->patchEntity($s,
                     [
                         'trabajador_id'=>$solicitantes->first()->trabajador_id,
                         'proceso_id'=>$id,
                         'rol'=>'Solicitante',
-                    ]);
-                TableRegistry::get('ProcesosTrabajadores')->save($s, ['checkExisting' => false]);
+                    ]);//!!!!!!
+                $solicitantes=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                    ->where(['proceso_id ='=>$id])
+                    ->andWhere(['rol ='=>'Solicitante']);
+                if($solicitantes!=null&&!$solicitantes->isEmpty())
+                    TableRegistry::get('ProcesosTrabajadores')->save($s);
                 $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
                     ->where(['proceso_id ='=>$id])
                     ->andWhere(['rol ='=>'Supervisor']);

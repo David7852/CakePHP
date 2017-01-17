@@ -15,13 +15,13 @@
     <fieldset>
         <legend><?= __('Nuevo proceso') ?></legend>
         <?php
-            echo $this->Form->input('motivo');
-            echo $this->Form->input('observaciones');
-            $options = ['Asignacion'=>'Asignacion',
-                        'Devolucion'=>'Devolucion',
-                        'Mixto'=>'Mixto'];
-            echo $this->Form->input('tipo',array('options'=>$options,'empty'=>false,'escape'=>false));
-            echo $this->Form->input('solicitantes', ['options' => $trabajadores,'label'=>'Solicitante o beneficiado']);
+        echo $this->Form->input('motivo');
+        echo $this->Form->input('observaciones');
+        $options = ['Asignacion'=>'Asignacion',
+            'Devolucion'=>'Devolucion',
+            'Mixto'=>'Mixto'];
+        echo $this->Form->input('tipo',array('options'=>$options,'empty'=>false,'escape'=>false));
+        echo $this->Form->input('solicitantes', ['options' => $trabajadores,'label'=>'Solicitante o beneficiado']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Aceptar')) ?>

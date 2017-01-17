@@ -3,7 +3,7 @@ namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 use App\Controller\ArticulosController;
-
+use Cake\ORM\TableRegistry;
 /**
  * Articulo Entity
  *
@@ -31,8 +31,21 @@ class Articulo extends Entity
         $related=$c->getRelated($this->_properties['id']);
         if($related==null)
             return '';
-        return  h($related->modelo->tipo)." S/N: ".$this->_properties['serial'];
-    }//ubicacion deberia tener un metodo set o get tal que cuando se asigne un articulo a alguien cambie a la ubicacion de la persona.
+        $tit=h($related->modelo->tipo).", S/N: ".$this->_properties['serial'];
+        if( strcasecmp ( $related->modelo->tipo ,'Celular' )||strcasecmp ( $related->modelo->tipo ,'Telefono' )||strcasecmp ( $related->modelo->tipo ,'Smartphone' ))
+        {
+           $l='';
+           $asig_lineas=TableRegistry::get('Lineas')->find('all')->where(['articulo_id ='=>$this->_properties['id']]);
+           foreach ($asig_lineas as $linea)
+           {
+               if($l!='')
+                   $l=$l.',';
+               $l=$l.' ('.$linea->numero.')';
+           }
+           return $tit.' '.$l;
+        }
+        return  $tit;
+    }
 
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

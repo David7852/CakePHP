@@ -122,6 +122,15 @@ class AsignacionesController extends AppController
         if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
             $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
             return $this->redirect($this->referer());
+        }else{
+            $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                ->where(['proceso_id ='=>$id])
+                ->andWhere(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')])
+                ->andwhere(['rol !=' => 'Solicitante']);
+            if($pro_tra==null||$pro_tra->isEmpty()){
+                $this->Flash->error(__('Usted no esta asignado a este proceso y por tanto no puede realizar asociaciones.'));
+                return $this->redirect($this->referer());
+            }
         }
         $asignacion = $this->Asignaciones->newEntity();
         if ($this->request->is('post')) {
@@ -133,9 +142,23 @@ class AsignacionesController extends AppController
                 $this->Flash->error(__('La asignacion no pudo ser guardada. Intente nuevamente.'));
             }
         }
+        $procesos = $this->Asignaciones->Procesos->find('all')
+        ->where(['estado ='=>'Aprobado'])
+        ->orWhere(['estado ='=>'Completado']);
+        $articulos = array();
+        foreach ($procesos as $proc)
+        {
+            $asig=TableRegistry::get('Asignaciones')->find('all')
+                ->where(['proceso_id ='=>$proc->proceso_id])
+                ->andWhere(['hasta >='=>date('Y-m-d')]);
+            foreach ($asig as $as) {
+                array_push($articulos, $as->articulo_id);
+            }
+        }
+        if(!empty($articulos))
+            $articulos = $this->Asignaciones->Articulos->find('list',array('conditions'=>array('Articulos.id NOT IN'=>$articulos)));
         $procesos = $this->Asignaciones->Procesos->find('list')
             ->where(['id ='=>$id]);
-        $articulos = $this->Asignaciones->Articulos->find('list', ['limit' => 200]);
         $this->set(compact('asignacion', 'procesos', 'articulos'));
         $this->set('_serialize', ['asignacion']);
     }

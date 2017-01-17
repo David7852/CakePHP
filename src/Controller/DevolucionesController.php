@@ -120,6 +120,15 @@ class DevolucionesController extends AppController
         if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
             $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
             return $this->redirect($this->referer());
+        }else{
+            $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                ->where(['proceso_id ='=>$id])
+                ->andWhere(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')])
+                ->andwhere(['rol !=' => 'Solicitante']);
+            if($pro_tra==null||$pro_tra->isEmpty()){
+                $this->Flash->error(__('Usted no esta asignado a este proceso y por tanto no puede realizar asociaciones.'));
+                return $this->redirect($this->referer());
+            }
         }
         $devolucion = $this->Devoluciones->newEntity();
         if ($this->request->is('post')) {
@@ -133,7 +142,25 @@ class DevolucionesController extends AppController
         }
         $procesos = $this->Devoluciones->Procesos->find('list')
         ->where(['id ='=>$id]);
-        $articulos = $this->Devoluciones->Articulos->find('list', ['limit' => 200]);
+        $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+            ->where(['proceso_id ='=>$id])
+            ->andWhere(['rol ='=>'Solicitante']);
+        $solicitante_id=$pro_tra->first()->trabajador_id;
+        $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+            ->where(['trabajador_id ='=>$solicitante_id])
+            ->andWhere(['rol ='=>'Solicitante']);
+        $articulos = array();
+        foreach ($pro_tra as $proc)
+        {
+            $asig=TableRegistry::get('Asignaciones')->find('all')
+                ->where(['proceso_id ='=>$proc->proceso_id])
+                ->andWhere(['hasta >='=>date('Y-m-d')]);
+            foreach ($asig as $as) {
+                array_push($articulos, $as->articulo_id);
+            }
+        }
+        if(!empty($articulos))
+            $articulos=$this->Devoluciones->Articulos->find('list',array('conditions'=>array('Articulos.id IN'=>$articulos)));
         $this->set(compact('devolucion', 'procesos', 'articulos'));
         $this->set('_serialize', ['devolucion']);
     }

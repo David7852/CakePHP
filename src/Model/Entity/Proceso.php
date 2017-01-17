@@ -98,7 +98,18 @@ class Proceso extends Entity
                         }
                 }
             }
+        }elseif($this->_properties['estado']!='Completado'&&$value=='Rechazado')//!!!!!!! testear
+        {
+            $asig=TableRegistry::get('Asignaciones')->find('all')
+                ->where(['proceso_id ='=>$this->_properties['id']]);
+            foreach ($asig as $nacion)
+                TableRegistry::get('Asignaciones')->delete($nacion);
+            $dev=TableRegistry::get('Devoluciones')->find('all')
+                ->where(['proceso_id ='=>$this->_properties['id']]);
+            foreach ($dev as $olucion)
+                TableRegistry::get('Devoluciones')->delete($olucion);
         }
+
         return $value;
     }
     /**

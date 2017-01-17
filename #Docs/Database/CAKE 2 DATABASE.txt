@@ -1,0 +1,267 @@
+set global event_scheduler="on";
+create database if not exists fertinv character set utf8 collate utf8_unicode_ci;
+use fertinv;
+SET time_zone = "-04:00";
+
+create table if not exists articulos (
+  id integer unsigned auto_increment primary key,
+  serial varchar(50) unique not null,
+  modelo_id integer unsigned,
+  datos varchar(200),
+  ubicacion varchar(50),
+  estado enum("Nuevo","Usado","Roto","Reparado","Obsoleto") default "Nuevo",
+  fecha_de_compra date,
+  created datetime default null,
+  modified datetime default null);
+
+create table if not exists modelos (
+  id integer unsigned auto_increment primary key,
+  marca varchar(25) not null,
+  modelo varchar(50) not null,
+  tipo_de_articulo varchar(50) not null,
+  serial_comun varchar(50),
+  imagen text,
+  abstracto varchar(25),
+  created datetime default null,
+  modified datetime default null);
+
+create table if not exists asignaciones (
+  id integer unsigned auto_increment primary key,
+  titulo varchar(255),
+  proceso_id integer unsigned not null,
+  articulo_id integer unsigned not null,
+  hasta date,
+  created datetime default null,
+  modified datetime default null);
+
+create table if not exists devoluciones (
+  id integer unsigned auto_increment primary key,
+  titulo varchar(255),
+  proceso_id integer unsigned not null,
+  articulo_id integer unsigned not null,
+  created datetime default null,
+  modified datetime default null);
+
+create table if not exists trabajadores (
+  id integer unsigned auto_increment primary key,
+  nombre varchar(50) not null,
+  apellido varchar(50) not null,
+  cedula varchar(8) unique not null,
+  sexo enum ("M","F") default null,
+  gerencia varchar(50) not null,
+  cargo varchar(50) not null,
+  area varchar(50),
+  sede smallint default 0,
+  puesto_de_trabajo varchar(50),
+  telefono_personal varchar(20),
+  rif varchar(15),
+  residencia varchar(200),
+  created datetime default null,
+  modified datetime default null);
+
+create table if not exists procesos (
+  id integer unsigned auto_increment primary key,
+  titulo varchar(255),
+  motivo varchar(255),
+  tipo enum("Asignacion","Devolucion","Mixto") default "Asignacion",
+  fecha_de_aprobacion date,
+  estado enum("Pendiente","Aprobado","Rechazado","Completado") default "Pendiente",
+  observaciones text,
+  created datetime default null,
+  modified datetime default null);
+
+create table if not exists procesos_trabajadores(
+  trabajador_id integer unsigned not null,
+  proceso_id integer unsigned not null,
+  rol enum("Solicitante","Supervisor","Encargado"),
+  primary key (trabajador_id,proceso_id));
+
+create table if not exists contratos (
+  id integer unsigned auto_increment primary key,
+  titulo varchar(255),
+  trabajador_id integer unsigned not null,
+  fecha_de_inicio date not null,
+  fecha_de_culminacion date,
+  tipo_de_contrato enum("Temporal","Permanente") default "Temporal",/*agregar faltantes*/
+  created datetime default null,
+  modified datetime default null);
+
+create table if not exists accesorios (
+  id integer unsigned auto_increment primary key,
+  descripcion varchar(25) not null,
+  estado enum("Nuevo","Usado","Roto","Reparado","Obsoleto") default "Nuevo",
+  articulo_id integer unsigned,
+  created datetime default null,
+  modified datetime default null);
+
+create table if not exists rentas (
+  id integer unsigned auto_increment primary key,
+  nombre varchar(50) not null,
+  monto_basico float default 0,
+  operadora enum("Movilnet","Movistar") default "Movilnet",
+  created datetime default null,
+  modified datetime default null);
+
+create table if not exists lineas_rentas (
+  linea_id integer unsigned not null,
+  renta_id integer unsigned not null,
+  primary key (linea_id,renta_id));
+
+create table if not exists servicios (
+  id integer unsigned auto_increment primary key,
+  nombre varchar(50) not null,
+  cupo varchar(20) not null,
+  renta_id integer unsigned not null,
+  created datetime default null,
+  modified datetime default null);
+
+create table if not exists consumos (
+  id integer unsigned auto_increment primary key,
+  titulo varchar(255),
+  factura_id integer unsigned not null,
+  servicio_id integer unsigned not null,
+  cupo varchar(20) default "0",
+  consumido varchar(20) default "0",
+  excedente varchar(20) default "0",
+  monto_bs float unsigned not null,
+  created datetime default null,
+  modified datetime default null);
+
+create table if not exists facturas (
+  id integer unsigned auto_increment primary key,
+  titulo varchar(255),
+  linea_id integer unsigned not null,
+  paguese_antes_de date,
+  balance float unsigned not null default 0,
+  desde date not null,
+  hasta date not null,
+  numero_de_cuenta varchar(25),
+  created datetime default null,
+  modified datetime default null);
+
+create table if not exists lineas (
+  id integer unsigned auto_increment primary key,
+  operadora enum("Movilnet","Movistar") not null default "Movilnet",
+  numero varchar(20) not null,
+  puk integer unsigned,
+  pin integer unsigned,
+  codigo_sim varchar(25),
+  articulo_id integer unsigned,
+  estado enum("Activa","Inactiva","Suspendida","Perdida") default "Inactiva",
+  observaciones varchar(140),
+  created datetime default null,
+  modified datetime default null);
+
+create table if not exists usuarios(
+  id integer unsigned auto_increment primary key,
+  nombre_de_usuario varchar(25) unique not null,
+  email varchar(50) unique not null,
+  clave varchar(255) not null,
+  funcion enum("Superadministrador","Administrador","Operador","Visitante") default "Visitante",
+  trabajador_id integer unsigned,
+  imagen text,
+  created datetime default null,
+  modified datetime default null);
+
+/*relaciones*/
+
+alter table accesorios add index `articulos_asociados` (articulo_id);
+alter table accesorios
+  add foreign key (articulo_id) references articulos (id) on delete cascade on update cascade;
+
+alter table articulos add index `marca_y_modelo` (modelo_id);
+alter table articulos
+  add foreign key (modelo_id) references modelos (id) on delete restrict on update cascade;
+
+alter table asignaciones add index `articulo_asignado` (articulo_id);
+alter table asignaciones
+  add foreign key (articulo_id) references articulos (id) on delete restrict on update cascade;
+alter table asignaciones add index `parte_del_proceso` (proceso_id);
+alter table asignaciones
+  add foreign key (proceso_id) references procesos (id) on delete cascade	on update cascade;
+
+alter table devoluciones add index `articulo_devuelto` (articulo_id);
+alter table devoluciones
+  add foreign key (articulo_id) references articulos (id) on delete restrict on update cascade;
+alter table devoluciones add index `parte_del_proceso` (proceso_id);
+alter table devoluciones
+  add foreign key (proceso_id) references procesos (id) on delete cascade on update cascade;
+
+alter table procesos_trabajadores
+  add foreign key (trabajador_id) references trabajadores (id) on delete restrict on update cascade;
+alter table procesos_trabajadores
+  add foreign key (proceso_id) references procesos (id) on delete restrict on update cascade;
+
+alter table contratos add index `trabajador_contratado` (trabajador_id);
+alter table contratos
+  add foreign key (trabajador_id) references trabajadores (id) on delete restrict on update cascade;
+
+alter table lineas add index `equipo_de_linea` (articulo_id);
+alter table lineas
+  add foreign key (articulo_id) references articulos (id) on delete restrict on update cascade;
+
+alter table facturas add index `linea_de_factura` (linea_id);
+alter table facturas
+  add foreign key (linea_id) references lineas (id) on delete restrict on update cascade;
+
+alter table consumos add index `consumo_de` (factura_id);
+alter table consumos
+  add foreign key (factura_id) references facturas (id) on delete restrict on update cascade;
+alter table consumos add index `consumo_del_servicio` (servicio_id);
+alter table consumos
+  add foreign key (servicio_id) references servicios (id) on delete restrict on update cascade;
+
+alter table servicios add index `servicio_de_renta` (renta_id);
+alter table servicios
+  add foreign key (renta_id) references rentas (id) on delete restrict on update cascade;
+
+alter table lineas_rentas
+  add foreign key (linea_id) references lineas (id) on delete restrict on update cascade;
+alter table lineas_rentas
+  add foreign key (renta_id) references rentas (id) on delete restrict on update cascade;
+
+alter table usuarios add index `datos_de_usuario`(trabajador_id);
+alter table usuarios
+  add foreign key (trabajador_id) references  trabajadores (id) on delete cascade on update cascade;
+
+/*
+
+** * **
+<v 3.0>
+** * **
+
+create table if not exists softwares (
+  id integer unsigned primary key,
+  nombre varchar(25) not null,
+  descripcion varchar(50),
+  version varchar(25),
+  imagen text,
+  estado char(1),
+  created datetime default null,
+  modified datetime default null);
+
+create table if not exists instalaciones (
+  id integer unsigned primary key,
+  titulo varchar(255),
+  articulo_id integer unsigned not null,
+  software_id integer unsigned not null,
+  fecha_de_instalacion date not null,
+  licencia varchar(50),
+  licencia_valida_hasta date not null,
+  nombre_de_usuario varchar(50),
+  costo integer unsiged not null,
+  created datetime default null,
+  modified datetime default null);
+
+alter table instalaciones add index `programa` (software_id);
+alter table instalaciones
+  add foreing key (software_id) references softwares (id) on delete cascade on update cascade;
+alter table instalaciones add index `instalado_en` (articulo_id);
+alter table instalaciones
+  add foreing key (articulo_id) references articulos (id) on delete cascade on update cascade;
+
+** * **
+</v 3.0>
+** * **
+
+****/
