@@ -26,8 +26,8 @@ class Proceso extends Entity
     protected function _getTitulo()
     {
         if($this->_properties['tipo']=='Asignacion')
-            return "de ".$this->_properties['tipo']." para ".$this->_getSolicitante();
-        return "de ".$this->_properties['tipo']." de ".$this->_getSolicitante();
+            return $this->_properties['tipo']." para ".$this->_getSolicitante();
+        return $this->_properties['tipo']." de ".$this->_getSolicitante();
     }
     protected function _getSolicitante()
     {
@@ -51,6 +51,32 @@ class Proceso extends Entity
         $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
             ->where(['proceso_id ='=>$this->_properties['id']])
             ->andWhere(['rol ='=>'Solicitante']);
+        if($pro_tra==null||$pro_tra->isEmpty())
+            return null;
+        return $pro_tra->first()->trabajador_id;
+    }
+    protected function _getSupervisor()
+    {
+        $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+            ->where(['proceso_id ='=>$this->_properties['id']])
+            ->andWhere(['rol ='=>'Supervisor']);
+        if($pro_tra==null||$pro_tra->isEmpty())
+            return 'Sin supervisor';
+        $supervisores='';
+        foreach ($pro_tra as $supervisor)
+        {
+            if($supervisores!='')
+                $supervisores=$supervisores.', ';
+            $trabajador=TableRegistry::get('Trabajadores')->get($supervisor->trabajador_id);
+            $supervisores=$trabajador->nombre.' '.$trabajador->apellido;
+        }
+        return $supervisores;
+    }
+    protected function _getSupervisorid()
+    {
+        $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+            ->where(['proceso_id ='=>$this->_properties['id']])
+            ->andWhere(['rol ='=>'Supervisor']);
         if($pro_tra==null||$pro_tra->isEmpty())
             return null;
         return $pro_tra->first()->trabajador_id;
@@ -98,7 +124,27 @@ class Proceso extends Entity
                         }
                 }
             }
-        }elseif($this->_properties['estado']!='Completado'&&$value=='Rechazado')//!!!!!!! testear
+            //eliminar asig-dev conflictos
+            if ($this->_properties['tipo'] != 'Asignacion')
+            {
+                $dev = TableRegistry::get('Devoluciones')->find('all')
+                    ->where(['proceso_id =' => $this->_properties['id']]);
+                if($dev!=null&&!$dev->isEmpty())
+                    foreach ($dev as $d)
+                    {
+                        $asig = TableRegistry::get('Asignaciones')->find('all')
+                            ->where(['articulo_id =' => $d->articulo_id]);
+                        if($asig!=null&&!$asig->isEmpty())
+                            foreach ($asig as $a)
+                            {
+                                $a->hasta=date('Y-m-d',strtotime(date('Y-m-d') .' -1 day'));
+                                TableRegistry::get('Asignaciones')->save($a);
+                                //TableRegistry::get('Asignaciones')->delete($a);//si se prefiere eliminar.
+                            }
+                    }
+            }
+
+        }elseif($this->_properties['estado']!='Completado'&&$value=='Rechazado')
         {
             $asig=TableRegistry::get('Asignaciones')->find('all')
                 ->where(['proceso_id ='=>$this->_properties['id']]);

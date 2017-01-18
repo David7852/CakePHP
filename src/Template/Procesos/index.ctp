@@ -18,8 +18,8 @@
                 <th scope="col"><?= $this->Paginator->sort(' ') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('motivo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Solicitante') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Supervisor') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created',['label'=>'Fecha de Solicitud']) ?></th>
-                <th scope="col"><?= $this->Paginator->sort('fecha_de_aprobacion') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
         </thead>
@@ -44,18 +44,12 @@
                 ?>
                 <td><?= h($proceso->motivo) ?></td>
                 <td><?= $proceso->solicitanteid!=null ? $this->Html->link($proceso->solicitante, ['controller'=> 'Trabajadores','action' => 'view', $proceso->solicitanteid]):'Sin solicitante' ?></td>
+                <td><?= $proceso->supervisorid!=null ? $this->Html->link($proceso->supervisor, ['controller'=> 'Trabajadores','action' => 'view', $proceso->supervisorid]):'Sin supervisor' ?></td>
                 <td><?= h($proceso->created) ?></td>
-                <td>
-                    <?php if($proceso->fecha_de_aprobacion!=''):?>
-                    <?= h($proceso->fecha_de_aprobacion) ?>
-                    <?php else: ?>
-                    <?= h('Sin aprobar') ?>
-                    <?php endif; ?>
-                </td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $proceso->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $proceso->id]) ?>
-                    <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $proceso->id], ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $proceso->titulo)]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $proceso->id], ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $proceso->motivo)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

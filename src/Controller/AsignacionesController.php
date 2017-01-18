@@ -144,12 +144,12 @@ class AsignacionesController extends AppController
         }
         $procesos = $this->Asignaciones->Procesos->find('all')
         ->where(['estado ='=>'Aprobado'])
+        ->orWhere(['id ='=>$id])
         ->orWhere(['estado ='=>'Completado']);
         $articulos = array();
-        foreach ($procesos as $proc)
-        {
+        foreach ($procesos as $proc) {
             $asig=TableRegistry::get('Asignaciones')->find('all')
-                ->where(['proceso_id ='=>$proc->proceso_id])
+                ->where(['proceso_id ='=>$proc->id])
                 ->andWhere(['hasta >='=>date('Y-m-d')]);
             foreach ($asig as $as) {
                 array_push($articulos, $as->articulo_id);
@@ -157,6 +157,8 @@ class AsignacionesController extends AppController
         }
         if(!empty($articulos))
             $articulos = $this->Asignaciones->Articulos->find('list',array('conditions'=>array('Articulos.id NOT IN'=>$articulos)));
+        else
+            $articulos = $this->Asignaciones->Articulos->find('list',['limit' => 200]);
         $procesos = $this->Asignaciones->Procesos->find('list')
             ->where(['id ='=>$id]);
         $this->set(compact('asignacion', 'procesos', 'articulos'));

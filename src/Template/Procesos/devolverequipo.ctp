@@ -13,15 +13,13 @@
 <div class="procesos form large-9 medium-8 columns content">
     <?= $this->Form->create($proceso) ?>
     <fieldset>
-        <legend><?= __('Asignacion telefonica') ?></legend>
+        <legend><?= __('Devolucion de equipo telefonico') ?></legend>
         <?php
         echo $this->Form->input('motivo',['default'=>'Asignar telefono movil a...']);
         echo $this->Form->input('observaciones');
-        $options = ['Asignacion'=>'Asignacion'];
+        $options = ['Devolucion'=>'Devolucion'];
         echo $this->Form->input('tipo',array('options'=>$options,'empty'=>false,'escape'=>false));
         echo $this->Form->input('solicitantes', ['options' => $solicitantes,'label'=>'Solicitante o beneficiado']);
-        echo $this->Form->input('articulo_id', ['options' => $articulos]);
-        echo $this->Form->input('hasta', ['type'=>'date','empty' => false,'minYear'=>2010,'maxYear'=>2030]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Aceptar')) ?>

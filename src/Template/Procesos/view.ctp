@@ -1,4 +1,7 @@
-<?php use Cake\Routing\Router;?>
+<?php use Cake\Routing\Router;
+use Cake\ORM\TableRegistry;
+?>
+
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Acciones') ?></li>
@@ -8,7 +11,7 @@
             <li><?= $this->Html->link(__('Asociar Devolucion'), ['controller' => 'Devoluciones', 'action' => 'asociar',$proceso->id],['id'=>'devolucion']) ?> </li>
         <?php endif; ?>
         <li><?= $this->Html->link(__('Editar este Proceso'), ['action' => 'edit', $proceso->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Eliminar este Proceso'), ['action' => 'delete', $proceso->id], ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $proceso->titulo)]) ?> </li>
+        <li><?= $this->Form->postLink(__('Eliminar este Proceso'), ['action' => 'delete', $proceso->id], ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $proceso->motivo)]) ?> </li>
         <li><?= $this->Html->link(__('Listar Procesos'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Nuevo Proceso'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('Listar Asignaciones'), ['controller' => 'Asignaciones', 'action' => 'index']) ?> </li>
@@ -102,23 +105,28 @@
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <!-- Aca podria ir el rol del trabajador -->
+                <th scope="col"><?= __('Rol') ?></th>
                 <th scope="col"><?= __('Nombre') ?></th>
-                <th scope="col"><?= __('Apellido') ?></th>
                 <th scope="col"><?= __('Cedula') ?></th>
                 <th scope="col"><?= __('Gerencia') ?></th>
                 <th scope="col"><?= __('Cargo') ?></th>
-                <th scope="col"><?= __('Telefono Personal') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($proceso->trabajadores as $trabajadores): ?>
             <tr>
-                <!-- Aca podria ir el rol del trabajador -->
-                <td><?= h($trabajadores->nombre) ?></td>
-                <td><?= h($trabajadores->apellido) ?></td>
+                <td><?php
+                    $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                        ->where(['proceso_id ='=>$proceso->id])
+                        ->andWhere(['trabajador_id =' => $trabajadores->id]);
+                    if($pro_tra!=null)
+                        echo $pro_tra->first()->rol;
+                    else
+                        echo 'Indefinido';
+                ?></td>
+                <td><?= h($trabajadores->nombre.$trabajadores->apellido) ?></td>
                 <td><?= h($trabajadores->cedula) ?></td>
                 <td><?= h($trabajadores->gerencia) ?></td>
                 <td><?= h($trabajadores->cargo) ?></td>
-                <td><?= h($trabajadores->telefono_personal) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Trabajadores', 'action' => 'view', $trabajadores->id]) ?>
                 </td>

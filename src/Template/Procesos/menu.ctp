@@ -55,7 +55,7 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $proceso->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $proceso->id]) ?>
-                    <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $proceso->id], ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $proceso->titulo)]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $proceso->id], ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $proceso->motivo)]) ?>
                 </td>
             </tr>
         <?php endforeach; ?>

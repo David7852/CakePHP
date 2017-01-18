@@ -2952,14 +2952,6 @@ meta.foundation-mq-topbar {
     padding-top: 0.4125rem
 }
 
-@media only screen and (max-width: 40em) {
-    .top-bar .button,
-    .top-bar button {
-        position: relative;
-        top: -1px
-    }
-}
-
 .top-bar .title-area {
     margin: 0;
     position: relative;
@@ -4114,6 +4106,15 @@ meta.foundation-mq-topbar {
 }
 
 @media only screen and (max-width: 40em) {
+    .top-bar .button,
+    .top-bar button {
+        position: relative;
+        top: -1px
+    }
+    .top-bar div.dropdownx:hover button
+    {
+        font-size: 0.77rem;
+    }
     .button-group.stack-for-small>li {
         display: block;
         margin: 0
@@ -8347,6 +8348,10 @@ table thead tr td {
 }
 table tbody tr td.actions:last-child a:last-child {
     color: #BE140B;
+    text-shadow: 0 0 1px rgba(150,20,10,0.25);
+}
+table tbody tr td.actions:last-child a:last-child:hover {
+    color: red;
 }
 
 table tfoot {

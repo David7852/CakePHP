@@ -80,6 +80,7 @@ Router::scope('/procesos',['controller' => 'Procesos'],function (RouteBuilder $r
 Router::scope('/procesos',['controller' => 'Procesos'],function (RouteBuilder $routes) {    $routes->connect('/solicitar/*', ['action' => 'solicitar']);});
 Router::scope('/solicitar',['controller' => 'Procesos'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'solicitar']);});
 Router::scope('/asociarequipo',['controller' => 'Procesos'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'asociarequipo']);});
+Router::scope('/devolverequipo',['controller' => 'Procesos'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'devolverequipo']);});
 Router::scope('/procesos',['controller' => 'Procesos'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
 //modelos
 Router::scope('/modelos',['controller' => 'Modelos'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});

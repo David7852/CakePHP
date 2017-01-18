@@ -32,10 +32,12 @@ class Articulo extends Entity
         if($related==null)
             return '';
         $tit=h($related->modelo->tipo).", S/N: ".$this->_properties['serial'];
-        if( strcasecmp ( $related->modelo->tipo ,'Celular' )||strcasecmp ( $related->modelo->tipo ,'Telefono' )||strcasecmp ( $related->modelo->tipo ,'Smartphone' ))
+        if( strcasecmp ( $related->modelo->tipo_de_articulo ,'Celular' )||strcasecmp ( $related->modelo->tipo_de_articulo ,'Telefono' )||strcasecmp ( $related->modelo->tipo_de_articulo ,'Smartphone' ))
         {
            $l='';
            $asig_lineas=TableRegistry::get('Lineas')->find('all')->where(['articulo_id ='=>$this->_properties['id']]);
+           if($asig_lineas->isEmpty())
+               return $tit.' (Sin linea asignada)';
            foreach ($asig_lineas as $linea)
            {
                if($l!='')
