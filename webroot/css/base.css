@@ -54,14 +54,15 @@ summary {
 
 footer{
     text-align: center;
-    //background-color: white;
+    background: #fbfbfb;
+    background-image: url(../img/bodyTexture.png);
     line-height: 3rem;
     //box-shadow: 10px -10px 30px -12px rgba(0, 0, 0, 0.42);
     box-shadow: 1px -18px 30px -25px rgba(0, 0, 0, 0.42);
     clear: both;
     position: relative;
-    z-index: 10;
-    height: 5em;
+    z-index: 12;
+    height: 6em;
     margin-top: 0em;
 }
 /*
@@ -1040,7 +1041,9 @@ select {
 }
 
 @media only screen and (min-width: 40.0625em) {
-
+    #difbtm {
+        margin-left: 25.5%;
+    }
     .medium-push-0 {
         position: relative;
         left: 0;
@@ -1409,7 +1412,9 @@ select {
 }
 
 @media only screen and (min-width: 64.0625em) {
-
+    #difbtm {
+        margin-left: 17.25%;
+    }
     .large-push-0 {
         position: relative;
         left: 0;
@@ -4290,6 +4295,20 @@ meta.foundation-mq-topbar {
 }
 
 @media only screen and (max-width: 40em) {
+    a #difbtm {
+        margin-left: 25%;
+        margin: auto;
+        width: 100%;
+        margin-top: -5vw;
+    }
+    #difbtm g-fab._jAg
+    {
+        height: 40px;
+        width: 40px;
+        float: none;
+        display: block;
+        margin: auto;
+    }
     .button-group.radius.stack-for-small>* {
         display: block;
         margin: 0

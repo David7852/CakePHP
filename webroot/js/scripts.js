@@ -19,7 +19,6 @@ function removeFadeOut( el, speed ) {
         el.parentNode.removeChild(el);
     }, speed);
 }
-
 function refreshimage()
 {
     var el=document.getElementById("imagen");

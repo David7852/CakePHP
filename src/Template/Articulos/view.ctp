@@ -47,16 +47,20 @@
         </figure>
     </div>
     <table class="vertical-table">
-        <?php if($articulo->datos!=''||$articulo->modelo->abstracto!=''): ?>
         <tr>
-            <th scope="row"><?php if($articulo->modelo->abstracto=='') echo('Datos adicionales'); else echo(h($articulo->modelo->abstracto));?></th>
-            <td><?= h($articulo->datos) ?></td>
+            <th scope="row"><?= __('Usuario asignado') ?></th>
+            <td><?= $articulo->asignadoid!='' ? $this->Html->link($articulo->asignado, ['controller' => 'Trabajadores', 'action' => 'view', $articulo->asignadoid]) :'Articulo sin asignar'  ?></td>
         </tr>
-        <?php endif; ?>
         <tr>
             <th scope="row"><?= __('Ubicacion Actual') ?></th>
             <td><?= h($articulo->ubicacion) ?></td>
         </tr>
+        <?php if($articulo->datos!=''||$articulo->modelo->abstracto!=''): ?>
+            <tr>
+                <th scope="row"><?php if($articulo->modelo->abstracto=='') echo('Datos adicionales'); else echo(h($articulo->modelo->abstracto));?></th>
+                <td><?= h($articulo->datos) ?></td>
+            </tr>
+        <?php endif; ?>
         <tr>
             <th scope="row"><?= __('Fecha De Compra') ?></th>
             <td><?= h($articulo->fecha_de_compra) ?></td>
@@ -68,19 +72,17 @@
     </table>
     <?php if (!empty($articulo->accesorios)): ?>
     <div class="related">
-        <h4><?= __('Accesorios asociados') ?></h4>
+        <h4><?= __('Accesorios') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Descripcion') ?></th>
                 <th scope="col"><?= __('Estado') ?></th>
-                <th scope="col"><?= __('Articulo Id') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($articulo->accesorios as $accesorios): ?>
             <tr>
                 <td><?= h($accesorios->descripcion) ?></td>
                 <td><?= h($accesorios->estado) ?></td>
-                <td><?= h($accesorios->articulo_id) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Accesorios', 'action' => 'view', $accesorios->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Accesorios', 'action' => 'edit', $accesorios->id]) ?>
@@ -93,7 +95,7 @@
     <?php endif; ?>
     <?php if (!empty($articulo->asignaciones)): ?>
     <div class="related">
-        <h4><?= __('Asignaciones') ?></h4>
+        <h4><?= __('Historial De Asignaciones') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Proceso Id') ?></th>
@@ -118,7 +120,7 @@
     <?php endif; ?>
     <?php if (!empty($articulo->devoluciones)): ?>
     <div class="related">
-        <h4><?= __('Devoluciones') ?></h4>
+        <h4><?= __('Historial De Devoluciones') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Proceso Id') ?></th>
@@ -146,10 +148,6 @@
             <tr>
                 <th scope="col"><?= __('Operadora') ?></th>
                 <th scope="col"><?= __('Numero') ?></th>
-                <th scope="col"><?= __('Puk') ?></th>
-                <th scope="col"><?= __('Pin') ?></th>
-                <th scope="col"><?= __('Codigo Sim') ?></th>
-                <th scope="col"><?= __('Articulo Id') ?></th>
                 <th scope="col"><?= __('Estado') ?></th>
                 <th scope="col"><?= __('Observaciones') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
@@ -158,10 +156,6 @@
             <tr>
                 <td><?= h($lineas->operadora) ?></td>
                 <td><?= h($lineas->numero) ?></td>
-                <td><?= h($lineas->puk) ?></td>
-                <td><?= h($lineas->pin) ?></td>
-                <td><?= h($lineas->codigo_sim) ?></td>
-                <td><?= h($lineas->articulo_id) ?></td>
                 <td><?= h($lineas->estado) ?></td>
                 <td><?= h($lineas->observaciones) ?></td>
                 <td class="actions">

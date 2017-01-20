@@ -131,6 +131,7 @@ Router::scope('/articulos',['controller' => 'Articulos'],function (RouteBuilder 
 Router::scope('/articulos',['controller' => 'Articulos'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/articulos',['controller' => 'Articulos'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
 Router::scope('/articulos',['controller' => 'Articulos'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
+Router::scope('/articulos',['controller' => 'Articulos'],function (RouteBuilder $routes) {    $routes->connect('/inventario/*', ['action' => 'inventario']);});
 Router::scope('/articulos',['controller' => 'Articulos'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
 //accesorios
 Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});

@@ -24,6 +24,30 @@ class ArticulosController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
+    public function inventario($tipo)
+    {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
+        $this->paginate = [
+            'contain' => ['Modelos']
+        ];
+        $mo=array();
+        $models=TableRegistry::get('Modelos')->find('all')
+            ->where(['tipo_de_articulo ='=>$tipo]);
+        foreach ($models as $m)
+            array_push($mo,$m->id);
+        $articulos = $this->paginate($this->Articulos->find('all', array('conditions'=>array('Articulos.modelo_id IN'=>$mo))));
+        $this->set(compact('articulos','modelos'));
+        $this->set('_serialize', ['articulos']);
+    }
+
+    /**
+     * Index method
+     *
+     * @return \Cake\Network\Response|null
+     */
     public function index()
     {
         if($this->request->session()->read('Auth.User.funcion')=='Visitante') {

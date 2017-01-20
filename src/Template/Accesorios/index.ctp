@@ -12,6 +12,7 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('descripcion') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('estado') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('articulo_id') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
@@ -20,6 +21,7 @@
             <?php foreach ($accesorios as $accesorio): ?>
             <tr>
                 <td><?= h($accesorio->descripcion) ?></td>
+                <td><?= h($accesorio->estado) ?></td>
                 <td><?= $accesorio->has('articulo') ? $this->Html->link($accesorio->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $accesorio->articulo->id]) : '' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $accesorio->id]) ?>
@@ -36,6 +38,5 @@
             <?= str_replace("of","de",$this->Paginator->numbers()) ." ". str_replace("of","de",$this->Paginator->counter()) ?>
             <?= $this->Paginator->next(__('>') . ' >') ?>
         </ul>
-        <p><?= str_replace("of","de",$this->Paginator->counter()) ?>
     </div>
 </div>

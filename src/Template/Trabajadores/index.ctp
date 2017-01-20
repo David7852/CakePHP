@@ -17,7 +17,6 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('nombre') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('apellido') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('cedula') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('gerencia') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('cargo') ?></th>
@@ -28,8 +27,7 @@
         <tbody>
             <?php foreach ($trabajadores as $trabajador): ?>
             <tr>
-                <td><?= h($trabajador->nombre) ?></td>
-                <td><?= h($trabajador->apellido) ?></td>
+                <td><?= h($trabajador->nombre).' '.$trabajador->apellido ?></td>
                 <td><?= h($trabajador->cedula) ?></td>                
                 <td><?=$this->Text->autoParagraph(h($trabajador->gerencia))?></td>
                 <td><?=$this->Text->autoParagraph(h($trabajador->cargo))?></td>

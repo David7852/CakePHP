@@ -2,7 +2,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
-
+use Cake\ORM\TableRegistry;
 /**
  * Trabajador Entity
  *
@@ -35,6 +35,31 @@ class Trabajador extends Entity
     protected function _setApellido($value)
     {
         return trim($value);
+    }
+    protected function _setPuesto_de_trabajo($value)
+    {
+        $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+            ->where(['trabajador_id =' => $this->_properties['id']])
+            ->andWhere(['rol ='=>'Solicitante']);
+        foreach ($pro_tra as $pt)
+        {
+            $proceso=TableRegistry::get('Procesos')->find('all')
+                ->where(['id ='=>$pt->proceso_id])
+                ->andWhere(['estado ='=>'Completado']);
+            foreach ($proceso as $p)
+            {
+                $asig = TableRegistry::get('Asignaciones')->find('all')
+                    ->where(['proceso_id =' => $p->id])
+                    ->andWhere(['hasta >='=>date('Y-m-d')]);
+                foreach ($asig as $a)
+                {
+                    $articulo = TableRegistry::get('Articulos')->get($a->articulo_id);
+                    $articulo->ubicacion = $value;
+                    TableRegistry::get('Articulos')->save($articulo);
+                }
+            }
+        }
+        return $value;
     }
     protected function _setCargo($value)
     {

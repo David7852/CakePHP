@@ -26,11 +26,29 @@ class TrabajadoresController extends AppController
     public function index()
     {
         if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
-            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
-            return $this->redirect($this->referer());
+            $trabajador = TableRegistry::get('Trabajadores')->get(($this->request->session()->read('Auth.User.trabajador_id')));
+            $gerencia=$trabajador->gerencia;
+            $cargo=$trabajador->cargo;
+            if($cargo=="Gerente"||$cargo=="Supervisor"||$cargo=="Superintendente")
+            {
+                $trabajadores=array();
+                $trabajador = TableRegistry::get('Trabajadores')->find('all')
+                    ->where(['gerencia ='=>$gerencia]);
+                foreach ($trabajador as $t)
+                    array_push($trabajadores, $t->id);
+                if(!empty($trabajadores))
+                    $trabajadores = $this->paginate($this->Trabajadores->find('all',array('conditions'=>array('Trabajadores.id IN'=>$trabajadores))));
+                else {
+                    $this->Flash->error(__('Usted no tiene empleados a su cargo.'));
+                    return $this->redirect($this->referer());
+                }
+            }else {
+                $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+                return $this->redirect($this->referer());
+            }
+        }else{
+            $trabajadores = $this->paginate($this->Trabajadores);
         }
-        $trabajadores = $this->paginate($this->Trabajadores);
-
         $this->set(compact('trabajadores'));
         $this->set('_serialize', ['trabajadores']);
     }
@@ -52,9 +70,24 @@ class TrabajadoresController extends AppController
      */
     public function view($id = null)
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
-            if($this->request->session()->read('Auth.User.trabajador_id')!=$id)
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'&&$this->request->session()->read('Auth.User.trabajador_id')!=$id) {
+            $trabajador = TableRegistry::get('Trabajadores')->get(($this->request->session()->read('Auth.User.trabajador_id')));
+            $gerencia=$trabajador->gerencia;
+            $cargo=$trabajador->cargo;
+            if($cargo=="Gerente"||$cargo=="Supervisor"||$cargo=="Superintendente")
             {
+                $trabajador = TableRegistry::get('Trabajadores')->find('all')
+                    ->where(['gerencia ='=>$gerencia])
+                    ->andWhere(['id ='=>$id]);
+                if($trabajador->isEmpty()||
+                    $trabajador->first()->cargo=='Gerente'||
+                    ($trabajador->first()->cargo=='Supervisor'&&$cargo!='Gerente')||
+                    ($trabajador->first()->cargo=='Superintendente'&&$cargo!='Gerente'))
+                {
+                    $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+                    return $this->redirect($this->referer());
+                }
+            }else {
                 $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
                 return $this->redirect($this->referer());
             }
@@ -183,9 +216,24 @@ class TrabajadoresController extends AppController
      */
     public function edit($id = null)
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
-            if($this->request->session()->read('Auth.User.trabajador_id')!=$id)
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'&&$this->request->session()->read('Auth.User.trabajador_id')!=$id) {
+            $trabajador = TableRegistry::get('Trabajadores')->get(($this->request->session()->read('Auth.User.trabajador_id')));
+            $gerencia=$trabajador->gerencia;
+            $cargo=$trabajador->cargo;
+            if($cargo=="Gerente"||$cargo=="Supervisor"||$cargo=="Superintendente")
             {
+                $trabajador = TableRegistry::get('Trabajadores')->find('all')
+                    ->where(['gerencia ='=>$gerencia])
+                    ->andWhere(['id ='=>$id]);
+                if($trabajador->isEmpty()||
+                    $trabajador->first()->cargo=='Gerente'||
+                    ($trabajador->first()->cargo=='Supervisor'&&$cargo!='Gerente')||
+                    ($trabajador->first()->cargo=='Superintendente'&&$cargo!='Gerente'))
+                {
+                    $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+                    return $this->redirect($this->referer());
+                }
+            }else {
                 $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
                 return $this->redirect($this->referer());
             }

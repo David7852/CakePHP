@@ -32,7 +32,7 @@ class Articulo extends Entity
         if($related==null)
             return '';
         $tit=h($related->modelo->tipo).", S/N: ".$this->_properties['serial'];
-        if( strcasecmp ( $related->modelo->tipo_de_articulo ,'Celular' )||strcasecmp ( $related->modelo->tipo_de_articulo ,'Telefono' )||strcasecmp ( $related->modelo->tipo_de_articulo ,'Smartphone' ))
+        if( $related->modelo->tipo_de_articulo=='Celular'||$related->modelo->tipo_de_articulo=='Telefono' || $related->modelo->tipo_de_articulo=='Smartphone')
         {
            $l='';
            $asig_lineas=TableRegistry::get('Lineas')->find('all')->where(['articulo_id ='=>$this->_properties['id']]);
@@ -47,6 +47,58 @@ class Articulo extends Entity
            return $tit.' '.$l;
         }
         return  $tit;
+    }
+
+    protected function _getAsignadoid()
+    {
+        $solicitantes=array();
+        $asig=TableRegistry::get('Asignaciones')->find('all')
+            ->where(['articulo_id ='=>$this->_properties['id']])
+            ->andWhere(['hasta >='=>date('Y-m-d')]);
+        foreach ($asig as $naciones)
+        {
+            $pro=TableRegistry::get('Procesos')->find('all')
+                ->where(['id ='=>$naciones->proceso_id])
+                ->andWhere(['estado ='=>'Completado']);
+            foreach ($pro as $cesos )
+            {
+                $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                    ->where(['proceso_id ='=>$cesos->id])
+                    ->andWhere(['rol ='=>'Solicitante']);
+                foreach ($pro_tra as $tra)
+                    array_push($solicitantes,$tra->trabajador_id);
+            }
+        }
+        if(!empty($solicitantes))
+            return $solicitantes[0];
+        return '';
+    }
+    protected function _getAsignado()
+    {
+        $solicitantes=array();
+        $asig=TableRegistry::get('Asignaciones')->find('all')
+            ->where(['articulo_id ='=>$this->_properties['id']])
+            ->andWhere(['hasta >='=>date('Y-m-d')]);
+        foreach ($asig as $naciones)
+        {
+            $pro=TableRegistry::get('Procesos')->find('all')
+                ->where(['id ='=>$naciones->proceso_id])
+                ->andWhere(['estado ='=>'Completado']);
+            foreach ($pro as $cesos )
+            {
+                $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                    ->where(['proceso_id ='=>$cesos->id])
+                    ->andWhere(['rol ='=>'Solicitante']);
+                foreach ($pro_tra as $tra)
+                {
+                    $trabajador=TableRegistry::get('Trabajadores')->get($tra->trabajador_id);
+                    array_push($solicitantes, $trabajador->nombre.' '.$trabajador->apellido);
+                }
+            }
+        }
+        if(!empty($solicitantes))
+            return $solicitantes[0];
+        return '';
     }
 
     /**

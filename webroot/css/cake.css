@@ -970,16 +970,7 @@ div.message.hidden {
     margin-bottom: 0px;
     border-bottom: 0px;
 }
-._jAg ._HAg {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    width: 24px;
-    height: 24px;
-}
+
 #dif{
     display: none;
     width: auto;
@@ -993,31 +984,67 @@ div.message.hidden {
     background-image: none;
     box-shadow: unset;
 }
-._wtf {
-    display: inline-block;
+#difbtm{
+    display: inline;
+    position: absolute;
+    margin-top: -1.8em;
+    z-index: 11;
+    width: auto;
+    height: auto;
+    width: 0\9;
+    height: 0\9;
+    background: none;
+    padding: 0px;
+    background: transparent;
+    border: none;
+    background-image: none;
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+    transition: margin-top 0.5s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+}
+#difbtm:hover
+{
+    margin-top: -2.2em;
+    color:white;
+    transition: margin-top 0.35s linear;
+}
+#difbtm g-fab
+{
+    height: 45px;
+    width: 45px;
+    float: none;
+    display: block;
+    margin: auto;
+    color: white;
+}
+#difbtm ._jAg
+{
+    border-radius: 50%;
+    cursor: default;
+    display: block;
+    position: relative;
+    background-image: url(../img/topBarTexture.png);
+    background-repeat: repeat;
+    -moz-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1), 0 0 1px 0 rgba(0,0,0,.2), inset 0 0 0 0 rgba(0,0,0,.1), inset 0 0 0 0 rgba(255,255,255,.5);
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1), 0 0 1px 0 rgba(0,0,0,.2), inset 0 0 0 0 rgba(0,0,0,.1), inset 0 0 0 0 rgba(255,255,255,.5);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1), 0 0 1px 0 rgba(0,0,0,.2), inset 0 0 0 0 rgba(0,0,0,.1), inset 0 0 0 0 rgba(255,255,255,.5);
+    background-color:#22a25a;
+    z-index: 0;
+    transition: background-color 0.75s linear,box-shadow 0.2s linear;
+}
+#difbtm ._jAg:hover
+{
+    color:white;
+}
+._jAg ._HAg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 24px;
     fill: currentColor;
     height: 24px;
-    line-height: 24px;
-    position: relative;
-    width: 24px;
-}
-._R6g._ufp g-fab, ._S6g._ufp g-fab {
-    box-shadow: 0 7px 15px rgba(1,91,84, .2), 0 0 2px rgba(0,0,0,0.08);
-    -moz-box-shadow: 0 7px 15px rgba(1,91,84, .2), 0 0 2px rgba(0,0,0,0.08);
-    -webkit-box-shadow: 0 7px 15px rgba(0, 0, 0, .2), 0 0 2px rgba(0,0,0,0.08);
-    cursor: pointer;
-    height: 50px;
-    width: 50px;
-}
-._W6g._ufp:hover g-fab {
-    color: #015b54 !important;
-    box-shadow: 0 7px 15px rgba(1,91,84, .2), 0 0 2px rgba(0,0,0,0.1);
-    -moz-box-shadow: 0 7px 15px rgba(1,91,84, .2), 0 0 2px rgba(0,0,0,0.1);
-    -webkit-box-shadow: 0 7px 15px rgba(1,91,84, .2), 0 0 2px rgba(0,0,0,0.1);
-    background-color: #e3e9e6;
-}
-._W6g:focus {
-    outline: none;
 }
 ._jAg {
     border-radius: 50%;
@@ -1037,8 +1064,26 @@ div.message.hidden {
 ._jAg:focus {
     outline: none;
 }
+._R6g._ufp g-fab, ._S6g._ufp g-fab {
+    box-shadow: 0 7px 15px rgba(1,91,84, .2), 0 0 2px rgba(0,0,0,0.08);
+    -moz-box-shadow: 0 7px 15px rgba(1,91,84, .2), 0 0 2px rgba(0,0,0,0.08);
+    -webkit-box-shadow: 0 7px 15px rgba(0, 0, 0, .2), 0 0 2px rgba(0,0,0,0.08);
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+}
+._W6g._ufp:hover g-fab {
+    color: #015b54;
+    box-shadow: 0 7px 15px rgba(1,91,84, .2), 0 0 2px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 7px 15px rgba(1,91,84, .2), 0 0 2px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0 7px 15px rgba(1,91,84, .2), 0 0 2px rgba(0,0,0,0.1);
+    background-color: #e3e9e6;
+}
+._W6g:focus {
+    outline: none;
+}
 
-/*change warning notes as classs and removable as id */
+
 .removablewarningnote,
 .warningnote{
     font-family: raleway, poiret, Roboto, Century gothic, Segoe ui, sans-serif;
@@ -1157,8 +1202,7 @@ div.message.hidden {
     min-width: 11rem;
     transition: all 0.75s ease-in;
 }
-.dropdownx-content:hover .dropdownx-content-background
-{
+.dropdownx-content:hover .dropdownx-content-background{
     pointer-events: auto;
 }
 .dropdownx-content-background{
@@ -1378,38 +1422,34 @@ table tbody tr td figure img {
     box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07);
     border-radius: 4px;
 }
-
-/* latin-ext */
+#goTop{
+    background:red;
+    padding:5px;
+    position:fixed;
+    z-index: 1;
+    right:10px;
+}
 @font-face {
     font-family: 'raleway';
     font-style: normal;
     font-weight: 400;
     src: url(./raleway_latin-ext.woff2) format('woff2');
-}
-/* latin */
-@font-face {
+}@font-face {
     font-family: 'raleway';
     font-style: normal;
     font-weight: 400;
     src: url(./raleway_latin.woff2) format('woff2');
-}
-
-/* cyrillic */
-@font-face {
+}@font-face {
     font-family: 'poiret';
     font-style: normal;
     font-weight: 400;
     src: url(./Poiret_One-cyrillic.woff2) format('woff2');
-}
-/* latin-ext */
-@font-face {
+}@font-face {
     font-family: 'poiret';
     font-style: normal;
     font-weight: 400;
     src: url(./Poiret_One-latin-ext.woff2) format('woff2');
-}
-/* latin */
-@font-face {
+}@font-face {
     font-family: 'poiret';
     font-style: normal;
     font-weight: 400;

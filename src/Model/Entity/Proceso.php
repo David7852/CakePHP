@@ -25,9 +25,10 @@ class Proceso extends Entity
 
     protected function _getTitulo()
     {
+        $solicitante=$this->_getSolicitante();
         if($this->_properties['tipo']=='Asignacion')
-            return $this->_properties['tipo']." para ".$this->_getSolicitante();
-        return $this->_properties['tipo']." de ".$this->_getSolicitante();
+            return $solicitante!='Sin solicitante' ? $this->_properties['tipo']." para ".$solicitante : $this->_properties['tipo'].' '.$solicitante;
+        return $solicitante!='Sin solicitante' ? $this->_properties['tipo']." de ".$solicitante : $this->_properties['tipo'].' '.$solicitante;
     }
     protected function _getSolicitante()
     {

@@ -26,10 +26,19 @@
                 'Devolucion'=>'Devolucion',
                 'Mixto'=>'Mixto'];
             echo $this->Form->input('tipo',array('options'=>$options,'empty'=>false,'escape'=>false));
-            $options = ['Pendiente'=>'Pendiente',
-                        'Aprobado'=>'Aprobado',
-                        'Rechazado'=>'Rechazado',
-                        'Completado'=>'Completado'];
+            if($proceso->estado==null||$proceso->estado=='Pendiente')
+                $options = ['Pendiente'=>'Pendiente',
+                    'Aprobado'=>'Aprobado',
+                    'Rechazado'=>'Rechazado',
+                    'Completado'=>'Completado'];
+            elseif($proceso->estado=='Aprobado')
+                $options = ['Aprobado'=>'Aprobado',
+                    'Rechazado'=>'Rechazado',
+                    'Completado'=>'Completado'];
+            elseif($proceso->estado=='Completado')
+                $options = ['Completado'=>'Completado'];
+            else
+                $options = ['Rechazado'=>'Rechazado'];
             echo $this->Form->input('estado',array('options'=>$options,'empty'=>false,'escape'=>false));
             echo $this->Form->input('observaciones');
             echo $this->Form->input('trabajadores._ids', ['label'=>'Encargados','options' => $trabajadores]);

@@ -298,10 +298,10 @@ class ProcesosController extends AppController
                 $this->Flash->error(__('Usted es el solicitante de este proceso, por tanto no puede editarlo'));
                 return $this->redirect($this->referer());
             }
-            $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+            $super=TableRegistry::get('ProcesosTrabajadores')->find('all')
                 ->where(['proceso_id ='=>$id])
                 ->andWhere(['rol ='=>'Supervisor']);
-            if(($pro_tra!=null&&!$pro_tra->isEmpty())&&$pro_tra->first()->trabajador_id!=$this->request->session()->read('Auth.User.trabajador_id')){
+            if(($super!=null&&!$super->isEmpty())&&$super->first()->trabajador_id!=$this->request->session()->read('Auth.User.trabajador_id')){
                 $this->Flash->error(__('Usted no es el supervisor encargado de este proceso y por tanto no puede editarlo.'));
                 return $this->redirect($this->referer());
             }
@@ -309,12 +309,12 @@ class ProcesosController extends AppController
         $proceso = $this->Procesos->get($id, [
             'contain' => ['Trabajadores']
         ]);
-        $oldstate=$proceso->estado;
+        $solicitantes=array();
         if ($this->request->is(['patch', 'post', 'put'])) {
             $proceso = $this->Procesos->patchEntity($proceso, $this->request->data);
             if ($this->Procesos->save($proceso))
             {
-                if($this->request->data['solicitantes']!=null)
+                if($this->request->data['solicitantes']!=null&&!empty($this->request->data['solicitantes']))
                 {
                     $pro_tra = TableRegistry::get('ProcesosTrabajadores')->newEntity();
                     $pro_tra = TableRegistry::get('ProcesosTrabajadores')->patchEntity($pro_tra,
@@ -325,10 +325,7 @@ class ProcesosController extends AppController
                         ]);
                     TableRegistry::get('ProcesosTrabajadores')->save($pro_tra);
                 }
-                $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
-                    ->where(['proceso_id ='=>$id])
-                    ->andWhere(['rol ='=>'Supervisor']);
-                if(($oldstate=='Pendiente'&&$this->request->data['estado']!='Pendiente')&&($pro_tra==null||$pro_tra->isEmpty()))
+                if($this->request->data['estado']!='Pendiente'||($super!=null&&!$super->isEmpty()))
                 {
                     $pro_tra=TableRegistry::get('ProcesosTrabajadores')->newEntity();
                     $pro_tra=TableRegistry::get('ProcesosTrabajadores')->patchEntity($pro_tra,
@@ -338,17 +335,7 @@ class ProcesosController extends AppController
                             'rol'=>'Supervisor',
                         ]);
                     TableRegistry::get('ProcesosTrabajadores')->save($pro_tra);
-                }/*elseif($pro_tra==null||$pro_tra->isEmpty()&&$this->request->data['estado']!='Pendiente')
-                {
-                    $pro_tra=TableRegistry::get('ProcesosTrabajadores')->newEntity();
-                    $pro_tra=TableRegistry::get('ProcesosTrabajadores')->patchEntity($pro_tra,
-                        [
-                            'trabajador_id'=>$this->request->session()->read('Auth.User.trabajador_id'),
-                            'proceso_id'=>$id,
-                            'rol'=>'Supervisor',
-                        ]);
-                    TableRegistry::get('ProcesosTrabajadores')->save($pro_tra);
-                }*/
+                }
                 $this->Flash->success(__('Los cambios en el proceso fueron registrados.'));
                 return $this->redirect(['action' => 'index']);
             } else
@@ -356,7 +343,6 @@ class ProcesosController extends AppController
                 $this->Flash->error(__('Los cambios no pudieron guardarse. Intente nuevamente.'));
             }
         }
-
         $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
             ->where(['proceso_id ='=>$id])
             ->andWhere(['rol ='=>'Solicitante']);
@@ -364,8 +350,6 @@ class ProcesosController extends AppController
         foreach ($pro_tra as $pt) array_push($s,$pt->trabajador_id);
         if($pro_tra!=null&&!$pro_tra->isEmpty())
             $solicitantes=$this->Procesos->Trabajadores->find('list',array('conditions'=>array('Trabajadores.id IN'=>$s)));
-        else
-            $solicitantes=array();
         $trabajadores = $this->Procesos->Trabajadores->find('list')
             ->where(['gerencia =' => 'IT'])
             ->andWhere(['id !='=>$this->request->session()->read('Auth.User.trabajador_id')]);

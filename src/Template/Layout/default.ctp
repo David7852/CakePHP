@@ -35,6 +35,7 @@ $cakeDescription = 'WIT ';
     <?= $this->Html->script('scripts')?>
 </head>
 <body>
+<a id="bcktop"></a>
     <nav class="top-bar" data-topbar role="navigation">
         <ul class="title-area large-2 medium-4 columns">
             <h1 style="height: 5rem;width:8rem">
@@ -73,10 +74,24 @@ $cakeDescription = 'WIT ';
             </ul>
         </nav>
     </nav>
+
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
     </div>
+    <?php if($this->request->action!='signup'&&$this->request->action!='reset'&&$this->request->action!='login'): ?>
+        <a href="#bcktop" style="z-index: 11">
+            <button id="difbtm" class="_W6g _S6g _ufp nb-fades">
+                <g-fab class="_jAg">
+                    <span class="_HAg">
+                        <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M4,12l1.41,1.41L11,7.83V20h2V7.83l5.58,5.59L20,12l-8,-8 -8,8z"></path>
+                        </svg>
+                    </span>
+                </g-fab>
+            </button>
+        </a>
+    <?php endif; ?>
         <footer >
             <div style="vertical-align: middle">
                 <h4 class="title-area large-2 medium-3 columns" style="color:red;font-family:arial;margin-top: 7px;padding: 0.75em;">

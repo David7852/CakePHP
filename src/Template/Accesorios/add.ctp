@@ -15,6 +15,7 @@
             $options = ["Nuevo"=>"Nuevo",
                 "Usado"=>"Usado",
                 "Roto"=>"Roto",
+                "Perdido"=>"Perdido",
                 "Reparado"=>"Reparado",
                 "Obsoleto"=>"Obsoleto"];
             echo $this->Form->input('estado', array('options'=>$options,'empty'=>false,'escape'=>false));
