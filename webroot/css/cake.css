@@ -872,7 +872,7 @@ div.message.hidden {
     }
     .side-nav li a:not(.button) {
         width: 30%;
-        font-size: 0.8rem;
+        font-size: 0.72rem;
         float: left;
         display: inline-table;
         margin-bottom: 0.3rem;
@@ -884,7 +884,7 @@ div.message.hidden {
     }
     .side-nav li a:not(.button):hover
     {
-        font-size: 0.81rem;
+        font-size: 0.72rem;
     }
     .side-nav li.heading{
         height: 0;

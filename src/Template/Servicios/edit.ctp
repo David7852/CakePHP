@@ -1,17 +1,19 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Acciones') ?></li>
+        <li class="heading"><?=''?></li>
+        <li class="tlf" id="seleccion"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>
+        <!-- $ -->
         <li><?= $this->Form->postLink(
-                __('Eliminar este servicio'),
+                __('Eliminar'),
                 ['action' => 'delete', $servicio->id],
                 ['confirm' => __('¿Confirma querer eliminar el servicio {0}?', $servicio->titulo)]
             )
-        ?></li>
-        <li><?= $this->Html->link(__('Listar Servicios'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Listar Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nueva Renta'), ['controller' => 'Rentas', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('Listar Consumos'), ['controller' => 'Consumos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nuevo Consumo'), ['controller' => 'Consumos', 'action' => 'add']) ?></li>
+            ?></li>
+        <li><?= $this->Html->link(__('Servicios'), ['action' => 'index']) ?></li>
+        <!-- $ -->
+        <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
+        <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>
+        <li class="usu" ><?= $this->Html->link(__('Usuarios'), ['controller' => 'Pages', 'action' => 'display','usuarios'])?></li>
     </ul>
 </nav>
 <div class="servicios form large-9 medium-8 columns content">

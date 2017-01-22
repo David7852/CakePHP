@@ -74,7 +74,6 @@ $cakeDescription = 'WIT ';
             </ul>
         </nav>
     </nav>
-
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
         <?= $this->fetch('content') ?>

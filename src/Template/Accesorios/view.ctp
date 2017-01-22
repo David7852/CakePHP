@@ -1,12 +1,18 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Acciones') ?></li>
-        <li><?= $this->Html->link(__('Editar este Accesorio'), ['action' => 'edit', $accesorio->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Eliminar este Accesorio'), ['action' => 'delete', $accesorio->id], ['confirm' => __('¿Confirma querer eliminar el accesorio: {0}?', $accesorio->titulo)]) ?> </li>
-        <li><?= $this->Html->link(__('Listar Accesorios'), ['action' => 'index']) ?> </li>
+        <li class="heading"><?=''?></li>
+
+        <li class="inv" id="seleccion"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>
+        <!-- $ -->
+        <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $accesorio->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $accesorio->id], ['confirm' => __('¿Confirma querer eliminar el accesorio: {0}?', $accesorio->titulo)]) ?> </li>
+        <li><?= $this->Html->link(__('Accesorios'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Nuevo Accesorio'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('Listar Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Nuevo Articulo'), ['controller' => 'Articulos', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?> </li>
+        <!-- $ -->
+        <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
+        <li class="tlf"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>
+        <li class="usu"><?= $this->Html->link(__('Usuarios'), ['controller' => 'Pages', 'action' => 'display','usuarios'])?></li>
     </ul>
 </nav>
 <div class="accesorios view large-9 medium-8 columns content">

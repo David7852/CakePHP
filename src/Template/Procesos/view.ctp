@@ -1,23 +1,35 @@
 <?php use Cake\Routing\Router;
-use Cake\ORM\TableRegistry;
-?>
-
+use Cake\ORM\TableRegistry;?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Acciones') ?></li>
-        <?php if($proceso->tipo!='Devolucion'): ?>
-            <li><?= $this->Html->link(__('Asociar Asignacion'), ['controller' => 'Asignaciones', 'action' => 'asociar',$proceso->id],['id'=>'asignacion']) ?> </li>
-        <?php endif; if($proceso->tipo!='Asignacion'):?>
-            <li><?= $this->Html->link(__('Asociar Devolucion'), ['controller' => 'Devoluciones', 'action' => 'asociar',$proceso->id],['id'=>'devolucion']) ?> </li>
+        <li class="heading"><?=''?></li>
+        <li class="sol" id="seleccion"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
+        <!-- $ -->
+        <?php if(!$this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
+        <li><?= $this->Form->postLink(
+                __('Eliminar'),
+                ['action' => 'delete', $proceso->id],
+                ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $proceso->motivo)]
+            )
+            ?></li>
+        <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $proceso->id]) ?></li>
+        <?php else: ?>
+            <?php if($proceso->tipo=='Asignacion'): ?>
+                <li><?= $this->Html->link(__('Dar Asignacion'), ['controller' => 'Asignaciones', 'action' => 'asociar',$proceso->id],['id'=>'asignacion']) ?> </li>
+                <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $proceso->id]) ?></li>
+            <?php elseif($proceso->tipo=='Devolucion'):?>
+                <li><?= $this->Html->link(__('Dar Devolucion'), ['controller' => 'Devoluciones', 'action' => 'asociar',$proceso->id],['id'=>'devolucion']) ?> </li>
+                <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $proceso->id]) ?></li>
+            <?php else: ?>
+                <li><?= $this->Html->link(__('Dar Asignacion'), ['controller' => 'Asignaciones', 'action' => 'asociar',$proceso->id],['id'=>'asignacion']) ?> </li>
+                <li><?= $this->Html->link(__('Dar Devolucion'), ['controller' => 'Devoluciones', 'action' => 'asociar',$proceso->id],['id'=>'devolucion']) ?> </li>
+            <?php endif; ?>
         <?php endif; ?>
-        <li><?= $this->Html->link(__('Editar este Proceso'), ['action' => 'edit', $proceso->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Eliminar este Proceso'), ['action' => 'delete', $proceso->id], ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $proceso->motivo)]) ?> </li>
-        <li><?= $this->Html->link(__('Listar Procesos'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Nuevo Proceso'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('Listar Asignaciones'), ['controller' => 'Asignaciones', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Listar Devoluciones'), ['controller' => 'Devoluciones', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Listar Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Nuevo Trabajador'), ['controller' => 'Trabajadores', 'action' => 'add']) ?> </li>
+
+        <!-- $ -->
+        <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>
+        <li class="tlf"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>
+        <li class="usu"><?= $this->Html->link(__('Usuarios'), ['controller' => 'Pages', 'action' => 'display','usuarios'])?></li>
     </ul>
 </nav>
 <div class="procesos view large-9 medium-8 columns content">

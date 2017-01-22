@@ -1,23 +1,23 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Acciones') ?></li>
+        <li class="heading"><?=''?></li>
+        <li class="inv" id="seleccion"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>
+        <!-- $ -->
         <li><?= $this->Form->postLink(
-                __('Eliminar este articulo'),
+                __('Eliminar Articulo'),
                 ['action' => 'delete', $articulo->id],
                 ['confirm' => __('¿Confirma querer eliminar el articulo {0}?', $articulo->titulo)]
             )
-        ?></li>
-        <li><?= $this->Html->link(__('Listar Articulos'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Listar Modelos'), ['controller' => 'Modelos', 'action' => 'index']) ?></li>
+            ?></li>
+        <li><?= $this->Html->link(__('Articulos'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Modelos'), ['controller' => 'Modelos', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Nuevo Modelo'), ['controller' => 'Modelos', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('Listar Accesorios'), ['controller' => 'Accesorios', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nuevo Accesorio'), ['controller' => 'Accesorios', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('Listar Asignaciones'), ['controller' => 'Asignaciones', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Formar Asignacion'), ['controller' => 'Asignaciones', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('Listar Devoluciones'), ['controller' => 'Devoluciones', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Formar Devolucion'), ['controller' => 'Devoluciones', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('Listar Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nueva Linea'), ['controller' => 'Lineas', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Accesorios'), ['controller' => 'Accesorios', 'action' => 'index']) ?></li>
+        <!-- $ -->
+        <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
+        <li class="tlf"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>
+        <li class="usu"><?= $this->Html->link(__('Usuarios'), ['controller' => 'Pages', 'action' => 'display','usuarios'])?></li>
+
     </ul>
 </nav>
 <div class="articulos form large-9 medium-8 columns content">

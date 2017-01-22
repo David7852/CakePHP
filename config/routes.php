@@ -48,7 +48,6 @@ Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $r
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
-Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/ingresar/*', ['action' => 'login']);});
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/salir', ['action' => 'logout']);});
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/registrate', ['action' => 'signup']);});
@@ -139,10 +138,15 @@ Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilde
 Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
 Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
 Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
-//general
+//login
 Router::scope('/',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/salir', ['action' => 'logout']);});
 Router::scope('/',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/ingresar/*', ['action' => 'login']);});
 Router::scope('/',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/registrate/*', ['action' => 'signup']);});
+//general
+Router::scope('/', function (RouteBuilder $routes) {    $routes->connect('/inventario', ['controller' => 'Pages', 'action' => 'display', 'inventario']);});
+Router::scope('/', function (RouteBuilder $routes) {    $routes->connect('/solicitudes', ['controller' => 'Pages', 'action' => 'display', 'solicitudes']);});
+Router::scope('/', function (RouteBuilder $routes) {    $routes->connect('/usuarios', ['controller' => 'Pages', 'action' => 'display', 'usuarios']);});
+Router::scope('/', function (RouteBuilder $routes) {    $routes->connect('/telefonia', ['controller' => 'Pages', 'action' => 'display', 'telefonia']);});
 Router::scope('/', function (RouteBuilder $routes) {
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',

@@ -348,7 +348,7 @@ class ProcesosController extends AppController
             ->andWhere(['rol ='=>'Solicitante']);
         $s=array();
         foreach ($pro_tra as $pt) array_push($s,$pt->trabajador_id);
-        if($pro_tra!=null&&!$pro_tra->isEmpty())
+        if($pro_tra!=null&&!$pro_tra->isEmpty()&&!empty($s))
             $solicitantes=$this->Procesos->Trabajadores->find('list',array('conditions'=>array('Trabajadores.id IN'=>$s)));
         $trabajadores = $this->Procesos->Trabajadores->find('list')
             ->where(['gerencia =' => 'IT'])

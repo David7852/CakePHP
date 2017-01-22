@@ -1,19 +1,19 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Acciones') ?></li>
+        <li class="heading"><?=''?></li>
+        <li class="sol" id="seleccion"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
+        <!-- $ -->
         <li><?= $this->Form->postLink(
-                __('Eliminar este proceso'),
+                __('Eliminar'),
                 ['action' => 'delete', $proceso->id],
                 ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $proceso->motivo)]
             )
-        ?></li>
-        <li><?= $this->Html->link(__('Listar Procesos'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Listar Asignaciones'), ['controller' => 'Asignaciones', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Formar Asignacion'), ['controller' => 'Asignaciones', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('Listar Devoluciones'), ['controller' => 'Devoluciones', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Formar Devolucion'), ['controller' => 'Devoluciones', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('Listar Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nuevo Trabajador'), ['controller' => 'Trabajadores', 'action' => 'add']) ?></li>
+            ?></li>
+        <li><?= $this->Html->link(__('Procesos'), ['action' => 'index']) ?></li>
+        <!-- $ -->
+        <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>
+        <li class="tlf"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>
+        <li class="usu"><?= $this->Html->link(__('Usuarios'), ['controller' => 'Pages', 'action' => 'display','usuarios'])?></li>
     </ul>
 </nav>
 <div class="procesos form large-9 medium-8 columns content">

@@ -216,16 +216,7 @@ class UsuariosController extends AppController
         $this->set(compact('usuarios'));
         $this->set('_serialize', ['usuarios']);
     }
-    public function menu()
-    {
-        $this->paginate = [
-            'contain' => ['Trabajadores']
-        ];
-        $usuarios = $this->paginate($this->Usuarios);
 
-        $this->set(compact('usuarios'));
-        $this->set('_serialize', ['usuarios']);
-    }
     /**
      * View method
      *

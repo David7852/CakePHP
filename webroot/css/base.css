@@ -625,7 +625,7 @@ body {
 }
 
 body {
-    background: #fbfcfc;
+    background: #fcfcfc;
     background-image: url(../img/bodyTexture.png);
     background-repeat: repeat;
     color: #121212;
@@ -4299,7 +4299,7 @@ meta.foundation-mq-topbar {
         margin-left: 25%;
         margin: auto;
         width: 100%;
-        margin-top: -5vw;
+        margin-top: -0.5rem;
     }
     #difbtm g-fab._jAg
     {
@@ -4308,6 +4308,13 @@ meta.foundation-mq-topbar {
         float: none;
         display: block;
         margin: auto;
+    }
+    a #difbtm:hover
+    {
+        margin-top: -1.2em;
+    }
+    footer{
+        margin-top: 1rem;
     }
     .button-group.radius.stack-for-small>* {
         display: block;
@@ -5879,7 +5886,9 @@ ul.pagination li {
     color: #008CBA;
     display: block;
     margin: 0;
-    padding: 0.4375rem 0.875rem
+    //padding: 0.4375rem 0.875rem;
+
+    padding: 0.5rem 0.35rem;
 }
 
 .side-nav li a:not(.button):hover,

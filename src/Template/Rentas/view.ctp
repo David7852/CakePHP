@@ -1,15 +1,16 @@
 <?=$this->assign('title',"Rentas y Planes")?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Acciones') ?></li>
-        <li><?= $this->Html->link(__('Editar ').h($renta->nombre), ['action' => 'edit', $renta->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Eliminar ').h($renta->nombre), ['action' => 'delete', $renta->id], ['confirm' => __('¿Confirma querer eliminar la renta {0}?', $renta->nombre)]) ?> </li>
-        <li><?= $this->Html->link(__('Listar Rentas'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Nueva Renta'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('Listar Servicios'), ['controller' => 'Servicios', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Nuevo Servicio'), ['controller' => 'Servicios', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('Listar Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Nueva Linea'), ['controller' => 'Lineas', 'action' => 'add']) ?> </li>
+
+        <li class="heading"><?=''?></li>
+        <li class="tlf" id="seleccion"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>
+        <!-- $ -->
+        <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $renta->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $renta->id], ['confirm' => __('¿Confirma querer eliminar la renta {0}?', $renta->nombre)]) ?> </li>
+        <!-- $ -->
+        <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
+        <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>
+        <li class="usu" ><?= $this->Html->link(__('Usuarios'), ['controller' => 'Pages', 'action' => 'display','usuarios'])?></li>
     </ul>
 </nav>
 <div class="rentas view large-9 medium-8 columns content">

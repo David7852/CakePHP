@@ -38,7 +38,10 @@ class ArticulosController extends AppController
             ->where(['tipo_de_articulo ='=>$tipo]);
         foreach ($models as $m)
             array_push($mo,$m->id);
-        $articulos = $this->paginate($this->Articulos->find('all', array('conditions'=>array('Articulos.modelo_id IN'=>$mo))));
+        if(!empty($mo))
+            $articulos = $this->paginate($this->Articulos->find('all', array('conditions'=>array('Articulos.modelo_id IN'=>$mo))));
+        else
+            $articulos = $this->paginate($this->Articulos->find('all')->where(['Articulos.id <'=>0]));
         $this->set(compact('articulos','modelos'));
         $this->set('_serialize', ['articulos']);
     }

@@ -1,16 +1,20 @@
 <?=$this->assign('title',"Modelos y Marcas")?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Acciones') ?></li>
+        <li class="heading"><?=''?></li>
+        <li class="inv" id="seleccion"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>
+        <!-- $ -->
         <li><?= $this->Form->postLink(
-                __('Eliminar ').h($modelo->titulo),
+                __('Eliminar'),
                 ['action' => 'delete', $modelo->id],
                 ['confirm' => __('¿Confirma querer eliminar el tipo de {0}?', $modelo->titulo)]
             )
-        ?></li>
-        <li><?= $this->Html->link(__('Listar Modelos'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Listar Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Agregar Articulo'), ['controller' => 'Articulos', 'action' => 'add']) ?></li>
+            ?></li>
+        <!-- $ -->
+        <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
+        <li class="tlf"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>
+        <li class="usu"><?= $this->Html->link(__('Usuarios'), ['controller' => 'Pages', 'action' => 'display','usuarios'])?></li>
+
     </ul>
 </nav>
 <div class="modelos form large-9 medium-8 columns content">
