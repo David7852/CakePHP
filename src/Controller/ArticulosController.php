@@ -42,7 +42,7 @@ class ArticulosController extends AppController
             $articulos = $this->paginate($this->Articulos->find('all', array('conditions'=>array('Articulos.modelo_id IN'=>$mo))));
         else
             $articulos = $this->paginate($this->Articulos->find('all')->where(['Articulos.id <'=>0]));
-        $this->set(compact('articulos','modelos'));
+        $this->set(compact('articulos','modelos','tipo'));
         $this->set('_serialize', ['articulos']);
     }
 

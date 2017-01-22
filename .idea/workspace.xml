@@ -35,11 +35,83 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Facturas/index.ctp">
+      <file leaf-file-name="inventario.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Pages/inventario.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+            <state relative-caret-position="345">
+              <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+              <folding>
+                <marker date="1485060980256" expanded="true" signature="1274:1321" ph="..." />
+                <marker date="1485060980256" expanded="true" signature="1421:1468" ph="..." />
+                <marker date="1485060980256" expanded="true" signature="1621:1668" ph="..." />
+                <marker date="1485060980256" expanded="true" signature="1784:1848" ph="..." />
+                <marker date="1485060980256" expanded="true" signature="1801:1848" ph="..." />
+                <marker date="1485060980256" expanded="true" signature="1945:1992" ph="..." />
+                <marker date="1485060980256" expanded="true" signature="2114:2158" ph="..." />
+                <marker date="1485060980256" expanded="true" signature="2210:3287" ph="..." />
+                <marker date="1485060980256" expanded="true" signature="3240:3287" ph="..." />
+                <marker date="1485060980256" expanded="true" signature="3392:3439" ph="..." />
+                <marker date="1485060980256" expanded="true" signature="3591:3637" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="usuarios.ctp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Template/Pages/usuarios.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="91" lean-forward="true" selection-start-line="15" selection-start-column="91" selection-end-line="15" selection-end-column="91" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="solicitudes.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Pages/solicitudes.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="telefonia.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Pages/telefonia.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="35" lean-forward="false" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Layout/default.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="66" column="162" lean-forward="false" selection-start-line="66" selection-start-column="115" selection-end-line="66" selection-end-column="162" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Articulos/index.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Usuarios/index.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -49,88 +121,30 @@
         <entry file="file://$PROJECT_DIR$/src/Template/Lineas/add.ctp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="125" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Lineas/index.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="65" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="104" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Consumos/add.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="104" lean-forward="false" selection-start-line="9" selection-start-column="104" selection-end-line="9" selection-end-column="104" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Consumos/index.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="13" selection-end-column="130" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Consumos/menu.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="130" lean-forward="false" selection-start-line="13" selection-start-column="130" selection-end-line="13" selection-end-column="130" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view.ctp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Template/Consumos/view.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+              <caret line="6" column="114" lean-forward="false" selection-start-line="6" selection-start-column="114" selection-end-line="6" selection-end-column="114" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="edit.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Facturas/edit.ctp">
+        <entry file="file://$PROJECT_DIR$/src/Template/Lineas/edit.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="25" lean-forward="false" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+            <state relative-caret-position="105">
+              <caret line="7" column="51" lean-forward="true" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Rentas/add.ctp">
+      <file leaf-file-name="login.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Usuarios/login.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="113" lean-forward="true" selection-start-line="10" selection-start-column="113" selection-end-line="11" selection-end-column="104" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Consumos/edit.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="14" selection-end-column="104" />
-              <folding />
+            <state relative-caret-position="90">
+              <caret line="6" column="50" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="50" />
+              <folding>
+                <element signature="n#style#0;n#fieldset#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -185,17 +199,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Template/Trabajadores/edit.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Trabajadores/index.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Trabajadores/menu.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Trabajadores/view.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Usuarios/add.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Usuarios/edit.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Usuarios/index.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Usuarios/menu.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Usuarios/view.ctp" />
-        <option value="$PROJECT_DIR$/src/Controller/ArticulosController.php" />
-        <option value="$PROJECT_DIR$/src/Template/Lineas/add.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Lineas/edit.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Lineas/index.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Lineas/menu.ctp" />
@@ -236,6 +240,16 @@
         <option value="$PROJECT_DIR$/src/Template/Consumos/index.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Consumos/menu.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Consumos/view.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Usuarios/login.ctp" />
+        <option value="$PROJECT_DIR$/src/Controller/UsuariosController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/ArticulosController.php" />
+        <option value="$PROJECT_DIR$/src/Template/Usuarios/signup.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Lineas/add.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Articulos/inventario.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Pages/inventario.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Pages/telefonia.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Pages/solicitudes.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Pages/usuarios.ctp" />
       </list>
     </option>
   </component>
@@ -541,6 +555,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Procesos" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WIT" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Template" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pages" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -1205,16 +1241,16 @@
       <workItem from="1484696313029" duration="10408000" />
       <workItem from="1484793082175" duration="8193000" />
       <workItem from="1484870684859" duration="6041000" />
-      <workItem from="1485002871499" duration="30640000" />
+      <workItem from="1485002871499" duration="40877000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="561516000" />
+    <option name="totallyTimeSpent" value="571753000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18532526" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1265,169 +1301,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Template/Asignaciones/view.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="50" lean-forward="false" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Accesorios/view.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Trabajadores/add.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="30" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="14" selection-end-column="131" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Contratos/add.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="11" selection-end-column="131" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Contratos/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="11" selection-end-column="131" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Contratos/view.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="25" lean-forward="false" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Contratos/edit.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="38" lean-forward="true" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Devoluciones/add.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Devoluciones/view.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="191" lean-forward="false" selection-start-line="6" selection-start-column="191" selection-end-line="6" selection-end-column="191" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Articulos/add.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Layout/error.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Layout/default.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="63" column="100" lean-forward="true" selection-start-line="63" selection-start-column="57" selection-end-line="63" selection-end-column="100" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Procesos/solicitar.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="11" selection-end-column="129" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Procesos/menu.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" column="20" lean-forward="true" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="94" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Articulos/view.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="11" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="7" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Procesos/view.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="23" column="163" lean-forward="false" selection-start-line="23" selection-start-column="163" selection-end-line="23" selection-end-column="163" />
-          <folding>
-            <marker date="1485044449632" expanded="true" signature="2358:2599" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="2380:2515" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="2550:2599" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="2563:2599" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="2704:2740" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="2787:2844" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="3062:3098" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="3190:3296" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="3462:3482" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="3553:3610" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="3570:3610" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="3867:3931" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="4109:4155" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="5030:5087" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="5047:5087" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="5288:5352" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="5474:5520" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="6409:6527" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="6426:6527" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="6952:7027" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="6973:7027" ph="..." />
-            <marker date="1485044449632" expanded="true" signature="7679:7725" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Contratos/menu.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="131" lean-forward="false" selection-start-line="11" selection-start-column="131" selection-end-line="11" selection-end-column="131" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Modelos/view.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="129" lean-forward="false" selection-start-line="11" selection-start-column="129" selection-end-line="11" selection-end-column="129" />
           <folding />
         </state>
       </provider>
@@ -1452,14 +1329,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="25" lean-forward="false" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Modelos/add.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="19" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1494,14 +1363,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="25" lean-forward="false" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Lineas/edit.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="51" lean-forward="true" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
           <folding />
         </state>
       </provider>
@@ -1673,14 +1534,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Lineas/add.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="125" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Rentas/add.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1705,10 +1558,187 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Pages/home.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="35" column="31" lean-forward="true" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Modelos/add.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="9" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Accesorios/add.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Consumos/view.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/AccesoriosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Accesorios/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Modelos/view.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="46" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/UsuariosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="54" column="71" lean-forward="false" selection-start-line="54" selection-start-column="71" selection-end-line="54" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Usuarios/signup.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="82" lean-forward="false" selection-start-line="6" selection-start-column="82" selection-end-line="6" selection-end-column="82" />
+          <folding>
+            <marker date="1485055988366" expanded="true" signature="606:802" ph="..." />
+            <marker date="1485055988366" expanded="true" signature="2369:2473" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ArticulosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="44" column="52" lean-forward="true" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Lineas/edit.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="51" lean-forward="true" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Lineas/add.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="114" lean-forward="false" selection-start-line="6" selection-start-column="114" selection-end-line="6" selection-end-column="114" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Articulos/inventario.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="43" lean-forward="true" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Usuarios/login.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="50" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="50" />
+          <folding>
+            <element signature="n#style#0;n#fieldset#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Articulos/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Usuarios/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Layout/default.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="66" column="162" lean-forward="false" selection-start-line="66" selection-start-column="115" selection-end-line="66" selection-end-column="162" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Pages/telefonia.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="35" lean-forward="false" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Pages/solicitudes.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Pages/inventario.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+          <folding>
+            <marker date="1485060980256" expanded="true" signature="1274:1321" ph="..." />
+            <marker date="1485060980256" expanded="true" signature="1421:1468" ph="..." />
+            <marker date="1485060980256" expanded="true" signature="1621:1668" ph="..." />
+            <marker date="1485060980256" expanded="true" signature="1784:1848" ph="..." />
+            <marker date="1485060980256" expanded="true" signature="1801:1848" ph="..." />
+            <marker date="1485060980256" expanded="true" signature="1945:1992" ph="..." />
+            <marker date="1485060980256" expanded="true" signature="2114:2158" ph="..." />
+            <marker date="1485060980256" expanded="true" signature="2210:3287" ph="..." />
+            <marker date="1485060980256" expanded="true" signature="3240:3287" ph="..." />
+            <marker date="1485060980256" expanded="true" signature="3392:3439" ph="..." />
+            <marker date="1485060980256" expanded="true" signature="3591:3637" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Pages/usuarios.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="91" lean-forward="true" selection-start-line="15" selection-start-column="91" selection-end-line="15" selection-end-column="91" />
           <folding />
         </state>
       </provider>

@@ -5,8 +5,8 @@
         <fieldset>
             <legend><h1 style="color: #0a6b4c; font-weight: lighter; margin-bottom: 1rem; line-height: normal; text-transform: none;" >¿Ya eres un trabajador de FertiNitro?</h1></legend>
             <div style='display: inline-block; width:100%; margin-bottom:-0.4rem'>
-                <br>
                 <?="<h4 style=\"color: #417664; margin-bottom: 0;padding-bottom: 0; font-family: raleway, Roboto, Century gothic, Segoe ui, sans-serif, sans-serif;font-weight: 400;text-shadow: 0px 0px 1px rgba(65, 118, 100, 0.3)\">Si es asi, ingresa tu cedula. </h4>";?>
+                <br>
                 <div style="text-align: center; height: 5rem; position: relative;">
                     <?php echo str_replace(
                             "input type=\"text\" name=\"cedula\" id=\"cedula\"",

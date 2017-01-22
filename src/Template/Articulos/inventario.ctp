@@ -13,7 +13,17 @@
     </ul>
 </nav>
 <div class="articulos index large-9 medium-8 columns content">
-    <h3><?= __('Articulos') ?></h3>
+    <h3><?php
+        if(substr($tipo, -1)=="s")
+            echo $tipo;
+        elseif(substr($tipo, -1)=="a"||substr($tipo, -1)=="e"||substr($tipo, -1)=="i"||substr($tipo, -1)=="o"||substr($tipo, -1)=="u")
+            echo $tipo."s";
+        elseif(substr($tipo, -1)=="z")
+            echo substr($tipo,0, -1)."ces";
+        else
+            echo $tipo."es";
+        ?></h3>
+    <?php if(!$articulos->isempty()): ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
         <tr>
@@ -46,12 +56,15 @@
         <?php endforeach; ?>
         </tbody>
     </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('<')) ?>
-            <?= str_replace("of","de",$this->Paginator->numbers()) ." ". str_replace("of","de",$this->Paginator->counter()) ?>
-            <?= $this->Paginator->next(__('>') . ' >') ?>
-        </ul>
+        <div class="paginator">
+            <ul class="pagination">
+                <?= $this->Paginator->prev('< ' . __('<')) ?>
+                <?= str_replace("of","de",$this->Paginator->numbers()) ." ". str_replace("of","de",$this->Paginator->counter()) ?>
+                <?= $this->Paginator->next(__('>') . ' >') ?>
+            </ul>
+        </div>
+    <?php else: ?>
+    <h4>No hay existencias en el inventario, por el momento.</h4>
+    <?php endif; ?>
 
-    </div>
 </div>

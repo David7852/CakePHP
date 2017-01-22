@@ -8,7 +8,7 @@
     <?= $this->Form->input('clave',['label'=>'Contraseña','type'=>'password']) ?>
     <br>    <div class="gradient-line" style="height: 1px"></div>    <br>
     <?= str_replace("type=\"submit\"", "class='button' type=\"submit\" style=' float:none; display:block; margin: auto; width:100%; height:3rem '", $this->Form->submit('Ingresar', array('name' => 'btn'))) ?>
-    <button button type='submit' class="buttonsidenote-center">¿Olvidaste tu clave?</button>
+    <button type='submit' class="buttonsidenote-center">¿Olvidaste tu clave?</button>
     <?= $this->Form->end() ?>
     </fieldset>
 </div>
