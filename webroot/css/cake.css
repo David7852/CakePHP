@@ -735,14 +735,6 @@ fieldset legend {
         font-weight: normal;
         text-shadow: 0px 0px 1px rgba(190,20,11,0.75);
     }
-    .side-nav li.heading {
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        padding: 0.4375rem 0.875rem;
-        text-decoration: none;
-        font-weight: normal;
-        text-shadow: 0px 0px 1px rgba(10,128,76,0.85);
-    }
     table thead tr th,
     table thead tr td {
         color: rgba(10,128,76,0.75);
@@ -769,7 +761,7 @@ fieldset legend {
     }
 }
 
-div.message {/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+div.message {
     text-align: center;
     cursor: pointer;
     display: block;
@@ -1413,22 +1405,254 @@ table tbody tr td figure img {
 #asignacion{
     color: #24a65c;
     text-shadow: 0 0 2px rgba(10,105,100,0.4);
-    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07);
-    border-radius: 4px;
 }
 #devolucion{
     color: rgba(195, 35, 45, 0.82);
     text-shadow: 0 0 2px rgba(190,20,22,0.4);
-    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07);
-    border-radius: 4px;
 }
-#goTop{
-    background:red;
-    padding:5px;
-    position:fixed;
+ul.side-nav li#seleccion  a,
+ul.side-nav li#seleccion a:hover{
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    padding: 0.4375rem 0.875rem;
+    text-decoration: none;
+    text-shadow: 0px 0px 2px rgba(10,128,76,0.7);
+    color: rgb(10,128,76);
+    font-weight: 600;
+    letter-spacing: 0.075rem;
+    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07),0 2px 6px 0px rgba(0,166,90,0.2);
+}
+ul.side-nav li.inv a,
+ul.side-nav li.inv a:hover{
+    color: rgb(203, 103, 51);
+    text-shadow: 0 0 2px rgba(154,28,25,0.2);
+    font-weight: 600;
+    letter-spacing: 0.075rem;
+    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07),0 2px 6px 0px rgba(154,28,25,0.2);
+}
+ul.side-nav li.sol a,
+ul.side-nav li.sol a:hover {
+    color: rgb(55, 123, 165);
+    text-shadow: 0 0 2px rgba(26,155,160,0.2);
+    font-weight: 600;
+    letter-spacing: 0.075rem;
+    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07), 0 2px 6px 0px rgba(26,155,160,0.2);
+}
+ul.side-nav li.usu a,
+ul.side-nav li.usu a:hover {
+    color: rgb(184, 65, 110);
+    text-shadow: 0 0 2px rgba(165,25,90,0.2);
+    font-weight: 600;
+    letter-spacing: 0.075rem;
+    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07),0 2px 6px 0px rgba(165,25,90,0.2);
+}
+ul.side-nav li.tlf a,
+ul.side-nav li.tlf a:hover {
+    color: rgb(58, 175, 106);
+    text-shadow: 0 0 2px rgba(0,166,90,0.2);
+    font-weight: 600;
+    letter-spacing: 0.075rem;
+    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07),0 2px 6px 0px rgba(0,166,90,0.2);
+}
+h1.inv{
+    color: #9a1c19;
+    text-align: center;
+}
+h1.inv::after{
+    content:"";
+    position: inherit;
+    display: block;
+    margin-top: -0.75rem;
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.05);
+    background: -moz-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(118,28,25,0.16) 5%, rgba(118,28,25,0.59) 25%, rgba(118,28,25,0.8) 35%, rgba(118,28,25,1) 50%, rgba(118,28,25,0.8) 66%, rgba(118,28,25,0.57) 76%, rgba(118,28,25,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(118,28,25,0.16) 5%, rgba(118,28,25,0.59) 25%, rgba(118,28,25,0.8) 35%, rgba(118,28,25,1) 50%, rgba(118,28,25,0.8) 66%, rgba(118,28,25,0.57) 76%, rgba(118,28,25,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    background: -ms-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(118,28,25,0.16) 5%, rgba(118,28,25,0.59) 25%, rgba(118,28,25,0.8) 35%, rgba(118,28,25,1) 50%, rgba(118,28,25,0.8) 66%, rgba(118,28,25,0.57) 76%, rgba(118,28,25,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    background: linear-gradient(to right, rgba(255,255,255,0.05) 0%, rgba(118,28,25,0.16) 5%, rgba(118,28,25,0.59) 25%, rgba(118,28,25,0.8) 35%, rgba(118,28,25,1) 50%, rgba(118,28,25,0.8) 66%, rgba(118,28,25,0.57) 76%, rgba(118,28,25,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#761c19', endColorstr='#ffffff', GradientType=0 );
+}
+h1.sol{
+    color: #1a9ba0;
+    text-align: center;
+}
+h1.sol::after{
+    content:"";
+    position: inherit;
+    display: block;
+    margin-top: -0.75rem;
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.05);
+    background: -moz-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(26,155,160,0.16) 5%, rgba(26,155,160,0.59) 25%, rgba(26,155,160,0.8) 35%, rgba(26,155,160,1) 50%, rgba(26,155,160,0.8) 66%, rgba(26,155,160,0.57) 76%, rgba(26,155,160,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(26,155,160,0.16) 5%, rgba(26,155,160,0.59) 25%, rgba(26,155,160,0.8) 35%, rgba(26,155,160,1) 50%, rgba(26,155,160,0.8) 66%, rgba(26,155,160,0.57) 76%, rgba(26,155,160,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    background: -ms-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(26,155,160,0.16) 5%, rgba(26,155,160,0.59) 25%, rgba(26,155,160,0.8) 35%, rgba(26,155,160,1) 50%, rgba(26,155,160,0.8) 66%, rgba(26,155,160,0.57) 76%, rgba(26,155,160,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    background: linear-gradient(to right, rgba(255,255,255,0.05) 0%, rgba(26,155,160,0.16) 5%, rgba(26,155,160,0.59) 25%, rgba(26,155,160,0.8) 35%, rgba(26,155,160,1) 50%, rgba(26,155,160,0.8) 66%, rgba(26,155,160,0.57) 76%, rgba(26,155,160,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a9ba0', endColorstr='#ffffff', GradientType=0 );
+}
+h1.usu{
+    color: #a519be;
+    text-align: center;
+}
+h1.usu::after{
+    content:"";
+    position: inherit;
+    display: block;
+    margin-top: -0.75rem;
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.05);
+    background: -moz-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(165,25,190,0.16) 5%, rgba(165,25,190,0.59) 25%, rgba(165,25,190,0.8) 35%, rgba(165,25,190,1) 50%, rgba(165,25,190,0.8) 66%, rgba(165,25,190,0.57) 76%, rgba(165,25,190,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(165,25,190,0.16) 5%, rgba(165,25,190,0.59) 25%, rgba(165,25,190,0.8) 35%, rgba(165,25,190,1) 50%, rgba(165,25,190,0.8) 66%, rgba(165,25,190,0.57) 76%, rgba(165,25,190,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    background: -ms-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(165,25,190,0.16) 5%, rgba(165,25,190,0.59) 25%, rgba(165,25,190,0.8) 35%, rgba(165,25,190,1) 50%, rgba(165,25,190,0.8) 66%, rgba(165,25,190,0.57) 76%, rgba(165,25,190,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    background: linear-gradient(to right, rgba(255,255,255,0.05) 0%, rgba(165,25,190,0.16) 5%, rgba(165,25,190,0.59) 25%, rgba(165,25,190,0.8) 35%, rgba(165,25,190,1) 50%, rgba(165,25,190,0.8) 66%, rgba(165,25,190,0.57) 76%, rgba(165,25,190,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#761c19', endColorstr='#ffffff', GradientType=0 );
+}
+h1.tlf{
+    color: #00a65a;
+    text-align: center;
+}
+h1.tlf::after{
+    content:"";
+    position: inherit;
+    display: block;
+    margin-top: -0.75rem;
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.05);
+    background: -moz-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(0,166,90,0.16) 5%, rgba(0,166,90,0.59) 25%, rgba(0,166,90,0.8) 35%, rgba(0,166,90,1) 50%, rgba(0,166,90,0.8) 66%, rgba(0,166,90,0.57) 76%, rgba(0,166,90,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(0,166,90,0.16) 5%, rgba(0,166,90,0.59) 25%, rgba(0,166,90,0.8) 35%, rgba(0,166,90,1) 50%, rgba(0,166,90,0.8) 66%, rgba(0,166,90,0.57) 76%, rgba(0,166,90,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    background: -ms-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(0,166,90,0.16) 5%, rgba(0,166,90,0.59) 25%, rgba(0,166,90,0.8) 35%, rgba(0,166,90,1) 50%, rgba(0,166,90,0.8) 66%, rgba(0,166,90,0.57) 76%, rgba(0,166,90,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    background: linear-gradient(to right, rgba(255,255,255,0.05) 0%, rgba(0,166,90,0.16) 5%, rgba(0,166,90,0.59) 25%, rgba(0,166,90,0.8) 35%, rgba(0,166,90,1) 50%, rgba(0,166,90,0.8) 66%, rgba(0,166,90,0.57) 76%, rgba(0,166,90,0.13) 95%, rgba(255,2255,255,0.01) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#761c19', endColorstr='#ffffff', GradientType=0 );
+}
+div .lapel{
+    text-align: center;
+    background: #fbfbfb;
+    background-image: url(../img/bodyTexture.png);
+    line-height: 3rem;
+    box-shadow: 1px -18px 30px -25px rgba(0, 0, 0, 0.72);
+    clear: both;
+    position: relative;
+    z-index: 12;
+    height: 7em;
+    margin-left: -0.3rem;
+    margin-right: -0.3rem;
+}
+div .lapel h1{
+    font-size: xx-large;
+    line-height: 6rem;
+}
+div .slice ul{
+    margin: 5.4rem 0 -4rem 0;
+    display: flex;
+    float: none;
+    width: 100%;
+}
+div .slice ul li,
+div .slice ul li#first{
+    text-align: -webkit-match-parent;
+    display: inline-block;
+    float: none;
+    top: 0;
+    position: relative;
+    margin: auto;
+    transition: all 0.5s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+}
+div .slice ul li#first:hover {
+    transform: rotate(-3.6deg);
+    top:-1rem;
+    transition: all 0.35s linear;
+}
+div .slice ul li:hover{
+    transform: rotate(3.6deg);
+    top:-1rem;
+    transition: all 0.35s linear;
+}
+div .slice ul li div
+{
+    background-image: url(../img/sideBarTexture.png);
+    text-align: center;
+    text-orientation: mixed;
+    text-overflow: clip;
+    border-radius: 1px;
+    overflow: hidden;
+    margin-top: -4.15rem;
+    margin-bottom: -2.1rem;
     z-index: 1;
-    right:10px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 1px 5px 0 rgba(0, 0, 0, 0.06), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 18px 40px 0 rgba(0, 0, 0, 0.2), 0 17px 17px 0 rgba(0, 0, 0, 0.05);
 }
+div .slice ul li div h5{
+    color: white;
+    font-family: raleway, poiret, Roboto, Century gothic, Segoe ui, sans-serif;
+    width: 100%;
+    line-height: 1.7rem;
+    letter-spacing: 0.1rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 600;
+    text-shadow: 0 0 1px rgba(255,255,255,0.3);
+    text-transform: capitalize;
+    font-size: 100%;
+}
+div .slice ul li a:hover,
+div .slice ul li a{
+    background-image: url(../img/sideBarTexture.png);
+    display: inline-block;
+    text-align: center;
+    text-orientation: mixed;
+    word-break: break-word;
+    text-overflow: clip;
+    overflow: hidden;
+    border-radius: 1px;
+    padding: 1.5rem 1.333rem 4rem 1.333rem;
+    height: 7.5rem;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 1px 5px 0 rgba(0, 0, 0, 0.06), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 18px 40px 0 rgba(0, 0, 0, 0.2), 0 17px 17px 0 rgba(0, 0, 0, 0.05);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: raleway, poiret, Roboto, Century gothic, Segoe ui, sans-serif;
+    width: 100%;
+    line-height: 1.7rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 600;
+    text-shadow: 0 0 1px rgba(255,255,255,0.3);
+    text-transform: capitalize;
+    font-size: 100%;
+}
+
+div .slice ul li div div{
+    display: block;
+    position: relative;
+    width: 73%;
+    margin: 0;
+    display: inline-block;
+    box-shadow: unset;
+
+}
+div .slice ul li div div button,
+div .slice ul li div div button:hover
+{
+    color: #9b2825;
+    display: inline-block;
+    background-color: white;
+    box-shadow: unset;
+    width: 27px;
+    height: 27px;
+    padding: 2px 0 0 4px;
+    margin: 5px;
+    box-shadow: unset;
+    fill: currentColor;
+    border-radius: 50%;
+}
+div .slice ul li div div div input,
+div .slice ul li div div div input:hover
+{
+    height: 27px;
+    border-radius: 999em;
+    box-shadow: unset;
+}
+
 @font-face {
     font-family: 'raleway';
     font-style: normal;
