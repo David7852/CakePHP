@@ -16,16 +16,36 @@ class LineasController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
+    public function index($id = null)
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
-            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
-            return $this->redirect($this->referer());
-        }
         $this->paginate = [
             'contain' => ['Articulos']
         ];
-        $lineas = $this->paginate($this->Lineas);
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$id != null)
+        {
+            $lineas=array();
+            $lin=TableRegistry::get('Lineas')->find('all');
+            foreach ($lin as $eas){
+                $asig=TableRegistry::get('Asignaciones')->find('all')
+                    ->where(['articulo_id ='=>$eas->articulo_id])
+                    ->andWhere(['hasta >='=>date('Y-m-d')]);
+                foreach ($asig as $row){
+                    $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                        ->where(['proceso_id ='=>$row->proceso_id])
+                        ->andWhere(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')])
+                        ->andWhere(['rol ='=>'Solicitante']);;
+                    if($pro_tra!=null&&!$pro_tra->isEmpty())
+                        array_push($lineas, $eas->id);
+                }
+            }
+            if(empty($lineas)){
+                $this->Flash->error(__('Usted no tiene Lineas asignadas.'));
+                return $this->redirect($this->referer());
+            }
+            $lineas = $this->paginate($this->Lineas->find('all',array('conditions'=>array('Lineas.id IN'=>$lineas))));
+
+        }else
+            $lineas = $this->paginate($this->Lineas);
 
         $this->set(compact('lineas'));
         $this->set('_serialize', ['lineas']);

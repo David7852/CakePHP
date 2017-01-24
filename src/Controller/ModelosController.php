@@ -18,10 +18,6 @@ class ModelosController extends AppController
      */
     public function index()
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
-            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
-            return $this->redirect($this->referer());
-        }
         $modelos = $this->paginate($this->Modelos);
 
         $this->set(compact('modelos'));

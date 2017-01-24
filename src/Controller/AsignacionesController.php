@@ -28,16 +28,28 @@ class AsignacionesController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
+    public function index($id = null)
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
-            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
-            return $this->redirect($this->referer());
-        }
         $this->paginate = [
-            'contain' => ['Procesos', 'Articulos']
-        ];
-        $asignaciones = $this->paginate($this->Asignaciones);
+        'contain' => ['Procesos', 'Articulos']    ];
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$id!=null) {
+            $asignaciones=array();
+            $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                ->where(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')]);
+            foreach ($pro_tra as $p)
+            {
+                $asig=TableRegistry::get('Asignaciones')->find('all')
+                    ->where(['proceso_id ='=>$p->proceso_id])
+                    ->andWhere(['hasta >='=>date('Y-m-d')]);
+                foreach ($asig as $nacion)
+                    array_push($asignaciones, $nacion->id);
+            }
+            if(empty($asignaciones)){
+            $this->Flash->error(__('Usted no tiene Asignaciones a su nombre.'));
+            return $this->redirect($this->referer());}
+            $asignaciones = $this->paginate($this->Asignaciones->find('all',array('conditions'=>array('Asignaciones.id IN'=>$asignaciones))));
+        }else
+            $asignaciones = $this->paginate($this->Asignaciones);
 
         $this->set(compact('asignaciones'));
         $this->set('_serialize', ['asignaciones']);

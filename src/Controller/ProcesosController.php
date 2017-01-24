@@ -58,11 +58,21 @@ class ProcesosController extends AppController
      */
     public function index()
     {
+
         if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
-            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
-            return $this->redirect($this->referer());
-        }
-        $procesos = $this->paginate($this->Procesos);
+            $procesos=array();
+            $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                ->where(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')]);
+            foreach ($pro_tra as $p)
+                array_push($procesos,$p->proceso_id);
+            if(empty($procesos))
+            {
+                $this->Flash->error(__('Usted no tiene Procesos ni solicitudes a su nombre.'));
+                return $this->redirect($this->referer());
+            }
+            $procesos = $this->paginate($this->Procesos->find('all',array('conditions'=>array('Procesos.id IN'=>$procesos))));
+        }else
+            $procesos = $this->paginate($this->Procesos);
         $this->set(compact('procesos'));
         $this->set('_serialize', ['procesos']);
     }

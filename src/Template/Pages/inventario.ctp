@@ -34,29 +34,34 @@
         <div class="lapel">
             <h1 style="color: #cf591f">Accesorios</h1>
         </div>
-        <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
         <div class="slice">
             <ul>
+                <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
+                    <li id="first">
+                        <a href="<?=Router::url(array('controller' => 'Modelos', 'action' => 'index'))?>" style="color:#1c2529; background-color: #d6d58e">Ver los Modelos</a>
+                    </li>
+                <?php else: ?>
             <li id="first">
                 <a href="<?=Router::url(array('controller' => 'Modelos', 'action' => 'index'))?>" style="color:#1c2529; background-color: #d6d58e">Listar</a>
             </li>
             <li>
                 <a href="<?=Router::url(array('controller' => 'Modelos', 'action' => 'add'))?>" style="color:#1c2529; background-color: #f7bc60">Agregar</a>
             </li>
+                <?php endif; ?>
             </ul>
         </div>
         <div class="lapel">
             <h1 style="color: #cdb949">Modelos</h1>
         </div>
-        <?php endif; ?>
+
         <div class="slice">
             <ul>
             <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
                 <li id="first">
-                    <a href="<?=Router::url(array('controller' => 'Accesorios', 'action' => 'index'))?>" style="color:white; background-color: #843534" >Ver mis artículos</a>
+                    <a href="<?=Router::url(array('controller' => 'Articulos', 'action' => 'index'))?>" style="color:white; background-color: #843534" >Ver mis artículos</a>
                 </li>
                 <li>
-                    <a href="<?=Router::url(array('controller' => 'Procesos', 'action' => 'solicitar'))?>" style=" background-color: #9b2825">Solicitar un articulo</a>
+                    <a href="<?=Router::url(array('controller' => 'Procesos', 'action' => 'solicitar'))?>" style="color:white; background-color: #9b2825">Solicitar un articulo</a>
                 </li>
             <?php else: ?>
                 <li id="first">

@@ -3,7 +3,7 @@
         <li class="heading"><?=''?></li>
         <li class="sol" id="seleccion"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <!-- $ -->
-        <li><?= $this->Html->link(__('Devoluciones'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Devoluciones'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('Procesos'), ['controller' => 'Procesos', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Nuevo Proceso'), ['controller' => 'Procesos', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>

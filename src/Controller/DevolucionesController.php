@@ -25,15 +25,27 @@ class DevolucionesController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
+    public function index($id = null)
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
-            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
-            return $this->redirect($this->referer());
-        }
         $this->paginate = [
-            'contain' => ['Procesos', 'Articulos']
+        'contain' => ['Procesos', 'Articulos']
         ];
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$id!=null) {
+            $devoluciones=array();
+            $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                ->where(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')]);
+            foreach ($pro_tra as $p)
+            {
+                $devo=TableRegistry::get('Devoluciones')->find('all')
+                    ->where(['proceso_id ='=>$p->proceso_id]);
+                foreach ($devo as $lucion)
+                    array_push($devoluciones, $lucion->id);
+            }
+            if(empty($devoluciones)){
+                $this->Flash->error(__('Usted no tiene Devoluciones a su nombre.'));
+                return $this->redirect($this->referer());}
+            $devoluciones = $this->paginate($this->Devoluciones->find('all',array('conditions'=>array('Devoluciones.id IN'=>$devoluciones))));
+        }else
         $devoluciones = $this->paginate($this->Devoluciones);
 
         $this->set(compact('devoluciones'));

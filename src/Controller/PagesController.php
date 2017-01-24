@@ -14,6 +14,7 @@
  */
 namespace App\Controller;
 
+use Cake\Routing\Router;
 use Cake\Core\Configure;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
@@ -52,8 +53,13 @@ class PagesController extends AppController
             $subpage = $path[1];
         }
         $this->set(compact('page', 'subpage'));
-
+        if ($this->request->is('post'))
+            if($this->request->data['tipo']!=null&&$this->request->data['tipo']!='')
+                return $this->redirect(['controller'=>'Articulos', 'action' => 'inventario',h($this->request->data['tipo'])]);
         try {
+            if(!$this->request->session()->read('Auth.User')&&$page!='home'){
+                return $this->redirect(['controller'=>'Usuarios', 'action' => 'login']);
+            }
             $this->render(implode('/', $path));
         } catch (MissingTemplateException $e) {
             if (Configure::read('debug')) {

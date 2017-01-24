@@ -18,14 +18,17 @@
                     <a href="<?=Router::url(array('controller' => 'Lineas', 'action' => 'index',$this->request->session()->read('Auth.User.trabajador_id')))?>" style="color:#1c2529; background-color: #c9e2b3">Mis lineas</a>
                 </li>
             <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
-                <li id="first">
+                <li >
                     <a href="<?=Router::url(array('controller' => 'Lineas', 'action' => 'index'))?>"style="color:white; background-color: #00b14c">Listar</a>
                 </li>
-                <li>
+                <li id="first">
                     <a href="<?=Router::url(array('controller' => 'Lineas', 'action' => 'add'))?>"style="color:#1c2529; background-color: #3d9970">Agregar</a>
                 </li>
+                <li>
+                    <a href="<?=Router::url(array('controller' => 'Articulos', 'action' => 'inventario','Celular'))?>"style="color:#1c2529; background-color: #b8de87">Celulares</a>
+                </li>
             <?php else: ?>
-                <li id="first">
+                <li>
                     <a href="<?=Router::url(array('controller' => 'Articulos', 'action' => 'inventario','Celular'))?>"style="color:#1c2529; background-color: burlywood">Mis celulares</a>
                 </li>
             <?php endif; ?>
@@ -34,7 +37,6 @@
         <div class="lapel">
             <h1 style="color: forestgreen">Lineas</h1>
         </div>
-        <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
             <div class="slice">
                 <ul>
                     <li id="first">
@@ -48,12 +50,11 @@
             <div class="lapel">
                 <h1 style="color: #4ba567">Rentas y Servicios</h1>
             </div>
-        <?php endif; ?>
         <div class="slice">
             <ul>
                 <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
                     <li id="first">
-                        <a href="<?=Router::url(array('controller' => 'Consumos', 'action' => 'view', $this->request->session()->read('Auth.User.id')))?>" style="color:#1c2529; background-color: olive"><?= $this->request->session()->read('Auth.User.nombre_de_usuario')?></a>
+                        <a href="<?=Router::url(array('controller' => 'Consumos', 'action' => 'index', $this->request->session()->read('Auth.User.id')))?>" style="color:white; background-color: #7d7d00">Mis consumos</a>
                     </li>
                 <?php else: ?>
                     <li id="first">
@@ -68,26 +69,23 @@
         <div class="lapel">
             <h1 style="color: darkolivegreen">Consumos</h1>
         </div>
-
+        <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
         <div class="slice">
             <ul>
-            <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
-                <li id="first">
-                    <a href="<?=Router::url(array('controller' => 'Contratos', 'action' => 'index'))?>"style="color:white; background-color: #8b4528">Mi contrato</a>
-                </li>
-            <?php else: ?>
+
                 <li id="first">
                     <a href="<?=Router::url(array('controller' => 'Contratos', 'action' => 'index'))?>"style="color:white; background-color: #7b6451">Listar</a>
                 </li>
                 <li>
                     <a href="<?=Router::url(array('controller' => 'Contratos', 'action' => 'add'))?>"style="color:white; background-color: #8b4528">Agregar</a>
                 </li>
-            <?php endif; ?>
+
             </ul>
         </div>
         <div class="lapel">
             <h1 style="color: saddlebrown;">Facturas</h1>
         </div>
+        <?php endif; ?>
         <br><br>
         <?= $this->Form->end() ?>
     </fieldset>

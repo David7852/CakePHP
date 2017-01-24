@@ -54,9 +54,6 @@
 
         <div class="slice">
             <ul>
-                <li id="first">
-                    <a href="<?=Router::url(array('controller' => 'Devoluciones', 'action' => 'index',$this->request->session()->read('Auth.User.trabajador_id')))?>"style="color:white; background-color: #1c2d3f">Mis devoluciones</a>
-                </li>
             <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
                 <li id="first">
                     <a href="<?=Router::url(array('controller' => 'Devoluciones', 'action' => 'index'))?>" style="color:white; background-color: #003f54">Listar</a>
@@ -65,6 +62,9 @@
                     <a href="<?=Router::url(array('controller' => 'Devoluciones', 'action' => 'add'))?>" style="color:white; background-color: #305777">Agregar</a>
                 </li>
             <?php endif; ?>
+                <li>
+                    <a href="<?=Router::url(array('controller' => 'Devoluciones', 'action' => 'index',$this->request->session()->read('Auth.User.trabajador_id')))?>"style="color:white; background-color: #1c2d3f">Mis devoluciones</a>
+                </li>
             </ul>
         </div>
         <div class="lapel">

@@ -23,7 +23,7 @@
         else
             echo $tipo."es";
         ?></h3>
-    <?php if(!$articulos->isempty()): ?>
+    <?php if(!$articulos->isEmpty()): ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
         <tr>

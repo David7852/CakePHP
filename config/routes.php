@@ -47,7 +47,7 @@ Router::defaultRouteClass(DashedRoute::class);
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
-Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
+Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/listar/*', ['action' => 'index']);});
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/ingresar/*', ['action' => 'login']);});
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/salir', ['action' => 'logout']);});
 Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/registrate', ['action' => 'signup']);});
@@ -56,88 +56,75 @@ Router::scope('/usuarios',['controller' => 'Usuarios'],function (RouteBuilder $r
 Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
-Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
+Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/listar/*', ['action' => 'index']);});
 Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/bienvenido/', ['action' => 'nuevo']);});
-Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
 //Servicios
 Router::scope('/servicios',['controller' => 'Servicios'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/servicios',['controller' => 'Servicios'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/servicios',['controller' => 'Servicios'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
-Router::scope('/servicios',['controller' => 'Servicios'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
-Router::scope('/servicios',['controller' => 'Servicios'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
+Router::scope('/servicios',['controller' => 'Servicios'],function (RouteBuilder $routes) {    $routes->connect('/listar/*', ['action' => 'index']);});
 //Rentas
 Router::scope('/rentas',['controller' => 'Rentas'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/rentas',['controller' => 'Rentas'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/rentas',['controller' => 'Rentas'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
-Router::scope('/rentas',['controller' => 'Rentas'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
-Router::scope('/rentas',['controller' => 'Rentas'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
+Router::scope('/rentas',['controller' => 'Rentas'],function (RouteBuilder $routes) {    $routes->connect('/listar/*', ['action' => 'index']);});
 //procesos
 Router::scope('/procesos',['controller' => 'Procesos'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/procesos',['controller' => 'Procesos'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/procesos',['controller' => 'Procesos'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
-Router::scope('/procesos',['controller' => 'Procesos'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
+Router::scope('/procesos',['controller' => 'Procesos'],function (RouteBuilder $routes) {    $routes->connect('/listar/*', ['action' => 'index']);});
 Router::scope('/procesos',['controller' => 'Procesos'],function (RouteBuilder $routes) {    $routes->connect('/solicitar/*', ['action' => 'solicitar']);});
 Router::scope('/solicitar',['controller' => 'Procesos'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'solicitar']);});
 Router::scope('/asociarequipo',['controller' => 'Procesos'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'asociarequipo']);});
 Router::scope('/devolverequipo',['controller' => 'Procesos'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'devolverequipo']);});
-Router::scope('/procesos',['controller' => 'Procesos'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
 //modelos
 Router::scope('/modelos',['controller' => 'Modelos'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/modelos',['controller' => 'Modelos'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/modelos',['controller' => 'Modelos'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
-Router::scope('/modelos',['controller' => 'Modelos'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
-Router::scope('/modelos',['controller' => 'Modelos'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
+Router::scope('/modelos',['controller' => 'Modelos'],function (RouteBuilder $routes) {    $routes->connect('/listar/*', ['action' => 'index']);});
 //lineas
 Router::scope('/lineas',['controller' => 'Lineas'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/lineas',['controller' => 'Lineas'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/lineas',['controller' => 'Lineas'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
-Router::scope('/lineas',['controller' => 'Lineas'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
-Router::scope('/lineas',['controller' => 'Lineas'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
+Router::scope('/lineas',['controller' => 'Lineas'],function (RouteBuilder $routes) {    $routes->connect('/listar/*', ['action' => 'index']);});
 //facturas
 Router::scope('/facturas',['controller' => 'Facturas'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/facturas',['controller' => 'Facturas'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/facturas',['controller' => 'Facturas'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
-Router::scope('/facturas',['controller' => 'Facturas'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
-Router::scope('/facturas',['controller' => 'Facturas'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
+Router::scope('/facturas',['controller' => 'Facturas'],function (RouteBuilder $routes) {    $routes->connect('/listar/*', ['action' => 'index']);});
 //devoluciones
 Router::scope('/devoluciones',['controller' => 'Devoluciones'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/devoluciones',['controller' => 'Devoluciones'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/devoluciones',['controller' => 'Devoluciones'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
 Router::scope('/devoluciones',['controller' => 'Devoluciones'],function (RouteBuilder $routes) {    $routes->connect('/asociar/*', ['action' => 'asociar']);});
-Router::scope('/devoluciones',['controller' => 'Devoluciones'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
-Router::scope('/devoluciones',['controller' => 'Devoluciones'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
+Router::scope('/devoluciones',['controller' => 'Devoluciones'],function (RouteBuilder $routes) {    $routes->connect('/listar/*', ['action' => 'index']);});
 //contratos
 Router::scope('/contratos',['controller' => 'Contratos'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/contratos',['controller' => 'Contratos'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/contratos',['controller' => 'Contratos'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
-Router::scope('/contratos',['controller' => 'Contratos'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
-Router::scope('/contratos',['controller' => 'Contratos'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
+Router::scope('/contratos',['controller' => 'Contratos'],function (RouteBuilder $routes) {    $routes->connect('/listar/*', ['action' => 'index']);});
 //consumos
 Router::scope('/consumos',['controller' => 'Consumos'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/consumos',['controller' => 'Consumos'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/consumos',['controller' => 'Consumos'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
-Router::scope('/consumos',['controller' => 'Consumos'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
-Router::scope('/consumos',['controller' => 'Consumos'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
+Router::scope('/consumos',['controller' => 'Consumos'],function (RouteBuilder $routes) {    $routes->connect('/listar/*', ['action' => 'index']);});
 //asignaciones
 Router::scope('/asignaciones',['controller' => 'Asignaciones'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/asignaciones',['controller' => 'Asignaciones'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/asignaciones',['controller' => 'Asignaciones'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
 Router::scope('/asignaciones',['controller' => 'Asignaciones'],function (RouteBuilder $routes) {    $routes->connect('/asociar/*', ['action' => 'asociar']);});
-Router::scope('/asignaciones',['controller' => 'Asignaciones'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
-Router::scope('/asignaciones',['controller' => 'Asignaciones'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
+Router::scope('/asignaciones',['controller' => 'Asignaciones'],function (RouteBuilder $routes) {    $routes->connect('/listar/*', ['action' => 'index']);});
 //articulos
 Router::scope('/articulos',['controller' => 'Articulos'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/articulos',['controller' => 'Articulos'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/articulos',['controller' => 'Articulos'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
-Router::scope('/articulos',['controller' => 'Articulos'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
+Router::scope('/articulos',['controller' => 'Articulos'],function (RouteBuilder $routes) {    $routes->connect('/listar/*', ['action' => 'index']);});
 Router::scope('/articulos',['controller' => 'Articulos'],function (RouteBuilder $routes) {    $routes->connect('/inventario/*', ['action' => 'inventario']);});
-Router::scope('/articulos',['controller' => 'Articulos'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
 //accesorios
 Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});
 Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
-Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilder $routes) {    $routes->connect('/listar/', ['action' => 'index']);});
-Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilder $routes) {    $routes->connect('/', ['action' => 'menu']);});
+Router::scope('/accesorios',['controller' => 'Accesorios'],function (RouteBuilder $routes) {    $routes->connect('/listar/*', ['action' => 'index']);});
 //login
 Router::scope('/',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/salir', ['action' => 'logout']);});
 Router::scope('/',['controller' => 'Usuarios'],function (RouteBuilder $routes) {    $routes->connect('/ingresar/*', ['action' => 'login']);});

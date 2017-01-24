@@ -36,7 +36,7 @@
         </div>
             <div class="slice">
                 <ul>
-                <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
+                <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador'): ?>
                     <li id="first">
                         <a href="<?=Router::url(array('controller' => 'Contratos', 'action' => 'index'))?>"style="color:white; background-color: mediumvioletred">Mi contrato</a>
                     </li>
@@ -57,7 +57,7 @@
         <div class="slice">
             <ul>
             <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
-                <li id="first">
+                <li>
                     <a href="<?=Router::url(array('controller' => 'Usuarios', 'action' => 'view', $this->request->session()->read('Auth.User.id')))?>" style="color:#1c2529; background-color: salmon"><?= $this->request->session()->read('Auth.User.nombre_de_usuario')?></a>
                 </li>
             <?php else: ?>

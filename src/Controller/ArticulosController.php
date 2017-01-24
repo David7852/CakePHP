@@ -26,22 +26,52 @@ class ArticulosController extends AppController
      */
     public function inventario($tipo)
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
-            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
-            return $this->redirect($this->referer());
-        }
         $this->paginate = [
             'contain' => ['Modelos']
         ];
-        $mo=array();
-        $models=TableRegistry::get('Modelos')->find('all')
-            ->where(['tipo_de_articulo ='=>$tipo]);
-        foreach ($models as $m)
-            array_push($mo,$m->id);
-        if(!empty($mo))
-            $articulos = $this->paginate($this->Articulos->find('all', array('conditions'=>array('Articulos.modelo_id IN'=>$mo))));
-        else
-            $articulos = $this->paginate($this->Articulos->find('all')->where(['Articulos.id <'=>0]));
+
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $articulos=array();
+            $mo=array();
+            $models=TableRegistry::get('Modelos')->find('all')
+                ->where(['tipo_de_articulo ='=>$tipo]);
+            foreach ($models as $m)
+            {
+                $art = TableRegistry::get('Articulos')->find('all')
+                ->where(['modelo_id ='=>$m->id]);
+                foreach ($art as $iculos)
+                {
+                    $asig = TableRegistry::get('Asignaciones')->find('all')
+                        ->where(['articulo_id =' => $iculos->id])
+                        ->andWhere(['hasta >=' => date('Y-m-d')]);
+                    foreach ($asig as $row)
+                    {
+                        $pro_tra = TableRegistry::get('ProcesosTrabajadores')->find('all')
+                            ->where(['proceso_id =' => $row->proceso_id])
+                            ->andWhere(['trabajador_id =' => $this->request->session()->read('Auth.User.trabajador_id')])
+                            ->andWhere(['rol =' => 'Solicitante']);
+                        if($pro_tra!=null&&!$pro_tra->isEmpty())
+                            array_push($articulos, $iculos->id);
+                    }
+                }
+            }
+            if(empty($articulos)){
+                $this->Flash->error(__('Usted no tiene Celulares asignados.'));
+                return $this->redirect($this->referer());
+            }
+            $articulos = $this->paginate($this->Articulos->find('all',array('conditions'=>array('Articulos.id IN'=>$articulos))));
+        }else
+        {
+            $mo = array();
+            $models = TableRegistry::get('Modelos')->find('all')
+                ->where(['tipo_de_articulo =' => $tipo]);
+            foreach ($models as $m)
+                array_push($mo, $m->id);
+            if (!empty($mo))
+                $articulos = $this->paginate($this->Articulos->find('all', array('conditions' => array('Articulos.modelo_id IN' => $mo))));
+            else
+                $articulos = $this->paginate($this->Articulos->find('all')->where(['Articulos.id <' => 0]));
+        }
         $this->set(compact('articulos','modelos','tipo'));
         $this->set('_serialize', ['articulos']);
     }
@@ -53,18 +83,36 @@ class ArticulosController extends AppController
      */
     public function index()
     {
+        $this->paginate = ['contain' => ['Modelos']];
         if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
-            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
-            return $this->redirect($this->referer());
-        }
-        $this->paginate = [
-            'contain' => ['Modelos']
-        ];
-        $articulos = $this->paginate($this->Articulos);
+            $articulos=array();
+            $art=TableRegistry::get('Articulos')->find('all');
+            foreach ($art as $iculos){
+                $asig=TableRegistry::get('Asignaciones')->find('all')
+                    ->where(['articulo_id ='=>$iculos->id])
+                    ->andWhere(['hasta >='=>date('Y-m-d')]);
+                foreach ($asig as $row){
+                    $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                        ->where(['proceso_id ='=>$row->proceso_id])
+                        ->andWhere(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')])
+                        ->andWhere(['rol ='=>'Solicitante']);
+                    if($pro_tra!=null&&!$pro_tra->isEmpty()){
+                        array_push($articulos, $iculos->id);
+                    }
+                }
+            }
+            if(empty($articulos)){
+                $this->Flash->error(__('Usted no tiene Articulos asignados.'));
+                return $this->redirect($this->referer());
+            }
+            $articulos = $this->paginate($this->Articulos->find('all',array('conditions'=>array('Articulos.id IN'=>$articulos))));
 
+        }else
+            $articulos = $this->paginate($this->Articulos);
         $this->set(compact('articulos','modelos'));
         $this->set('_serialize', ['articulos']);
     }
+
     public function menu()
     {
         $this->paginate = [

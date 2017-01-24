@@ -27,15 +27,35 @@ class AccesoriosController extends AppController
      */
     public function index()
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
-            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
-            return $this->redirect($this->referer());
-        }
         $this->paginate = [
-            'contain' => ['Articulos']
+        'contain' => ['Articulos']
         ];
-        $accesorios = $this->paginate($this->Accesorios);
 
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $accesorios=array();
+            $acces=TableRegistry::get('Accesorios')->find('all');
+            foreach ($acces as $acc){
+                $asig=TableRegistry::get('Asignaciones')->find('all')
+                    ->where(['articulo_id ='=>$acc->articulo_id])
+                    ->andWhere(['hasta >='=>date('Y-m-d')]);
+                foreach ($asig as $row){
+                    $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                        ->where(['proceso_id ='=>$row->proceso_id])
+                        ->andWhere(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')])
+                        ->andWhere(['rol ='=>'Solicitante']);;
+                    if($pro_tra!=null&&!$pro_tra->isEmpty()){
+                        array_push($accesorios, $acc->id);
+                    }
+                }
+            }
+            if(empty($accesorios)){
+                $this->Flash->error(__('Usted no tiene Accesorios asignados.'));
+                return $this->redirect($this->referer());
+            }
+            $accesorios = $this->paginate($this->Accesorios->find('all',array('conditions'=>array('Accesorios.id IN'=>$accesorios))));
+
+        }else
+            $accesorios = $this->paginate($this->Accesorios);
         $this->set(compact('accesorios'));
         $this->set('_serialize', ['accesorios']);
     }

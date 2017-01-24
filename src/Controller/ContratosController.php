@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\ORM\TableRegistry;
 /**
  * Contratos Controller
  *
@@ -18,14 +18,23 @@ class ContratosController extends AppController
      */
     public function index()
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
-            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
-            return $this->redirect($this->referer());
-        }
         $this->paginate = [
             'contain' => ['Trabajadores']
         ];
-        $contratos = $this->paginate($this->Contratos);
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
+            $contratos=array();
+            $contr=TableRegistry::get('Contratos')->find('all')
+                ->where(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')]);
+            foreach ($contr as $atos)
+                array_push($contratos,$atos->id);
+            if(empty($contratos))
+            {
+                $this->Flash->error(__('Los detalles de su contrato no estan disponibles.'));
+                return $this->redirect($this->referer());
+            }
+            $contratos = $this->paginate($this->Contratos->find('all',array('conditions'=>array('Contratos.id IN'=>$contratos))));
+        }else
+            $contratos = $this->paginate($this->Contratos);
 
         $this->set(compact('contratos'));
         $this->set('_serialize', ['contratos']);

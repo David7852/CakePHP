@@ -35,7 +35,7 @@ table tbody tr td a:hover{
 }
 
 .side-nav li a:not(.button) {
-    color: #15868c;
+    color: #158f6f;
     font-size: 103%;
     text-shadow: 0 0 1px rgba(10,107,76,0.5);
     transition: color 0.2s ease-in-out, font-size 0.75s cubic-bezier(0.39, 0.58, 0.57, 1), background-color 0.60s cubic-bezier(0.4, 0, 1, 1), box-shadow 0.66s cubic-bezier(0.4, 0, 1, 1);
@@ -43,7 +43,7 @@ table tbody tr td a:hover{
 }
 
 .side-nav li a:not(.button):hover {
-    color: #015b54;
+    color: #0b5f54;
     font-size: 104%;
     background-color: #fafafa;
     background-image: url(../img/selectTexture.png);
@@ -250,7 +250,6 @@ ul.pagination .disabled:hover a {
     font-style: italic;
     color: rgba(0, 0, 0, 0.54);
 }
-
 .required > label {
     font-weight: bold;
 }
@@ -288,16 +287,6 @@ input[type=radio] {
     padding-right: 1.5rem;
     color:#C3232D;
 }
-/*div .date .left{
-    margin-left: 0.5rem;    padding-righy: 1rem;    position: inherit;    display: inline-block;    margin-bottom: 4px;
-    border-left-width: 0;    border-bottom: 0;    border-style: solid;
-    -webkit-border-image: -webkit-gradient(linear, 100% 0, 0 0, from(rgba(1,122,138,0.5)), to(rgba(0, 0, 0, 0))) 1 100%;
-    -webkit-border-image: -webkit-linear-gradient(left, rgba(1,122,138,0.5), rgba(0, 0, 0, 0)) 1 100%;
-    -moz-border-image: -moz-linear-gradient(left, rgba(1,122,138,0.5), rgba(0, 0, 0, 0)) 1 100%;
-    -o-border-image: -o-linear-gradient(left, rgba(1,122,138,0.5), rgba(0, 0, 0, 0)) 1 100%;
-    border-image: linear-gradient(to left, rgba(1,122,138,0.5), rgba(0, 0, 0, 0)) 1 100%;
-}*/
-
 div .date {
     margin-right: 0.5rem;
     padding-left: 1rem;
@@ -592,21 +581,16 @@ table {
     table-layout: fixed;
     width: 100%;
 }
-
 table thead {
     background: none;
 }
-
 table tbody tr {
     border-bottom: 1px solid #ebebec;
 }
-
-
-    table thead tr
-    {
-        border-bottom: 1px solid #1798A5\9;
-    }
-
+table thead tr
+{
+    border-bottom: 1px solid #1798A5\9;
+}
 table tbody::before{
     content:"";
     position: absolute;
@@ -710,8 +694,19 @@ fieldset legend {
 }
 
 @-moz-document url-prefix() {
-    .delicate-text{
-
+    form div.lapel{
+        box-shadow: 1px -19px 24px -25px rgba(0, 0, 0, 0.7);
+    }
+    nav ul.side-nav li.sol a,
+    nav ul.side-nav li.sol a:hover,
+    nav ul.side-nav li.inv a,
+    nav ul.side-nav li.inv a:hover,
+    nav ul.side-nav li.usu a,
+    nav ul.side-nav li.usu a:hover,
+    nav ul.side-nav li.tlf a,
+    nav ul.side-nav li.tlf a:hover
+    {
+        font-weight: 500;
     }
     nav ul h1 a p{
         width: 8.08rem;
@@ -1424,13 +1419,12 @@ table tbody tr td figure img {
     text-align: left;
 }
 #completado{
-    color: #157876;
-    text-shadow: 0 0 2px rgba(10,105,100,0.4);
+
     text-align: left;
 }
 #asignacion{
-    color: #24a65c;
-    text-shadow: 0 0 2px rgba(10,105,100,0.4);
+    color: #157087;
+    text-shadow: 0 0 2px rgba(10,100,105,0.4);
 }
 #devolucion{
     color: rgba(195, 35, 45, 0.82);
@@ -1438,7 +1432,7 @@ table tbody tr td figure img {
 }
 ul.side-nav li#seleccion  a,
 ul.side-nav li#seleccion a:hover{
-    font-size: 0.8rem;
+    font-size: 0.79rem;
     text-transform: uppercase;
     padding: 0.4375rem 0.875rem;
     text-decoration: none;
@@ -1488,7 +1482,7 @@ h1.inv::after{
     content:"";
     position: inherit;
     display: block;
-    margin-top: -0.75rem;
+    margin-top: -1.333%;
     width: 100%;
     height: 2px;
     background: rgba(255,255,255,0.05);
@@ -1506,7 +1500,7 @@ h1.sol::after{
     content:"";
     position: inherit;
     display: block;
-    margin-top: -0.75rem;
+    margin-top: -1.333%;
     width: 100%;
     height: 2px;
     background: rgba(255,255,255,0.05);
@@ -1524,7 +1518,7 @@ h1.usu::after{
     content:"";
     position: inherit;
     display: block;
-    margin-top: -0.75rem;
+    margin-top: -1.333%;
     width: 100%;
     height: 2px;
     background: rgba(255,255,255,0.05);
@@ -1542,7 +1536,7 @@ h1.tlf::after{
     content:"";
     position: inherit;
     display: block;
-    margin-top: -0.75rem;
+    margin-top: -1.333%;
     width: 100%;
     height: 2px;
     background: rgba(255,255,255,0.05);
