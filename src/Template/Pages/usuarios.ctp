@@ -32,7 +32,7 @@
             </ul>
         </div>
         <div class="lapel">
-            <h1 style="color:purple">Trabajadores</h1>
+            <h1 style="color:purple; text-shadow: 0px 0px 1px rgba(128,0,128,0.55),0px 0px 2px rgba(128,0,128,0.2)">Trabajadores</h1>
         </div>
             <div class="slice">
                 <ul>
@@ -51,7 +51,7 @@
                 </ul>
             </div>
             <div class="lapel">
-                <h1 style="color: magenta">Contratos</h1>
+                <h1 style="color: #dc1478; text-shadow: 0px 0px 1px rgba(220,20,120,0.55),0px 0px 2px rgba(220,20,120,0.2)">Contratos</h1>
             </div>
 
         <div class="slice">
@@ -71,7 +71,7 @@
             </ul>
         </div>
         <div class="lapel">
-            <h1 style="color: #b25151">Usuarios</h1>
+            <h1 style="color: #b25151; text-shadow: 0px 0px 1px rgba(178,81,81,0.55),0px 0px 2px rgba(178,81,81,0.2)">Usuarios</h1>
         </div>
         <br><br>
         <?= $this->Form->end() ?>

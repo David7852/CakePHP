@@ -32,7 +32,7 @@
             </ul>
         </div>
         <div class="lapel">
-            <h1 style="color: #cf591f">Accesorios</h1>
+            <h1 style="color: #cf591f; text-shadow: 0px 0px 1px rgba(207,89,31,0.55),0px 0px 2px rgba(207,89,31,0.2);">Accesorios</h1>
         </div>
         <div class="slice">
             <ul>
@@ -51,7 +51,7 @@
             </ul>
         </div>
         <div class="lapel">
-            <h1 style="color: #cdb949">Modelos</h1>
+            <h1 style="color: #cdb949;text-shadow: 0px 0px 1px rgba(205,185,73,0.55),0px 0px 2px rgba(205,185,73,0.2) ">Modelos</h1>
         </div>
 
         <div class="slice">
@@ -87,7 +87,7 @@
             </ul>
         </div>
         <div class="lapel">
-            <h1 style="color: #c92514">Artículos</h1>
+            <h1 style="color: #c92514; text-shadow: 0px 0px 1px rgba(201,37,20,0.55),0px 0px 2px rgba(201,37,20,0.2)">Artículos</h1>
         </div>
         <br><br>
         <?= $this->Form->end() ?>

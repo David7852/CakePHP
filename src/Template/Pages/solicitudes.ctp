@@ -18,7 +18,7 @@
                     <a href="<?=Router::url(array('controller' => 'Procesos', 'action' => 'solicitar'))?>" style="color:#1c2529; background-color: #00c0ef">Hacer solicitud</a>
                 </li>
                 <li>
-                    <a href="<?=Router::url(array('controller' => 'Procesos', 'action' => 'index',$this->request->session()->read('Auth.User.trabajador_id')))?>"style="color:#1c2529; background-color: aquamarine">Mis procesos y solicitudes</a>
+                    <a href="<?=Router::url(array('controller' => 'Procesos', 'action' => 'index',$this->request->session()->read('Auth.User.trabajador_id')))?>"style="color:#1c2529; background-color: aquamarine">Mis solicitudes</a>
                 </li>
             <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
                 <li id="first">
@@ -31,7 +31,7 @@
             </ul>
         </div>
         <div class="lapel">
-            <h1 style="color: #77c0cc">Procesos</h1>
+            <h1 style="color: #77c0cc ; text-shadow: 0px 0px 1px rgba(119,192,204,0.55),0px 0px 2px rgba(119,192,204,0.2)">Procesos</h1>
         </div>
         <div class="slice">
             <ul>
@@ -49,7 +49,7 @@
             </ul>
         </div>
         <div class="lapel">
-            <h1 style="color: teal">Asignaciones</h1>
+            <h1 style="color: teal; text-shadow: 0px 0px 1px rgba(0,128,128,0.55),0px 0px 2px rgba(0,128,128,0.2)">Asignaciones</h1>
         </div>
 
         <div class="slice">
@@ -68,7 +68,7 @@
             </ul>
         </div>
         <div class="lapel">
-            <h1 style="color: midnightblue">Devoluciones</h1>
+            <h1 style="color: midnightblue; text-shadow: 0px 0px 1px rgba(25,25,112,0.55),0px 0px 2px rgba(25,25,112,0.2)">Devoluciones</h1>
         </div>
         <br><br>
         <?= $this->Form->end() ?>

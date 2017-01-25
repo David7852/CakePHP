@@ -6,7 +6,6 @@ a.disabled {
 a:hover {
     color: rgba(1,91,84,0.8);
     transition: color 0.2s ease-in-out,text-shadow 0.4s ease-in-out;
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -17,7 +16,6 @@ a {
     color: #15868c;
     text-shadow: 0 0 1px rgba(10,107,76,0.25);
     transition: color 0.2s ease-in-out,text-shadow 0.4s ease-in-out;
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
  }
 .actions a:hover{
     color: #0ab6aa;
@@ -27,7 +25,6 @@ table tbody tr td a{
     color: rgba(10,128,92,0.85);
     text-shadow: 0 0 1px rgba(10,107,76,0.25);
     transition: color 0.2s ease-in-out,text-shadow 0.4s ease-in-out;
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 table tbody tr td a:hover{
     color: #3cae71;
@@ -39,7 +36,6 @@ table tbody tr td a:hover{
     font-size: 103%;
     text-shadow: 0 0 1px rgba(10,107,76,0.5);
     transition: color 0.2s ease-in-out, font-size 0.75s cubic-bezier(0.39, 0.58, 0.57, 1), background-color 0.60s cubic-bezier(0.4, 0, 1, 1), box-shadow 0.66s cubic-bezier(0.4, 0, 1, 1);
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
 .side-nav li a:not(.button):hover {
@@ -231,8 +227,6 @@ ul.pagination .disabled:hover a {
     padding: 0 2rem;
     vertical-align: middle;
     -webkit-tap-highlight-color: transparent;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     -webkit-appearance: none;
     -moz-appearance: none;
     font-family: raleway,poiret,  Roboto, Century gothic, Segoe ui, sans-serif;
@@ -427,7 +421,6 @@ pre {
 .home header h1 {
      color: rgba(34,122,90,0.45);
      text-shadow: 0 0 3px rgba(34,122,90,0.45);
-     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     transition: all 0.5s linear;
 }
 .home header h1:hover {
@@ -456,9 +449,7 @@ pre {
     font-weight: lighter;
     color: white;
     font-family: raleway,poiret, Roboto, Century gothic, Segoe ui, sans-serif;
-
     text-shadow: 0 0 3px rgba(34,122,90,0.25);
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
 .checks hr {
@@ -639,7 +630,6 @@ table tr th {
     color: rgba(10,128,92,0.75);
     text-shadow: 0 0 1px rgba(10,107,76,0.05);
     transition: color 0.3s ease-in-out;
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     text-align: left;
     /*border-bottom: 2px solid #1798A5;*/
 }
@@ -659,7 +649,6 @@ fieldset legend {
     /*border-bottom: 2px solid #1798A5;*/
     width: 100%;
     line-height: 2rem;
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
 .gradient-line{
@@ -688,25 +677,30 @@ fieldset legend {
     width: 100%;
     font-weight: lighter;
     text-align: center;
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     text-transform: none;
     color: rgba(0,0,0,0.5)
 }
-
 @-moz-document url-prefix() {
+    h1, h2, h3, h4, h5, h6,
+    div.slice ul li h5,
+    div.slice ul li#first h5{
+        font-weight: 500;
+        text-shadow: 0 0 1px ;
+    }
+    div.slice ul li a,
+    div.slice ul li#first a,
+    div.slice ul li a:hover,
+    div.slice ul li#first a:hover{
+        font-weight: lighter;
+        text-shadow: 0 0 1px ;
+    }
     form div.lapel{
         box-shadow: 1px -19px 24px -25px rgba(0, 0, 0, 0.7);
     }
-    nav ul.side-nav li.sol a,
-    nav ul.side-nav li.sol a:hover,
-    nav ul.side-nav li.inv a,
-    nav ul.side-nav li.inv a:hover,
-    nav ul.side-nav li.usu a,
-    nav ul.side-nav li.usu a:hover,
-    nav ul.side-nav li.tlf a,
-    nav ul.side-nav li.tlf a:hover
-    {
+    nav ul.side-nav li#seleccion  a,
+    nav ul.side-nav li#seleccion a:hover    {
         font-weight: 500;
+        text-shadow: 0px 0px 1px rgba(10,128,76,0.95),0px 0px 2px rgba(10,128,76,0.5);
     }
     nav ul h1 a p{
         width: 8.08rem;
@@ -872,6 +866,49 @@ div.message.hidden {
 }
 /*important*/
 @media(max-width: 640px) {
+    div.slice ul li div,
+    div.slice ul li div:hover
+    {
+        max-width: 7rem;
+    }
+    div.slice ul li div h5
+    {
+        font-size: 71%;
+        padding: 0.2rem 0.1rem 0.1rem 0.1rem;
+        line-height: 0.81rem;
+    }
+    form div  ul li#first div div div.input.text input#tipo,
+    form div ul li#first div div div.input.text input#tipo:hover{
+        height: 13px;
+        width: 100%;
+        margin-bottom: 0;
+    }
+    form div.slice ul li div div button{
+        width: 19px;
+        height: 20px;
+        padding: 0px 5px 1px 3px;
+        margin: 3px;
+    }
+    form div.slice ul li div div button svg{
+        width: 17px;
+        height: 17px;
+        margin-bottom: 3px;
+    }
+    form div.slice ul li div div div.input{
+        width: 65%;
+        height: 20px;
+    }
+    div.slice ul li a:hover,
+    div.slice ul li a
+    {
+        height: 6.66rem;
+        padding: 1.2rem 0.4rem 3rem 0.3rem;
+        font-weight: bold;
+        font-size: 71%;
+        max-width: 5rem;
+        line-height: 0.81rem;
+    }
+    nav.top-bar h1 a{z-index: 12}
     #actions-sidebar {
         padding-bottom: 1rem;
         margin-bottom: 0;
@@ -1444,38 +1481,43 @@ ul.side-nav li#seleccion a:hover{
 }
 ul.side-nav li.inv a,
 ul.side-nav li.inv a:hover{
+    font-size: 104%;
     color: rgb(203, 103, 51);
-    text-shadow: 0 0 2px rgba(154,28,25,0.2);
-    font-weight: 600;
+    text-shadow: 0 0 2px rgba(154,28,25,0.5);
+    font-weight: 500;
     letter-spacing: 0.075rem;
     box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07),0 2px 6px 0px rgba(154,28,25,0.2);
 }
 ul.side-nav li.sol a,
 ul.side-nav li.sol a:hover {
+    font-size: 104%;
     color: rgb(55, 123, 165);
-    text-shadow: 0 0 2px rgba(26,155,160,0.2);
-    font-weight: 600;
+    text-shadow: 0 0 2px rgba(26,155,160,0.5);
+    font-weight: 500;
     letter-spacing: 0.075rem;
     box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07), 0 2px 6px 0px rgba(26,155,160,0.2);
 }
 ul.side-nav li.usu a,
 ul.side-nav li.usu a:hover {
+    font-size: 104%;
     color: rgb(184, 65, 110);
-    text-shadow: 0 0 2px rgba(165,25,90,0.2);
-    font-weight: 600;
+    text-shadow: 0 0 2px rgba(165,25,90,0.5);
+    font-weight: 500;
     letter-spacing: 0.075rem;
     box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07),0 2px 6px 0px rgba(165,25,90,0.2);
 }
 ul.side-nav li.tlf a,
 ul.side-nav li.tlf a:hover {
+    font-size: 104%;
     color: rgb(58, 175, 106);
-    text-shadow: 0 0 2px rgba(0,166,90,0.2);
-    font-weight: 600;
+    text-shadow: 0 0 2px rgba(0,166,90,0.5);
+    font-weight: 500;
     letter-spacing: 0.075rem;
     box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07),0 2px 6px 0px rgba(0,166,90,0.2);
 }
 h1.inv{
     color: #9a1c19;
+    text-shadow: 0px 0px 1px rgba(154,28,25,0.55),0px 0px 2px rgba(154,28,25,0.2);
     text-align: center;
 }
 h1.inv::after{
@@ -1495,6 +1537,7 @@ h1.inv::after{
 h1.sol{
     color: #1a9ba0;
     text-align: center;
+    text-shadow: 0px 0px 1px rgba(26,155,160,0.55),0px 0px 2px rgba(26,155,160,0.2);
 }
 h1.sol::after{
     content:"";
@@ -1513,6 +1556,7 @@ h1.sol::after{
 h1.usu{
     color: #a519be;
     text-align: center;
+    text-shadow: 0px 0px 1px rgba(165,25,90,0.55),0px 0px 2px rgba(165,25,90,0.2);
 }
 h1.usu::after{
     content:"";
@@ -1531,6 +1575,7 @@ h1.usu::after{
 h1.tlf{
     color: #00a65a;
     text-align: center;
+    text-shadow: 0px 0px 1px rgba(0,166,90,0.55),0px 0px 2px rgba(0,166,90,0.2);
 }
 h1.tlf::after{
     content:"";
@@ -1599,42 +1644,39 @@ div .slice ul li div
     overflow: hidden;
     margin-top: -4.15rem;
     margin-bottom: -2.1rem;
+    padding-bottom: 1rem\9;
+    box-shadow: unset\9;
+    margin-bottom: -1rem\9;
     z-index: 1;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 1px 5px 0 rgba(0, 0, 0, 0.06), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 18px 40px 0 rgba(0, 0, 0, 0.2), 0 17px 17px 0 rgba(0, 0, 0, 0.05);
 }
-div .slice ul li div h5{
+.slice ul li div h5{
     color: white;
     font-family: raleway, poiret, Roboto, Century gothic, Segoe ui, sans-serif;
     width: 100%;
     line-height: 1.7rem;
     letter-spacing: 0.1rem;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     font-weight: 600;
     text-shadow: 0 0 1px rgba(255,255,255,0.3);
     text-transform: capitalize;
     font-size: 100%;
 }
-div .slice ul li a:hover,
-div .slice ul li a{
+.slice ul li a:hover,
+.slice ul li a{
     background-image: url(../img/sideBarTexture.png);
     display: inline-block;
     text-align: center;
     text-orientation: mixed;
-    word-break: break-word;
+    word-break: keep-all;
     text-overflow: clip;
     overflow: hidden;
     border-radius: 1px;
     padding: 1.5rem 1.333rem 4rem 1.333rem;
     height: 7.5rem;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 1px 5px 0 rgba(0, 0, 0, 0.06), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 18px 40px 0 rgba(0, 0, 0, 0.2), 0 17px 17px 0 rgba(0, 0, 0, 0.05);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     font-family: raleway, poiret, Roboto, Century gothic, Segoe ui, sans-serif;
     width: 100%;
     line-height: 1.7rem;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     font-weight: 600;
     text-shadow: 0 0 1px rgba(255,255,255,0.3);
     text-transform: capitalize;
@@ -1648,7 +1690,8 @@ div .slice ul li div div{
     margin: 0;
     display: inline-block;
     box-shadow: unset;
-
+    box-shadow: 0 0 0 rgba(0,0,0,0)\9;
+    border: none\9;
 }
 div .slice ul li div div button,
 div .slice ul li div div button:hover
@@ -1656,7 +1699,6 @@ div .slice ul li div div button:hover
     color: #9b2825;
     display: inline-block;
     background-color: white;
-    box-shadow: unset;
     width: 27px;
     height: 27px;
     padding: 2px 0 0 4px;
@@ -1672,7 +1714,6 @@ div .slice ul li div div div input:hover
     border-radius: 999em;
     box-shadow: unset;
 }
-
 @font-face {
     font-family: 'raleway';
     font-style: normal;

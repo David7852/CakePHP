@@ -68,7 +68,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
                         </li>
                     </ul>
                 </div>
-                <div class="lapel" style="z-index: 0">
+                <div class="lapel" style="z-index: 0; margin-left: 0.15rem; margin-right: 0.15rem">
                     <h1></h1>
                 </div>
             </div>

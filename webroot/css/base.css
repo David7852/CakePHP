@@ -15,10 +15,16 @@ html {
     -webkit-text-size-adjust: 100%;
     /* 2 */
     text-rendering: optimizelegibility;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
+::selection {
+    background: rgba(3,10,5,0.15); /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+    background: rgba(3,10,5,0.15); /* Gecko Browsers */
+}
 
 /**
  * Remove default margin.
@@ -68,38 +74,6 @@ footer{
     height: 6em;
     margin-top: 0em;
 }
-/*
-.triangle {
-    margin: 0 auto;
-    text-align: center;
-    width: 0;
-    height: 0;
-    background-color: transparent;
-    border-top: 30px solid #181A1C;
-    position: relative;
-}
-.animated {
-    -webkit-animation-fill-mode: both;
-    -moz-animation-fill-mode: both;
-    -ms-animation-fill-mode: both;
-    -o-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-animation-duration: 1s;
-    -moz-animation-duration: 1s;
-    -ms-animation-duration: 1s;
-    -o-animation-duration: 1s;
-    animation-duration: 1s;
-}
-.fadeInDown {
-    -webkit-animation-name: fadeInDown;
-    -moz-animation-name: fadeInDown;
-    -o-animation-name: fadeInDown;
-    animation-name: fadeInDown;
-}*/
-/**
- * 1. Correct `inline-block` display not defined in IE 8/9.
- * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
- */
 
 audio,
 canvas,
@@ -692,11 +666,6 @@ img {
 
 .invisible {
     visibility: hidden
-}
-
-.antialiased {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale
 }
 
 img {
@@ -1814,10 +1783,8 @@ button,
     padding: 0 2rem;
     vertical-align: middle;
     -webkit-tap-highlight-color: transparent;
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     -webkit-appearance: none;
     -moz-appearance: none;
-    -moz-osx-font-smoothing: grayscale;
     font-family: raleway,poiret,  Roboto, Century gothic, Segoe ui, sans-serif;
     margin: 0 1.25rem 2.75rem 0;
     position: relative;
@@ -2462,8 +2429,6 @@ textarea {
     -moz-transition: background 0.33s linear, box-shadow 0.66s linear;
     -o-transition: background 0.33s linear, box-shadow 0.66s linear;
     transition: background 0.33s cubic-bezier(0.18, 0.89, 0.32, 1.28), box-shadow 0.66s ease-in-out;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16),0 -1px 0 1px rgba(0,0,0,0.04);
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16),0 -1px 1px 1px rgba(0,0,0,0.04);
     border:hidden;
@@ -2717,8 +2682,6 @@ select {
     background-image: url(../img/select_arrow.png),url(../img/selectTexture.png);
     background-position: 100% center;
     background-repeat: no-repeat, repeat;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     color: rgba(0, 0, 0, 0.92);
     text-shadow: 0 0 1px rgba(0,0,0,0.18);
     font-family: inherit;
@@ -2978,8 +2941,6 @@ meta.foundation-mq-topbar {
 .top-bar .name h4,
 .top-bar .name p,
 .top-bar .name span {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     font-size: 1.0625rem;
     line-height: 2.8125rem;
     margin: 0
@@ -2991,8 +2952,6 @@ meta.foundation-mq-topbar {
 .top-bar .name h4 a,
 .top-bar .name p a,
 .top-bar .name span a {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     color: #fff;
     display: block;
     font-weight: normal;
@@ -3111,8 +3070,6 @@ meta.foundation-mq-topbar {
     padding-left: 0.9375rem;
     padding: 12px;
     text-transform: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     width: 100%
 }
 
@@ -3141,8 +3098,6 @@ meta.foundation-mq-topbar {
     padding: 0 0.666rem;
     vertical-align: middle;
     -webkit-tap-highlight-color: transparent;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     -webkit-appearance: none;
     -moz-appearance: none;
     font-family: raleway,poiret, Roboto, Century gothic, Segoe ui, sans-serif;
@@ -5693,8 +5648,6 @@ button.dropdown.secondary:after {
     font-family: poiret, raleway, Roboto, Century gothic, Segoe ui, sans-serif;
     font-size: 1rem;
     padding: 1rem 2rem;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .tabs dd>a:hover,
@@ -6198,7 +6151,6 @@ nav ul h1 a:hover img {
 nav ul h1 a p{
     font-size: 0.72rem;
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     text-align: center;
     width: 8rem;
     opacity: 0;
@@ -6219,8 +6171,6 @@ p {
     font-weight: normal;
     line-height: 1.6;
     margin-bottom: 1.25rem;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility
 }
 
@@ -6260,8 +6210,6 @@ h6 {
     margin-bottom: 0.5rem;
     margin-top: 0.2rem;
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 h1 small,
@@ -8400,8 +8348,6 @@ table tfoot tr td {
 table tr th,
 table tr td {
     color: rgba(0,0,0,0.98);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     text-shadow: 0 0 1px rgba(0,0,0,0.1);
     font-size: 0.875rem;
     padding: 0.5625rem 0.625rem;
