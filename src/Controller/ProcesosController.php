@@ -260,6 +260,7 @@ class ProcesosController extends AppController
                     ]
                 );
                 TableRegistry::get('Devoluciones')->save($asig);
+
                 $this->Flash->success(__('El proceso fue registrado.'));
                 return $this->redirect(['action' => 'index']);
             } else {

@@ -20,7 +20,8 @@
         echo $this->Form->input('observaciones');
         $options = ['Devolucion'=>'Devolucion'];
         echo $this->Form->input('tipo',array('options'=>$options,'empty'=>false,'escape'=>false));
-        echo $this->Form->input('solicitantes', ['options' => $solicitantes,'label'=>'Solicitante o beneficiado']);
+        echo $this->Form->input('articulo_id', ['options' => $articulos,'label'=>'Equipo']);
+        echo $this->Form->input('solicitantes', ['options' => $solicitantes,'label'=>'Devuelve:']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Aceptar')) ?>

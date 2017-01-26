@@ -93,12 +93,18 @@ $cakeDescription = 'WIT ';
     <?php endif; ?>
         <footer >
             <div style="vertical-align: middle">
-                <h4 class="title-area large-2 medium-3 columns" style="color:red;font-family:arial;margin-top: 7px;padding: 0.75em;">
-                        Pequiven
-                </h4>
-                <h4 class="title-area large-2 medium-3 columns right" style="color:#006600;font-family: 'Segoe UI Black';margin-top: 7px;padding: 0.5em;">
-                        FertiNitro
-                </h4>
+                <a href="http://www.pequiven.com" class="title-area large-2 medium-3 columns" style="color:red;opacity:0.92;margin-top: 1rem;padding: 0.75em;"><img src="/WIT/webroot/img/logopqv.png"></a>
+                <a href="//10.10.0.74/fertinitro.com" class="title-area large-2 medium-3 columns right" style="color:#006600;font-family: 'Segoe UI Black';margin-top: 1rem;padding: 0.5em;"><img src="/WIT/webroot/img/fertinitro.png"></a>
+                <table width="100%" style="margin-bottom: 0.5rem">
+                    <tbody>
+                        <tr style="border-bottom: none">
+                            <td valign="top" style="text-align: left; padding: 0 0 0 2rem">
+                                <img src="/WIT/webroot/img/cintillo izquierda.png" width="316" height="49">
+                            </td>
+                            <td valign="top" align="right" style="text-align: right; padding: 0 2rem 0 0"><img src="/WIT/webroot/img/cintillo derecha.png" width="186" height="49"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </footer>
 </body>

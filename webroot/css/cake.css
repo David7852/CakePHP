@@ -48,35 +48,6 @@ table tbody tr td a:hover{
     box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.07);
     border-radius: 3px;
   }
-
-header {
-    background-color: #dee9e3;
-    background-image: url(../img/topBarTexture.png);
-    box-shadow: 0 3px 7px 0 rgba(90,118,100,0.15), 0 4px 11px 0 rgba(80,110,87, 0.2);
-    background-repeat: repeat;
-    color: #ffffff;
-    font-size: 30px;
-    height: 84px;
-    line-height: 64px;
-    padding: 16px 0px;
-}
-div.header-image img{
-    width: 40%;
-    size: auto;
-    display: block;
-    float: none;
-    margin: auto;
-    vertical-align: inherit;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    margin-top: auto;
-}
-
-header .header-title {
-    padding-left: 80px
-}
-
 legend {
     color: #0a805c;
     text-align: center;
@@ -401,12 +372,7 @@ pre {
     text-decoration: underline;
 }
 
-.home header {
-    width: 100%;
-    height: 70%;
-    position: relative;
-    display: table;
-}
+
 
 .home h1 {
     font-family: poiret, raleway, Roboto, Century gothic, Segoe ui, sans-serif;
@@ -417,7 +383,38 @@ pre {
     vertical-align: middle;
     text-align: center;
 }
-
+.home header {
+     width: 100%;
+     height: 60%;
+     position: relative;
+     display: table;
+ }
+header {
+    background-color: #dee9e3;
+    background-image: url(../img/topBarTexture.png);
+    box-shadow: 0 3px 7px 0 rgba(90,118,100,0.15), 0 4px 11px 0 rgba(80,110,87, 0.2);
+    background-repeat: repeat;
+    color: #ffffff;
+    font-size: 30px;
+    height: auto;
+    line-height: 64px;
+    padding: 16px 0px;
+}
+div.header-image img{
+    width: 33.33%;
+    size: auto;
+    display: block;
+    float: none;
+    margin: auto;
+    vertical-align: inherit;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: auto;
+}
+header .header-title {
+    padding-left: 80px
+}
 .home header h1 {
      color: rgba(34,122,90,0.45);
      text-shadow: 0 0 3px rgba(34,122,90,0.45);
@@ -426,6 +423,7 @@ pre {
 .home header h1:hover {
     text-shadow: 0 0 4px rgba(34,122,90,0.6);
 }
+
 
 #content {
     padding-top: 2em;
@@ -464,6 +462,10 @@ pre {
     background-color: #c9e2b3;
     background-image: url(../img/sideBarTexture.png);
     background-repeat: repeat;
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 0 0 1px rgba(255,255,255,0.3);
+    text-transform: capitalize;
 }
 
 .home .checks.url-rewriting {
@@ -599,6 +601,9 @@ table tbody::before{
     background: -ms-linear-gradient(left, rgba(255,255,255,0.05) 0%, rgba(10,100,75,0.16) 5%, rgba(10,100,75,0.59) 25%, rgba(10,100,75,0.8) 35%, rgba(10,100,75,1) 50%, rgba(10,100,75,0.8) 66%, rgba(10,100,75,0.57) 76%, rgba(10,100,75,0.13) 95%, rgba(255,255,255,0.01) 100%);
     background: linear-gradient(to right, rgba(255,255,255,0.05) 0%, rgba(10,100,75,0.16) 5%, rgba(10,100,75,0.59) 25%, rgba(10,100,75,0.8) 35%, rgba(10,100,75,1) 50%, rgba(10,100,75,0.8) 66%, rgba(10,100,75,0.57) 76%, rgba(10,100,75,0.13) 95%, rgba(255,255,255,0.01) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0A644B', endColorstr='#ffffff', GradientType=0 );
+}
+footer table tbody::before{
+    margin-left:0rem;
 }
 .vertical-table tbody::before{
     content:"";

@@ -14,20 +14,23 @@
         <?= $this->Form->create() ?>
         <div class="slice">
             <ul>
-                <li id="first">
-                    <a href="<?=Router::url(array('controller' => 'Lineas', 'action' => 'index',$this->request->session()->read('Auth.User.trabajador_id')))?>" style="color:#1c2529; background-color: #c9e2b3">Mis lineas</a>
-                </li>
             <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
+                <li id="first">
+                    <a href="<?=Router::url(array('controller' => 'Lineas', 'action' => 'add'))?>"style="color:white; background-color: #3ea97f">Agregar</a>
+                </li>
                 <li >
                     <a href="<?=Router::url(array('controller' => 'Lineas', 'action' => 'index'))?>"style="color:white; background-color: #00b14c">Listar</a>
                 </li>
                 <li id="first">
-                    <a href="<?=Router::url(array('controller' => 'Lineas', 'action' => 'add'))?>"style="color:#1c2529; background-color: #3ea97f">Agregar</a>
+                    <a href="<?=Router::url(array('controller' => 'Procesos', 'action' => 'asociarequipo'))?>"style="color:#1c2529; background-color: rgb(135,185,115)">Asignar Linea</a>
                 </li>
                 <li>
-                    <a href="<?=Router::url(array('controller' => 'Articulos', 'action' => 'inventario','Celular'))?>"style="color:#1c2529; background-color: #b8de87">Celulares</a>
+                    <a href="<?=Router::url(array('controller' => 'Procesos', 'action' => 'devolverequipo'))?>"style="color:#1c2529; background-color: #b8de87">Devolver Linea</a>
                 </li>
             <?php else: ?>
+                <li id="first">
+                    <a href="<?=Router::url(array('controller' => 'Lineas', 'action' => 'index',$this->request->session()->read('Auth.User.trabajador_id')))?>" style="color:#1c2529; background-color: #c9e2b3">Mis lineas</a>
+                </li>
                 <li>
                     <a href="<?=Router::url(array('controller' => 'Articulos', 'action' => 'inventario','Celular'))?>"style="color:#1c2529; background-color: burlywood">Mis celulares</a>
                 </li>
@@ -35,7 +38,7 @@
             </ul>
         </div>
         <div class="lapel">
-            <h1 style="color: forestgreen; text-shadow: 0px 0px 1px rgba(34,134,34,0.55),0px 0px 2px rgba(34,134,34,0.2)">Lineas</h1>
+            <h1 style="color: forestgreen; text-shadow: 0px 0px 1px rgba(34,134,34,0.55),0px 0px 2px rgba(34,134,34,0.2)">Lineas y Equipos</h1>
         </div>
             <div class="slice">
                 <ul>
