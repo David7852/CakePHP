@@ -22,10 +22,15 @@
             <th scope="row"><?= __('Descripcion') ?></th>
             <td><?= h($accesorio->descripcion) ?></td>
         </tr>
+        <?php if($accesorio->has('articulo')): ?>
         <tr>
             <th scope="row"><?= __('Articulo') ?></th>
-            <td><?= $accesorio->has('articulo') ? $this->Html->link($accesorio->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $accesorio->articulo->id]) : '' ?></td>
+
+            <td><?=  $this->Html->link($accesorio->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $accesorio->articulo->id]) ?>
+                <img style="float: right; width: 3rem; margin-top: -7px; padding: 0.3rem;" src="<?= '/WIT/webroot/img/Modelos/'.$accesorio->articulo->imagen ?>">
+            </td>
         </tr>
+        <?php endif; ?>
         <tr>
             <th scope="row"><?= __('Estado') ?></th>
             <td><?= h($accesorio->estado) ?></td>

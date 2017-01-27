@@ -93,8 +93,8 @@ $cakeDescription = 'WIT ';
     <?php endif; ?>
         <footer >
             <div style="vertical-align: middle">
-                <a href="http://www.pequiven.com" class="title-area large-2 medium-3 columns" style="color:red;opacity:0.92;margin-top: 1rem;padding: 0.75em;"><img src="/WIT/webroot/img/logopqv.png"></a>
-                <a href="//10.10.0.74/fertinitro.com" class="title-area large-2 medium-3 columns right" style="color:#006600;font-family: 'Segoe UI Black';margin-top: 1rem;padding: 0.5em;"><img src="/WIT/webroot/img/fertinitro.png"></a>
+                <a href="http://www.pequiven.com" class="title-area large-2 medium-3 columns" style="color:red;margin-top: 1rem;padding: 0.75em;"><img src="/WIT/webroot/img/logopqv.png" alt="Pequiven"></a>
+                <a href="//10.10.0.74/fertinitro" class="title-area large-2 medium-3 columns right" style="color:#006600;margin-top: 1rem;padding: 0.5rem 0 .5rem 1.5rem;;"><img src="/WIT/webroot/img/fertinitro.png" alt="FertiNitro"></a>
                 <table width="100%" style="margin-bottom: 0.5rem">
                     <tbody>
                         <tr style="border-bottom: none">

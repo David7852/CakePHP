@@ -20,7 +20,9 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Articulo') ?></th>
-            <td><?= $devolucion->has('articulo') ? $this->Html->link($devolucion->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $devolucion->articulo->id]) : '' ?></td>
+            <td><?= $devolucion->has('articulo') ? $this->Html->link($devolucion->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $devolucion->articulo->id]) : '' ?>
+                <img style="float: right; width: 3rem; margin-top: -7px; padding: 0.3rem;" src="<?= '/WIT/webroot/img/Modelos/'.$devolucion->articulo->imagen ?>">
+            </td>
         </tr>
         <tr>
             <th scope="row"><?= __('Estado') ?></th>

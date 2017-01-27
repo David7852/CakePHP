@@ -51,22 +51,22 @@
                 </ul>
             </div>
             <div class="lapel">
-                <h1 style="color: #4ba567; text-shadow: 0px 0px 1px rgba(75,165,103,0.55),0px 0px 2px rgba(75,165,103,0.2)">Rentas y Servicios</h1>
+                <h1 style="color: #4ba567; text-shadow: 0px 0px 1px rgba(75,165,103,0.55),0px 0px 2px rgba(75,165,103,0.2)">Planes y Servicios</h1>
             </div>
         <div class="slice">
             <ul>
-                <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
+
+                    <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
                     <li id="first">
-                        <a href="<?=Router::url(array('controller' => 'Consumos', 'action' => 'index', $this->request->session()->read('Auth.User.id')))?>" style="color:white; background-color: #7d7d00">Mis consumos</a>
-                    </li>
-                <?php else: ?>
-                    <li id="first">
-                        <a href="<?=Router::url(array('controller' => 'Consumos', 'action' => 'index'))?>" style="color:white; background-color: #3b3b1f">Listar</a>
+                        <a href="<?=Router::url(array('controller' => 'Consumos', 'action' => 'index'))?>" style="color:white; background-color: #4c5124">Listar</a>
                     </li>
                     <li>
                         <a href="<?=Router::url(array('controller' => 'Consumos', 'action' => 'add'))?>" style="color:white; background-color: #788b46">Agregar</a>
                     </li>
                 <?php endif; ?>
+                <li id="first">
+                    <a href="<?=Router::url(array('controller' => 'Consumos', 'action' => 'index', $this->request->session()->read('Auth.User.id')))?>" style="color:white; background-color: rgb(115,151,51)">Mis consumos</a>
+                </li>
             </ul>
         </div>
         <div class="lapel">
@@ -77,10 +77,10 @@
             <ul>
 
                 <li id="first">
-                    <a href="<?=Router::url(array('controller' => 'Contratos', 'action' => 'index'))?>"style="color:white; background-color: #7b6451">Listar</a>
+                    <a href="<?=Router::url(array('controller' => 'Contratos', 'action' => 'index'))?>"style="color:white; background-color: #7b6e51">Listar</a>
                 </li>
                 <li>
-                    <a href="<?=Router::url(array('controller' => 'Contratos', 'action' => 'add'))?>"style="color:white; background-color: #8b4528">Agregar</a>
+                    <a href="<?=Router::url(array('controller' => 'Contratos', 'action' => 'add'))?>"style="color:white; background-color: #855a28">Agregar</a>
                 </li>
 
             </ul>

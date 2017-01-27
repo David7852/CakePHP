@@ -10,7 +10,6 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property int $factura_id
  * @property int $servicio_id
- * @property string $cupo
  * @property string $consumido
  * @property string $excedente
  * @property float $monto_bs
@@ -23,6 +22,22 @@ use Cake\ORM\Entity;
 class Consumo extends Entity
 {
 
+    protected function _getCupo()
+    {
+        $c = new ConsumosController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
+        return $related->servicio->cupo;
+    }
+    protected function _getFacturatitulo()
+    {
+        $c = new ConsumosController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
+        return $related->factura->titulo;
+    }
     /**
      * @return string
      */

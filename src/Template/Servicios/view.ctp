@@ -29,11 +29,11 @@
     </table>
     <?php if (!empty($servicio->consumos)): ?>
     <div class="related">
-        <h4><?= __('Consumos: ') ?></h4>
+        <h4><?= __('Consumos') ?></h4>
 
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Factura Id') ?></th>
+                <th scope="col"><?= __('Factura') ?></th>
                 <th scope="col"><?= __('Cupo') ?></th>
                 <th scope="col"><?= __('Consumido') ?></th>
                 <th scope="col"><?= __('Excedente') ?></th>
@@ -42,7 +42,8 @@
             </tr>
             <?php foreach ($servicio->consumos as $consumos): ?>
             <tr>
-                <td><?= h($consumos->factura_id) ?></td>
+                <td><?= $this->Html->link($consumos->facturatitulo,
+                        ['controller' => 'Facturas', 'action' => 'view', $consumos->factura_id]) ?></td>
                 <td><?= h($consumos->cupo) ?></td>
                 <td><?= h($consumos->consumido) ?></td>
                 <td><?= h($consumos->excedente) ?></td>
@@ -50,7 +51,7 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Consumos', 'action' => 'view', $consumos->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Consumos', 'action' => 'edit', $consumos->id]) ?>
-                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Consumos', 'action' => 'delete', $consumos->id], ['confirm' => __('¿Confirma querer eliminar el consumo {0}?', $consumo->titulo)]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Consumos', 'action' => 'delete', $consumos->id], ['confirm' => __('¿Confirma querer eliminar el consumo {0}?', $consumos->titulo)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

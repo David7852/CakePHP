@@ -28,7 +28,9 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Articulo') ?></th>
-            <td><?= $linea->has('articulo') ? $this->Html->link($linea->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $linea->articulo->id]) : '' ?></td>
+            <td><?= $linea->has('articulo') ? $this->Html->link($linea->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $linea->articulo->id]) : '' ?>
+                <img style="float: none; width: 3rem; margin-top: -7px; padding: 0.3rem;" src="<?= '/WIT/webroot/img/Modelos/'.$linea->articulo->imagen ?>">
+            </td>
         </tr>
         <tr>
             <th scope="row"><?= __('Observaciones') ?></th>

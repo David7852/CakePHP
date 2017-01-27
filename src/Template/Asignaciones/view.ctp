@@ -21,7 +21,9 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Articulo') ?></th>
-            <td><?= $asignacion->has('articulo') ? $this->Html->link($asignacion->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $asignacion->articulo->id]) : '' ?></td>
+            <td><?= $asignacion->has('articulo') ? $this->Html->link($asignacion->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $asignacion->articulo->id]) : '' ?>
+                <img style="float: right; width: 3rem; margin-top: -7px; padding: 0.3rem;" src="<?= '/WIT/webroot/img/Modelos/'.$asignacion->articulo->imagen ?>">
+            </td>
         </tr>
         <tr>
             <th scope="row"><?= __('Hasta') ?></th>

@@ -605,6 +605,14 @@ table tbody::before{
 footer table tbody::before{
     margin-left:0rem;
 }
+footer div a{
+    opacity: 0.88;
+    transition: opacity .75s linear;
+}
+footer div a:hover{
+    opacity: 1;
+    transition: opacity 0.55s linear;
+}
 .vertical-table tbody::before{
     content:"";
     display: none;
@@ -686,17 +694,15 @@ fieldset legend {
     color: rgba(0,0,0,0.5)
 }
 @-moz-document url-prefix() {
-    h1, h2, h3, h4, h5, h6,
-    div.slice ul li h5,
-    div.slice ul li#first h5{
-        font-weight: 500;
-        text-shadow: 0 0 1px ;
-    }
     div.slice ul li a,
     div.slice ul li#first a,
     div.slice ul li a:hover,
-    div.slice ul li#first a:hover{
-        font-weight: lighter;
+    div.slice ul li#first a:hover,
+    div.slice ul li h5,
+    div.slice ul li#first h5,
+    .home .row .checks.ctp-warning,
+    h1, h2, h3, h4, h5, h6{
+        font-weight: 500;
         text-shadow: 0 0 1px ;
     }
     form div.lapel{
@@ -715,6 +721,7 @@ fieldset legend {
         height: 5.3em;
         box-shadow: 15px -10px 20px -18px rgba(0, 0, 0, 0.42);
     }
+
     .top-bar-section li:not(.has-form) a:not(.button){
         font-style: normal;
         font-weight: normal;

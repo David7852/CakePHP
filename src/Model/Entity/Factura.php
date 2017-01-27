@@ -23,10 +23,15 @@ use Cake\ORM\Entity;
  */
 class Factura extends Entity
 {
-    protected function _setDesde($value){
-        $this->titulo=$value.' '/* mas el numero de la linea*/;
-        return $value;
+    protected function _getTitulo()
+    {
+        $c = new FacturasController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
+        return h($related->linea->numero.' ('.$this->_properties['desde'].')');
     }
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

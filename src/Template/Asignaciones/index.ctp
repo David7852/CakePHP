@@ -27,7 +27,9 @@
             <?php foreach ($asignaciones as $asignacion): ?>
             <tr>
                 <td><?= $asignacion->has('proceso') ? $this->Html->link($asignacion->proceso->titulo, ['controller' => 'Procesos', 'action' => 'view', $asignacion->proceso->id]) : '' ?></td>
-                <td><?= $asignacion->has('articulo') ? $this->Html->link($asignacion->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $asignacion->articulo->id]) : '' ?></td>
+                <td><?= $asignacion->has('articulo') ? $this->Html->link($asignacion->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $asignacion->articulo->id]) : '' ?>
+                    <img style="float: none; width: 3rem; margin-top: -7px; padding: 0.3rem;" src="<?= '/WIT/webroot/img/Modelos/'.$asignacion->articulo->imagen ?>">
+                </td>
                 <td><?= h($asignacion->hasta) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $asignacion->id]) ?>

@@ -10,7 +10,15 @@ use App\Controller\AppController;
  */
 class FacturasController extends AppController
 {
-
+    public function getRelated($id)
+    {
+        if($id==null)
+            return null;
+        $factura = $this->Facturas->get($id, [
+            'contain' => ['Lineas', 'Consumos']
+        ]);
+        return $factura;
+    }
     /**
      * Index method
      *

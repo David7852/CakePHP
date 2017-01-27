@@ -28,7 +28,10 @@
             <?php foreach ($devoluciones as $devolucion): ?>
             <tr>
                 <td><?= $devolucion->has('proceso') ? $this->Html->link($devolucion->proceso->titulo, ['controller' => 'Procesos', 'action' => 'view', $devolucion->proceso->id]) : '' ?></td>
-                <td><?= $devolucion->has('articulo') ? $this->Html->link($devolucion->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $devolucion->articulo->id]) : '' ?></td>
+                <td><?= $devolucion->has('articulo') ? $this->Html->link($devolucion->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $devolucion->articulo->id]) : '' ?>
+                    <img style="float: none; width: 3rem; margin-top: -7px; padding: 0.3rem;" src="<?= '/WIT/webroot/img/Modelos/'.$devolucion->articulo->imagen ?>">
+
+                </td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $devolucion->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $devolucion->id]) ?>

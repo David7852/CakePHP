@@ -27,7 +27,9 @@
             <tr>
                 <td><?= h($accesorio->descripcion) ?></td>
                 <td><?= h($accesorio->estado) ?></td>
-                <td><?= $accesorio->has('articulo') ? $this->Html->link($accesorio->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $accesorio->articulo->id]) : '' ?></td>
+                <td><?= $accesorio->has('articulo') ? $this->Html->link($accesorio->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $accesorio->articulo->id]) : '' ?>
+                    <img style="float: none; width: 3rem; margin-top: -7px; padding: 0.3rem;" src="<?= '/WIT/webroot/img/Modelos/'.$accesorio->articulo->imagen ?>">
+                </td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $accesorio->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $accesorio->id]) ?>
