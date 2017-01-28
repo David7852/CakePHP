@@ -15,7 +15,7 @@
     </ul>
 </nav>
 <div class="lineas view large-9 medium-8 columns content">
-    <h3><?= 'Linea '.h($linea->numero)//en lugar de numero, el nombre del propietario del equipo debería ir aca, si y
+    <h3><?= 'Linea de '.h($linea->propietario)//en lugar de numero, el nombre del propietario del equipo debería ir aca, si y
         // solo si la linea esta asignada a alguien. de lo contrario, mostrar numero ?></h3>
     <table class="vertical-table">
         <tr>
@@ -28,8 +28,8 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Articulo') ?></th>
-            <td><?= $linea->has('articulo') ? $this->Html->link($linea->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $linea->articulo->id]) : '' ?>
-                <img style="float: none; width: 3rem; margin-top: -7px; padding: 0.3rem;" src="<?= '/WIT/webroot/img/Modelos/'.$linea->articulo->imagen ?>">
+            <td><?= $linea->has('articulo') ? $this->Html->link($linea->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $linea->articulo->id]) : 'Sin asignar' ?>
+            <?= $linea->has('articulo') ? "<img style='float: none; width: 3rem; margin-top: -7px; padding: 0.3rem;' src='/WIT/webroot/img/Modelos/".$linea->articulo->imagen."'>" : '' ?>
             </td>
         </tr>
         <tr>

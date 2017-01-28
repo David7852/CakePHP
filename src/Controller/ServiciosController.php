@@ -11,6 +11,15 @@ use App\Controller\AppController;
 class ServiciosController extends AppController
 {
 
+    public function getRelated($id)
+    {
+        if($id==null)
+            return null;
+        $servicio = $this->Servicios->get($id, [
+            'contain' => ['Rentas', 'Consumos']
+        ]);
+        return $servicio;
+    }
     /**
      * Index method
      *
@@ -22,16 +31,6 @@ class ServiciosController extends AppController
             $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
             return $this->redirect($this->referer());
         }
-        $this->paginate = [
-            'contain' => ['Rentas']
-        ];
-        $servicios = $this->paginate($this->Servicios);
-
-        $this->set(compact('servicios'));
-        $this->set('_serialize', ['servicios']);
-    }
-    public function menu()
-    {
         $this->paginate = [
             'contain' => ['Rentas']
         ];

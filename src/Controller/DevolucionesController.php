@@ -51,16 +51,6 @@ class DevolucionesController extends AppController
         $this->set(compact('devoluciones'));
         $this->set('_serialize', ['devoluciones']);
     }
-    public function menu()
-    {
-        $this->paginate = [
-            'contain' => ['Procesos', 'Articulos']
-        ];
-        $devoluciones = $this->paginate($this->Devoluciones);
-
-        $this->set(compact('devoluciones'));
-        $this->set('_serialize', ['devoluciones']);
-    }
 
     /**
      * View method

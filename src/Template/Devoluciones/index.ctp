@@ -20,6 +20,7 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('proceso_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Solicitante') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('articulo_id') ?></th>
                 <th scope="col" class="actions"><?= __('Aciones') ?></th>
             </tr>
@@ -28,9 +29,11 @@
             <?php foreach ($devoluciones as $devolucion): ?>
             <tr>
                 <td><?= $devolucion->has('proceso') ? $this->Html->link($devolucion->proceso->titulo, ['controller' => 'Procesos', 'action' => 'view', $devolucion->proceso->id]) : '' ?></td>
+                <td>
+                    <?= $devolucion->has('proceso') ? $this->Html->link($devolucion->proceso->solicitante, ['controller' => 'Trabajadores', 'action' => 'view', $devolucion->proceso->solicitanteid]) : 'Sin asignar' ?>
+                </td>
                 <td><?= $devolucion->has('articulo') ? $this->Html->link($devolucion->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $devolucion->articulo->id]) : '' ?>
                     <img style="float: none; width: 3rem; margin-top: -7px; padding: 0.3rem;" src="<?= '/WIT/webroot/img/Modelos/'.$devolucion->articulo->imagen ?>">
-
                 </td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $devolucion->id]) ?>

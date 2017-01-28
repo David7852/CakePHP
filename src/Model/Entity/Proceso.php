@@ -69,7 +69,7 @@ class Proceso extends Entity
             if($supervisores!='')
                 $supervisores=$supervisores.', ';
             $trabajador=TableRegistry::get('Trabajadores')->get($supervisor->trabajador_id);
-            $supervisores=supervisores.$trabajador->nombre.' '.$trabajador->apellido;
+            $supervisores=$supervisores.$trabajador->nombre.' '.$trabajador->apellido;
         }
         return $supervisores;
     }

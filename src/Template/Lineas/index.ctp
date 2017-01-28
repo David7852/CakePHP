@@ -19,11 +19,11 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
+                <th scope="col"><?= $this->Paginator->sort('operadora') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('numero') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('puk') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('pin') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('codigo_sim') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Equipo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Propietario') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('estado') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('observaciones') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
@@ -31,14 +31,16 @@
         <tbody>
             <?php foreach ($lineas as $linea): ?>
             <tr>
+                <td><?= h($linea->operadora) ?></td>
                 <td><?= h($linea->numero) ?></td>
-                <td><?= $this->Number->format($linea->puk) ?></td>
-                <td><?= $this->Number->format($linea->pin) ?></td>
-                <td><?= h($linea->codigo_sim) ?></td>
-                <td><?= $linea->has('articulo') ? $this->Html->link($linea->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $linea->articulo->id]) : '' ?>
-                    <?php if($linea->has('articulo')): ?>
-                        <img style="float: none; width: 3rem; margin-top: -7px; padding: 0.3rem;" src="<?= '/WIT/webroot/img/Modelos/'.$linea->articulo->imagen ?>">
-                    <?php endif; ?>
+                <td><?= $linea->has('articulo') ? $this->Html->link($linea->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $linea->articulo->id]) : 'Sin asignar' ?>
+                    <?= $linea->has('articulo') ? "<img style='float: none; width: 3rem; margin-top: -7px; padding: 0.3rem;' src='/WIT/webroot/img/Modelos/".$linea->articulo->imagen."'>" : '' ?>
+                </td>
+                <td>
+                    <?= $linea->has('articulo') ? $this->Html->link($linea->articulo->asignado, ['controller' => 'Trabajadores', 'action' => 'view', $linea->articulo->asignadoid]) : 'Sin asignar' ?>
+                </td>
+                <td>
+                    <?= h($linea->estado) ?>
                 </td>
                 <td><?= h($linea->observaciones) ?></td>
                 <td class="actions">

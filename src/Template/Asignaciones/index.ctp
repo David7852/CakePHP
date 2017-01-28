@@ -18,6 +18,7 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('proceso_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Solicitante') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('articulo_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('hasta') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
@@ -27,6 +28,9 @@
             <?php foreach ($asignaciones as $asignacion): ?>
             <tr>
                 <td><?= $asignacion->has('proceso') ? $this->Html->link($asignacion->proceso->titulo, ['controller' => 'Procesos', 'action' => 'view', $asignacion->proceso->id]) : '' ?></td>
+                <td>
+                    <?= $asignacion->has('proceso') ? $this->Html->link($asignacion->proceso->solicitante, ['controller' => 'Trabajadores', 'action' => 'view', $asignacion->proceso->solicitanteid]) : 'Sin asignar' ?>
+                </td>
                 <td><?= $asignacion->has('articulo') ? $this->Html->link($asignacion->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $asignacion->articulo->id]) : '' ?>
                     <img style="float: none; width: 3rem; margin-top: -7px; padding: 0.3rem;" src="<?= '/WIT/webroot/img/Modelos/'.$asignacion->articulo->imagen ?>">
                 </td>

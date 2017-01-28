@@ -39,16 +39,6 @@ class ContratosController extends AppController
         $this->set(compact('contratos'));
         $this->set('_serialize', ['contratos']);
     }
-    public function menu()
-    {
-        $this->paginate = [
-            'contain' => ['Trabajadores']
-        ];
-        $contratos = $this->paginate($this->Contratos);
-
-        $this->set(compact('contratos'));
-        $this->set('_serialize', ['contratos']);
-    }
 
     /**
      * View method

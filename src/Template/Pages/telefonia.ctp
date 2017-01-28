@@ -43,7 +43,7 @@
             <div class="slice">
                 <ul>
                     <li id="first">
-                        <a href="<?=Router::url(array('controller' => 'Rentas', 'action' => 'index'))?>" style="color:#1c2529; background-color: lightgreen ">Ver Rentas</a>
+                        <a href="<?=Router::url(array('controller' => 'Rentas', 'action' => 'index'))?>" style="color:#1c2529; background-color: lightgreen ">Ver Planes</a>
                     </li>
                     <li>
                         <a href="<?=Router::url(array('controller' => 'Servicios', 'action' => 'index'))?>" style="color:white; background-color: seagreen">Ver Servicios</a>

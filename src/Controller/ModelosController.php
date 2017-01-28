@@ -23,14 +23,6 @@ class ModelosController extends AppController
         $this->set(compact('modelos'));
         $this->set('_serialize', ['modelos']);
     }
-    public function menu()
-    {
-        $modelos = $this->paginate($this->Modelos);
-
-        $this->set(compact('modelos'));
-        $this->set('_serialize', ['modelos']);
-    }
-
     /**
      * View method
      *

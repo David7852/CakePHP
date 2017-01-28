@@ -53,14 +53,6 @@ class TrabajadoresController extends AppController
         $this->set('_serialize', ['trabajadores']);
     }
 
-    public function menu()
-    {
-
-        $trabajadores = $this->paginate($this->Trabajadores);
-
-        $this->set(compact('trabajadores'));
-        $this->set('_serialize', ['trabajadores']);
-    }
     /**
      * View method
      *

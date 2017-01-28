@@ -24,7 +24,6 @@ use Cake\Validation\Validator;
  */
 class ConsumosTable extends Table
 {
-
     /**
      * Initialize method
      *

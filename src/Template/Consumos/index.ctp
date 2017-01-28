@@ -31,8 +31,8 @@
         <tbody>
         <?php foreach ($consumos as $consumo): ?>
             <tr>
-                <td><?= $consumo->has('factura') ? $this->Html->link($consumo->factura->titulo, ['controller' => 'Facturas', 'action' => 'view', $consumo->factura->id]) : '' ?></td>
-                <td><?= $consumo->has('servicio') ? $this->Html->link($consumo->servicio->nombre, ['controller' => 'Servicios', 'action' => 'view', $consumo->servicio->id]) : '' ?></td>
+                <td><?= $consumo->has('factura') ? $this->Html->link($consumo->factura->titulo, ['controller' => 'Facturas', 'action' => 'view', $consumo->factura_id]) : '' ?></td>
+                <td><?= $consumo->has('servicio') ? $this->Html->link($consumo->servicio->titulo, ['controller' => 'Servicios', 'action' => 'view', $consumo->servicio->id]) : '' ?></td>
                 <td><?= h($consumo->cupo) ?></td>
                 <td><?= h($consumo->consumido) ?></td>
                 <td><?= h($consumo->excedente) ?></td>

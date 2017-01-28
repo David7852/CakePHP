@@ -76,13 +76,6 @@ class ProcesosController extends AppController
         $this->set(compact('procesos'));
         $this->set('_serialize', ['procesos']);
     }
-    public function menu()
-    {
-        $procesos = $this->paginate($this->Procesos);
-
-        $this->set(compact('procesos'));
-        $this->set('_serialize', ['procesos']);
-    }
 
     /**
      * View method

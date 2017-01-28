@@ -20,7 +20,7 @@
         <legend><?= __('Agregar un Consumo') ?></legend>
         <?php
         echo $this->Form->input('factura_id', ['options' => $facturas]);
-        echo $this->Form->input('servicio_id', ['options' => $servicios,'empty'=>true]);
+        echo $this->Form->input('servicio_id', ['options' => $servicios]);
         echo $this->Form->input('consumido');
         echo $this->Form->input('excedente');
         echo $this->Form->input('monto_bs');

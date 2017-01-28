@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Entity;
 
+use App\Controller\ServiciosController;
 use Cake\ORM\Entity;
 
 /**
@@ -21,7 +22,11 @@ class Servicio extends Entity
 
     protected function _getTitulo()
     {
-        return $this->_properties['nombre'];
+        $c = new ServiciosController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
+        return $this->_properties['nombre'].' de '.$related->renta->nombre;
     }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

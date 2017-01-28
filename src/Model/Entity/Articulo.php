@@ -30,7 +30,9 @@ class Articulo extends Entity
         $related=$c->getRelated($this->_properties['id']);
         if($related==null)
             return '';
-        return $related->modelo->imagen;
+        if ( $related->modelo->imagen!=null)
+            return $related->modelo->imagen;
+        return 'no disponible.png';
     }
 
     protected function _getTitulo()

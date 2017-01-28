@@ -11,6 +11,15 @@ use Cake\ORM\TableRegistry;
 class LineasController extends AppController
 {
 
+    public function getRelated($id)
+    {
+        if($id==null)
+            return null;
+        $linea = $this->Lineas->get($id, [
+            'contain' => ['Articulos', 'Rentas', 'Facturas']
+        ]);
+        return $linea;
+    }
     /**
      * Index method
      *
@@ -46,17 +55,6 @@ class LineasController extends AppController
 
         }else
             $lineas = $this->paginate($this->Lineas);
-
-        $this->set(compact('lineas'));
-        $this->set('_serialize', ['lineas']);
-    }
-
-    public function menu()
-    {
-        $this->paginate = [
-            'contain' => ['Articulos']
-        ];
-        $lineas = $this->paginate($this->Lineas);
 
         $this->set(compact('lineas'));
         $this->set('_serialize', ['lineas']);

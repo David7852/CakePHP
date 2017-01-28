@@ -32,7 +32,12 @@ class Modelo extends Entity
     {
         return $this->_properties['marca'] . ', ' . $this->_properties['modelo'];
     }
-
+    protected function _getImagen()
+    {
+        if(empty($this->_properties)||$this->_properties['imagen']==''||$this->_properties['imagen']==null)
+            return  'no disponible.png';
+        return $this->_properties['imagen'];
+    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

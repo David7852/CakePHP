@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Entity;
 
+use App\Controller\LineasController;
 use Cake\ORM\Entity;
 
 /**
@@ -24,7 +25,16 @@ use Cake\ORM\Entity;
  */
 class Linea extends Entity
 {
-
+    protected function _getPropietario()
+    {
+        $c = new LineasController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
+        if($related->articulo!=null)
+            return $related->articulo->asignado;
+        return 'Sin propietario';
+    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

@@ -13,7 +13,6 @@ class ConsumosController extends AppController
 
     public function getRelated($id)
     {
-
         if($id==null)
             return null;
         $consumo = $this->Consumos->get($id, [
@@ -72,21 +71,6 @@ class ConsumosController extends AppController
         $this->set(compact('consumos'));
         $this->set('_serialize', ['consumos']);
     }
-    public function menu()
-    {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
-            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
-            return $this->redirect($this->referer());
-        }
-        $this->paginate = [
-            'contain' => ['Facturas', 'Servicios']
-        ];
-        $consumos = $this->paginate($this->Consumos);
-
-        $this->set(compact('consumos'));
-        $this->set('_serialize', ['consumos']);
-    }
-
     /**
      * View method
      *
