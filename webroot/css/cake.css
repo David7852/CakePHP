@@ -1468,7 +1468,8 @@ table tbody tr td figure img {
     text-align: left;
 }
 #completado{
-
+    color: #157876;
+    text-shadow: 0 0 2px rgba(10,105,100,0.4);
     text-align: left;
 }
 #asignacion{
