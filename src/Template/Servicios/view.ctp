@@ -30,7 +30,6 @@
     <?php if (!empty($servicio->consumos)): ?>
     <div class="related">
         <h4><?= __('Consumos') ?></h4>
-
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Factura') ?></th>

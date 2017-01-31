@@ -13,7 +13,7 @@
     </ul>
 </nav>
 <div class="articulos index large-9 medium-8 columns content">
-    <h3><?php
+    <h3 style="text-transform: capitalize"><?php
         if(substr($tipo, -1)=="s")
             echo $tipo;
         elseif(substr($tipo, -1)=="a"||substr($tipo, -1)=="e"||substr($tipo, -1)=="i"||substr($tipo, -1)=="o"||substr($tipo, -1)=="u")

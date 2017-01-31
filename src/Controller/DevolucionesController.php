@@ -62,7 +62,7 @@ class DevolucionesController extends AppController
     public function view($id = null)
     {
         if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
-            $devo=TableRegistry::get('Devoluviones')->get($id);
+            $devo=TableRegistry::get('Devoluciones')->get($id);
             $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find();
             if($pro_tra->isEmpty()){
                 $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));

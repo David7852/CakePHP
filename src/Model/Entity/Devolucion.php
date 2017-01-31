@@ -45,6 +45,14 @@ class Devolucion extends Entity
         return 'Devolucion de '.$related->articulo->titulo;
         //return 'Devolucion del'.$this->articulo->titulo. h($related->proceso->estado); //nombre del trabajador con el proceso_trabajador rol solicitante
     }
+    protected function _getAltproceso()
+    {
+        $c = new DevolucionesController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return null;
+        return $related->proceso;
+    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

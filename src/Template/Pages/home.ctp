@@ -70,16 +70,16 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
                 </div>
             </div>
             <div class="columns large-12 checks">
-                <h4>Environment</h4>
+                <h4 style="text-transform: capitalize">unete y participa</h4>
                 <p>Some data...</p>
                 <hr>
-                <h4>Filesystem</h4>
+                <h4 style="text-transform: capitalize">Estamos a su disposición</h4>
                 <p>Some data...</p>
                 <hr>
-                <h4>Database</h4>
+                <h4 style="text-transform: capitalize">Manténte en contacto</h4>
                 <p>Some data...</p>
                 <hr>
-                <h4>DebugKit</h4>
+                <h4 style="text-transform: capitalize">Apreciamos sus aportes e ideas</h4>
                 <p>Some data...</p>
             </div>
         </div>
@@ -105,8 +105,8 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 </body>
 <footer >
     <div style="vertical-align: middle">
-        <a href="http://www.pequiven.com" class="title-area large-2 medium-3 columns" style="color:red;margin-top: 1rem;padding: 0.75em;"><img src="/WIT/webroot/img/logopqv.png"></a>
-        <a href="//10.10.0.74/fertinitro" class="title-area large-2 medium-3 columns right" style="color:#006600;margin-top: 1rem;padding: 0.5rem 0 .5rem 1.5rem;"><img src="/WIT/webroot/img/fertinitro.png"></a>
+        <a href="http://www.pequiven.com" class="title-area large-2 medium-3 columns" style="color:red; margin: auto; padding: 1.65rem 0.75rem 0.75rem 2.75rem;"><img src="/WIT/webroot/img/logopqv.png" alt="Pequiven"></a>
+        <a href="//10.10.0.74/fertinitro" class="title-area large-2 medium-3 columns right" style="color:#006600;margin: auto;padding: 1.65rem 0.75rem 0.75rem 0.75rem;"><img src="/WIT/webroot/img/fertinitro.png" alt="FertiNitro"></a>
         <table width="100%" style="margin-bottom: 0.5rem">
             <tbody>
             <tr style="border-bottom: none">

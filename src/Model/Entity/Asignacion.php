@@ -46,7 +46,14 @@ class Asignacion extends Entity
         return 'Asignacion del '.$related->articulo->titulo;
         //return 'Asignacion del'.$this->articulo->titulo. h($related->proceso->estado); //nombre del trabajador con el proceso_trabajador rol solicitante
     }
-
+    protected function _getAltproceso()
+    {
+        $c = new AsignacionesController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return null;
+        return $related->proceso;
+    }
 
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

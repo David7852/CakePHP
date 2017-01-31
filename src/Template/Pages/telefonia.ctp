@@ -77,10 +77,10 @@
             <ul>
 
                 <li id="first">
-                    <a href="<?=Router::url(array('controller' => 'Contratos', 'action' => 'index'))?>"style="color:white; background-color: #7b6e51">Listar</a>
+                    <a href="<?=Router::url(array('controller' => 'Facturas', 'action' => 'index'))?>"style="color:white; background-color: #7b6e51">Listar</a>
                 </li>
                 <li>
-                    <a href="<?=Router::url(array('controller' => 'Contratos', 'action' => 'add'))?>"style="color:white; background-color: #855a28">Agregar</a>
+                    <a href="<?=Router::url(array('controller' => 'Facturas', 'action' => 'add'))?>"style="color:white; background-color: #855a28">Agregar</a>
                 </li>
 
             </ul>

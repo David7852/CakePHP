@@ -92,20 +92,22 @@
         </table>
     </div>
     <?php endif; ?>
-    <?php if (!empty($articulo->asignaciones)): ?>
+    <?php if (!empty($articulo->asignaciones)&&$this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
     <div class="related">
         <h4><?= __('Historial De Asignaciones') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Proceso Id') ?></th>
-                <th scope="col"><?= __('Articulo Id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('proceso_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Solicitante') ?></th>
                 <th scope="col"><?= __('Hasta') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($articulo->asignaciones as $asignaciones): ?>
             <tr>
-                <td><?= h($asignaciones->proceso_id) ?></td>
-                <td><?= h($asignaciones->articulo_id) ?></td>
+                <td><?= $asignaciones->altproceso!=null ? $this->Html->link($asignaciones->altproceso->titulo, ['controller' => 'Procesos', 'action' => 'view', $asignaciones->altproceso->id]) : '' ?></td>
+                <td>
+                    <?= $asignaciones->altproceso!=null ? $this->Html->link($asignaciones->altproceso->solicitante, ['controller' => 'Trabajadores', 'action' => 'view', $asignaciones->altproceso->solicitanteid]) : 'Sin asignar' ?>
+                </td>
                 <td><?= h($asignaciones->hasta) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Asignaciones', 'action' => 'view', $asignaciones->id]) ?>
@@ -117,19 +119,21 @@
         </table>
     </div>
     <?php endif; ?>
-    <?php if (!empty($articulo->devoluciones)): ?>
+    <?php if (!empty($articulo->devoluciones)&&$this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
     <div class="related">
         <h4><?= __('Historial De Devoluciones') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Proceso Id') ?></th>
-                <th scope="col"><?= __('Articulo Id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('proceso_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Solicitante') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($articulo->devoluciones as $devoluciones): ?>
             <tr>
-                <td><?= h($devoluciones->proceso_id) ?></td>
-                <td><?= h($devoluciones->articulo_id) ?></td>
+                <td><?= $devoluciones->altproceso!=null ? $this->Html->link($devoluciones->altproceso->titulo, ['controller' => 'Procesos', 'action' => 'view', $devoluciones->altproceso->id]) : '' ?></td>
+                <td>
+                    <?= $devoluciones->altproceso!=null ? $this->Html->link($devoluciones->altproceso->solicitante, ['controller' => 'Trabajadores', 'action' => 'view', $devoluciones->altproceso->solicitanteid]) : 'Sin asignar' ?>
+                </td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Devoluciones', 'action' => 'view', $devoluciones->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Devoluciones', 'action' => 'edit', $devoluciones->id]) ?>

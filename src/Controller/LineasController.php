@@ -35,6 +35,7 @@ class LineasController extends AppController
             $lineas=array();
             $lin=TableRegistry::get('Lineas')->find('all');
             foreach ($lin as $eas){
+
                 $asig=TableRegistry::get('Asignaciones')->find('all')
                     ->where(['articulo_id ='=>$eas->articulo_id])
                     ->andWhere(['hasta >='=>date('Y-m-d')]);
@@ -69,6 +70,7 @@ class LineasController extends AppController
      */
     public function view($id = null)
     {
+
         if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
             $asig=TableRegistry::get('Asignaciones')->find('all')
                 ->where(['articulo_id ='=>$this->Lineas->get($id)->articulo_id])
@@ -92,11 +94,20 @@ class LineasController extends AppController
                 return $this->redirect($this->referer());
             }
         }
+        $facturas=TableRegistry::get('Facturas')->find('all')->where(['linea_id ='=>$id]);
+        //para limitar el tiempo de valides del consumo, agregar un andwhere con el tiempo en cuestion, posiblemente un mes.
+        $consumos=array();
+        foreach ($facturas as $factura) {
+            $consumo = TableRegistry::get('Consumos')->find('all')->where(['factura_id =' => $factura->id]);
+            foreach ($consumo as $c)
+                array_push($consumos, $c->id);
+        }
+        $consumos = $this->paginate(TableRegistry::get('Consumos')->find('all',array('conditions'=>array('Consumos.id IN'=>$consumos))));
         $linea = $this->Lineas->get($id, [
             'contain' => ['Articulos', 'Rentas', 'Facturas']
         ]);
-
         $this->set('linea', $linea);
+        $this->set('consumos', $consumos);
         $this->set('_serialize', ['linea']);
     }
 

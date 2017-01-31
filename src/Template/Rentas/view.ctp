@@ -27,10 +27,10 @@
     </table>
     <?php if (!empty($renta->servicios)): ?>
     <div class="related">
-        <h4><?= __('Consumos realizados') ?></h4>
+        <h4><?= __('Servicios ofrecidos') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Nombre') ?></th>
+                <th scope="col"><?= __('Nombre y descripción') ?></th>
                 <th scope="col"><?= __('Cupo') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
@@ -48,28 +48,32 @@
         </table>
     </div>
     <?php endif; ?>
-    <?php if (!empty($renta->lineas)): ?>
+    <?php if (!empty($renta->lineas)&&$this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
     <div class="related">
         <h4><?= __('Lineas con ').h($renta->nombre) ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Numero') ?></th>
-                <th scope="col"><?= __('Puk') ?></th>
-                <th scope="col"><?= __('Pin') ?></th>
-                <th scope="col"><?= __('Codigo Sim') ?></th>
-                <th scope="col"><?= __('Articulo Id') ?></th>
-                <th scope="col"><?= __('Estado') ?></th>
-                <th scope="col"><?= __('Observaciones') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('operadora') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('numero') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Equipo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Propietario') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('estado') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('observaciones') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($renta->lineas as $lineas): ?>
             <tr>
+                <td><?= h($lineas->operadora) ?></td>
                 <td><?= h($lineas->numero) ?></td>
-                <td><?= h($lineas->puk) ?></td>
-                <td><?= h($lineas->pin) ?></td>
-                <td><?= h($lineas->codigo_sim) ?></td>
-                <td><?= h($lineas->articulo_id) ?></td>
-                <td><?= h($lineas->estado) ?></td>
+                <td><?= $lineas->altarticulo!=null ? $this->Html->link($lineas->altarticulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $lineas->altarticulo->id]) : 'Sin asignar' ?>
+                    <?= $lineas->altarticulo!=null ? "<img style='float: none; width: 3rem; margin-top: -7px; padding: 0.3rem;' src='/WIT/webroot/img/Modelos/".$lineas->altarticulo->imagen."'>" : '' ?>
+                </td>
+                <td>
+                    <?= $lineas->altarticulo!=null ? $this->Html->link($lineas->altarticulo->asignado, ['controller' => 'Trabajadores', 'action' => 'view', $lineas->altarticulo->asignadoid]) : 'Sin asignar' ?>
+                </td>
+                <td>
+                    <?= h($lineas->estado) ?>
+                </td>
                 <td><?= h($lineas->observaciones) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Lineas', 'action' => 'view', $lineas->id]) ?>

@@ -53,6 +53,61 @@
             <td><?= h($linea->estado) ?></td>
         </tr>
     </table>
+    <?php if (!empty($linea->rentas)): ?>
+        <div class="related">
+            <h4><?= __('Rentas y planes asignados') ?></h4>
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <th scope="col"><?= __('Nombre') ?></th>
+                    <th scope="col"><?= __('Monto Basico') ?></th>
+                    <th scope="col"><?= __('Operadora') ?></th>
+                    <th scope="col" class="actions"><?= __('Acciones') ?></th>
+                </tr>
+                <?php foreach ($linea->rentas as $rentas): ?>
+                    <tr>
+                        <td><?= h($rentas->nombre) ?></td>
+                        <td><?= h($rentas->monto_basico) ?></td>
+                        <td><?= h($rentas->operadora) ?></td>
+                        <td class="actions">
+                            <?= $this->Html->link(__('Ver'), ['controller' => 'Rentas', 'action' => 'view', $rentas->id]) ?>
+                            <?= $this->Html->link(__('Editar'), ['controller' => 'Rentas', 'action' => 'edit', $rentas->id]) ?>
+                            <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Rentas', 'action' => 'delete', $rentas->id], ['confirm' => __('¿Confirma querer eliminar la renta o plan {0}?', $rentas->nombre)]) ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+    <?php endif; ?>
+    <?php if (!empty($consumos)): ?>
+        <div class="related">
+            <h4><?= __('Consumos') ?></h4>
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <th scope="col"><?= __('Factura') ?></th>
+                    <th scope="col"><?= __('Cupo') ?></th>
+                    <th scope="col"><?= __('Consumido') ?></th>
+                    <th scope="col"><?= __('Excedente') ?></th>
+                    <th scope="col"><?= __('Monto Bs') ?></th>
+                    <th scope="col" class="actions"><?= __('Acciones') ?></th>
+                </tr>
+                <?php foreach ($consumos as $consumo): ?>
+                    <tr>
+                        <td><?= $this->Html->link($consumo->facturatitulo,
+                                ['controller' => 'Facturas', 'action' => 'view', $consumo->factura_id]) ?></td>
+                        <td><?= h($consumo->cupo) ?></td>
+                        <td><?= h($consumo->consumido) ?></td>
+                        <td><?= h($consumo->excedente) ?></td>
+                        <td><?= h($consumo->monto_bs) ?></td>
+                        <td class="actions">
+                            <?= $this->Html->link(__('Ver'), ['controller' => 'Consumos', 'action' => 'view', $consumo->id]) ?>
+                            <?= $this->Html->link(__('Editar'), ['controller' => 'Consumos', 'action' => 'edit', $consumo->id]) ?>
+                            <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Consumos', 'action' => 'delete', $consumo->id], ['confirm' => __('¿Confirma querer eliminar el consumo {0}?', $consumo->titulo)]) ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+    <?php endif; ?>
     <?php if (!empty($linea->facturas)): ?>
     <div class="related">
         <h4><?= __('Facturas de esta linea') ?></h4>
@@ -84,29 +139,5 @@
         </table>
     </div>
     <?php endif; ?>
-    <?php if (!empty($linea->rentas)): ?>
-    <div class="related">
-        <h4><?= __('Rentas y planes asignados') ?></h4>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Nombre') ?></th>
-                <th scope="col"><?= __('Monto Basico') ?></th>
-                <th scope="col"><?= __('Operadora') ?></th>
-                <th scope="col" class="actions"><?= __('Acciones') ?></th>
-            </tr>
-            <?php foreach ($linea->rentas as $rentas): ?>
-            <tr>
-                <td><?= h($rentas->nombre) ?></td>
-                <td><?= h($rentas->monto_basico) ?></td>
-                <td><?= h($rentas->operadora) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('Ver'), ['controller' => 'Rentas', 'action' => 'view', $rentas->id]) ?>
-                    <?= $this->Html->link(__('Editar'), ['controller' => 'Rentas', 'action' => 'edit', $rentas->id]) ?>
-                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Rentas', 'action' => 'delete', $rentas->id], ['confirm' => __('¿Confirma querer eliminar la renta o plan {0}?', $rentas->nombre)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-    </div>
-    <?php endif; ?>
+
 </div>

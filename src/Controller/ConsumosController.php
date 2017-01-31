@@ -80,6 +80,34 @@ class ConsumosController extends AppController
      */
     public function view($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$id!=null)
+        {
+            $factura=TableRegistry::get('Facturas')->find('all')->where(['id ='=>$id]);
+            $linea=TableRegistry::get('Lineas')->find('all')->where(['id ='=>$factura->first()->linea_id]);
+            $equipo=TableRegistry::get('Articulos')->find('all')->where(['id ='=>$linea->first()->articulo_id]);
+            if($equipo==null||!$equipo->isEmpty())
+            {
+                $this->Flash->error(__('La linea de este consumo no esta asignada a ningún equipo.'));
+                return $this->redirect($this->referer());
+            }
+            $asig=TableRegistry::get('Asignaciones')->find('all')
+                ->where(['articulo_id ='=>$equipo->first()->id])
+                ->andWhere(['hasta >='=>date('Y-m-d')]);
+            $procesos=false;
+            foreach ($asig as $nacion){
+                $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                    ->where(['proceso_id ='=>$nacion->proceso_id])
+                    ->andWhere(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')])
+                    ->andWhere(['rol ='=>'Solicitante']);
+                if($pro_tra!=null&&!$pro_tra->isEmpty())
+                    $procesos=true;
+            }
+            if(!$procesos)
+            {
+                $this->Flash->error(__('Usted no tiene Lineas asignadas, ni consumos que ver.'));
+                return $this->redirect($this->referer());
+            }
+    }
         $consumo = $this->Consumos->get($id, [
             'contain' => ['Facturas', 'Servicios']
         ]);

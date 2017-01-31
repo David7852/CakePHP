@@ -35,6 +35,14 @@ class Linea extends Entity
             return $related->articulo->asignado;
         return 'Sin propietario';
     }
+    protected function _getAltarticulo()
+    {
+        $c = new LineasController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return null;
+        return $related->articulo;
+    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
