@@ -878,6 +878,12 @@ div.message.hidden {
 }
 /*important*/
 @media(max-width: 640px) {
+    div.header-image img
+    {
+        max-width: 75%;
+        width: auto;
+    }
+
     div.slice ul li div,
     div.slice ul li div:hover
     {
@@ -916,8 +922,8 @@ div.message.hidden {
         height: 6.66rem;
         padding: 1.2rem 0.4rem 3rem 0.3rem;
         font-weight: bold;
-        font-size: 71%;
-        max-width: 5rem;
+        font-size: 81%;
+        max-width: 6rem;
         line-height: 0.81rem;
     }
     nav.top-bar h1 a{z-index: 12}
@@ -1245,14 +1251,14 @@ div.message.hidden {
     transition: all 0.75s ease-in;
 }
 .dropdownx {
-    z-index: 0;
+    z-index: 1;
     position: relative;
     display: inline-block;
     opacity: 1;
     transition: all 0.55s ease-in;
 }
 .dropdownx-content {
-    z-index: 0;
+    z-index: 1;
     opacity: 0;
     position: absolute;
     right: 0;
@@ -1268,7 +1274,7 @@ div.message.hidden {
     pointer-events: auto;
 }
 .dropdownx-content-background{
-    z-index: 0;
+    z-index: 1;
     pointer-events: none;
     position: absolute;
     opacity: 1;

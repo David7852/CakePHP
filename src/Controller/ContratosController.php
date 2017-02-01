@@ -22,20 +22,31 @@ class ContratosController extends AppController
             'contain' => ['Trabajadores']
         ];
         if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
+            $trabajador = TableRegistry::get('Trabajadores')->get(($this->request->session()->read('Auth.User.trabajador_id')));
+            $gerencia=$trabajador->gerencia;
+            $cargo=$trabajador->cargo;
             $contratos=array();
-            $contr=TableRegistry::get('Contratos')->find('all')
-                ->where(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')]);
+            if($cargo=="Gerente"||$cargo=="Supervisor"||$cargo=="Superintendente")  {
+                $trabajador = TableRegistry::get('Trabajadores')->find('all')
+                    ->where(['gerencia ='=>$gerencia]);
+                foreach ($trabajador as $t) {
+                    $contr=TableRegistry::get('Contratos')->find('all')
+                        ->where(['trabajador_id ='=>$t->id]);
+                }
+            }
+            else
+                $contr=TableRegistry::get('Contratos')->find('all')
+                    ->where(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')]);
             foreach ($contr as $atos)
                 array_push($contratos,$atos->id);
             if(empty($contratos))
             {
-                $this->Flash->error(__('Los detalles de su contrato no estan disponibles.'));
+                $this->Flash->error(__('No hay Contratos a su nombre que pueda ver.'));
                 return $this->redirect($this->referer());
             }
             $contratos = $this->paginate($this->Contratos->find('all',array('conditions'=>array('Contratos.id IN'=>$contratos))));
         }else
             $contratos = $this->paginate($this->Contratos);
-
         $this->set(compact('contratos'));
         $this->set('_serialize', ['contratos']);
     }
@@ -49,16 +60,27 @@ class ContratosController extends AppController
      */
     public function view($id = null)
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
-            if($this->request->session()->read('Auth.User.trabajador_id')!=$this->Contratos->get($id)->trabajador_id){
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador')
+        {
+            if($this->request->session()->read('Auth.User.trabajador_id')!=$this->Contratos->get($id)->trabajador_id)
+            {
+                $trabajador = TableRegistry::get('Trabajadores')->get(($this->request->session()->read('Auth.User.trabajador_id')));
+                $gerencia=$trabajador->gerencia;
+                $cargo=$trabajador->cargo;
+                $trabajador = TableRegistry::get('Trabajadores')->get($this->Contratos->get($id)->trabajador_id);
+                if(empty($trabajador)||
+                    $trabajador->gerencia!=$gerencia||
+                    $trabajador->cargo=='Gerente'||
+                    ($trabajador->cargo=='Supervisor'&&$cargo!='Gerente')||
+                    ($trabajador->cargo=='Superintendente'&&$cargo!='Gerente')) {
                 $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
                 return $this->redirect($this->referer());
+                }
             }
         }
         $contrato = $this->Contratos->get($id, [
             'contain' => ['Trabajadores']
         ]);
-
         $this->set('contrato', $contrato);
         $this->set('_serialize', ['contrato']);
     }
@@ -99,18 +121,30 @@ class ContratosController extends AppController
      */
     public function edit($id = null)
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
-            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
-            return $this->redirect($this->referer());
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador')
+        {
+            if($this->request->session()->read('Auth.User.trabajador_id')!=$this->Contratos->get($id)->trabajador_id)
+            {
+                $trabajador = TableRegistry::get('Trabajadores')->get(($this->request->session()->read('Auth.User.trabajador_id')));
+                $gerencia=$trabajador->gerencia;
+                $cargo=$trabajador->cargo;
+                $trabajador = TableRegistry::get('Trabajadores')->get($this->Contratos->get($id)->trabajador_id);
+                if(empty($trabajador)||
+                    $trabajador->gerencia!=$gerencia||
+                    $trabajador->cargo=='Gerente'||
+                    ($trabajador->cargo=='Supervisor'&&$cargo!='Gerente')||
+                    ($trabajador->cargo=='Superintendente'&&$cargo!='Gerente')) {
+                    $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+                    return $this->redirect($this->referer());
+                }
+            }
         }
-        $contrato = $this->Contratos->get($id, [
-            'contain' => []
-        ]);
+
+        $contrato = $this->Contratos->get($id, ['contain' => []]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $contrato = $this->Contratos->patchEntity($contrato, $this->request->data);
             if ($this->Contratos->save($contrato)) {
                 $this->Flash->success(__('Los cambios en el contrato fueron guardados.'));
-
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('Los cambios en el contrato no pudieron guardarse. Intente nuevamente'));

@@ -25,7 +25,7 @@ class TrabajadoresController extends AppController
      */
     public function index()
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
             $trabajador = TableRegistry::get('Trabajadores')->get(($this->request->session()->read('Auth.User.trabajador_id')));
             $gerencia=$trabajador->gerencia;
             $cargo=$trabajador->cargo;
@@ -62,7 +62,7 @@ class TrabajadoresController extends AppController
      */
     public function view($id = null)
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante'&&$this->request->session()->read('Auth.User.trabajador_id')!=$id) {
+        if(($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador')&&$this->request->session()->read('Auth.User.trabajador_id')!=$id) {
             $trabajador = TableRegistry::get('Trabajadores')->get(($this->request->session()->read('Auth.User.trabajador_id')));
             $gerencia=$trabajador->gerencia;
             $cargo=$trabajador->cargo;
@@ -208,7 +208,9 @@ class TrabajadoresController extends AppController
      */
     public function edit($id = null)
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante'&&$this->request->session()->read('Auth.User.trabajador_id')!=$id) {
+        if(($this->request->session()->read('Auth.User.funcion')=='Visitante'||
+                $this->request->session()->read('Auth.User.funcion')=='Operador')&&
+                $this->request->session()->read('Auth.User.trabajador_id')!=$id) {
             $trabajador = TableRegistry::get('Trabajadores')->get(($this->request->session()->read('Auth.User.trabajador_id')));
             $gerencia=$trabajador->gerencia;
             $cargo=$trabajador->cargo;

@@ -1384,6 +1384,12 @@ select {
 }
 
 @media only screen and (min-width: 64.0625em) {
+
+    body header div.header-image img
+    {
+        max-width: 33%;
+        width: auto;
+    }
     #difbtm {
         margin-left: 17.25%;
     }
@@ -4069,6 +4075,12 @@ meta.foundation-mq-topbar {
 }
 
 @media only screen and (max-width: 40em) {
+
+    header div.header-image img
+    {
+        max-width: 66%;
+        width: auto;
+    }
     .top-bar .button,
     .top-bar button {
         position: relative;
@@ -4253,6 +4265,7 @@ meta.foundation-mq-topbar {
 }
 
 @media only screen and (max-width: 40em) {
+
     a #difbtm {
         margin-left: 25%;
         margin: auto;
@@ -5823,13 +5836,13 @@ ul.pagination li {
 }
 
 .side-nav {
+    text-align: center;
     display: block;
     font-family: raleway, Roboto, Century gothic, Segoe ui, sans-serif;
     list-style-position: outside;
     list-style-type: none;
     margin: 0;
     padding: 0.875rem 0
-
 }
 
 .side-nav li {
@@ -6022,6 +6035,7 @@ ul.pagination li {
 }
 
 @media only screen and (min-width: 64.0625em) {
+
     .large-text-left {
         text-align: left !important
     }
@@ -6440,6 +6454,12 @@ blockquote p {
 }
 
 @media only screen and (min-width: 40.0625em) {
+
+    header div.header-image img
+    {
+        max-width: 48%;
+        width: auto;
+    }
     h1,
     h2,
     h3,

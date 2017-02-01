@@ -46,7 +46,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <div id="content">
         <div class="row">
             <div class="columns large-12 ctp-warning checks">
-                ¡Bienvenidos A WIT: Un Sistema Web Para El Control Del Inventario Y La Telefonía Móvil de FertiNitro C.E.C.!
+                ¡Bienvenidos A WIT: El Sistema Web Para El Control Del Inventario Y La Telefonía Móvil de FertiNitro C.E.C.!
             </div>
             <div style="margin-bottom: -7rem;z-index: 0;">
                 <div class="slice" style="z-index: 0">
@@ -86,21 +86,17 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 
         <div class="row">
             <div class="columns large-6">
-                <h3>Editing this Page</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h3>Misión</h3>
+                <p><dfn style="color: rgb(56,118,29); font-style: normal ; font-weight: bold">Ferti</dfn><dfn style="color: rgb(137,180,43); font-style: normal ; font-weight: bold">Nitro</dfn> tiene la misión de producir y comercializar urea y amoniaco de alta calidad operando de forma segura y eficiente en armonía con el ambiente, fortaleciendo nuestro talento humano e impulsando el desarrollo sustentable del país.</p>
             </div>
             <div class="columns large-6">
-                <h3>Getting Started</h3>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-
+                <h3>Vision</h3>
+                <p>La visión de <dfn style="color: rgb(56,118,29); font-style: normal ; font-weight: bold">Ferti</dfn><dfn style="color: rgb(137,180,43); font-style: normal ; font-weight: bold">Nitro</dfn> es ser reconocida a nivel nacional e internacional como la empresa más confiable y rentable en producción y comercialización de urea y amoníaco de alta calidad.</p>
             </div>
         </div>
-
         <hr style="border-color: rgba(195, 35, 45, 0.72); border-width: 2px">
         <br>
         <br>
-
-
     </div>
 </body>
 <footer >
