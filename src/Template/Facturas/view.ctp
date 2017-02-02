@@ -4,9 +4,9 @@
         <li class="tlf" id="seleccion"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>
         <!-- $ -->
         <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $factura->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $factura->id], ['confirm' => __('¿Confirma querer eliminar la factura {0}?', $factura->titulo)]) ?> </li>
         <li><?= $this->Html->link(__('Facturas'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Dar Consumo'), ['controller'=> 'Consumos', 'action' => 'add',$factura->linea_id]) ?></li>
         <li><?= $this->Html->link(__('Consumos'), ['controller' => 'Consumos', 'action' => 'index']) ?> </li>
         <!-- $ -->
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
@@ -19,7 +19,7 @@
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Linea') ?></th>
-            <td><?= $factura->has('linea') ? $this->Html->link($factura->linea->numero, ['controller' => 'Lineas', 'action' => 'view', $factura->linea->id]) : '' ?></td>
+            <td><?= $factura->has('linea') ? $this->Html->link($factura->linea->numero, ['controller' => 'Lineas', 'action' => 'view', $factura->linea_id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Numero De Cuenta') ?></th>

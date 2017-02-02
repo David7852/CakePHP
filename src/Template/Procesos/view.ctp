@@ -5,14 +5,9 @@ use Cake\ORM\TableRegistry;?>
         <li class="heading"><?=''?></li>
         <li class="sol" id="seleccion"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <!-- $ -->
-        <?php if(!$this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
-        <li><?= $this->Form->postLink(
-                __('Eliminar'),
-                ['action' => 'delete', $proceso->id],
-                ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $proceso->motivo)]
-            )
-            ?></li>
-        <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $proceso->id]) ?></li>
+        <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
+            <li><?= $this->Html->link(__('Mis Asignaciones'), ['controller' => 'Asignaciones', 'action' => 'index', $this->request->session()->read('Auth.User.trabajador_id')]) ?></li>
+            <li><?= $this->Html->link(__('Mis Devoluciones'), ['controller' => 'Devoluciones', 'action' => 'index', $this->request->session()->read('Auth.User.trabajador_id')]) ?></li>
         <?php else: ?>
             <?php if($proceso->tipo=='Asignacion'): ?>
                 <li><?= $this->Html->link(__('Dar Asignacion'), ['controller' => 'Asignaciones', 'action' => 'asociar',$proceso->id],['id'=>'asignacion']) ?> </li>
@@ -135,7 +130,7 @@ use Cake\ORM\TableRegistry;?>
                     else
                         echo 'Indefinido';
                 ?></td>
-                <td><?= h($trabajadores->nombre.$trabajadores->apellido) ?></td>
+                <td><?= h($trabajadores->nombre.' '.$trabajadores->apellido) ?></td>
                 <td><?= h($trabajadores->cedula) ?></td>
                 <td><?= h($trabajadores->gerencia) ?></td>
                 <td><?= h($trabajadores->cargo) ?></td>

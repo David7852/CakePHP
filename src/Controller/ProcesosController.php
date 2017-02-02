@@ -41,7 +41,7 @@ class ProcesosController extends AppController
                     TableRegistry::get('Procesos')->delete($proceso);
                     $this->Flash->error('El intento de registrar la solicitud fallo.');
                 }
-                return $this->redirect(['action' => 'menu']);
+                return $this->redirect(['action' => 'view',$proceso->id]);
             } else {
                 $this->Flash->error(__('El proceso no pudo ser guardado. Intente nuevamente.'));
             }
@@ -65,8 +65,7 @@ class ProcesosController extends AppController
                 ->where(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')]);
             foreach ($pro_tra as $p)
                 array_push($procesos,$p->proceso_id);
-            if(empty($procesos))
-            {
+            if(empty($procesos)){
                 $this->Flash->error(__('Usted no tiene Procesos ni solicitudes a su nombre.'));
                 return $this->redirect($this->referer());
             }
@@ -98,10 +97,6 @@ class ProcesosController extends AppController
                     $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
                 return $this->redirect($this->referer());
             }
-        }
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
-            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
-            return $this->redirect($this->referer());
         }
         $proceso = $this->Procesos->get($id, [
             'contain' => ['Trabajadores', 'Asignaciones', 'Devoluciones']

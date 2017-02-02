@@ -25,6 +25,16 @@ use Cake\ORM\Entity;
  */
 class Linea extends Entity
 {
+    protected function _getTitulo()
+    {
+        $c = new LineasController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
+        if($related->articulo!=null&&$related->articulo->asignado!='')
+            return 'Linea de '.$related->articulo->asignado;
+        return 'Linea sin asignar';
+    }
     protected function _getPropietario()
     {
         $c = new LineasController();

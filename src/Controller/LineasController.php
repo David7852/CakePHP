@@ -102,7 +102,8 @@ class LineasController extends AppController
             foreach ($consumo as $c)
                 array_push($consumos, $c->id);
         }
-        $consumos = $this->paginate(TableRegistry::get('Consumos')->find('all',array('conditions'=>array('Consumos.id IN'=>$consumos))));
+        if(!empty($consumos))
+            $consumos = $this->paginate(TableRegistry::get('Consumos')->find('all',array('conditions'=>array('Consumos.id IN'=>$consumos))));
         $linea = $this->Lineas->get($id, [
             'contain' => ['Articulos', 'Rentas', 'Facturas']
         ]);

@@ -3,11 +3,16 @@
         <li class="heading"><?=''?></li>
         <li class="sol" id="seleccion"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <!-- $ -->
-        <li><?= $this->Html->link(__('Nuevo Proceso'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('Asignaciones'), ['controller' => 'Asignaciones', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Devoluciones'), ['controller' => 'Devoluciones', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
+        <?php if(!$this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
+            <li><?= $this->Html->link(__('Nuevo Proceso'), ['action' => 'add']) ?></li>
+            <li><?= $this->Html->link(__('Asignaciones'), ['controller' => 'Asignaciones', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('Devoluciones'), ['controller' => 'Devoluciones', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
+        <?php else: ?>
+            <li><?= $this->Html->link(__('Hacer solicitud'), ['action' => 'solicitar']) ?></li>
+            <li><?= $this->Html->link(__('Mis articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
+        <?php endif; ?>
         <!-- $ -->
         <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>
         <li class="tlf"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>

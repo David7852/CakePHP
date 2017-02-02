@@ -3,11 +3,16 @@
         <li class="heading"><?=''?></li>
         <li class="tlf" id="seleccion"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>
         <!-- $ -->
-        <li><?= $this->Html->link(__('Nueva Linea'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('Celulares'), ['controller' => 'Articulos', 'action' => 'inventario','Celular']) ?></li>
-        <li><?= $this->Html->link(__('Facturas'), ['controller' => 'Facturas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nueva Renta'), ['controller' => 'Rentas', 'action' => 'add']) ?></li>
+        <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
+            <li><?= $this->Html->link(__('Mis Lineas'), ['action' => 'index',$this->request->session()->read('Auth.User.trabajador_id')]) ?></li>
+            <li><?= $this->Html->link(__('Mis Celulares'), ['controller' => 'Articulos', 'action' => 'inventario','Celular']) ?></li>
+        <?php else: ?>
+            <li><?= $this->Html->link(__('Dar Consumo'), ['controller'=> 'Consumos', 'action' => 'add',$linea->id]) ?></li>
+            <li><?= $this->Html->link(__('Lineas'), ['action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('Celulares'), ['controller' => 'Articulos', 'action' => 'inventario','Celular']) ?></li>
+            <li><?= $this->Html->link(__('Facturas'), ['controller' => 'Facturas', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?></li>
+        <?php endif; ?>
         <!-- $ -->
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>
@@ -15,8 +20,7 @@
     </ul>
 </nav>
 <div class="lineas view large-9 medium-8 columns content">
-    <h3><?= 'Linea de '.h($linea->propietario)//en lugar de numero, el nombre del propietario del equipo debería ir aca, si y
-        // solo si la linea esta asignada a alguien. de lo contrario, mostrar numero ?></h3>
+    <h3><?= h($linea->titulo) ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Numero') ?></th>

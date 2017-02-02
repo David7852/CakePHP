@@ -147,10 +147,13 @@ class DevolucionesController extends AppController
         $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
             ->where(['proceso_id ='=>$id])
             ->andWhere(['rol ='=>'Solicitante']);
-        $solicitante_id=$pro_tra->first()->trabajador_id;
-        $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
-            ->where(['trabajador_id ='=>$solicitante_id])
-            ->andWhere(['rol ='=>'Solicitante']);
+
+        if(!empty($pro_tra)&&!$pro_tra->isEmpty()) {
+            $solicitante_id=$pro_tra->first()->trabajador_id;
+            $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                ->where(['trabajador_id ='=>$solicitante_id])
+                ->andWhere(['rol ='=>'Solicitante']);
+        }
         $articulos = array();
         foreach ($pro_tra as $proc)
         {

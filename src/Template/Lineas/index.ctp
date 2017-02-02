@@ -3,11 +3,16 @@
         <li class="heading"><?=''?></li>
         <li class="tlf" id="seleccion"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>
         <!-- $ -->
-        <li><?= $this->Html->link(__('Nueva Linea'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('Celulares'), ['controller' => 'Articulos', 'action' => 'inventario','Celular']) ?></li>
-        <li><?= $this->Html->link(__('Facturas'), ['controller' => 'Facturas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nueva Renta'), ['controller' => 'Rentas', 'action' => 'add']) ?></li>
+        <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
+            <li><?= $this->Html->link(__('Mis Consumos'), ['controller' => 'Consumos', 'action' => 'index', $this->request->session()->read('Auth.User.id')])?></li>
+            <li><?= $this->Html->link(__('Mis Celulares'), ['controller' => 'Articulos', 'action' => 'inventario','Celular']) ?></li>
+        <?php else: ?>
+            <li><?= $this->Html->link(__('Nueva Linea'), ['action' => 'add']) ?></li>
+            <li><?= $this->Html->link(__('Celulares'), ['controller' => 'Articulos', 'action' => 'inventario','Celular']) ?></li>
+            <li><?= $this->Html->link(__('Facturas'), ['controller' => 'Facturas', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('Nueva Renta'), ['controller' => 'Rentas', 'action' => 'add']) ?></li>
+        <?php endif; ?>
         <!-- $ -->
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>

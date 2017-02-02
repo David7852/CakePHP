@@ -80,7 +80,7 @@ class ConsumosController extends AppController
      */
     public function view($id = null)
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$id!=null)
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante')
         {
             $factura=TableRegistry::get('Facturas')->find('all')->where(['id ='=>$id]);
             $linea=TableRegistry::get('Lineas')->find('all')->where(['id ='=>$factura->first()->linea_id]);
@@ -121,20 +121,32 @@ class ConsumosController extends AppController
      *
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
+        $facturas = $this->Consumos->Facturas->find('list', ['limit' => 200]);
+        if($id!=null) {
+            $facturas=TableRegistry::get('Facturas')->find('list')
+                ->where(['linea_id ='=>$id]);
+            if($facturas->isEmpty()){
+                $this->Flash->error(__('Esta linea no tiene facturas, cree una antes de agregar un consumo.'));
+                return $this->redirect($this->referer());}
+        }
         $consumo = $this->Consumos->newEntity();
         if ($this->request->is('post')) {
             $consumo = $this->Consumos->patchEntity($consumo, $this->request->data);
             if ($this->Consumos->save($consumo)) {
                 $this->Flash->success(__('El consumo se ha registrado.'));
-
+                if($id!=null)
+                    return $this->redirect(['controller'=>'Lineas','action' => 'view', $id]);
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('El consumo no pudo ser registrado. Intente nuevamente'));
             }
         }
-        $facturas = $this->Consumos->Facturas->find('list', ['limit' => 200]);
         $servicios = $this->Consumos->Servicios->find('list', ['limit' => 200]);
         $this->set(compact('consumo', 'facturas', 'servicios'));
         $this->set('_serialize', ['consumo']);
@@ -149,6 +161,10 @@ class ConsumosController extends AppController
      */
     public function edit($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $consumo = $this->Consumos->get($id, [
             'contain' => []
         ]);
@@ -177,6 +193,10 @@ class ConsumosController extends AppController
      */
     public function delete($id = null)
     {
+        if($this->request->session()->read('Auth.User.funcion')!='Administrador'&&$this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la accion solicitada.'));
+            return $this->redirect($this->referer());
+        }
         $this->request->allowMethod(['post', 'delete']);
         $consumo = $this->Consumos->get($id);
         if ($this->Consumos->delete($consumo)) {
