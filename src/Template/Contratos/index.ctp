@@ -4,8 +4,13 @@
         <li class="heading"><?=''?></li>
         <li class="usu" id="seleccion"><?= $this->Html->link(__('Usuarios'), ['controller' => 'Pages', 'action' => 'display','usuarios'])?></li>
         <!-- $ -->
+        <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
+            <li><?= $this->Html->link(__('Trabajador'), ['controller' => 'Trabajadores', 'action' => 'view', $this->request->session()->read('Auth.User.id')]) ?></li>
+            <li><?= $this->Html->link(__('Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
+        <?php else: ?>
         <li><?= $this->Html->link(__('Contrato'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
+        <?php endif; ?>
         <!-- $ -->
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>

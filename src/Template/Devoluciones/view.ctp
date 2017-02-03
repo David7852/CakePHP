@@ -3,8 +3,13 @@
         <li class="heading"><?=''?></li>
         <li class="sol" id="seleccion"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <!-- $ -->
+        <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
+            <li><?= $this->Html->link(__('Solicitar'), ['controller'=>'Procesos','action' => 'solicitar']) ?></li>
+            <li><?= $this->Html->link(__('Solicitudes'), ['action' => 'index']) ?> </li>
+        <?php else: ?>
         <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $devolucion->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $devolucion->id], ['confirm' => __('¿Confirma querer eliminar la devolucion {0}?', $devolucion->titulo)]) ?> </li>
+        <?php endif; ?>
         <!-- $ -->
         <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>
         <li class="tlf"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>

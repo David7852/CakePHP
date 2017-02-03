@@ -10,8 +10,8 @@
             <li><?= $this->Html->link(__('Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
             <li><?= $this->Html->link(__('Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
         <?php else: ?>
-            <li><?= $this->Html->link(__('Hacer solicitud'), ['action' => 'solicitar']) ?></li>
-            <li><?= $this->Html->link(__('Mis articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('Solicitar'), ['action' => 'solicitar']) ?></li>
+            <li><?= $this->Html->link(__('Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
         <?php endif; ?>
         <!-- $ -->
         <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>

@@ -4,8 +4,14 @@
         <li class="heading"><?=''?></li>
         <li class="inv" id="seleccion"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>
         <!-- $ -->
+
+        <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
+            <li><?= $this->Html->link(__('Solicitar'), ['controller'=>'Procesos','action' => 'solicitar']) ?></li>
+            <li><?= $this->Html->link(__('Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
+        <?php else: ?>
         <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $modelo->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $modelo->id], ['confirm' => __('¿Confirma querer eliminar el tipo de {0}?', $modelo->titulo)]) ?> </li>
+        <?php endif; ?>
         <!-- $ -->
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <li class="tlf"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>
@@ -43,7 +49,7 @@
             </tr>
         <?php endif; ?>
     </table>
-    <?php if (!empty($modelo->articulos)): ?>
+    <?php if (!empty($modelo->articulos)&&$this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
     <div class="related">
         <h4><?= __('Articulos de este modelo') ?></h4>
         <table cellpadding="0" cellspacing="0">

@@ -3,11 +3,17 @@
         <li class="heading"><?=''?></li>
         <li class="tlf" id="seleccion"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>
         <!-- $ -->
+
+        <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
+            <li><?= $this->Html->link(__('Mis Lineas'), ['controller' => 'Lineas', 'action' => 'index',$this->request->session()->read('Auth.User.trabajador_id')]) ?></li>
+            <li><?= $this->Html->link(__('Consumos'), ['action' => 'index']) ?> </li>
+        <?php else: ?>
         <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $consumo->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $consumo->id], ['confirm' => __('¿Confirma querer eliminar el consumo {0}?', $consumo->titulo)]) ?> </li>
         <li><?= $this->Html->link(__('Consumos'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Facturas'), ['controller' => 'Facturas', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Servicios'), ['controller' => 'Servicio', 'action' => 'index']) ?> </li>
+        <?php endif; ?>
         <!-- $ -->
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>

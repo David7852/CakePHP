@@ -80,18 +80,19 @@ class ConsumosController extends AppController
      */
     public function view($id = null)
     {
-        if($this->request->session()->read('Auth.User.funcion')=='Visitante')
-        {
-            $factura=TableRegistry::get('Facturas')->find('all')->where(['id ='=>$id]);
-            $linea=TableRegistry::get('Lineas')->find('all')->where(['id ='=>$factura->first()->linea_id]);
-            $equipo=TableRegistry::get('Articulos')->find('all')->where(['id ='=>$linea->first()->articulo_id]);
-            if($equipo==null||!$equipo->isEmpty())
-            {
+        $consumo = $this->Consumos->get($id, [
+            'contain' => ['Facturas', 'Servicios']
+        ]);
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante'){
+            $factura=TableRegistry::get('Facturas')->find('all')->where(['id ='=>$consumo->factura_id])->first();//this consumo->factura_id
+            $linea=TableRegistry::get('Lineas')->find('all')->where(['id ='=>$factura->linea_id])->first();
+            $equipo=TableRegistry::get('Articulos')->find('all')->where(['id ='=>$linea->articulo_id])->first();
+            if($equipo==null){
                 $this->Flash->error(__('La linea de este consumo no esta asignada a ningún equipo.'));
                 return $this->redirect($this->referer());
             }
             $asig=TableRegistry::get('Asignaciones')->find('all')
-                ->where(['articulo_id ='=>$equipo->first()->id])
+                ->where(['articulo_id ='=>$equipo->id])
                 ->andWhere(['hasta >='=>date('Y-m-d')]);
             $procesos=false;
             foreach ($asig as $nacion){
@@ -102,16 +103,11 @@ class ConsumosController extends AppController
                 if($pro_tra!=null&&!$pro_tra->isEmpty())
                     $procesos=true;
             }
-            if(!$procesos)
-            {
+            if(!$procesos){
                 $this->Flash->error(__('Usted no tiene Lineas asignadas, ni consumos que ver.'));
                 return $this->redirect($this->referer());
             }
     }
-        $consumo = $this->Consumos->get($id, [
-            'contain' => ['Facturas', 'Servicios']
-        ]);
-
         $this->set('consumo', $consumo);
         $this->set('_serialize', ['consumo']);
     }
@@ -127,6 +123,11 @@ class ConsumosController extends AppController
             $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
             return $this->redirect($this->referer());
         }
+        $fact=false;
+        if($id[0]=='f') {
+            $fact = true;
+            $id=substr($id, 1);
+        }
         $facturas = $this->Consumos->Facturas->find('list', ['limit' => 200]);
         if($id!=null) {
             $facturas=TableRegistry::get('Facturas')->find('list')
@@ -140,8 +141,11 @@ class ConsumosController extends AppController
             $consumo = $this->Consumos->patchEntity($consumo, $this->request->data);
             if ($this->Consumos->save($consumo)) {
                 $this->Flash->success(__('El consumo se ha registrado.'));
-                if($id!=null)
-                    return $this->redirect(['controller'=>'Lineas','action' => 'view', $id]);
+                    if($fact)
+                        return $this->redirect(['controller'=>'Facturas','action' => 'view', $consumo->factura_id]);
+                    elseif($id!=null)
+                        //return $this->redirect(['controller'=>'Facturas','action' => 'view', $consumo->factura_id]);
+                        return $this->redirect(['controller'=>'Lineas','action' => 'view', $id]);
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('El consumo no pudo ser registrado. Intente nuevamente'));

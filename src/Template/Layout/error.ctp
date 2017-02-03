@@ -5,8 +5,9 @@
     <title>
         <?= $this->fetch('title') ?>
     </title>
-    <?= $this->Html->meta('icon') ?>
-
+    <?php// echo $this->Html->meta('icon'); ?>
+    <link href="/WIT/favicon error.ico" rel="icon">
+    <link href="/WIT/favicon error.ico" rel="shortcut icon">
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('cake.css') ?>
 

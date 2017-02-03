@@ -6,7 +6,7 @@
         <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $factura->id]) ?> </li>
         <li><?= $this->Html->link(__('Facturas'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Dar Consumo'), ['controller'=> 'Consumos', 'action' => 'add',$factura->linea_id]) ?></li>
+        <li><?= $this->Html->link(__('Dar Consumo'), ['controller'=> 'Consumos', 'action' => 'add','f'.$factura->linea_id]) ?></li>
         <li><?= $this->Html->link(__('Consumos'), ['controller' => 'Consumos', 'action' => 'index']) ?> </li>
         <!-- $ -->
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>

@@ -6,8 +6,8 @@ use Cake\ORM\TableRegistry;?>
         <li class="sol" id="seleccion"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <!-- $ -->
         <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
-            <li><?= $this->Html->link(__('Mis Asignaciones'), ['controller' => 'Asignaciones', 'action' => 'index', $this->request->session()->read('Auth.User.trabajador_id')]) ?></li>
-            <li><?= $this->Html->link(__('Mis Devoluciones'), ['controller' => 'Devoluciones', 'action' => 'index', $this->request->session()->read('Auth.User.trabajador_id')]) ?></li>
+            <li><?= $this->Html->link(__('Asignaciones'), ['controller' => 'Asignaciones', 'action' => 'index', $this->request->session()->read('Auth.User.trabajador_id')]) ?></li>
+            <li><?= $this->Html->link(__('Devoluciones'), ['controller' => 'Devoluciones', 'action' => 'index', $this->request->session()->read('Auth.User.trabajador_id')]) ?></li>
         <?php else: ?>
             <?php if($proceso->tipo=='Asignacion'): ?>
                 <li><?= $this->Html->link(__('Dar Asignacion'), ['controller' => 'Asignaciones', 'action' => 'asociar',$proceso->id],['id'=>'asignacion']) ?> </li>
