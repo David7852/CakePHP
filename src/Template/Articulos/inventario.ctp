@@ -8,8 +8,8 @@
             <li><?= $this->Html->link(__('Solicitar'), ['controller'=>'Procesos','action' => 'solicitar']) ?></li>
             <li><?= $this->Html->link(__('Accesorios'), ['controller'=>'Accesorios','action' => 'index']) ?></li>
         <?php else: ?>
-            <li><?= $this->Html->link(__('Nuevo Articulo'), ['action' => 'add']) ?></li>
-            <li><?= $this->Html->link(__('Nuevo Modelo'), ['controller' => 'Modelos', 'action' => 'add']) ?></li>
+            <li><?= $this->Html->link(__('Agregar Articulo'), ['action' => 'add'], ['class'=>'viewLink']) ?></li>
+            <li><?= $this->Html->link(__('Agregar Modelo'), ['controller' => 'Modelos', 'action' => 'add'], ['class'=>'viewLink']) ?></li>
         <?php endif; ?>
         <!-- $ -->
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>

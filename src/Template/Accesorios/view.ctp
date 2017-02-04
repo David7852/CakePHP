@@ -11,7 +11,7 @@
         <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $accesorio->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $accesorio->id], ['confirm' => __('¿Confirma querer eliminar el accesorio: {0}?', $accesorio->titulo)]) ?> </li>
         <li><?= $this->Html->link(__('Accesorios'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Nuevo Accesorio'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Agregar Accesorio'), ['action' => 'add'], ['class'=>'viewLink']) ?> </li>
         <li><?= $this->Html->link(__('Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?> </li>
         <?php endif; ?>
         <!-- $ -->

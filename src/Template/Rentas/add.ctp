@@ -8,9 +8,9 @@
         <!-- $ -->
         <li><?= $this->Html->link(__('Rentas'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Servicios'), ['controller' => 'Servicios', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nuevo Servicio'), ['controller' => 'Servicios', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Servicio'), ['controller' => 'Servicios', 'action' => 'add'], ['class'=>'viewLink']) ?></li>
         <li><?= $this->Html->link(__('Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nueva Linea'), ['controller' => 'Lineas', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Linea'), ['controller' => 'Lineas', 'action' => 'add'], ['class'=>'viewLink']) ?></li>
         <!-- $ -->
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>

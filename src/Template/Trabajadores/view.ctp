@@ -12,7 +12,7 @@
         <li><?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $trabajador->id], ['confirm' => __('¿Confirma querer eliminar al trabajador {0}?', $trabajador->titulo)]) ?> </li>
         <li><?= $this->Html->link(__('Trabajadores'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Nuevo Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Agregar Usuario'), ['controller' => 'Usuarios', 'action' => 'add'], ['class'=>'viewLink']) ?> </li>
         <?php endif; ?>
         <!-- $ -->
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>

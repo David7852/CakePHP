@@ -5,9 +5,9 @@
         <!-- $ -->
         <li><?= $this->Html->link(__('Facturas'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nueva Linea'), ['controller' => 'Lineas', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Linea'), ['controller' => 'Lineas', 'action' => 'add'], ['class'=>'viewLink']) ?></li>
         <li><?= $this->Html->link(__('Consumos'), ['controller' => 'Consumos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nuevo Consumo'), ['controller' => 'Consumos', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Consumo'), ['controller' => 'Consumos', 'action' => 'add'], ['class'=>'viewLink']) ?></li>
         <!-- $ -->
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>

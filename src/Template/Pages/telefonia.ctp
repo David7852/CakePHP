@@ -15,20 +15,20 @@
         <div class="slice">
             <ul>
             <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
-                <li id="first">
+                <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Lineas', 'action' => 'add'))?>"style="color:white; background-color: #3ea97f">Agregar</a>
                 </li>
                 <li >
                     <a href="<?=Router::url(array('controller' => 'Lineas', 'action' => 'index'))?>"style="color:white; background-color: #00b14c">Listar</a>
                 </li>
-                <li id="first">
+                <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Procesos', 'action' => 'asociarequipo'))?>"style="color:#1c2529; background-color: rgb(135,185,115)">Asignar Linea</a>
                 </li>
                 <li>
                     <a href="<?=Router::url(array('controller' => 'Procesos', 'action' => 'devolverequipo'))?>"style="color:#1c2529; background-color: #b8de87">Devolver Linea</a>
                 </li>
             <?php else: ?>
-                <li id="first">
+                <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Lineas', 'action' => 'index',$this->request->session()->read('Auth.User.trabajador_id')))?>" style="color:#1c2529; background-color: #c9e2b3">Mis lineas</a>
                 </li>
                 <li>
@@ -42,7 +42,7 @@
         </div>
             <div class="slice">
                 <ul>
-                    <li id="first">
+                    <li class="first">
                         <a href="<?=Router::url(array('controller' => 'Rentas', 'action' => 'index'))?>" style="color:#1c2529; background-color: lightgreen ">Ver Planes</a>
                     </li>
                     <li>
@@ -57,14 +57,14 @@
             <ul>
 
                     <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
-                    <li id="first">
+                    <li class="first">
                         <a href="<?=Router::url(array('controller' => 'Consumos', 'action' => 'index'))?>" style="color:white; background-color: #4c5124">Listar</a>
                     </li>
                     <li>
                         <a href="<?=Router::url(array('controller' => 'Consumos', 'action' => 'add'))?>" style="color:white; background-color: #788b46">Agregar</a>
                     </li>
                 <?php endif; ?>
-                <li id="first">
+                <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Consumos', 'action' => 'index', $this->request->session()->read('Auth.User.id')))?>" style="color:white; background-color: rgb(115,151,51)">Mis consumos</a>
                 </li>
             </ul>
@@ -76,7 +76,7 @@
         <div class="slice">
             <ul>
 
-                <li id="first">
+                <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Facturas', 'action' => 'index'))?>"style="color:white; background-color: #7b6e51">Listar</a>
                 </li>
                 <li>

@@ -15,15 +15,28 @@
         <div class="slice">
             <ul>
             <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
-                <li id="first">
+                <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Trabajadores', 'action' => 'index'))?>"style="color:white; background-color: #720e9e">Mis trabajadores</a>
                 </li>
                 <li>
                     <a href="<?=Router::url(array('controller' => 'Trabajadores', 'action' => 'view',$this->request->session()->read('Auth.User.trabajador_id')))?>"style="color:white; background-color: #500a6f">Mi trabajador</a>
                 </li>
             <?php else: ?>
-                <li id="first">
+                <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Trabajadores', 'action' => 'index'))?>" style="color:white; background-color: #720e9e">Listar</a>
+                </li>
+                <li class="superlabel first">
+                    <div style=" background-color: #bc2cb8">
+                        <h5>Buscar Trabajador<br>llamado</h5>
+                        <div >
+                            <?= $this->Form->input('nombre',['label'=>'','style'=>'color: #b428b0']) ?>
+                            <button type='submit' style="color: #bc2cb8" name="nombrebtn">
+                                <svg  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 15l-6 6-1.42-1.42L15.17 16H4V4h2v10h9.17l-3.59-3.58L13 9l6 6z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </li>
                 <li>
                     <a href="<?=Router::url(array('controller' => 'Trabajadores', 'action' => 'add'))?>" style="color:white; background-color: #500a6f">Agregar</a>
@@ -37,11 +50,11 @@
             <div class="slice">
                 <ul>
                 <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador'): ?>
-                    <li id="first">
+                    <li class="first">
                         <a href="<?=Router::url(array('controller' => 'Contratos', 'action' => 'index'))?>"style="color:white; background-color: mediumvioletred">Mi contrato</a>
                     </li>
                 <?php else: ?>
-                    <li id="first">
+                    <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Contratos', 'action' => 'index'))?>" style="color:white; background-color: mediumvioletred">Listar</a>
                 </li>
                 <li>
@@ -61,7 +74,7 @@
                     <a href="<?=Router::url(array('controller' => 'Usuarios', 'action' => 'view', $this->request->session()->read('Auth.User.id')))?>" style="color:#1c2529; background-color: salmon"><?= $this->request->session()->read('Auth.User.nombre_de_usuario')?></a>
                 </li>
             <?php else: ?>
-                <li id="first">
+                <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Usuarios', 'action' => 'index'))?>"style="color:#1c2529; background-color: hotpink">Listar</a>
                 </li>
                 <li>

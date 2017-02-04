@@ -1,3 +1,28 @@
+window.addEventListener("resize", function(){
+    var elements=document.getElementsByClassName('viewLink');
+    for(var i=0; i<elements.length; i++) {
+        if (window.innerWidth < 720)
+            if (typeof elements[i].textContent !== "undefined")
+                elements[i].textContent = elements[i].textContent.replace("Agregar", "+");
+            else
+                elements[i].innerText = elements[i].innerText.replace("Agregar", "+");
+        else
+        if (typeof elements[i].textContent !== "undefined")
+            elements[i].textContent = elements[i].textContent.replace("+", "Agregar");
+        else
+            elements[i].innerText = elements[i].innerText.replace("+", "Agregar");
+    }
+});
+window.addEventListener("load", function(){
+    var elements=document.getElementsByClassName('viewLink');
+    for(var i=0; i<elements.length; i++) {
+        if (window.innerWidth < 720)
+            if (typeof elements[i].textContent !== "undefined")
+                elements[i].textContent = elements[i].textContent.replace("Agregar", "+");
+            else
+                elements[i].innerText = elements[i].innerText.replace("Agregar", "+");
+    }
+});
 (function(){
     var c = document.getElementById('container');
     function addAnim() {
@@ -6,7 +31,6 @@
     };
     c.addEventListener('mouseover', addAnim);
 })();
-
 function removeMe() {
     var elem = document.getElementById('removable');
     elem.parentNode.removeChild(elem);

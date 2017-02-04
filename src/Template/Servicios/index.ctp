@@ -8,11 +8,11 @@
             <li><?= $this->Html->link(__('Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?></li>
             <li><?= $this->Html->link(__('Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?></li>
         <?php else: ?>
-        <li><?= $this->Html->link(__('Nuevo Servicio'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Servicio'), ['action' => 'add'], ['class'=>'viewLink']) ?></li>
         <li><?= $this->Html->link(__('Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nueva Renta'), ['controller' => 'Rentas', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Renta'), ['controller' => 'Rentas', 'action' => 'add'], ['class'=>'viewLink']) ?></li>
         <li><?= $this->Html->link(__('Consumos'), ['controller' => 'Consumos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nuevo Consumo'), ['controller' => 'Consumos', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Consumo'), ['controller' => 'Consumos', 'action' => 'add'], ['class'=>'viewLink']) ?></li>
         <?php endif; ?>
         <!-- $ -->
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>

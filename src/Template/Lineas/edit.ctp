@@ -12,7 +12,7 @@
         <li><?= $this->Html->link(__('Lineas'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Celulares'), ['controller' => 'Articulos', 'action' => 'inventario','Celular']) ?></li>
         <li><?= $this->Html->link(__('Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nueva Renta'), ['controller' => 'Rentas', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Renta'), ['controller' => 'Rentas', 'action' => 'add'], ['class'=>'viewLink']) ?></li>
         <!-- $ -->
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>

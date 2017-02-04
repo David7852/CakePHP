@@ -695,11 +695,11 @@ fieldset legend {
 }
 @-moz-document url-prefix() {
     div.slice ul li a,
-    div.slice ul li#first a,
+    div.slice ul li.first a,
     div.slice ul li a:hover,
-    div.slice ul li#first a:hover,
+    div.slice ul li.first a:hover,
     div.slice ul li h5,
-    div.slice ul li#first h5,
+    div.slice ul li.first h5,
     .home .row .checks.ctp-warning,
     h1, h2, h3, h4, h5, h6{
         font-weight: 500;
@@ -900,8 +900,8 @@ div.message.hidden {
         padding: 0.2rem 0.1rem 0.1rem 0.1rem;
         line-height: 0.81rem;
     }
-    form div  ul li#first div div div.input.text input#tipo,
-    form div ul li#first div div div.input.text input#tipo:hover{
+    form div  ul li.first div div div.input.text input#tipo,
+    form div ul li.first div div div.input.text input#tipo:hover{
         height: 13px;
         width: 100%;
         margin-bottom: 0;
@@ -926,9 +926,8 @@ div.message.hidden {
     {
         height: 6.66rem;
         padding: 1.2rem 0.4rem 3rem 0.3rem;
-        font-weight: bold;
-        font-size: 81%;
-        max-width: 6rem;
+        font-size: 96%;
+        max-width: 6.66rem;
         line-height: 0.81rem;
     }
     nav.top-bar h1 a{z-index: 12}
@@ -1638,7 +1637,7 @@ div .slice ul{
     width: 100%;
 }
 div .slice ul li,
-div .slice ul li#first{
+div .slice ul li.first{
     text-align: -webkit-match-parent;
     display: inline-block;
     float: none;
@@ -1647,16 +1646,20 @@ div .slice ul li#first{
     margin: auto;
     transition: all 0.5s cubic-bezier(0.6, -0.28, 0.74, 0.05);
 }
-div .slice ul li#first:hover {
-    transform: rotate(-3.6deg);
-    top:-1rem;
+div .slice ul li.superlabel:hover{
+    top:-1.25rem!important;
+}
+div .slice ul li.first:hover {
+    transform: rotate(-2.7deg);
+    top:-1.1rem;
     transition: all 0.35s linear;
 }
 div .slice ul li:hover{
-    transform: rotate(3.6deg);
-    top:-1rem;
+    transform: rotate(2.7deg);
+    top:-1.1rem;
     transition: all 0.35s linear;
 }
+
 div .slice ul li div
 {
     background-image: url(../img/sideBarTexture.png);
@@ -1719,7 +1722,6 @@ div .slice ul li div div{
 div .slice ul li div div button,
 div .slice ul li div div button:hover
 {
-    color: #9b2825;
     display: inline-block;
     background-color: white;
     width: 27px;

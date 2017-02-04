@@ -51,13 +51,13 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
             <div style="margin-bottom: -7rem;z-index: 0;">
                 <div class="slice" style="z-index: 0">
                     <ul style="z-index: 0">
-                        <li id="first" style="z-index: 0">
+                        <li class="first" style="z-index: 0">
                             <a href="<?=Router::url(array('controller' => '/', 'action' => 'solicitudes'))?>" style="color:white; background-color: rgb(55, 123, 165)">Solicitudes</a>
                         </li>
                         <li>
                             <a href="<?=Router::url(array('controller' => '/', 'action' => 'inventario'))?>" style="color:white; background-color: rgb(203, 103, 51);">Inventario</a>
                         </li>
-                        <li id="first" style="z-index: 0">
+                        <li class="first" style="z-index: 0">
                             <a href="<?=Router::url(array('controller' => '/', 'action' => 'telefonia'))?>" style="color:white; background-color: #00b14c">Telefonía</a>
                         </li>
                         <li>

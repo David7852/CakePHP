@@ -6,9 +6,9 @@
         <!-- $ -->
         <li><?= $this->Html->link(__('Articulos'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Modelos'), ['controller' => 'Modelos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nuevo Modelo'), ['controller' => 'Modelos', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Modelo'), ['controller' => 'Modelos', 'action' => 'add'], ['class'=>'viewLink']) ?></li>
         <li><?= $this->Html->link(__('Accesorios'), ['controller' => 'Accesorios', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Agregar Accesorio'), ['controller' => 'Accesorios', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Accesorio'), ['controller' => 'Accesorios', 'action' => 'add'], ['class'=>'viewLink']) ?></li>
         <!-- $ -->
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <li class="tlf"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>

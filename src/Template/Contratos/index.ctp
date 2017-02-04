@@ -8,7 +8,7 @@
             <li><?= $this->Html->link(__('Trabajador'), ['controller' => 'Trabajadores', 'action' => 'view', $this->request->session()->read('Auth.User.id')]) ?></li>
             <li><?= $this->Html->link(__('Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
         <?php else: ?>
-        <li><?= $this->Html->link(__('Contrato'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Contrato'), ['action' => 'add'], ['class'=>'viewLink']) ?></li>
         <li><?= $this->Html->link(__('Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
         <?php endif; ?>
         <!-- $ -->

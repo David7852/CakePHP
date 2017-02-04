@@ -14,14 +14,14 @@
         <?= $this->Form->create() ?>
         <div class="slice">
             <ul>
-                <li id="first">
+                <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Procesos', 'action' => 'solicitar'))?>" style="color:#1c2529; background-color: #00c0ef">Hacer solicitud</a>
                 </li>
                 <li>
                     <a href="<?=Router::url(array('controller' => 'Procesos', 'action' => 'index',$this->request->session()->read('Auth.User.trabajador_id')))?>"style="color:#1c2529; background-color: aquamarine">Mis solicitudes</a>
                 </li>
             <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
-                <li id="first">
+                <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Procesos', 'action' => 'index'))?>" style="color:#1c2529; background-color: #5bc0de">Listar</a>
                 </li>
                 <li>
@@ -35,11 +35,11 @@
         </div>
         <div class="slice">
             <ul>
-                <li id="first">
+                <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Asignaciones', 'action' => 'index',$this->request->session()->read('Auth.User.trabajador_id')))?>" style="color:white; background-color: #0a6b5a">Mis asignaciones</a>
                 </li>
             <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
-                <li id="first">
+                <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Asignaciones', 'action' => 'index'))?>" style="color:white; background-color: #1b6d6d">Listar</a>
                 </li>
                 <li>
@@ -55,7 +55,7 @@
         <div class="slice">
             <ul>
             <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
-                <li id="first">
+                <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Devoluciones', 'action' => 'index'))?>" style="color:white; background-color: #003f54">Listar</a>
                 </li>
                 <li>

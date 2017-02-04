@@ -28,9 +28,6 @@ use Cake\Core\Configure;
  */
 class AppController extends Controller
 {
-
-
-
     public function isAuthorized($user)
     {
         if (isset($user['id'])) {

@@ -7,7 +7,7 @@
             <li><?= $this->Html->link(__('Mis Lineas'), ['controller' => 'Lineas', 'action' => 'index',$this->request->session()->read('Auth.User.trabajador_id')]) ?></li>
             <li><?= $this->Html->link(__('Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?></li>
         <?php else: ?>
-        <li><?= $this->Html->link(__('Nuevo Consumo'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Consumo'), ['action' => 'add'], ['class'=>'viewLink']) ?></li>
         <li><?= $this->Html->link(__('Facturas'), ['controller' => 'Facturas', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Servicios'), ['controller' => 'Servicios', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?></li>

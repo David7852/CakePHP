@@ -8,7 +8,7 @@
             <li><?= $this->Html->link(__('Solicitar'), ['controller'=>'Procesos','action' => 'solicitar']) ?></li>
             <li><?= $this->Html->link(__('Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
         <?php else: ?>
-        <li><?= $this->Html->link(__('Nuevo Modelo'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Modelo'), ['action' => 'add'], ['class'=>'viewLink']) ?></li>
         <li><?= $this->Html->link(__('Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
         <?php endif; ?>
         <!-- $ -->

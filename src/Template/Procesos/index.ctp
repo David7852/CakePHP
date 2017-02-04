@@ -4,7 +4,7 @@
         <li class="sol" id="seleccion"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <!-- $ -->
         <?php if(!$this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
-            <li><?= $this->Html->link(__('Nuevo Proceso'), ['action' => 'add']) ?></li>
+            <li><?= $this->Html->link(__('Agregar Proceso'), ['action' => 'add'], ['class'=>'viewLink']) ?></li>
             <li><?= $this->Html->link(__('Asignaciones'), ['controller' => 'Asignaciones', 'action' => 'index']) ?></li>
             <li><?= $this->Html->link(__('Devoluciones'), ['controller' => 'Devoluciones', 'action' => 'index']) ?></li>
             <li><?= $this->Html->link(__('Trabajadores'), ['controller' => 'Trabajadores', 'action' => 'index']) ?></li>
