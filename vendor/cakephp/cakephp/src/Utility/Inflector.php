@@ -149,8 +149,7 @@ class Inflector
         'devolucion' => 'devoluciones',
         'plan' => 'planes',
         'trabajador'=>'trabajadores',
-        'instalacion'=>'instalaciones',
-        
+        'instalacion'=>'instalaciones'
     ];
 
     /**

@@ -4,8 +4,8 @@
         <li class="usu" id="seleccion"><?= $this->Html->link(__('Usuarios'), ['controller' => 'Pages', 'action' => 'display','usuarios'])?></li>
         <!-- $ -->
         <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
-            <li><?= $this->Html->link(__('Trabajadores'), ['action' => 'index']) ?> </li>
-            <li><?= $this->Html->link(__('Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('Trabajadores'), ['controller' => 'Trabajadores','action' => 'index']) ?> </li>
+            <li><?= $this->Html->link(__('Usuarios'), ['action' => 'index']) ?></li>
         <?php else: ?>
         <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $usuario->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $usuario->id], ['confirm' => __('¿Confirma querer eliminar al usuario {0}?', $usuario->nombre_de_usuario)]) ?> </li>
@@ -30,7 +30,9 @@
     </table>
     <?php use Cake\Auth\DefaultPasswordHasher;
         $hasher = new DefaultPasswordHasher();
-        if($hasher->check($usuario->trabajador->cedula,$usuario->clave))
+        if($hasher->check
+        ($usuario->trabajador->cedula,
+            $usuario->clave))
         echo "<p class='warningnote'>Actualmente la clave de su usuario coincide con su numero de cédula de identidad. Recomendamos editar su usuario y cambiar su contraseña.</p>";
         if($hasher->check('fertinitro'.date("Y"),$usuario->clave))
         echo "<p class='warningnote'>Actualmente tiene asignada una clave poco segura. Consideré actualizar su clave cuanto antes.</p>";

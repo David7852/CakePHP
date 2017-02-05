@@ -24,7 +24,6 @@ use Cake\Datasource\QueryInterface;
 use Cake\Datasource\QueryTrait;
 use JsonSerializable;
 use RuntimeException;
-use Traversable;
 
 /**
  * Extends the base Query class to provide new methods related to association
@@ -231,7 +230,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
     {
         if ($instance === null) {
             if ($this->_eagerLoader === null) {
-                $this->_eagerLoader = new EagerLoader;
+                $this->_eagerLoader = new EagerLoader();
             }
 
             return $this->_eagerLoader;

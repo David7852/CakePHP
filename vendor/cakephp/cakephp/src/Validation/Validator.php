@@ -155,7 +155,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
     public function field($name, ValidationSet $set = null)
     {
         if (empty($this->_fields[$name])) {
-            $set = $set ?: new ValidationSet;
+            $set = $set ?: new ValidationSet();
             $this->_fields[$name] = $set;
         }
 
@@ -193,7 +193,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
                 return $this->_providers[$name];
             }
             if ($name === 'default') {
-                return $this->_providers[$name] = new RulesProvider;
+                return $this->_providers[$name] = new RulesProvider();
             }
 
             return null;
@@ -245,7 +245,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
     public function offsetSet($field, $rules)
     {
         if (!$rules instanceof ValidationSet) {
-            $set = new ValidationSet;
+            $set = new ValidationSet();
             foreach ((array)$rules as $name => $rule) {
                 $set->add($name, $rule);
             }
@@ -1149,6 +1149,26 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
      * Add a string length validation rule to a field.
      *
      * @param string $field The field you want to apply the rule to.
+     * @param int $min The minimum length required.
+     * @param string|null $message The error message when the rule fails.
+     * @param string|callable|null $when Either 'create' or 'update' or a callable that returns
+     *   true when the validation rule should be applied.
+     * @see \Cake\Validation\Validation::minLengthBytes()
+     * @return $this
+     */
+    public function minLengthBytes($field, $min, $message = null, $when = null)
+    {
+        $extra = array_filter(['on' => $when, 'message' => $message]);
+
+        return $this->add($field, 'minLengthBytes', $extra + [
+            'rule' => ['minLengthBytes', $min]
+        ]);
+    }
+
+    /**
+     * Add a string length validation rule to a field.
+     *
+     * @param string $field The field you want to apply the rule to.
      * @param int $max The maximum length allowed.
      * @param string|null $message The error message when the rule fails.
      * @param string|callable|null $when Either 'create' or 'update' or a callable that returns
@@ -1162,6 +1182,26 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 
         return $this->add($field, 'maxLength', $extra + [
             'rule' => ['maxLength', $max]
+        ]);
+    }
+
+    /**
+     * Add a string length validation rule to a field.
+     *
+     * @param string $field The field you want to apply the rule to.
+     * @param int $max The maximum length allowed.
+     * @param string|null $message The error message when the rule fails.
+     * @param string|callable|null $when Either 'create' or 'update' or a callable that returns
+     *   true when the validation rule should be applied.
+     * @see \Cake\Validation\Validation::maxLengthBytes()
+     * @return $this
+     */
+    public function maxLengthBytes($field, $max, $message = null, $when = null)
+    {
+        $extra = array_filter(['on' => $when, 'message' => $message]);
+
+        return $this->add($field, 'maxLengthBytes', $extra + [
+            'rule' => ['maxLengthBytes', $max]
         ]);
     }
 
@@ -1518,7 +1558,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
     public function multipleOptions($field, array $options = [], $message = null, $when = null)
     {
         $extra = array_filter(['on' => $when, 'message' => $message]);
-        $caseInsensitive = isset($options['caseInsenstive']) ? $options['caseInsensitive'] : false;
+        $caseInsensitive = isset($options['caseInsensitive']) ? $options['caseInsensitive'] : false;
         unset($options['caseInsensitive']);
 
         return $this->add($field, 'multipleOptions', $extra + [

@@ -389,12 +389,8 @@ class MysqlSchema extends BaseSchema
         ) {
             $out .= ' AUTO_INCREMENT';
         }
-        if (isset($data['null']) && $data['null'] === true) {
-            $out .= $data['type'] === 'timestamp' ? ' NULL' : ' DEFAULT NULL';
-            unset($data['default']);
-        }
-        if (isset($data['default']) && !in_array($data['type'], ['timestamp', 'datetime'])) {
-            $out .= ' DEFAULT ' . $this->_driver->schemaValue($data['default']);
+        if (isset($data['null']) && $data['null'] === true && $data['type'] === 'timestamp') {
+            $out .= ' NULL';
             unset($data['default']);
         }
         if (isset($data['default']) &&
@@ -402,6 +398,10 @@ class MysqlSchema extends BaseSchema
             strtolower($data['default']) === 'current_timestamp'
         ) {
             $out .= ' DEFAULT CURRENT_TIMESTAMP';
+            unset($data['default']);
+        }
+        if (isset($data['default'])) {
+            $out .= ' DEFAULT ' . $this->_driver->schemaValue($data['default']);
             unset($data['default']);
         }
         if (isset($data['comment']) && $data['comment'] !== '') {

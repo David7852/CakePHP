@@ -20,6 +20,9 @@ class ComposerStaticInit8897b636ce7394b72139800f7a67659d
     public static $prefixLengthsPsr4 = array (
         'Z' => 
         array (
+            'Zend\\Validator\\' => 15,
+            'Zend\\Stdlib\\' => 12,
+            'Zend\\Escaper\\' => 13,
             'Zend\\Diactoros\\' => 15,
         ),
         'X' => 
@@ -36,21 +39,35 @@ class ComposerStaticInit8897b636ce7394b72139800f7a67659d
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\VarDumper\\' => 28,
+            'Symfony\\Component\\Process\\' => 26,
+            'Symfony\\Component\\Finder\\' => 25,
             'Symfony\\Component\\Filesystem\\' => 29,
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Config\\' => 25,
+            'Seld\\PharUtils\\' => 15,
+            'Seld\\JsonLint\\' => 14,
+            'Seld\\CliPrompt\\' => 15,
+            'Search\\Test\\' => 12,
+            'Search\\' => 7,
         ),
         'P' => 
         array (
             'Psy\\' => 4,
+            'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'PhpParser\\' => 10,
+            'PhpOffice\\PhpWord\\' => 18,
+            'PhpOffice\\Common\\' => 17,
             'Phinx\\' => 6,
         ),
         'M' => 
         array (
             'Migrations\\' => 11,
+        ),
+        'J' => 
+        array (
+            'JsonSchema\\' => 11,
         ),
         'D' => 
         array (
@@ -59,6 +76,10 @@ class ComposerStaticInit8897b636ce7394b72139800f7a67659d
         ),
         'C' => 
         array (
+            'Composer\\Spdx\\' => 14,
+            'Composer\\Semver\\' => 16,
+            'Composer\\CaBundle\\' => 18,
+            'Composer\\' => 9,
             'Cake\\Test\\' => 10,
             'Cake\\Composer\\' => 14,
             'Cake\\Chronos\\' => 13,
@@ -77,6 +98,18 @@ class ComposerStaticInit8897b636ce7394b72139800f7a67659d
     );
 
     public static $prefixDirsPsr4 = array (
+        'Zend\\Validator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-validator/src',
+        ),
+        'Zend\\Stdlib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-stdlib/src',
+        ),
+        'Zend\\Escaper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-escaper/src',
+        ),
         'Zend\\Diactoros\\' => 
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-diactoros/src',
@@ -105,6 +138,14 @@ class ComposerStaticInit8897b636ce7394b72139800f7a67659d
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
         ),
+        'Symfony\\Component\\Process\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/process',
+        ),
+        'Symfony\\Component\\Finder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/finder',
+        ),
         'Symfony\\Component\\Filesystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/filesystem',
@@ -121,9 +162,33 @@ class ComposerStaticInit8897b636ce7394b72139800f7a67659d
         array (
             0 => __DIR__ . '/..' . '/symfony/config',
         ),
+        'Seld\\PharUtils\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/seld/phar-utils/src',
+        ),
+        'Seld\\JsonLint\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/seld/jsonlint/src/Seld/JsonLint',
+        ),
+        'Seld\\CliPrompt\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/seld/cli-prompt/src',
+        ),
+        'Search\\Test\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cakedc/search/tests',
+        ),
+        'Search\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cakedc/search/src',
+        ),
         'Psy\\' => 
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src/Psy',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
         'Psr\\Http\\Message\\' => 
         array (
@@ -133,6 +198,14 @@ class ComposerStaticInit8897b636ce7394b72139800f7a67659d
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'PhpOffice\\PhpWord\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpword/src/PhpWord',
+        ),
+        'PhpOffice\\Common\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/common/src/Common',
+        ),
         'Phinx\\' => 
         array (
             0 => __DIR__ . '/..' . '/robmorgan/phinx/src/Phinx',
@@ -141,6 +214,10 @@ class ComposerStaticInit8897b636ce7394b72139800f7a67659d
         array (
             0 => __DIR__ . '/..' . '/cakephp/migrations/src',
         ),
+        'JsonSchema\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema',
+        ),
         'DebugKit\\Test\\Fixture\\' => 
         array (
             0 => __DIR__ . '/..' . '/cakephp/debug_kit/tests/Fixture',
@@ -148,6 +225,22 @@ class ComposerStaticInit8897b636ce7394b72139800f7a67659d
         'DebugKit\\' => 
         array (
             0 => __DIR__ . '/..' . '/cakephp/debug_kit/src',
+        ),
+        'Composer\\Spdx\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/spdx-licenses/src',
+        ),
+        'Composer\\Semver\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/semver/src',
+        ),
+        'Composer\\CaBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
+        ),
+        'Composer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/composer/src/Composer',
         ),
         'Cake\\Test\\' => 
         array (
@@ -184,13 +277,6 @@ class ComposerStaticInit8897b636ce7394b72139800f7a67659d
     );
 
     public static $prefixesPsr0 = array (
-        'P' => 
-        array (
-            'Psr\\Log\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/psr/log',
-            ),
-        ),
         'J' => 
         array (
             'JakubOnderka\\PhpConsoleHighlighter' => 
@@ -224,6 +310,7 @@ class ComposerStaticInit8897b636ce7394b72139800f7a67659d
 
     public static $classMap = array (
         'Mobile_Detect' => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/Mobile_Detect.php',
+        'PclZip' => __DIR__ . '/..' . '/pclzip/pclzip/pclzip.lib.php',
         'SqlFormatter' => __DIR__ . '/..' . '/jdorn/sql-formatter/lib/SqlFormatter.php',
     );
 

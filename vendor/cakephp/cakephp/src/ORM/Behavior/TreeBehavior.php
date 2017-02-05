@@ -156,9 +156,9 @@ class TreeBehavior extends Behavior
     /**
      * After save listener.
      *
-     * Manages updating level of descendents of currently saved entity.
+     * Manages updating level of descendants of currently saved entity.
      *
-     * @param \Cake\Event\Event $event The beforeSave event that was fired
+     * @param \Cake\Event\Event $event The afterSave event that was fired
      * @param \Cake\Datasource\EntityInterface $entity the entity that is going to be saved
      * @return void
      */
@@ -172,9 +172,9 @@ class TreeBehavior extends Behavior
     }
 
     /**
-     * Set level for descendents.
+     * Set level for descendants.
      *
-     * @param \Cake\Datasource\EntityInterface $entity The entity whose descendents need to be updated.
+     * @param \Cake\Datasource\EntityInterface $entity The entity whose descendants need to be updated.
      * @return void
      */
     protected function _setChildrenLevel($entity)
@@ -483,10 +483,12 @@ class TreeBehavior extends Behavior
      */
     public function findTreeList(Query $query, array $options)
     {
+        $left = $this->_table->aliasField($this->config('left'));
+
         $results = $this->_scope($query)
             ->find('threaded', [
                 'parentField' => $this->config('parent'),
-                'order' => [$this->config('left') => 'ASC'],
+                'order' => [$left => 'ASC'],
             ]);
 
         return $this->formatTreeList($results, $options);

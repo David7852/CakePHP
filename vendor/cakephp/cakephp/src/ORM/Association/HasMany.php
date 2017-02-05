@@ -231,7 +231,9 @@ class HasMany extends Association
 
         $sourceEntity->set($property, $currentEntities);
 
-        $savedEntity = $this->saveAssociated($sourceEntity, $options);
+        $savedEntity = $this->connection()->transactional(function () use ($sourceEntity, $options) {
+            return $this->saveAssociated($sourceEntity, $options);
+        });
 
         $ok = ($savedEntity instanceof EntityInterface);
 
@@ -461,12 +463,14 @@ class HasMany extends Association
                 return $ok;
             }
 
+            $conditions = array_merge($conditions, $this->conditions());
             $target->deleteAll($conditions);
 
             return true;
         }
 
         $updateFields = array_fill_keys($foreignKey, null);
+        $conditions = array_merge($conditions, $this->conditions());
         $target->updateAll($updateFields, $conditions);
 
         return true;

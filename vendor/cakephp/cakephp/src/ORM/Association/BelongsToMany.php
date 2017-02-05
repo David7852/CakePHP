@@ -818,7 +818,7 @@ class BelongsToMany extends Association
             return true;
         }
 
-        $storage = new SplObjectStorage;
+        $storage = new SplObjectStorage();
         foreach ($targetEntities as $e) {
             $storage->attach($e);
         }
@@ -903,7 +903,7 @@ class BelongsToMany extends Association
                 $matching[$field] = $value;
             }
             // Assume that operators contain junction conditions.
-            // Trying to munge complex conditions could result in incorrect queries.
+            // Trying to manage complex conditions could result in incorrect queries.
             if ($isString && in_array(strtoupper($field), ['OR', 'NOT', 'AND', 'XOR'])) {
                 $matching[$field] = $value;
             }
@@ -1285,7 +1285,11 @@ class BelongsToMany extends Association
         $query
             ->eagerLoader()
             ->addToJoinsMap($tempName, $assoc, false, $this->_junctionProperty);
-        $assoc->attachTo($query, ['aliasPath' => $assoc->alias(), 'includeFields' => false]);
+        $assoc->attachTo($query, [
+            'aliasPath' => $assoc->alias(),
+            'includeFields' => false,
+            'propertyPath' => $this->_junctionProperty
+        ]);
 
         return $query;
     }

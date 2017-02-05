@@ -42,7 +42,7 @@
                     <?= $linea->has('articulo') ? "<img style='float: none; width: 3rem; margin-top: -7px; padding: 0.3rem;' src='/WIT/webroot/img/Modelos/".$linea->articulo->imagen."'>" : '' ?>
                 </td>
                 <td>
-                    <?= $linea->has('articulo') ? $this->Html->link($linea->articulo->asignado, ['controller' => 'Trabajadores', 'action' => 'view', $linea->articulo->asignadoid]) : 'Sin asignar' ?>
+                    <?= $linea->has('articulo')&&$linea->articulo->asignado!='' ? $this->Html->link($linea->articulo->asignado, ['controller' => 'Trabajadores', 'action' => 'view', $linea->articulo->asignadoid]) : 'Sin asignar' ?>
                 </td>
                 <td>
                     <?= h($linea->estado) ?>

@@ -67,6 +67,8 @@ use RuntimeException;
  * @property \Cake\View\Helper\TimeHelper $Time
  * @property \Cake\View\Helper\UrlHelper $Url
  * @property \Cake\View\ViewBlock $Blocks
+ * @property string $view
+ * @property string $viewPath
  */
 class View implements EventDispatcherInterface
 {
@@ -503,7 +505,7 @@ class View implements EventDispatcherInterface
             list ($plugin, $name) = pluginSplit($name, true);
             $name = str_replace('/', DIRECTORY_SEPARATOR, $name);
             $file = $plugin . 'Element' . DIRECTORY_SEPARATOR . $name . $this->_ext;
-            throw new MissingElementException($file);
+            throw new MissingElementException([$file]);
         }
     }
 

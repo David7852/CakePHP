@@ -25,6 +25,7 @@ class Usuario extends Entity
         $hasher = new DefaultPasswordHasher();
         return $hasher->hash($value);
     }
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

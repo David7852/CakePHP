@@ -16,10 +16,10 @@ namespace Cake\I18n;
 
 use Aura\Intl\FormatterLocator;
 use Aura\Intl\PackageLocator;
-use Aura\Intl\TranslatorFactory;
 use Cake\Cache\Cache;
 use Cake\I18n\Formatter\IcuFormatter;
 use Cake\I18n\Formatter\SprintfFormatter;
+use Cake\I18n\TranslatorFactory;
 use Locale;
 
 /**
@@ -66,10 +66,10 @@ class I18n
             new PackageLocator,
             new FormatterLocator([
                 'sprintf' => function () {
-                    return new SprintfFormatter;
+                    return new SprintfFormatter();
                 },
                 'default' => function () {
-                    return new IcuFormatter;
+                    return new IcuFormatter();
                 },
             ]),
             new TranslatorFactory,

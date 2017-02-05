@@ -1,6 +1,7 @@
 {
     "require": {
         "cakephp/localized": "^3.0",
-        "cakedc/search": "3.0.*-dev"
+        "cakedc/search": "3.0.*-dev",
+        "phpoffice/phpword": "v0.13.*"
     }
 }

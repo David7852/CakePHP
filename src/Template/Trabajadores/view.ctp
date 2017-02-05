@@ -108,7 +108,6 @@
                 <th scope="col"><?= __('Nombre De Usuario') ?></th>
                 <th scope="col"><?= __('Email') ?></th>
                 <th scope="col"><?= __('Funcion') ?></th>
-                <th scope="col"><?= __('Imagen') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($trabajador->usuarios as $usuarios): ?>
@@ -116,7 +115,6 @@
                 <td><?= h($usuarios->nombre_de_usuario) ?></td>
                 <td><?= h($usuarios->email) ?></td>
                 <td><?= h($usuarios->funcion) ?></td>
-                <td><?= h($usuarios->imagen) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Usuarios', 'action' => 'view', $usuarios->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Usuarios', 'action' => 'edit', $usuarios->id]) ?>
