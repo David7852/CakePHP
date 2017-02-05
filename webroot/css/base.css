@@ -4074,7 +4074,6 @@ meta.foundation-mq-topbar {
 }
 
 @media only screen and (max-width: 40em) {
-
     header div.header-image img
     {
         max-width: 66%;
@@ -4262,8 +4261,16 @@ meta.foundation-mq-topbar {
         border-top-right-radius: 3px
     }
 }
-
+@media only screen and (max-width: 60em){
+    .related table,
+    .index table{
+        display: block!important;
+        overflow-x: visible!important;
+        overflow: auto!important;
+    }
+}
 @media only screen and (max-width: 40em) {
+
 
     a #difbtm {
         margin-left: 25%;

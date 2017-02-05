@@ -61,7 +61,7 @@ class PagesController extends AppController
             elseif (array_key_exists('artbyusebtn',$this->request->data)&&$this->request->data['artbyuse'] != null && $this->request->data['artbyuse'] != ' ')
                 return $this->redirect(['controller' => 'Articulos', 'action' => 'inventario', '2'.$this->request->data['artbyuse']]);
             elseif (array_key_exists('nombrebtn',$this->request->data)&&$this->request->data['nombre'] != null && $this->request->data['nombre'] != ' ')
-                return $this->redirect(['controller' => 'Trabajadores', 'action' => 'index', '2'.$this->request->data['nombre']]);
+                return $this->redirect(['controller' => 'Trabajadores', 'action' => 'index', $this->request->data['nombre']]);
         }
         try {
             if(!$this->request->session()->read('Auth.User')&&$page!='home'){

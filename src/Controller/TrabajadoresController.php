@@ -23,7 +23,7 @@ class TrabajadoresController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
+    public function index($dato = null)
     {
         if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
             $trabajador = TableRegistry::get('Trabajadores')->get(($this->request->session()->read('Auth.User.trabajador_id')));
@@ -46,9 +46,25 @@ class TrabajadoresController extends AppController
                 $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
                 return $this->redirect($this->referer());
             }
-        }else{
-            $trabajadores = $this->paginate($this->Trabajadores);
+        }elseif($dato !=null)
+        {
+            $ids=array();
+            $t = TableRegistry::get('Trabajadores')->find('all');
+            foreach ($t as $rabajador)
+            {
+                $fullname = $rabajador->nombre. ' ' .$rabajador->apellido;
+                if ((similar_text($rabajador->nombre, $dato) >= (strlen($dato) - strlen($dato) / 4))||
+                    (similar_text($rabajador->apellido, $dato) >= (strlen($dato) - strlen($dato) / 4))||
+                    (similar_text($fullname, $dato) >= (strlen($dato) - strlen($dato) / 4)))//
+                    array_push($ids, $rabajador->id);
+            }
+            if (!empty($ids))
+                $trabajadores = $this->paginate($this->Trabajadores->find('all', array('conditions' => array('Trabajadores.id IN' => $ids))));
+            else
+                $trabajadores = array();
         }
+        else
+            $trabajadores = $this->paginate($this->Trabajadores);
         $this->set(compact('trabajadores'));
         $this->set('_serialize', ['trabajadores']);
     }

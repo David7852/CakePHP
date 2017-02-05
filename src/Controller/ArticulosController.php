@@ -24,7 +24,7 @@ class ArticulosController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function inventario($dato)
+    public function inventario($dato = null)
     {
         $choice=$dato[0];
         $dato=substr($dato, 1);
