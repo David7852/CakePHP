@@ -55,19 +55,13 @@ class PagesController extends AppController
         $this->set(compact('page', 'subpage'));
         if ($this->request->is('post')) {
             if (array_key_exists('tipobtn',$this->request->data)&&$this->request->data['tipo'] != null && $this->request->data['tipo'] != ' ')
-                return $this->redirect(['controller' => 'Articulos', 'action' => 'inventario', h($this->request->data['tipo'])]);
+                return $this->redirect(['controller' => 'Articulos', 'action' => 'inventario', '0'.$this->request->data['tipo']]);
             elseif (array_key_exists('serbtn',$this->request->data)&&$this->request->data['serial'] != null && $this->request->data['serial'] != ' ')
-            {
-
-            }
+                return $this->redirect(['controller' => 'Articulos', 'action' => 'inventario', '1'.$this->request->data['serial']]);
             elseif (array_key_exists('artbyusebtn',$this->request->data)&&$this->request->data['artbyuse'] != null && $this->request->data['artbyuse'] != ' ')
-            {
-
-            }
+                return $this->redirect(['controller' => 'Articulos', 'action' => 'inventario', '2'.$this->request->data['artbyuse']]);
             elseif (array_key_exists('nombrebtn',$this->request->data)&&$this->request->data['nombre'] != null && $this->request->data['nombre'] != ' ')
-            {
-
-            }
+                return $this->redirect(['controller' => 'Trabajadores', 'action' => 'index', '2'.$this->request->data['nombre']]);
         }
         try {
             if(!$this->request->session()->read('Auth.User')&&$page!='home'){

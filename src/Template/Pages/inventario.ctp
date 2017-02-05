@@ -30,7 +30,7 @@
                     </li>
                     <li class="superlabel first">
                         <div style=" background-color: #ae2825">
-                            <h5>Buscar artículos<br>Por Serial</h5>
+                            <h5>Buscar artículos<br>del Serial:</h5>
                             <div >
                                 <?= $this->Form->input('serial',['label'=>'','style'=>'color: #ae2825']) ?>
                                 <button type='submit' style="color: #ae2825" name="serbtn">
@@ -60,9 +60,9 @@
                     <li class="first">
                         <a href="<?=Router::url(array('controller' => 'Accesorios', 'action' => 'index'))?>" style="color:white; background-color: #da612e">Listar</a>
                     </li>
-                    <li class="superlabel first">
+                    <li class="superlabel">
                         <div style=" background-color: #ce673f">
-                            <h5>Buscar Artículos<br>Por Usuario</h5>
+                            <h5>Buscar Artículos<br>Del Usuario:</h5>
                             <div >
                                 <?= $this->Form->input('artbyuse',['label'=>'','style'=>'color: #ba5d40']) ?>
                                 <button type='submit' style="color: #ce673f" name="artbyusebtn">
@@ -73,7 +73,7 @@
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="first">
                         <a href="<?=Router::url(array('controller' => 'Accesorios', 'action' => 'add'))?>" style="color:#1c2529; background-color: #ffad76">Agregar</a>
                     </li>
                 <?php endif; ?>
@@ -91,7 +91,7 @@
                 <?php else: ?>
                     <li class="superlabel first">
                         <div style=" background-color: #da7b2e">
-                            <h5>Buscar artículos<br>de tipo</h5>
+                            <h5>Buscar artículos<br>del tipo:</h5>
                             <div >
                                 <?= $this->Form->input('tipo',['label'=>'','style'=>'color: #cd6e2e']) ?>
                                 <button type='submit' style="color: #da7b2e" name="tipobtn">

@@ -27,7 +27,7 @@
                 </li>
                 <li class="superlabel first">
                     <div style=" background-color: #bc2cb8">
-                        <h5>Buscar Trabajador<br>llamado</h5>
+                        <h5>Buscar Trabajador<br>de nombre:</h5>
                         <div >
                             <?= $this->Form->input('nombre',['label'=>'','style'=>'color: #b428b0']) ?>
                             <button type='submit' style="color: #bc2cb8" name="nombrebtn">

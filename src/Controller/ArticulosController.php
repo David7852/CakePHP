@@ -24,8 +24,10 @@ class ArticulosController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function inventario($tipo)
+    public function inventario($dato)
     {
+        $choice=$dato[0];
+        $dato=substr($dato, 1);
         $this->paginate = [
             'contain' => ['Modelos']
         ];
@@ -34,7 +36,7 @@ class ArticulosController extends AppController
             $articulos=array();
             $mo=array();
             $models=TableRegistry::get('Modelos')->find('all')
-                ->where(['tipo_de_articulo ='=>$tipo]);
+                ->where(['tipo_de_articulo ='=>$dato]);
             foreach ($models as $m)
             {
                 $art = TableRegistry::get('Articulos')->find('all')
@@ -60,19 +62,46 @@ class ArticulosController extends AppController
                 return $this->redirect($this->referer());
             }
             $articulos = $this->paginate($this->Articulos->find('all',array('conditions'=>array('Articulos.id IN'=>$articulos))));
-        }else
+        }elseif($choice==0)
         {
             $mo = array();
             $models = TableRegistry::get('Modelos')->find('all')
-                ->where(['tipo_de_articulo =' => $tipo]);
+                ->where(['tipo_de_articulo LIKE' => $dato.'%']);
             foreach ($models as $m)
                 array_push($mo, $m->id);
             if (!empty($mo))
                 $articulos = $this->paginate($this->Articulos->find('all', array('conditions' => array('Articulos.modelo_id IN' => $mo))));
             else
-                $articulos = $this->paginate($this->Articulos->find('all')->where(['Articulos.id <' => 0]));
+                $articulos = array();
+            if(substr($dato, -1)=="s")
+                $dato=$dato;
+            elseif(substr($dato, -1)=="a"||substr($dato, -1)=="e"||substr($dato, -1)=="i"||substr($dato, -1)=="o"||substr($dato, -1)=="u")
+                $dato=$dato."s";
+            elseif(substr($dato, -1)=="z")
+                $dato=substr($dato,0, -1)."ces";
+            else
+                $dato=$dato."es";
+        }elseif($choice==1)
+        {
+            $articulos = $this->paginate($this->Articulos->find('all')
+                ->where(['serial LIKE'=>$dato.'%']));
+            if($articulos->isEmpty())
+                $articulos=array();
+            $dato='Coincidencias con el serial "'.$dato.'"';
+        }elseif($choice==2)
+        {
+            $ids=array();
+            $art = TableRegistry::get('Articulos')->find('all');
+            foreach ($art as $iculos)
+                if(similar_text($iculos->asignado,$dato)>=(strlen($dato)-strlen($dato)/4))//
+                    array_push($ids,$iculos->id);
+            if (!empty($ids))
+                $articulos = $this->paginate($this->Articulos->find('all', array('conditions' => array('Articulos.id IN' => $ids))));
+            else
+                $articulos = array();
+            $dato='Articulos de "'.$dato.'"';
         }
-        $this->set(compact('articulos','modelos','tipo'));
+        $this->set(compact('articulos','modelos','dato'));
         $this->set('_serialize', ['articulos']);
     }
 
