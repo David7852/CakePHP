@@ -697,6 +697,7 @@ fieldset legend {
     div.slice ul li a:hover,
     div.slice ul li.first a:hover,
     div.slice ul li h5,
+    div.slice ul li div h5,
     div.slice ul li.first h5,
     .home .row .checks.ctp-warning,
     h1, h2, h3, h4, h5, h6{

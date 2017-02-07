@@ -42,12 +42,15 @@ class DevolucionesController extends AppController
                     array_push($devoluciones, $lucion->id);
             }
             if(empty($devoluciones)){
-                $this->Flash->error(__('Usted no tiene Devoluciones a su nombre.'));
-                return $this->redirect($this->referer());}
+                if($this->request->session()->read('Auth.User.funcion')=='Visitante')
+                    $this->Flash->error(__('Usted no tiene Devoluciones a su nombre.'));
+                else
+                    $this->Flash->error(__('Usted no esta asignado para realizar ninguna Devolución.'));
+                return $this->redirect($this->referer());
+            }
             $devoluciones = $this->paginate($this->Devoluciones->find('all',array('conditions'=>array('Devoluciones.id IN'=>$devoluciones))));
         }else
         $devoluciones = $this->paginate($this->Devoluciones);
-
         $this->set(compact('devoluciones'));
         $this->set('_serialize', ['devoluciones']);
     }

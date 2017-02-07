@@ -56,7 +56,6 @@ class LineasController extends AppController
 
         }else
             $lineas = $this->paginate($this->Lineas);
-
         $this->set(compact('lineas'));
         $this->set('_serialize', ['lineas']);
     }

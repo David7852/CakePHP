@@ -7,10 +7,10 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 ::selection {
-    background: rgba(3,10,5,0.15);
+    background: rgba(3,10,5,0.1);
 }
 ::-moz-selection {
-    background: rgba(3,10,5,0.15);
+    background: rgba(3,10,5,0.1);
 }
 body {
     margin: 0;
@@ -10259,12 +10259,12 @@ th.hide-for-touch {
         display: table-cell !important
     }
 }
-
 @media not print {
     .show-for-print {
         display: none !important
     }
 }
+/* latin-ext */
 @font-face {
     font-family: 'raleway';
     font-style: normal;

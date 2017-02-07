@@ -35,7 +35,7 @@ class AsignacionesController extends AppController
         if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$id!=null) {
             $asignaciones=array();
             $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
-                ->where(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')]);
+            ->where(['trabajador_id ='=>$this->request->session()->read('Auth.User.trabajador_id')]);
             foreach ($pro_tra as $p)
             {
                 $asig=TableRegistry::get('Asignaciones')->find('all')
@@ -45,8 +45,12 @@ class AsignacionesController extends AppController
                     array_push($asignaciones, $nacion->id);
             }
             if(empty($asignaciones)){
-            $this->Flash->error(__('Usted no tiene Asignaciones a su nombre.'));
-            return $this->redirect($this->referer());}
+                if($this->request->session()->read('Auth.User.funcion')=='Visitante')
+                    $this->Flash->error(__('Usted no tiene Asignaciones a su nombre.'));
+                else
+                    $this->Flash->error(__('Usted no esta asignado para realizar ninguna Asignación.'));
+                return $this->redirect($this->referer());
+            }
             $asignaciones = $this->paginate($this->Asignaciones->find('all',array('conditions'=>array('Asignaciones.id IN'=>$asignaciones))));
         }else
             $asignaciones = $this->paginate($this->Asignaciones);
