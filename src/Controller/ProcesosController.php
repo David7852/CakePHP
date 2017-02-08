@@ -4,9 +4,11 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
 use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\Shared\Converter;
 use PhpOffice\PhpWord\SimpleType\Jc;
 use PhpOffice\PhpWord\SimpleType\JcTable;
 use PhpOffice\PhpWord\Style\Cell;
+use PhpOffice\PhpWord\Style\Image;
 
 /**
  * Procesos Controller
@@ -393,31 +395,10 @@ public function planilla()
         $this->Flash->error(__('Usted no tiene permiso para realizar esta accion.'));
         return $this->redirect($this->referer());
     }
-    // Create a new PHPWord Object
     $phpWord = new PHPWord();
-    /* Note: any element you append to a document must reside inside of a Section. */
-    // Adding an empty Section to the document...
-    $section = $phpWord->addSection();
-    /*
-    // Adding Text element to the Section having font styled by default...
-        $section->addText(
-            '"Learn from yesterday, live for today, hope for tomorrow. '
-            . 'The important thing is not to stop questioning." '
-            . '(Albert Einstein)'
-        );
-    $header = array('size' => 16, 'bold' => true);*/
-
-
-
-    /**
-     *  3. colspan (gridSpan) and rowspan (vMerge)
-     *  ---------------------
-     *  |     |   B    |    |
-     *  |  A  |--------|  E |
-     *  |     | C |  D |    |
-     *  ---------------------
-     */
-
+    $sectionStyle=array('pageSizeH'=>Converter::cmToTwip(27.94),'pageSizeW'=>Converter::cmToTwip(21.59));
+    $section = $phpWord->addSection($sectionStyle);
+    $section->setStyle(array());
     $fancyTableStyle = array('borderSize' => 12, 'borderColor' => 'green');
     $cellRowSpan = array('vMerge' => 'restart', 'valign' => 'center', 'bgColor' => 'FFFFFF');
     $cellRowContinue = array('vMerge' => 'continue');
@@ -425,141 +406,197 @@ public function planilla()
     $cellHCentered = array('alignment' => Jc::CENTER);
     $cellVCentered = array('valign' => 'center');
 
+    //header
     $spanTableStyleName = 'Colspan Rowspan';
     $phpWord->addTableStyle($spanTableStyleName, $fancyTableStyle);
     $table = $section->addTable($spanTableStyleName);
-
     $table->addRow();
-
-    $cell1 = $table->addCell(2000, $cellRowSpan);
-    $textrun1 = $cell1->addTextRun($cellHCentered);
-    $textrun1->addImage('../webroot/img/fertinitrorif.png',array(
-        'marginTop'     => -1,
-        'marginLeft'    => -1,
-
+   $table->addCell(2500, array('vMerge' => 'restart', 'bgColor' => 'FFFFFF'))->addImage('../webroot/img/fertinitrorif.png',array(
+       'width'            => Converter::cmToPixel(3.42),
+       'height'           => Converter::cmToPixel(2),
+       'positioning'      => Image::POSITION_ABSOLUTE,
+       'posHorizontal'    => Image::POSITION_HORIZONTAL_LEFT,
+       'posHorizontalRel' => Image::POSITION_RELATIVE_TO_COLUMN,
+       'posVertical'      => Image::POSITION_VERTICAL_TOP,
+       'posVerticalRel'   => Image::POSITION_RELATIVE_TO_PAGE,
     ));
-
-    $cell2 = $table->addCell(5000, array('borderBottomColor'=>'FFFFFF','cellMargin' => 80,'gridSpan' => 2, 'valign' => 'center'));
-    $textrun2 = $cell2->addTextRun($cellHCentered);
+    $cell2 = $table->addCell(6500, array('cellMargin' => 80,'gridSpan' => 2, 'valign' => 'center'));
+    $textrun2 = $cell2->addTextRun( array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1));
     $textrun2->addText('Fertilizantes Nitrogenados de Venezuela, FERTINITRO, C.E.C',array('name' => 'Arial Narrow','bold'=>true,'color'=>'green','size'=>'14'));
-
+    $textrun2->addTextBreak(1,array('spacing' => 240, 'size' => 24));
+    $textrun2->addText(' ');
+    $textrun2->addTextBreak(1,array('spacing' => 240, 'size' => 24));
+    $textrun2->addText('ASIGNACIÓN DE EQUIPOS DE INFORMÁTICA Y TELECOMUNICACIONES', array('name'=>'Arial','bold' => true,'color'=>'black', 'size'=>'10','valign' => 'center','line' => 24),$cellHCentered);
     $table->addCell(2000, $cellRowSpan)->addImage('../webroot/img/logoit.png',array(
-        'positioning'      => \PhpOffice\PhpWord\Style\Image::POSITION_RELATIVE,
-        'posHorizontal'    => \PhpOffice\PhpWord\Style\Image::POSITION_HORIZONTAL_CENTER,
-        'posHorizontalRel' => \PhpOffice\PhpWord\Style\Image::POSITION_RELATIVE_TO_COLUMN,
-        'posVertical'      => \PhpOffice\PhpWord\Style\Image::POSITION_VERTICAL_TOP,
-        'posVerticalRel'   => \PhpOffice\PhpWord\Style\Image::POSITION_RELATIVE_TO_LINE,
+        'positioning'      => Image::POSITION_RELATIVE,
+        'posHorizontal'    => Image::POSITION_HORIZONTAL_CENTER,
+        'posHorizontalRel' => Image::POSITION_RELATIVE_TO_COLUMN,
+        'posVertical'      => Image::POSITION_VERTICAL_TOP,
+        'posVerticalRel'   => Image::POSITION_RELATIVE_TO_LINE,
     'marginLeft'    => 1,
     'width'         => 88,
-    'height'        => 70
-));
+    'height'        => 70));
+    $section->addTextBreak(1,array('spacing' => 240, 'size' => 1));
+    // 5. Nested table indent solicitud
+    $table = $section->addTable(array('borderSize' => 0, 'alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER));
+    $cell = $table->addRow()->addCell(11000, array('cellMargin' => 80, 'valign' => 'center','bgColor' => 'c0c0c0'));
+    $textrun = $cell->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1));
+    $textrun->addText('IDENTIFICACION DEL SOLICITANTE',array('lineHeight'=>0.1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+    $cell = $table->addRow()->addCell(11000, array('bgColor' => 'ffffff'));
+    $innert1  = $cell->addTable(array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER));
+        $innerrow1=$innert1->addRow();
+            $innercell11 =$innerrow1->addCell(3000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+                $innercell11->addText('Nombre y Apellido:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+                $innercell11->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+            $innercell12 =$innerrow1->addCell(3000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+                $innercell12->addText('C.I.:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+                $innercell12->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+            $innercell13 =$innerrow1->addCell(3000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+                $innercell13->addText('Extensión:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+                $innercell13->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+    $innert2 = $cell->addTable(array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER));
+        $innerrow2=$innert2->addRow();
+            $innercell21=$innerrow2->addCell(3000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+                $innercell21->addText('Correo:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+                $innercell21->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+            $innercell22=$innerrow2->addCell(3000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+                $innercell22->addText('Supervisor:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+                $innercell22->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+            $innercell23=$innerrow2->addCell(3000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+                $innercell23->addText('Area:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+                $innercell23->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+    $innert3 = $cell->addTable(array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER));
+        $innerrow3=$innert3->addRow();
+            $innercell31=$innerrow3->addCell(3000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+                $innercell31->addText('Gerencia:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+                $innercell31->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+            $innercell32=$innerrow3->addCell(3000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+                $innercell32->addText('Cargo:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+                $innercell32->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+            $innercell33=$innerrow3->addCell(3000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+                $innercell33->addText('Ubicación:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+                $innercell33->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+    $section->addTextBreak(1,array('spacing' => 240, 'size' => 1));
 
-    $table->addRow();
-    $table->addCell(null, $cellRowContinue);
-    $table->addCell(5000, array('borderTopColor'=>'FFFFFF','cellMargin' => 80,'gridSpan' => 2, 'valign' => 'center'))
-        ->addText('ASIGNACIÓN DE EQUIPOS DE INFORMÁTICA Y TELECOMUNICACIONES', array('name'=>'Arial','bold' => true,'color'=>'black', 'size'=>10),$cellHCentered);
-    $table->addCell(null, $cellRowContinue);
-
-
-
-
-
-    // 1. Basic table
-    $section->addTextBreak(1);
-    $header = array('size' => 16, 'bold' => true);
-    $section->addText('Fancy table', $header);
-
-    $fancyTableStyleName = 'Fancy Table';
-    $fancyTableStyle = array('borderSize' => 6, 'borderColor' => '006699', 'cellMargin' => 80, 'alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER);
-    $fancyTableFirstRowStyle = array('borderBottomSize' => 18, 'borderBottomColor' => '0000FF', 'bgColor' => '66BBFF');
-    $fancyTableCellStyle = array('valign' => 'center');
-    $fancyTableCellBtlrStyle = array('valign' => 'center', 'textDirection' => \PhpOffice\PhpWord\Style\Cell::TEXT_DIR_BTLR);
-    $fancyTableFontStyle = array('bold' => true);
-    $phpWord->addTableStyle($fancyTableStyleName, $fancyTableStyle, $fancyTableFirstRowStyle);
-    $table = $section->addTable($fancyTableStyleName);
-    $table->addRow(900);
-    $table->addCell(2000, $fancyTableCellStyle)->addText('Row 1', $fancyTableFontStyle);
-    $table->addCell(2000, $fancyTableCellStyle)->addText('Row 2', $fancyTableFontStyle);
-    $table->addCell(2000, $fancyTableCellStyle)->addText('Row 3', $fancyTableFontStyle);
-    $table->addCell(2000, $fancyTableCellStyle)->addText('Row 4', $fancyTableFontStyle);
-    $table->addCell(500, $fancyTableCellBtlrStyle)->addText('Row 5', $fancyTableFontStyle);
-    for ($i = 1; $i <= 8; $i++) {
-        $table->addRow();
-        $table->addCell(2000)->addText("Cell {$i}");
-        $table->addCell(2000)->addText("Cell {$i}");
-        $table->addCell(2000)->addText("Cell {$i}");
-        $table->addCell(2000)->addText("Cell {$i}");
-        $text = (0== $i % 2) ? 'X' : '';
-        $table->addCell(500)->addText($text);
+    $table = $section->addTable(array('borderSize' => 0, 'alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER));
+    $cell = $table->addRow()->addCell(11000, array('gridSpan' => 7,'valign' => 'center','bgColor' => 'c0c0c0'));
+    $textrun = $cell->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1));
+    $textrun->addText('EQUIPOS ASIGNADOS',array('lineHeight'=>0.1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+    $row = $table->addRow();
+    $row->addCell(1800, ['vMerge' => 'restart','borderSize'=>0])->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 2))->addText('Tipo de Equipo',array('valign' => 'center'));
+    $row->addCell(1200, ['vMerge' => 'restart','borderSize'=>0])->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 2))->addText('Accesorios',array('valign' => 'center'));
+    $row->addCell(1800, ['gridSpan' => 2, 'vMerge' => 'restart','borderSize'=>0])->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 2))->addText('Asignación',array('valign' => 'center'));
+    $row->addCell(5200, ['gridSpan' => 3, 'vMerge' => 'restart','borderSize'=>0])->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 2))->addText('Identificación del equipo',array('valign' => 'center'));
+    $row = $table->addRow();
+    $row->addCell(null, ['vMerge' => 'continue','borderSize'=>0]);
+    $row->addCell(null, ['vMerge' => 'continue','borderSize'=>0]);
+    $row->addCell(900,array('borderSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1))->addText('Desde',array('valign' => 'center'));
+    $row->addCell(900,array('borderSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1))->addText('hasta',array('valign' => 'center'));
+    $row->addCell(1100,array('borderSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1))->addText('Marca',array('valign' => 'center'));
+    $row->addCell(2100,array('borderSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1))->addText('Modelo',array('valign' => 'center'));
+    $row->addCell(3000,array('borderSize'=>0))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1))->addText('Serial',array('valign' => 'center'));
+    $items=4;
+    for ($i = 0;$i < $items; $i++)
+    {
+        $row = $table->addRow();
+        $row->addCell(1800,array('borderSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1))->addText('???',array('valign' => 'center'));
+        $row->addCell(1200,array('borderSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1))->addText('???',array('valign' => 'center'));
+        $row->addCell(900,array('borderSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1))->addText('???',array('valign' => 'center'));
+        $row->addCell(900,array('borderSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1))->addText('???',array('valign' => 'center'));
+        $row->addCell(1100,array('borderSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1))->addText('???',array('valign' => 'center'));
+        $row->addCell(2100,array('borderSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1))->addText('???',array('valign' => 'center'));
+        $row->addCell(3000,array('borderSize'=>0))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1))->addText('???',array('valign' => 'center'));
     }
-
-
-
-
-    /**
-     *  4. colspan (gridSpan) and rowspan (vMerge)
-     *  ---------------------
-     *  |     |   B    |  1 |
-     *  |  A  |        |----|
-     *  |     |        |  2 |
-     *  |     |---|----|----|
-     *  |     | C |  D |  3 |
-     *  ---------------------
-     * @see https://github.com/PHPOffice/PHPWord/issues/806
-     */
-    $section->addPageBreak();
-    $section->addText('Table with colspan and rowspan', $header);
-
-    $styleTable = ['borderSize' => 6, 'borderColor' => '999999'];
-    $phpWord->addTableStyle('Colspan Rowspan', $styleTable);
-    $table = $section->addTable('Colspan Rowspan');
-
+    $cell = $table->addRow()->addCell(9000, array('gridSpan' => 7,'bgColor' => 'ffffff'));
+    $cell->addTextRun(array('spaceAfter' => 0,'size' => 1))->addText('Observaciones:',array('valign' => 'right'));
+    $cell->addTextRun(array('spaceAfter' => 0,'size' => 1))->addText('???',array('valign' => 'right'));
+    $cell->addTextRun(array('spaceAfter' => 0,'size' => 1))->addText('',array('valign' => 'right'));
     $row = $table->addRow();
-
-    $row->addCell(null, ['vMerge' => 'restart'])->addText('A');
-    $row->addCell(null, ['gridSpan' => 2, 'vMerge' => 'restart',])->addText('B');
-    $row->addCell()->addText('1');
-
+    $row->addCell(9000,array('valign' => 'center','bgColor' => 'c0c0c0','gridSpan' => 7,'borderSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1))->addText('CONDICIONES GENERALES DE LA ASIGNACION',array('lineHeight'=>0.1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
     $row = $table->addRow();
-    $row->addCell(null, ['vMerge' => 'continue']);
-    $row->addCell(null, ['vMerge' => 'continue','gridSpan' => 2,]);
-    $row->addCell()->addText('2');
-    $row = $table->addRow();
-    $row->addCell(null, ['vMerge' => 'continue']);
-    $row->addCell()->addText('C');
-    $row->addCell()->addText('D');
-    $row->addCell()->addText('3');
+    $text = $row->addCell(9000,array('spaceAfter' => 0,'size' => 1,'gridSpan' => 7,'borderSize'=>3));
+    $multilevelNumberingStyleName = 'multilevel';
+    $phpWord->addNumberingStyle(
+        $multilevelNumberingStyleName,
+        array(
+            'type'   => 'multilevel',
+            'levels' => array(
+                array('format' => 'decimal', 'text' => '%1.', 'left' => 360, 'hanging' => 360, 'tabPos' => 360),
+                array('format' => 'upperLetter', 'text' => '%2.', 'left' => 720, 'hanging' => 360, 'tabPos' => 720),
+            ),
+        )
+    );
+    $paragraphStyleName = 'P-Style';
+    $phpWord->addParagraphStyle($paragraphStyleName, array('spaceAfter' => 5));
+    $text->addTextRun(array('spaceAfter' => 0,'size' => 1))->addText('El solicitante declara:',array('valign' => 'right'));
+    $text->addListItem('Que ha recibido de FERTINITRO, en calidad de préstamo y  por tiempo determinado, los equipos arriba descritos de su propiedad, en el entendido que los mismos serán utilizados en asuntos de trabajo relacionado con labores de la Empresa.',
+        0,array('spaceAfter' => 0,'size' => 1,'name' => 'Arial', 'size'=>8, 'valign' => 'right'), $multilevelNumberingStyleName, $paragraphStyleName);
+    $text->addListItem('Conocer que conforme a lo dispuesto en el artículo 102 de la Ley Orgánica del trabajo literal G, constituyen causal justificada de despido: el perjuicio material causado intencionalmente o con negligencia grave en las máquinas, herramientas y útiles de trabajo y mobiliario de la empresa.',
+        0, array('spaceAfter' => 0,'size' => 1,'name' => 'Arial', 'size'=>8, 'valign' => 'right'), $multilevelNumberingStyleName, $paragraphStyleName);
+    $text->addListItem('Conocer las normas de Protección de Activos de Información (PAI).',
+        0, array('spaceAfter' => 0,'size' => 1,'name' => 'Arial', 'size'=>8, 'valign' => 'right'), $multilevelNumberingStyleName, $paragraphStyleName);
+    $text->addListItem('Ser responsable por cualquier daño, robo o pérdida de los equipos causado o derivado de hechos o actuaciones intencionales o con negligencia y se compromete a restituirlo, pagando su costo de reposición.',
+        0, array('spaceAfter' => 0,'size' => 1,'name' => 'Arial', 'size'=>8, 'valign' => 'right'), $multilevelNumberingStyleName, $paragraphStyleName);
+    $text->addListItem('Que en caso de daño, robo o perdida de los equipos hará un Reporte de Pérdida de Propiedad (RPP) de los equipos y lo presentará a Prevención y Control de Pérdida (PCP) el primer día hábil siguiente. En caso de robo o pérdida deberá anexar la denuncia realizada en la Cuerpo de Investigaciones Científicas, Penales y criminalistas (CICPC).',
+        0, array('spaceAfter' => 0,'size' => 1,'name' => 'Arial', 'size'=>8, 'valign' => 'right'), $multilevelNumberingStyleName, $paragraphStyleName);
+    $text->addListItem('Que está autorizado a sacar del edificio los equipos portátiles que tengan el debido  carnet de identificación. Queda terminantemente prohibido que los equipos pertenecientes a la Empresa, se intercambien o presten a terceros.',
+        0, array('spaceAfter' => 0,'size' => 1,'name' => 'Arial', 'size'=>8, 'valign' => 'right'), $multilevelNumberingStyleName, $paragraphStyleName);
+    $text->addListItem('Que está consciente que los equipos forman parte de la infraestructura de tecnología de información de FERTINITRO y se compromete a salvaguardarlos con la debida diligencia. Se compromete a devolver  los equipos en las mismas condiciones operativas en las cuales les fueron entregados.',
+        0, array('spaceAfter' => 0,'size' => 1,'name' => 'Arial', 'size'=>8, 'valign' => 'right'), $multilevelNumberingStyleName, $paragraphStyleName);
+    $text->addListItem('Que no hará reproducción parcial o total del "software" existente en los equipos suministrados, ni instalará "software" adicional en el mismo, dando cumplimiento a lo establecido en la Norma PAI.',
+        0, array('spaceAfter' => 0,'size' => 1,'name' => 'Arial', 'size'=>8, 'valign' => 'right'), $multilevelNumberingStyleName, $paragraphStyleName);
+    $cell = $table->addRow()->addCell(9000, array('gridSpan' => 7,'vMerge' => 'restart','bgColor' => 'ffffff'));
 
-// 5. Nested table
+    $innert0 = $cell->addTable(array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER));
+    $innerrow0=$innert0->addRow();
+    $innercell01 =$innerrow0->addCell(3000, array('bgColor' => 'ffffff'))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 1,'size' => 8));
+    $innercell01->addText('CONTROL DE ACTIVOS',array('name' => 'Arial','bold'=>true, 'size'=>8, 'valign' => 'center'));
+    $innercell02 =$innerrow0->addCell(3000, array('bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 1,'size' => 8));
+    $innercell02->addText('SOPORTE Y ATENCION USUARIOS',array('name' => 'Arial','bold'=>true, 'size'=>8, 'valign' => 'center'));
+    $innercell03 =$innerrow0->addCell(3000, array('bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceAfter' => 1,'size' => 8));
+    $innercell03->addText('SOLICITANTE:',array('name' => 'Arial','bold'=>true, 'size'=>8, 'valign' => 'center'));
 
-    $section->addTextBreak(2);
-    $section->addText('Nested table in a centered and 50% width table.', $header);
+    $innert1  = $cell->addTable(array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER));
+    $innerrow1=$innert1->addRow();
+    $innercell11 =$innerrow1->addCell(3000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+    $innercell11->addText('Nombre y Apellido:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+    $innercell11->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+    $innercell12 =$innerrow1->addCell(3000, array('bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+    $innercell12->addText('C.I.:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+    $innercell12->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+    $innercell13 =$innerrow1->addCell(3000, array('bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+    $innercell13->addText('Extensión:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+    $innercell13->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+    $innert2 = $cell->addTable(array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER));
+    $innerrow2=$innert2->addRow();
+    $innercell21=$innerrow2->addCell(3000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+    $innercell21->addText('Correo:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+    $innercell21->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+    $innercell22=$innerrow2->addCell(3000, array('bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+    $innercell22->addText('Supervisor:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+    $innercell22->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+    $innercell23=$innerrow2->addCell(3000, array('bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+    $innercell23->addText('Area:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+    $innercell23->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+    $innert3 = $cell->addTable(array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER));
+    $innerrow3=$innert3->addRow();
+    $innercell31=$innerrow3->addCell(3000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+    $innercell31->addText('Gerencia:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+    $innercell31->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+    $innercell32=$innerrow3->addCell(3000, array('bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+    $innercell32->addText('Cargo:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+    $innercell32->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
+    $innercell33=$innerrow3->addCell(3000, array('bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('spaceAfter' => 1,'size' => 8));
+    $innercell33->addText('Ubicación:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'right'));
+    $innercell33->addText('???',array('name' => 'Arial', 'size'=>8, 'valign' => 'right'));
 
-    $table = $section->addTable(array('width' => 50 * 50, 'unit' => 'pct', 'alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER));
-    $cell = $table->addRow()->addCell();
-    $cell->addText('This cell contains nested table.');
-    $innerCell = $cell->addTable(array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER))->addRow()->addCell();
-    $innerCell->addText('Inside nested table');
-    // Adding Text element with font customized using named font style...
-        $fontStyleName = 'oneUserDefinedStyle';
-        $phpWord->addFontStyle(
-            $fontStyleName,
-            array('name' => 'Tahoma', 'size' => 10, 'color' => '1B2232', 'bold' => true)
-        );
-        $section->addText(
-            '"The greatest accomplishment is not in never falling, '
-            . 'but in rising again after you fall." '
-            . '(Vince Lombardi)',
-            $fontStyleName
-        );
-
-    // Adding Text element with font customized using explicitly created font style object...
-        $fontStyle = new \PhpOffice\PhpWord\Style\Font();
-        $fontStyle->setBold(true);
-        $fontStyle->setName('Tahoma');
-        $fontStyle->setSize(13);
-        $myTextElement = $section->addText('"Believe you can and you\'re halfway there." (Theodor Roosevelt)');
-        $myTextElement->setFontStyle($fontStyle);
+    /*
+        $table->addRow();
+        $table->addCell(null, array('borderTopColor'=>'FFFFFF','vMerge' => 'continue'));
+        $table->addCell(5000, array('borderTopColor'=>'FFFFFF','cellMargin' => 80,'gridSpan' => 2,'valign' => 'center'))
+              ->addText('ASIGNACIÓN DE EQUIPOS DE INFORMÁTICA Y TELECOMUNICACIONES', array('name'=>'Arial','bold' => true,'color'=>'black', 'size'=>10,'valign' => 'center'),$cellHCentered);
+        $table->addCell(null, $cellRowContinue);
+    */
 
     // Saving the document as OOXML file...
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
