@@ -30,6 +30,36 @@ class Proceso extends Entity
             return $solicitante!='Sin solicitante' ? $this->_properties['tipo']." para ".$solicitante : $this->_properties['tipo'].' '.$solicitante;
         return $solicitante!='Sin solicitante' ? $this->_properties['tipo']." de ".$solicitante : $this->_properties['tipo'].' '.$solicitante;
     }
+    protected function _getEncargadotrb()
+    {
+        $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+            ->where(['proceso_id ='=>$this->_properties['id']])
+            ->andWhere(['rol ='=>'Encargado']);
+        if($pro_tra==null||$pro_tra->isEmpty())
+            return null;
+        foreach ($pro_tra as $tr)
+            return TableRegistry::get('Trabajadores')->get($tr->trabajador_id);
+    }
+    protected function _getSupervisortrb()
+    {
+        $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+            ->where(['proceso_id ='=>$this->_properties['id']])
+            ->andWhere(['rol ='=>'Supervisor']);
+        if($pro_tra==null||$pro_tra->isEmpty())
+            return null;
+        foreach ($pro_tra as $tr)
+            return TableRegistry::get('Trabajadores')->get($tr->trabajador_id);
+    }
+    protected function _getSolicitantetrb()
+    {
+        $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+            ->where(['proceso_id ='=>$this->_properties['id']])
+            ->andWhere(['rol ='=>'Solicitante']);
+        if($pro_tra==null||$pro_tra->isEmpty())
+            return null;
+        foreach ($pro_tra as $solicitante)
+            return TableRegistry::get('Trabajadores')->get($solicitante->trabajador_id);
+    }
     protected function _getSolicitante()
     {
         $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')

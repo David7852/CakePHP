@@ -11,13 +11,23 @@ use Cake\ORM\TableRegistry;?>
         <?php else: ?>
             <?php if($proceso->tipo=='Asignacion'): ?>
                 <li><?= $this->Html->link(__('Dar Asignacion'), ['controller' => 'Asignaciones', 'action' => 'asociar',$proceso->id],['id'=>'asignacion']) ?> </li>
+                <li><?= $this->Html->link(__('Planilla'), ['action' => 'planilla',$proceso->id],['style'=>'color:#D7782E']) ?></li>
                 <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $proceso->id]) ?></li>
+                <li><?= $this->Html->link(__('Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Procesos'), ['action' => 'index']) ?></li>
             <?php elseif($proceso->tipo=='Devolucion'):?>
                 <li><?= $this->Html->link(__('Dar Devolucion'), ['controller' => 'Devoluciones', 'action' => 'asociar',$proceso->id],['id'=>'devolucion']) ?> </li>
+                <li><?= $this->Html->link(__('Planilla'), ['action' => 'planilla',$proceso->id],['style'=>'color:#D7782E']) ?></li>
                 <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $proceso->id]) ?></li>
+                <li><?= $this->Html->link(__('Articulos'), ['controller' => 'Articulos', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Procesos'), ['action' => 'index']) ?></li>
             <?php else: ?>
                 <li><?= $this->Html->link(__('Dar Asignacion'), ['controller' => 'Asignaciones', 'action' => 'asociar',$proceso->id],['id'=>'asignacion']) ?> </li>
                 <li><?= $this->Html->link(__('Dar Devolucion'), ['controller' => 'Devoluciones', 'action' => 'asociar',$proceso->id],['id'=>'devolucion']) ?> </li>
+                <li><?= $this->Html->link(__('Planilla'), ['action' => 'planilla',$proceso->id],['style'=>'color:#D7782E']) ?></li>
+                <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $proceso->id]) ?></li>
+                <li><?= $this->Html->link(__('Procesos'), ['action' => 'index']) ?></li>
+
             <?php endif; ?>
         <?php endif; ?>
 
