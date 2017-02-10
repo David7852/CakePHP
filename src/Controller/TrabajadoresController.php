@@ -11,6 +11,17 @@ use Cake\ORM\TableRegistry;
  */
 class TrabajadoresController extends AppController
 {
+
+    public function getRelated($id)
+    {
+        if($id==null)
+            return null;
+        $trabajador = $this->Consumos->get($id, [
+            'contain' => ['Contratos', 'Usuarios', 'Procesos']
+        ]);
+        return $trabajador;
+    }
+
     public function initialize()
     {
         parent::initialize();

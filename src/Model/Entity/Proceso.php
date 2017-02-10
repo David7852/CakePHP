@@ -22,7 +22,6 @@ use Cake\ORM\TableRegistry;
  */
 class Proceso extends Entity
 {
-
     protected function _getTitulo()
     {
         $solicitante=$this->_getSolicitante();

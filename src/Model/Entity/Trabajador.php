@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Entity;
 
+use App\Controller\TrabajadoresController;
 use Cake\ORM\Entity;
 use Cake\ORM\TableRegistry;
 /**
@@ -61,11 +62,43 @@ class Trabajador extends Entity
         }
         return $value;
     }
-    protected function _setCargo($value)
+    protected function _getUsuario()
+    {
+        $users=TableRegistry::get('Usuarios')->find('all')
+            ->where(['trabajador_id ='=>$this->_properties['id']]);
+        foreach ($users as $user)
+            return $user;
+        return null;
+    }
+    protected function _getSupervisor()
+    {
+        if($this->_properties['cargo']=='Gerente')
+            return $this;
+        $company=TableRegistry::get('Trabajadores')->find('all')
+            ->where(['Gerencia ='=>$this->_properties['gerencia']]);
+        foreach ($company as $tr)
+        {
+            if($tr->area==$this->_properties['area']&&$tr->cargo=='Supervisor'||$tr->cargo=='Superintendente')
+                return $tr;
+        }
+        foreach ($company as $tr)
+        {
+            if($tr->cargo=='Supervisor'||$tr->cargo=='Superintendente')
+                return $tr;
+        }
+        foreach ($company as $tr)
+        {
+            if($tr->cargo=='Gerente')
+                return $tr;
+        }
+        return null;
+    }
+
+    protected function _getCargofix()
     {
         if($this->_properties['sexo']=='F')
         {
-        switch ($value) {
+        switch ($this->_properties['cargo']) {
             case "Supervisor":
                 return "Supervisora";
             case "Jefe de planta":
@@ -77,9 +110,9 @@ class Trabajador extends Entity
             case "Consejero":
                 return "Consejera";
             default:
-                return $value;}
+                return $this->_properties['cargo'];}
         }
-        return $value;
+        return $this->_properties['cargo'];
     }
     //Methods for set gerencia and set cargo should be created aswell
     protected function _getTitulo()

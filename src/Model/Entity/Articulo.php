@@ -25,7 +25,23 @@ use Cake\ORM\TableRegistry;
  */
 class Articulo extends Entity
 {
-    protected function _getimagen(){
+    protected function _getModeloent(){
+        $c = new ArticulosController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
+        if ( $related->modelo!=null)
+            return $related->modelo;
+        return null;
+    }
+    protected function _getAccesorioent(){
+        $acc=TableRegistry::get('Accesorios')->find('all')
+            ->where(['articulo_id ='=>$this->_properties['id']]);
+        foreach ($acc as $a)
+            return $a;
+        return null;
+    }
+    protected function _getImagen(){
         $c = new ArticulosController();
         $related=$c->getRelated($this->_properties['id']);
         if($related==null)
