@@ -21,7 +21,11 @@
     </ul>
 </nav>
 <div class="trabajadores index large-9 medium-8 columns content">
-    <?php if($choice==0||$choice==2): ?>
+
+    <?php if(empty($trabajadores)): ?>
+        <h3><?= __('La búsqueda "'.$dato.'"') ?></h3>
+        <h4>No arrojo ningún resultado.</h4>
+    <?php elseif($choice==0||$choice==2): ?>
     <h3><?= __('Resultados de la búsqueda "'.$dato.'"') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
@@ -63,6 +67,13 @@
         <?php endforeach; ?>
         </tbody>
     </table>
+        <div class="paginator">
+            <ul class="pagination">
+                <?= $this->Paginator->prev('< ' . __('<')) ?>
+                <?= str_replace("of","de",$this->Paginator->numbers()) ." ". str_replace("of","de",$this->Paginator->counter()) ?>
+                <?= $this->Paginator->next(__('>') . ' >') ?>
+            </ul>
+        </div>
     <?php  elseif($choice==1): ?>
         <h3><?= __('Informacion de contacto de "'.$dato.'"') ?></h3>
         <table cellpadding="0" cellspacing="0">
@@ -95,12 +106,13 @@
             <?php endforeach; ?>
             </tbody>
         </table>
+
+        <div class="paginator">
+            <ul class="pagination">
+                <?= $this->Paginator->prev('< ' . __('<')) ?>
+                <?= str_replace("of","de",$this->Paginator->numbers()) ." ". str_replace("of","de",$this->Paginator->counter()) ?>
+                <?= $this->Paginator->next(__('>') . ' >') ?>
+            </ul>
+        </div>
     <?php endif; ?>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('<')) ?>
-            <?= str_replace("of","de",$this->Paginator->numbers()) ." ". str_replace("of","de",$this->Paginator->counter()) ?>
-            <?= $this->Paginator->next(__('>') . ' >') ?>
-        </ul>
-    </div>
 </div>

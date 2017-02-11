@@ -34,6 +34,7 @@ class TrabajadoresController extends AppController
         $ids=array();
         $t = TableRegistry::get('Trabajadores')->find('all');
         $choice=$dato[0];
+        $trabajadores=array();
         if($choice=='0'||$choice=='1'||$choice=='2')
             $dato=substr($dato, 1);
         if($choice=='0'||$choice=='1')

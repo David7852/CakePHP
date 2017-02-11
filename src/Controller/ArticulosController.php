@@ -32,7 +32,6 @@ class ArticulosController extends AppController
         $this->paginate = ['contain' => ['Modelos']];
         if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
             $articulos=array();
-            $mo=array();
             $models=TableRegistry::get('Modelos')->find('all')
                 ->where(['tipo_de_articulo ='=>$dato]);
             foreach ($models as $m)            {
