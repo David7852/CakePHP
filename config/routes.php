@@ -57,6 +57,7 @@ Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBu
 Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/editar/*', ['action' => 'edit']);});
 Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/nuevo/*', ['action' => 'add']);});
 Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/listar/*', ['action' => 'index']);});
+Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/busqueda/*', ['action' => 'busqueda']);});
 Router::scope('/trabajadores',['controller' => 'Trabajadores'],function (RouteBuilder $routes) {    $routes->connect('/bienvenido/', ['action' => 'nuevo']);});
 //Servicios
 Router::scope('/servicios',['controller' => 'Servicios'],function (RouteBuilder $routes) {    $routes->connect('/ver/*', ['action' => 'view']);});

@@ -19,18 +19,23 @@
                     <a href="<?=Router::url(array('controller' => 'Trabajadores', 'action' => 'index'))?>"style="color:white; background-color: #720e9e">Mis trabajadores</a>
                 </li>
                 <li>
-                    <a href="<?=Router::url(array('controller' => 'Trabajadores', 'action' => 'view',$this->request->session()->read('Auth.User.trabajador_id')))?>"style="color:white; background-color: #500a6f">Mi trabajador</a>
+                    <a href="<?=Router::url(array('controller' => 'Trabajadores', 'action' => 'view',$this->request->session()->read('Auth.User.trabajador_id')))?>"style="color:white; background-color: #912dad">Mi trabajador</a>
                 </li>
             <?php else: ?>
                 <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Trabajadores', 'action' => 'index'))?>" style="color:white; background-color: #720e9e">Listar</a>
                 </li>
+
+                <li>
+                    <a href="<?=Router::url(array('controller' => 'Trabajadores', 'action' => 'add'))?>" style="color:white; background-color: #912dad">Agregar</a>
+                </li>
+            <?php endif; ?>
                 <li class="superlabel first">
-                    <div style=" background-color: #bc2cb8">
+                    <div style=" background-color: #662c7f">
                         <h5>Buscar Trabajador<br>de nombre:</h5>
                         <div >
-                            <?= $this->Form->input('nombre',['label'=>'','style'=>'color: #b428b0']) ?>
-                            <button type='submit' style="color: #bc2cb8" name="nombrebtn">
+                            <?= $this->Form->input('nombre',['label'=>'','style'=>'color: #662c7f']) ?>
+                            <button type='submit' style="color: #662c7f" name="nombrebtn">
                                 <svg  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M19 15l-6 6-1.42-1.42L15.17 16H4V4h2v10h9.17l-3.59-3.58L13 9l6 6z"/>
                                 </svg>
@@ -38,10 +43,6 @@
                         </div>
                     </div>
                 </li>
-                <li>
-                    <a href="<?=Router::url(array('controller' => 'Trabajadores', 'action' => 'add'))?>" style="color:white; background-color: #500a6f">Agregar</a>
-                </li>
-            <?php endif; ?>
             </ul>
         </div>
         <div class="lapel">
@@ -53,11 +54,37 @@
                     <li class="first">
                         <a href="<?=Router::url(array('controller' => 'Contratos', 'action' => 'index'))?>"style="color:white; background-color: mediumvioletred">Mi contrato</a>
                     </li>
+                    <li class="superlabel">
+                        <div style=" background-color: #941d7b">
+                            <h5>Trabajadores en<br>Gerencia o cargo:</h5>
+                            <div >
+                                <?= $this->Form->input('gerencia',['label'=>'','style'=>'color: #941d7b']) ?>
+                                <button type='submit' style="color: #941d7b" name="gerbtn">
+                                    <svg  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19 15l-6 6-1.42-1.42L15.17 16H4V4h2v10h9.17l-3.59-3.58L13 9l6 6z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
                 <?php else: ?>
                     <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Contratos', 'action' => 'index'))?>" style="color:white; background-color: mediumvioletred">Listar</a>
                 </li>
-                <li>
+                    <li class="superlabel">
+                        <div style=" background-color: #941d7b">
+                            <h5>Trabajadores en<br>Gerencia o cargo:</h5>
+                            <div >
+                                <?= $this->Form->input('gerencia',['label'=>'','style'=>'color: #941d7b']) ?>
+                                <button type='submit' style="color: #941d7b" name="gerbtn">
+                                    <svg  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19 15l-6 6-1.42-1.42L15.17 16H4V4h2v10h9.17l-3.59-3.58L13 9l6 6z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Contratos', 'action' => 'add'))?>" style="color:white; background-color: crimson">Agregar</a>
                 </li>
                 <?php endif; ?>

@@ -107,6 +107,9 @@ class TrabajadoresTable extends Table
             ->allowEmpty('puesto_de_trabajo');
 
         $validator
+            ->allowEmpty('extension');
+
+        $validator
             ->allowEmpty('telefono_personal');
 
         $validator

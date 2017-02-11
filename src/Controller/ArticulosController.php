@@ -27,31 +27,21 @@ class ArticulosController extends AppController
     public function inventario($dato = null)
     {
         $choice=$dato[0];
-        $dato=substr($dato, 1);
-        $this->paginate = [
-            'contain' => ['Modelos']
-        ];
-
+        if($choice=='0'||$choice=='1'||$choice=='2')
+            $dato=substr($dato, 1);
+        $this->paginate = ['contain' => ['Modelos']];
         if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
             $articulos=array();
             $mo=array();
             $models=TableRegistry::get('Modelos')->find('all')
                 ->where(['tipo_de_articulo ='=>$dato]);
-            foreach ($models as $m)
-            {
+            foreach ($models as $m)            {
                 $art = TableRegistry::get('Articulos')->find('all')
                 ->where(['modelo_id ='=>$m->id]);
-                foreach ($art as $iculos)
-                {
-                    $asig = TableRegistry::get('Asignaciones')->find('all')
-                        ->where(['articulo_id =' => $iculos->id])
-                        ->andWhere(['hasta >=' => date('Y-m-d')]);
-                    foreach ($asig as $row)
-                    {
-                        $pro_tra = TableRegistry::get('ProcesosTrabajadores')->find('all')
-                            ->where(['proceso_id =' => $row->proceso_id])
-                            ->andWhere(['trabajador_id =' => $this->request->session()->read('Auth.User.trabajador_id')])
-                            ->andWhere(['rol =' => 'Solicitante']);
+                foreach ($art as $iculos)                {
+                    $asig = TableRegistry::get('Asignaciones')->find('all')->where(['articulo_id =' => $iculos->id])->andWhere(['hasta >=' => date('Y-m-d')]);
+                    foreach ($asig as $row)                    {
+                        $pro_tra = TableRegistry::get('ProcesosTrabajadores')->find('all')->where(['proceso_id =' => $row->proceso_id])->andWhere(['trabajador_id =' => $this->request->session()->read('Auth.User.trabajador_id')])->andWhere(['rol =' => 'Solicitante']);
                         if($pro_tra!=null&&!$pro_tra->isEmpty())
                             array_push($articulos, $iculos->id);
                     }
@@ -62,11 +52,9 @@ class ArticulosController extends AppController
                 return $this->redirect($this->referer());
             }
             $articulos = $this->paginate($this->Articulos->find('all',array('conditions'=>array('Articulos.id IN'=>$articulos))));
-        }elseif($choice==0)
-        {
+        }elseif($choice==0)        {
             $mo = array();
-            $models = TableRegistry::get('Modelos')->find('all')
-                ->where(['tipo_de_articulo LIKE' => $dato.'%']);
+            $models = TableRegistry::get('Modelos')->find('all')->where(['tipo_de_articulo LIKE' => $dato.'%']);
             foreach ($models as $m)
                 array_push($mo, $m->id);
             if (!empty($mo))
@@ -81,15 +69,13 @@ class ArticulosController extends AppController
                 $dato=substr($dato,0, -1)."ces";
             else
                 $dato=$dato."es";
-        }elseif($choice==1)
-        {
+        }elseif($choice==1)        {
             $articulos = $this->paginate($this->Articulos->find('all')
                 ->where(['serial LIKE'=>$dato.'%']));
             if($articulos->isEmpty())
                 $articulos=array();
             $dato='Coincidencias con el serial "'.$dato.'"';
-        }elseif($choice==2)
-        {
+        }elseif($choice==2)        {
             $ids=array();
             $art = TableRegistry::get('Articulos')->find('all');
             foreach ($art as $iculos)

@@ -12,6 +12,7 @@
  * @since         0.10.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+use App\Controller\Component\savory;
 use Cake\Core\Configure;
 use Cake\Network\Exception\NotFoundException;
 use Cake\Routing\Router;
@@ -21,7 +22,7 @@ $this->layout = false;
 if (!Configure::read('debug')):
     throw new NotFoundException('Please replace src/Template/Pages/home.ctp with your own version.');
 endif;
-
+$savoire=new savory();
 $cakeDescription = 'WIT';
 ?>
 <!DOCTYPE html>
@@ -71,16 +72,16 @@ $cakeDescription = 'WIT';
             </div>
             <div class="columns large-12 checks">
                 <h4 style="text-transform: capitalize">unete y participa</h4>
-                <p>Some data...</p>
+                <p><?= $savoire->gettrbdata() ?></p>
                 <hr>
                 <h4 style="text-transform: capitalize">Estamos a su disposición</h4>
-                <p>Some data...</p>
+                <p><?= $savoire->getinvdata() ?></p>
                 <hr>
                 <h4 style="text-transform: capitalize">Manténte en contacto</h4>
-                <p>Some data...</p>
+                <p><?= $savoire->gettlfdata() ?></p>
                 <hr>
                 <h4 style="text-transform: capitalize">Apreciamos sus aportes e ideas</h4>
-                <p>Some data...</p>
+                <p><?= $savoire->getcontactinfo() ?></p>
             </div>
         </div>
 

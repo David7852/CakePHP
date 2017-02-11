@@ -13,8 +13,7 @@ use PhpOffice\PhpWord\Style\Image;
  * Date: 2/9/2017
  * Time: 8:14 PM
  */
-class docmaker
-{
+class docmaker {
     public function tipoasignacion($proceso,$solicitante,$supervisor,$encargado)
     {
         $phpWord = new PHPWord();
@@ -69,7 +68,7 @@ class docmaker
         $innercell12->addText($solicitante->cedula,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innercell13 =$innerrow1->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>16,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell13->addText('Extensión: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
-        $innercell13->addText($solicitante->telefono_personal,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
+        $innercell13->addText($solicitante->extension,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innert2 = $cell->addTable(array('alignment' => JcTable::CENTER));
         $innerrow2=$innert2->addRow();
         $innercell21=$innerrow2->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
@@ -77,7 +76,7 @@ class docmaker
         $innercell21->addText($solicitante->usuario->email,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innercell22=$innerrow2->addCell(4000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell22->addText('Supervisor: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
-        $innercell22->addText($solicitante->supervisor!=null ? $solicitante->supervisor->titulo : 'Sin supervisor',array('name' => 'Arial', 'size'=>8, 'valign' => 'left'));
+        $innercell22->addText($solicitante->supervisor!=null ? $solicitante->supervisor->titulo : '',array('name' => 'Arial', 'size'=>8, 'valign' => 'left'));
         $innercell23=$innerrow2->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell23->addText('Area: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
         $innercell23->addText($solicitante->area,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
@@ -203,7 +202,7 @@ class docmaker
         $innercell33=$innerrow3->addCell(3500, array('bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('spaceAfter' => 2,'size' => 8,'lineHeight'=>1));
         $innercell33->addText('Firma: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left','lineHeight'=>1));
         $innercell33->addText('_______________',array('name' => 'Arial', 'size'=>8, 'valign' => 'left','lineHeight'=>1));
-        $section->addTextRun(array('spaceAfter' => 2,'size' => 16,'lineHeight'=>1.5,'alignment' => JcTable::END))->addText('REV-001-IT01-CA',array('name' => 'Arial'));
+        $section->addTextRun(array('spaceAfter' => 2,'size' => 16,'lineHeight'=>1.5,'alignment' => JcTable::END))->addText('REV-001-IT01-CA',array('name' => 'Arial','valign' => 'right'));
         $name='plantilla de '.$proceso->titulo;
         $no='__'.random_int(0,188);
         $file=$name.$no.'.docx';
@@ -283,7 +282,7 @@ class docmaker
         $innercell12->addText($solicitante->cedula,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innercell13 =$innerrow1->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>16,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell13->addText('Extensión: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
-        $innercell13->addText($solicitante->telefono_personal,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
+        $innercell13->addText($solicitante->extension,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innert2 = $cell->addTable(array('alignment' => JcTable::CENTER));
         $innerrow2=$innert2->addRow();
         $innercell21=$innerrow2->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
@@ -291,7 +290,7 @@ class docmaker
         $innercell21->addText($solicitante->usuario->email,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innercell22=$innerrow2->addCell(4000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell22->addText('Supervisor: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
-        $innercell22->addText($solicitante->supervisor!=null ? $solicitante->supervisor->titulo : 'Sin supervisor',array('name' => 'Arial', 'size'=>8, 'valign' => 'left'));
+        $innercell22->addText($solicitante->supervisor!=null ? $solicitante->supervisor->titulo : '',array('name' => 'Arial', 'size'=>8, 'valign' => 'left'));
         $innercell23=$innerrow2->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell23->addText('Area: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
         $innercell23->addText($solicitante->area,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
@@ -415,7 +414,7 @@ class docmaker
         $innercell33=$innerrow3->addCell(3500, array('bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('spaceAfter' => 2,'size' => 8,'lineHeight'=>1));
         $innercell33->addText('Firma: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left','lineHeight'=>1));
         $innercell33->addText('_______________',array('name' => 'Arial', 'size'=>8, 'valign' => 'left','lineHeight'=>1));
-        $section->addTextRun(array('spaceAfter' => 2,'size' => 16,'lineHeight'=>1.5,'alignment' => JcTable::END))->addText('REV-001-IT01-CA',array('name' => 'Arial'));
+        $section->addTextRun(array('spaceAfter' => 2,'size' => 16,'lineHeight'=>1.5,'alignment' => JcTable::END))->addText('REV-001-IT01-CA',array('name' => 'Arial','valign' => 'right'));
         $name='plantilla de '.$proceso->titulo;
         $no='__'.random_int(0,188);
         $file=$name.$no.'.docx';
@@ -494,7 +493,7 @@ class docmaker
         $innercell12->addText($solicitante->cedula,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innercell13 =$innerrow1->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>16,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell13->addText('Extensión: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
-        $innercell13->addText($solicitante->telefono_personal,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
+        $innercell13->addText($solicitante->extension,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innert2 = $cell->addTable(array('alignment' => JcTable::CENTER));
         $innerrow2=$innert2->addRow();
         $innercell21=$innerrow2->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
@@ -502,7 +501,7 @@ class docmaker
         $innercell21->addText($solicitante->usuario->email,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innercell22=$innerrow2->addCell(4000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell22->addText('Supervisor: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
-        $innercell22->addText($solicitante->supervisor!=null ? $solicitante->supervisor->titulo : 'Sin supervisor',array('name' => 'Arial', 'size'=>8, 'valign' => 'left'));
+        $innercell22->addText($solicitante->supervisor!=null ? $solicitante->supervisor->titulo : '',array('name' => 'Arial', 'size'=>8, 'valign' => 'left'));
         $innercell23=$innerrow2->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell23->addText('Area: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
         $innercell23->addText($solicitante->area,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
@@ -628,7 +627,7 @@ class docmaker
         $innercell33=$innerrow3->addCell(3500, array('bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('spaceAfter' => 2,'size' => 8,'lineHeight'=>1));
         $innercell33->addText('Firma: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left','lineHeight'=>1));
         $innercell33->addText('_______________',array('name' => 'Arial', 'size'=>8, 'valign' => 'left','lineHeight'=>1));
-        $section->addTextRun(array('spaceAfter' => 2,'size' => 16,'lineHeight'=>1.5,'alignment' => JcTable::END))->addText('REV-001-IT01-CA',array('name' => 'Arial'));
+        $section->addTextRun(array('spaceAfter' => 2,'size' => 16,'lineHeight'=>1.5,'alignment' => JcTable::END))->addText('REV-001-IT01-CA',array('name' => 'Arial','valign' => 'right'));
         $section->addPageBreak();
         $table = $section->addTable($spanTableStyleName);
         $table->addRow();
@@ -673,7 +672,7 @@ class docmaker
         $innercell12->addText($solicitante->cedula,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innercell13 =$innerrow1->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>16,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell13->addText('Extensión: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
-        $innercell13->addText($solicitante->telefono_personal,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
+        $innercell13->addText($solicitante->extension,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innert2 = $cell->addTable(array('alignment' => JcTable::CENTER));
         $innerrow2=$innert2->addRow();
         $innercell21=$innerrow2->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
@@ -681,7 +680,7 @@ class docmaker
         $innercell21->addText($solicitante->usuario->email,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innercell22=$innerrow2->addCell(4000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell22->addText('Supervisor: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
-        $innercell22->addText($solicitante->supervisor!=null ? $solicitante->supervisor->titulo : 'Sin supervisor',array('name' => 'Arial', 'size'=>8, 'valign' => 'left'));
+        $innercell22->addText($solicitante->supervisor!=null ? $solicitante->supervisor->titulo : '',array('name' => 'Arial', 'size'=>8, 'valign' => 'left'));
         $innercell23=$innerrow2->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell23->addText('Area: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
         $innercell23->addText($solicitante->area,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
@@ -805,7 +804,7 @@ class docmaker
         $innercell33=$innerrow3->addCell(3500, array('bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('spaceAfter' => 2,'size' => 8,'lineHeight'=>1));
         $innercell33->addText('Firma: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left','lineHeight'=>1));
         $innercell33->addText('_______________',array('name' => 'Arial', 'size'=>8, 'valign' => 'left','lineHeight'=>1));
-        $section->addTextRun(array('spaceAfter' => 2,'size' => 16,'lineHeight'=>1.5,'alignment' => JcTable::END))->addText('REV-001-IT01-CA',array('name' => 'Arial'));
+        $section->addTextRun(array('spaceAfter' => 2,'size' => 16,'lineHeight'=>1.5,'alignment' => JcTable::END))->addText('REV-001-IT01-CA',array('name' => 'Arial','valign' => 'right'));
         $name='plantilla doble de '.$proceso->solicitante;
         $no='__'.random_int(0,188);
         $file=$name.$no.'.docx';

@@ -42,7 +42,11 @@
             <td><?= h($trabajador->cedula) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Telefono Personal') ?></th>
+            <th scope="row"><?= __('Extension') ?></th>
+            <td><?= h($trabajador->extension) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Teléfono Personal') ?></th>
             <td><?= h($trabajador->telefono_personal) ?></td>
         </tr>
         <tr>

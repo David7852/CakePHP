@@ -20,6 +20,7 @@ class LineasController extends AppController
         ]);
         return $linea;
     }
+
     /**
      * Index method
      *
@@ -127,7 +128,6 @@ class LineasController extends AppController
             $linea = $this->Lineas->patchEntity($linea, $this->request->data);
             if ($this->Lineas->save($linea)) {
                 $this->Flash->success(__('La linea fue registrada.'));
-
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('La linea no pudo ser registrada. Intente nuevamente.'));

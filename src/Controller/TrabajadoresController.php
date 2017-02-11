@@ -29,6 +29,43 @@ class TrabajadoresController extends AppController
         $this->set('title', 'Usuarios');
     }
 
+    public function busqueda($dato = null)
+    {
+        $ids=array();
+        $t = TableRegistry::get('Trabajadores')->find('all');
+        $choice=$dato[0];
+        if($choice=='0'||$choice=='1'||$choice=='2')
+            $dato=substr($dato, 1);
+        if($choice=='0'||$choice=='1')
+        {
+            foreach ($t as $rabajador)
+            {
+                $fullname = $rabajador->nombre. ' ' .$rabajador->apellido;
+                if ((similar_text($rabajador->nombre, $dato) >= (strlen($dato) - strlen($dato) / 4))||
+                    (similar_text($rabajador->apellido, $dato) >= (strlen($dato) - strlen($dato) / 4))||
+                    (similar_text($fullname, $dato) >= (strlen($dato) - strlen($dato) / 4)))//
+                    array_push($ids, $rabajador->id);
+            }
+            if (!empty($ids))
+                $trabajadores = $this->paginate($this->Trabajadores->find('all', array('conditions' => array('Trabajadores.id IN' => $ids))));
+            else
+                $trabajadores = array();
+        }elseif($choice=='2'){
+            foreach ($t as $rabajador)
+            {
+                if ((similar_text($rabajador->gerencia, $dato) >= (strlen($dato) - strlen($dato) / 4))||
+                    (similar_text($rabajador->cargo, $dato) >= (strlen($dato) - strlen($dato) / 4))||
+                    (similar_text($rabajador->area, $dato) >= (strlen($dato) - strlen($dato) / 4)))//
+                    array_push($ids, $rabajador->id);
+            }
+            if (!empty($ids))
+                $trabajadores = $this->paginate($this->Trabajadores->find('all', array('conditions' => array('Trabajadores.id IN' => $ids))));
+            else
+                $trabajadores = array();
+        }
+        $this->set(compact('trabajadores','choice','dato'));
+        $this->set('_serialize', ['trabajadores']);
+    }
     /**
      * Index method
      *
@@ -40,11 +77,9 @@ class TrabajadoresController extends AppController
             $trabajador = TableRegistry::get('Trabajadores')->get(($this->request->session()->read('Auth.User.trabajador_id')));
             $gerencia=$trabajador->gerencia;
             $cargo=$trabajador->cargo;
-            if($cargo=="Gerente"||$cargo=="Supervisor"||$cargo=="Superintendente")
-            {
+            if($cargo=="Gerente"||$cargo=="Supervisor"||$cargo=="Superintendente")            {
                 $trabajadores=array();
-                $trabajador = TableRegistry::get('Trabajadores')->find('all')
-                    ->where(['gerencia ='=>$gerencia]);
+                $trabajador = TableRegistry::get('Trabajadores')->find('all')->where(['gerencia ='=>$gerencia]);
                 foreach ($trabajador as $t)
                     array_push($trabajadores, $t->id);
                 if(!empty($trabajadores))
@@ -57,12 +92,10 @@ class TrabajadoresController extends AppController
                 $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
                 return $this->redirect($this->referer());
             }
-        }elseif($dato !=null)
-        {
+        }elseif($dato !=null)        {
             $ids=array();
             $t = TableRegistry::get('Trabajadores')->find('all');
-            foreach ($t as $rabajador)
-            {
+            foreach ($t as $rabajador)  {
                 $fullname = $rabajador->nombre. ' ' .$rabajador->apellido;
                 if ((similar_text($rabajador->nombre, $dato) >= (strlen($dato) - strlen($dato) / 4))||
                     (similar_text($rabajador->apellido, $dato) >= (strlen($dato) - strlen($dato) / 4))||
@@ -154,21 +187,15 @@ class TrabajadoresController extends AppController
         $this->set(compact('trabajador', 'procesos'));
         $this->set('_serialize', ['trabajador']);
     }
-    protected function getnewname($username)
-    {
-        /*
-         * receive the desire username that causes conflict with the naming standard.
-         */
+    protected function getnewname($username)    {
         $user = TableRegistry::get('Usuarios');
         $q = $user->find();
         $c = 2;
         $bol = true;
-        while ($bol)
-        {
+        while ($bol) {
             $bol = false;
             foreach ($q as $row)
-                if ($row->nombre_de_usuario == $username . $c)
-                {
+                if ($row->nombre_de_usuario == $username . $c)  {
                     $c++;
                     $bol = true;
                 }

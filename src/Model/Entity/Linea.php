@@ -45,6 +45,16 @@ class Linea extends Entity
             return $related->articulo->asignado;
         return 'Sin propietario';
     }
+    protected function _getPropietarioid()
+    {
+        $c = new LineasController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
+        if($related->articulo!=null)
+            return $related->articulo->asignadoid;
+        return '';
+    }
     protected function _getAltarticulo()
     {
         $c = new LineasController();

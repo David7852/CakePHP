@@ -386,6 +386,7 @@ class ProcesosController extends AppController
 
     public function planilla($id=null)
     {
+        $this->autoRender = false;
         if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
             $this->Flash->error(__('Usted no tiene permiso para realizar esta accion.'));
             return $this->redirect($this->referer());

@@ -17,6 +17,9 @@
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>
         <li class="usu" ><?= $this->Html->link(__('Usuarios'), ['controller' => 'Pages', 'action' => 'display','usuarios'])?></li>
+
+
+
     </ul>
 </nav>
 <div class="lineas view large-9 medium-8 columns content">
@@ -34,6 +37,11 @@
             <th scope="row"><?= __('Articulo') ?></th>
             <td><?= $linea->has('articulo') ? $this->Html->link($linea->articulo->titulo, ['controller' => 'Articulos', 'action' => 'view', $linea->articulo->id]) : 'Sin asignar' ?>
             <?= $linea->has('articulo') ? "<img style='float: none; width: 3rem; margin-top: -7px; padding: 0.3rem;' src='/WIT/webroot/img/Modelos/".$linea->articulo->imagen."'>" : '' ?>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Propietario') ?></th>
+            <td><?= $linea->has('articulo')&&$linea->articulo->asignado!='' ? $this->Html->link($linea->articulo->asignado, ['controller' => 'Trabajadores', 'action' => 'view', $linea->articulo->asignadoid]) : 'Sin asignar' ?>
             </td>
         </tr>
         <tr>
@@ -56,6 +64,7 @@
             <th scope="row"><?= __('Estado') ?></th>
             <td><?= h($linea->estado) ?></td>
         </tr>
+
     </table>
     <?php if (!empty($linea->rentas)): ?>
         <div class="related">

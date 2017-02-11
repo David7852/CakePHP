@@ -376,13 +376,7 @@ class UsuariosController extends AppController
     }
 
     public function correo($to,$subject,$content){
-        /*Para este ejemplo no necesito de renderizar
-          una vista por lo que autorender lo pongo a false
-         */
-        //$this->autoRender = false;
-        /*configuramos las opciones para conectarnos al servidor
-          smtp de Gmail
-         */
+        $this->autoRender = false;
         Email::configTransport('mail', [
             'host' => 'ssl://smtp.gmail.com', //servidor smtp con encriptacion ssl
             'port' => 465, //puerto de conexion

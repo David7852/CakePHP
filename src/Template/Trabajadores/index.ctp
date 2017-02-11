@@ -26,10 +26,11 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('nombre') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('cedula') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('gerencia') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('cargo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('sede') ?></th>                
+                <th scope="col"><?= $this->Paginator->sort('area') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('sede') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('extension') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
         </thead>
@@ -37,9 +38,9 @@
             <?php foreach ($trabajadores as $trabajador): ?>
             <tr>
                 <td><?= h($trabajador->nombre).' '.$trabajador->apellido ?></td>
-                <td><?= h($trabajador->cedula) ?></td>                
                 <td><?=$this->Text->autoParagraph(h($trabajador->gerencia))?></td>
-                <td><?=$this->Text->autoParagraph(h($trabajador->cargo))?></td>
+                <td><?=$this->Text->autoParagraph(h($trabajador->cargofix))?></td>
+                <td><?=$this->Text->autoParagraph(h($trabajador->area))?></td>
                 <td>
                 <?php if ($trabajador->sede==0): ?>
                 <?= h('Sede del complejo Jose') ?>
@@ -47,6 +48,7 @@
                 <?= h('Sede edificio Laguna') ?>
                 <?php endif; ?>
                 </td>
+                <td><?=$this->Text->autoParagraph(h($trabajador->extension))?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $trabajador->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $trabajador->id]) ?>

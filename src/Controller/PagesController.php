@@ -28,7 +28,6 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
-
     /**
      * Displays a view
      *
@@ -61,7 +60,11 @@ class PagesController extends AppController
             elseif (array_key_exists('artbyusebtn',$this->request->data)&&$this->request->data['artbyuse'] != null && $this->request->data['artbyuse'] != ' ')
                 return $this->redirect(['controller' => 'Articulos', 'action' => 'inventario', '2'.$this->request->data['artbyuse']]);
             elseif (array_key_exists('nombrebtn',$this->request->data)&&$this->request->data['nombre'] != null && $this->request->data['nombre'] != ' ')
-                return $this->redirect(['controller' => 'Trabajadores', 'action' => 'index', $this->request->data['nombre']]);
+                return $this->redirect(['controller' => 'Trabajadores', 'action' => 'busqueda', '0'.$this->request->data['nombre']]);
+            elseif (array_key_exists('numerobtn',$this->request->data)&&$this->request->data['numero'] != null && $this->request->data['numero'] != ' ')
+                return $this->redirect(['controller' => 'Trabajadores', 'action' => 'busqueda', '1'.$this->request->data['numero']]);
+            elseif (array_key_exists('gerbtn',$this->request->data)&&$this->request->data['gerencia'] != null && $this->request->data['gerencia'] != ' ')
+                return $this->redirect(['controller' => 'Trabajadores', 'action' => 'busqueda', '2'.$this->request->data['gerencia']]);
         }
         try {
             if(!$this->request->session()->read('Auth.User')&&$page!='home'){

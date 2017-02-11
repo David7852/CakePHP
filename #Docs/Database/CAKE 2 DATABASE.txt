@@ -52,6 +52,7 @@ create table if not exists trabajadores (
   sede smallint default 0,
   puesto_de_trabajo varchar(50),
   telefono_personal varchar(20),
+  extension varchar(20),
   rif varchar(15),
   residencia varchar(200),
   created datetime default null,

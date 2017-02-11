@@ -31,8 +31,21 @@
                 <li class="first">
                     <a href="<?=Router::url(array('controller' => 'Lineas', 'action' => 'index',$this->request->session()->read('Auth.User.trabajador_id')))?>" style="color:#1c2529; background-color: #c9e2b3">Mis lineas</a>
                 </li>
+                <li class="superlabel first">
+                    <div style=" background-color: #548b54">
+                        <h5>Buscar numeros<br>del Trabajador:</h5>
+                        <div >
+                            <?= $this->Form->input('numero',['label'=>'','style'=>'color: #548b54']) ?>
+                            <button type='submit' style="color: #548b54" name="numerobtn">
+                                <svg  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 15l-6 6-1.42-1.42L15.17 16H4V4h2v10h9.17l-3.59-3.58L13 9l6 6z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </li>
                 <li>
-                    <a href="<?=Router::url(array('controller' => 'Articulos', 'action' => 'inventario','Celular'))?>"style="color:#1c2529; background-color: burlywood">Mis celulares</a>
+                    <a href="<?=Router::url(array('controller' => 'Articulos', 'action' => 'inventario','Celular'))?>"style="color:#1c2529; background-color: #b8c887">Mis celulares</a>
                 </li>
             <?php endif; ?>
             </ul>
@@ -44,6 +57,19 @@
                 <ul>
                     <li class="first">
                         <a href="<?=Router::url(array('controller' => 'Rentas', 'action' => 'index'))?>" style="color:#1c2529; background-color: lightgreen ">Ver Planes</a>
+                    </li>
+                    <li class="superlabel first">
+                        <div style=" background-color: #548b54">
+                            <h5>Buscar numeros<br>del Trabajador:</h5>
+                            <div >
+                                <?= $this->Form->input('numero',['label'=>'','style'=>'color: #548b54']) ?>
+                                <button type='submit' style="color: #548b54" name="numerobtn">
+                                    <svg  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19 15l-6 6-1.42-1.42L15.17 16H4V4h2v10h9.17l-3.59-3.58L13 9l6 6z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
                     </li>
                     <li>
                         <a href="<?=Router::url(array('controller' => 'Servicios', 'action' => 'index'))?>" style="color:white; background-color: seagreen">Ver Servicios</a>

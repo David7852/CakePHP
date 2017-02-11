@@ -58,6 +58,7 @@
                         '1' => 'Sede edificio Laguna'];
             echo $this->Form->input('sede', array('options'=>$options,'empty'=>false,'escape'=>false));
             echo $this->Form->input('puesto_de_trabajo');
+            echo $this->Form->input('extension');
             echo $this->Form->input('telefono_personal');
             echo $this->Form->input('rif');
             echo $this->Form->input('residencia');

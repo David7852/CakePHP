@@ -143,7 +143,7 @@ use Cake\ORM\TableRegistry;?>
                 <td><?= h($trabajadores->nombre.' '.$trabajadores->apellido) ?></td>
                 <td><?= h($trabajadores->cedula) ?></td>
                 <td><?= h($trabajadores->gerencia) ?></td>
-                <td><?= h($trabajadores->cargo) ?></td>
+                <td><?= h($trabajadores->cargofix) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Trabajadores', 'action' => 'view', $trabajadores->id]) ?>
                 </td>

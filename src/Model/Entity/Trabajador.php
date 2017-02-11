@@ -17,6 +17,7 @@ use Cake\ORM\TableRegistry;
  * @property string $area
  * @property int $sede
  * @property string $puesto_de_trabajo
+ * @property string $extension
  * @property string $telefono_personal
  * @property string $rif
  * @property string $residencia
@@ -37,6 +38,17 @@ class Trabajador extends Entity
     {
         return trim($value);
     }
+    protected function _getLineano()
+    {
+        $lineas=TableRegistry::get('Lineas')->find('all')->where(['estado ='=>'Activa']);
+        foreach ($lineas as $linea)
+        {
+            if($linea->propietarioid==$this->_properties['id'])
+                return $linea->numero;
+        }
+        return 'Sin asignar';
+    }
+
     protected function _setPuesto_de_trabajo($value)
     {
         $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
@@ -122,12 +134,12 @@ class Trabajador extends Entity
     protected function _getPuesto()
     {
         if($this->_properties['area']!='')
-            return $this->_properties['cargo'].' de '.$this->_properties['area'];
-        return $this->_properties['cargo'];
+            return $this->_getCargofix().' de '.$this->_properties['area'];
+        return $this->_getCargofix();
     }
     protected function _getCargogerencial()
     {
-        return $this->_properties['cargo'].' de '.$this->_properties['gerencia'];
+        return $this->_getCargofix().' de '.$this->_properties['gerencia'];
     }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
