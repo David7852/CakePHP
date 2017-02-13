@@ -10,7 +10,7 @@
             )
             ?></li>
         <li><?= $this->Html->link(__('Lineas'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Celulares'), ['controller' => 'Articulos', 'action' => 'inventario','Celular']) ?></li>
+        <li><?= $this->Html->link(__('Celulares'), ['controller' => 'Articulos', 'action' => 'inventario','0Celular']) ?></li>
         <li><?= $this->Html->link(__('Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Agregar Renta'), ['controller' => 'Rentas', 'action' => 'add'], ['class'=>'viewLink']) ?></li>
         <!-- $ -->

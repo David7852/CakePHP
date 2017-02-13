@@ -24,13 +24,13 @@
     <fieldset>
         <legend><?= __('Editando Factura ').h($factura->titulo) ?></legend>
         <?php
-            echo $this->Form->input('titulo');
             echo $this->Form->input('linea_id', ['options' => $lineas]);
-            echo $this->Form->input('paguese_antes_de', ['empty' => true]);
+            echo $this->Form->input('numero_de_cuenta');
             echo $this->Form->input('balance');
             echo $this->Form->input('desde',['minYear'=>1998,'maxYear'=>date("Y")]);
             echo $this->Form->input('hasta',['minYear'=>1998,'maxYear'=>2030]);
-            echo $this->Form->input('numero_de_cuenta');
+            echo $this->Form->input('paguese_antes_de', ['empty' => true]);
+
         ?>
     </fieldset>
     <?= $this->Form->button(__('Aceptar')) ?>

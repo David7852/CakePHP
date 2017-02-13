@@ -45,7 +45,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="<?=Router::url(array('controller' => 'Articulos', 'action' => 'inventario','Celular'))?>"style="color:#1c2529; background-color: #b8c887">Mis celulares</a>
+                    <a href="<?=Router::url(array('controller' => 'Articulos', 'action' => 'inventario','0Celular'))?>"style="color:#1c2529; background-color: #b8c887">Mis celulares</a>
                 </li>
             <?php endif; ?>
             </ul>
@@ -84,7 +84,7 @@
 
                     <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
                     <li class="first">
-                        <a href="<?=Router::url(array('controller' => 'Consumos', 'action' => 'index'))?>" style="color:white; background-color: #4c5124">Listar</a>
+                        <a href="<?=Router::url(array('controller' => 'Consumos', 'action' => 'index'))?>" style="color:white; background-color: #646928">Listar</a>
                     </li>
                     <li>
                         <a href="<?=Router::url(array('controller' => 'Consumos', 'action' => 'add'))?>" style="color:white; background-color: #788b46">Agregar</a>
@@ -103,10 +103,13 @@
             <ul>
 
                 <li class="first">
-                    <a href="<?=Router::url(array('controller' => 'Facturas', 'action' => 'index'))?>"style="color:white; background-color: #7b6e51">Listar</a>
+                    <a href="<?=Router::url(array('controller' => 'Facturas', 'action' => 'index'))?>"style="color:white; background-color: #6e7d51">Listar Todas</a>
                 </li>
                 <li>
-                    <a href="<?=Router::url(array('controller' => 'Facturas', 'action' => 'add'))?>"style="color:white; background-color: #855a28">Agregar</a>
+                    <a href="<?=Router::url(array('controller' => 'Facturas', 'action' => 'index',date("Y-m").'-1'))?>"style="color:white; background-color: #7b6e51">Facturas del mes</a>
+                </li>
+                <li class="first">
+                    <a href="<?=Router::url(array('controller' => 'Facturas', 'action' => 'add'))?>"style="color:white; background-color: #78673b">Agregar</a>
                 </li>
 
             </ul>

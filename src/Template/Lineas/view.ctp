@@ -5,11 +5,11 @@
         <!-- $ -->
         <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
             <li><?= $this->Html->link(__('Mis Lineas'), ['action' => 'index',$this->request->session()->read('Auth.User.trabajador_id')]) ?></li>
-            <li><?= $this->Html->link(__('Mis Celulares'), ['controller' => 'Articulos', 'action' => 'inventario','Celular']) ?></li>
+            <li><?= $this->Html->link(__('Mis Celulares'), ['controller' => 'Articulos', 'action' => 'inventario','0Celular']) ?></li>
         <?php else: ?>
-            <li><?= $this->Html->link(__('Dar Consumo'), ['controller'=> 'Consumos', 'action' => 'add',$linea->id]) ?></li>
+            <li><?= $this->Html->link(__('Dar Consumo'), ['controller'=> 'Consumos', 'action' => 'add',$linea->id],['style'=>'color:#D7782E']) ?></li>
             <li><?= $this->Html->link(__('Lineas'), ['action' => 'index']) ?></li>
-            <li><?= $this->Html->link(__('Celulares'), ['controller' => 'Articulos', 'action' => 'inventario','Celular']) ?></li>
+            <li><?= $this->Html->link(__('Celulares'), ['controller' => 'Articulos', 'action' => 'inventario','0Celular']) ?></li>
             <li><?= $this->Html->link(__('Facturas'), ['controller' => 'Facturas', 'action' => 'index']) ?></li>
             <li><?= $this->Html->link(__('Rentas'), ['controller' => 'Rentas', 'action' => 'index']) ?></li>
         <?php endif; ?>

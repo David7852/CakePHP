@@ -73,6 +73,11 @@ class ConsumosTable extends Table
             ->requirePresence('monto_bs', 'create')
             ->notEmpty('monto_bs');
 
+        $validator
+            ->numeric('monto_bs')
+            ->requirePresence('monto_bs', 'create')
+            ->notEmpty('monto_bs');
+
         return $validator;
     }
 

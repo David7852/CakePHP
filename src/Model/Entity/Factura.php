@@ -32,6 +32,19 @@ class Factura extends Entity
         return h($related->linea->numero.' ('.$this->_properties['desde'].')');
     }
 
+    protected function _getBalance()
+    {
+        $b=0;
+        $c = new FacturasController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return 0;
+        foreach ($related->consumos as $consumo)
+        {
+            $b=$b+$consumo->monto_bs;
+        }
+        return $b;
+    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

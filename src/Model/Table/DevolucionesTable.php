@@ -63,9 +63,6 @@ class DevolucionesTable extends Table
             ->integer('id')
             ->allowEmpty('id', 'create');
 
-        $validator
-            ->allowEmpty('titulo');
-
         return $validator;
     }
 

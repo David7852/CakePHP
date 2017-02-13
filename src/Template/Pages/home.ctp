@@ -40,11 +40,11 @@ $cakeDescription = 'WIT';
 <body class="home">
     <header>
         <div class="header-image">
-            <img  src="/WIT/webroot/img/gem wit.png" alt="WiT" >
+            <img  src="/WIT/webroot/img/gem wit.png" alt="WIT" >
             <h1></h1>
         </div>
     </header>
-    <div id="content">
+    <div id="content" class="home-bg">
         <div class="row">
             <div class="columns large-12 ctp-warning checks">
                 ¡Bienvenidos A WIT: El Sistema Web Para El Control Del Inventario Y La Telefonía Móvil de FertiNitro C.E.C.!
@@ -72,16 +72,16 @@ $cakeDescription = 'WIT';
             </div>
             <div class="columns large-12 checks">
                 <h4 style="text-transform: capitalize">unete y participa</h4>
-                <p><?= $savoire->gettrbdata() ?></p>
+                <div><?= $savoire->gettrbdata() ?></div>
                 <hr>
                 <h4 style="text-transform: capitalize">Estamos a su disposición</h4>
-                <p><?= $savoire->getinvdata() ?></p>
+                <div><?= $savoire->getinvdata() ?></div>
                 <hr>
                 <h4 style="text-transform: capitalize">Manténte en contacto</h4>
-                <p><?= $savoire->gettlfdata() ?></p>
+                <div><?= $savoire->gettlfdata() ?></div>
                 <hr>
                 <h4 style="text-transform: capitalize">Apreciamos sus aportes e ideas</h4>
-                <p><?= $savoire->getcontactinfo() ?></p>
+                <div><?= $savoire->getcontactinfo() ?></div>
             </div>
         </div>
 
@@ -94,8 +94,8 @@ $cakeDescription = 'WIT';
                 <h3>Vision</h3>
                 <p>La visión de <dfn style="color: rgb(56,118,29); font-style: normal ; font-weight: bold">Ferti</dfn><dfn style="color: rgb(137,180,43); font-style: normal ; font-weight: bold">Nitro</dfn> es ser reconocida a nivel nacional e internacional como la empresa más confiable y rentable en producción y comercialización de urea y amoníaco de alta calidad.</p>
             </div>
-        </div>
-        <hr style="border-color: rgba(195, 35, 45, 0.72); border-width: 2px">
+        </div><div>
+        <hr style="border-color: rgba(195, 35, 45, 0.92); border-width: 2px"></div>
         <br>
         <br>
     </div>

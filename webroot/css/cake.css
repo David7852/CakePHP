@@ -380,6 +380,11 @@ pre {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
+    mix-blend-mode: normal;
+    transition: all 2s linear;
+}
+.home header .header-image:hover {
+    transform: scale(1.01);
 }
 .home header {
      width: 100%;
@@ -389,9 +394,10 @@ pre {
  }
 header {
     background-color: #dee9e3;
-    background-image: url(../img/topBarTexture.png);
+    background-image: url(../img/banner.png),url(../img/topBarTexture.png), url(../img/sideBarTexture.png);
+    background-size: cover,auto;
     box-shadow: 0 3px 7px 0 rgba(90,118,100,0.15), 0 4px 11px 0 rgba(80,110,87, 0.2);
-    background-repeat: repeat;
+    background-repeat: no-repeat,repeat,repeat;
     color: #ffffff;
     font-size: 30px;
     height: auto;
@@ -430,15 +436,17 @@ header .header-title {
 }
 
 .checks {
+    background-position-y: 33rem;
+    background-position-x: 46rem;
     padding: 30px;
-    color:white; background-color: darkgray;
+    color: white;
+    background-color: darkgray;
     border-radius: 3px;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.24);
-    background-image: url(../img/sideBarTexture.png);
-    background-repeat: repeat;
+    background-image: url(../img/valves.png),url(../img/sideBarTexture.png);
+    background-repeat: no-repeat,repeat;
     margin-bottom: 2em;
 }
-
 .checks h4 {
     margin-bottom: 1.5rem;
     font-size: xx-large;
@@ -447,7 +455,6 @@ header .header-title {
     font-family: raleway,poiret, Roboto, Century gothic, Segoe ui, sans-serif;
     text-shadow: 0 0 3px rgba(34,122,90,0.25);
 }
-
 .checks hr {
     border: 0;
     height: 0;
@@ -456,10 +463,12 @@ header .header-title {
 }
 
 .home .checks.ctp-warning {
-    color:#1c2529;
+    color: #1c2529;
     background-color: #c9e2b3;
-    background-image: url(../img/sideBarTexture.png);
-    background-repeat: repeat;
+    background-image: url(../img/fertinitrobg.png) ,url(../img/sideBarTexture.png);
+    background-repeat: no-repeat,repeat;
+    background-position: inherit;
+    background-size: contain;
     text-align: center;
     font-weight: 600;
     text-shadow: 0 0 1px rgba(255,255,255,0.3);
@@ -1411,6 +1420,11 @@ div.message.hidden {
 }
 
 @media only screen and (max-width: 64.0625em){
+    .home-bg {
+        background-image: none !important;
+        background-repeat: repeat;
+    }
+
     .imagedisplay figure img{
         margin: auto;
         float: none;
@@ -1753,6 +1767,15 @@ div .slice ul li div div div input:hover
     border-color: transparent;
     background-image: url(../img/sideBarTexture.png);
     background-repeat: repeat;
+}
+
+.home-bg{
+    background-image: url(../img/grass.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-y: 95%;
+    background-position-x: 9%;
+    background-size: contain;
 }
 @font-face {
     font-family: 'raleway';

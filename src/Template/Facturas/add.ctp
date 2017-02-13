@@ -20,11 +20,12 @@
         <legend><?= __('Nueva Factura') ?></legend>
         <?php
             echo $this->Form->input('linea_id', ['options' => $lineas]);
-            echo $this->Form->input('paguese_antes_de', ['empty' => true]);
-            echo $this->Form->input('desde',['minYear'=>1998,'maxYear'=>date("Y")]);
-            echo $this->Form->input('hasta',['minYear'=>1998,'maxYear'=>2030]);
             echo $this->Form->input('balance');
             echo $this->Form->input('numero_de_cuenta');
+            echo $this->Form->input('desde',['minYear'=>date("Y", strtotime("-1 Year")),'maxYear'=>date("Y", strtotime("+1 Year"))]);
+            echo $this->Form->input('hasta',['minYear'=>date("Y"),'maxYear'=>date("Y", strtotime("+1 Year")),'value'=>date("Y-m-d", strtotime("+1 Months"))]);
+            echo $this->Form->input('paguese_antes_de', ['empty' => true,'value'=>date("Y-m-d", strtotime("+1 Months +15 days"))]);
+
         ?>
     </fieldset>
     <?= $this->Form->button(__('Aceptar')) ?>

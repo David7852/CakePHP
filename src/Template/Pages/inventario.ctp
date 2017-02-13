@@ -90,11 +90,11 @@
                     </li>
                 <?php else: ?>
                     <li class="superlabel first">
-                        <div style=" background-color: #da7b2e">
+                        <div style=" background-color: #cc882e">
                             <h5>Buscar artículos<br>del tipo:</h5>
                             <div >
-                                <?= $this->Form->input('tipo',['label'=>'','style'=>'color: #cd6e2e']) ?>
-                                <button type='submit' style="color: #da7b2e" name="tipobtn">
+                                <?= $this->Form->input('tipo',['label'=>'','style'=>'color: #b97a2c']) ?>
+                                <button type='submit' style="color: #cc882e" name="tipobtn">
                                     <svg  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M19 15l-6 6-1.42-1.42L15.17 16H4V4h2v10h9.17l-3.59-3.58L13 9l6 6z"/>
                                     </svg>

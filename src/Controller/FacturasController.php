@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Facturas Controller
@@ -24,7 +25,7 @@ class FacturasController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
+    public function index($date = null)
     {
         if($this->request->session()->read('Auth.User.funcion')=='Visitante'||$this->request->session()->read('Auth.User.funcion')=='Operador') {
             $this->Flash->error(__('Usted no tiene permiso para acceder a la pagina solicitada.'));
@@ -33,9 +34,22 @@ class FacturasController extends AppController
         $this->paginate = [
             'contain' => ['Lineas']
         ];
-        $facturas = $this->paginate($this->Facturas);
-
-        $this->set(compact('facturas'));
+        $balance=0;
+        if($date!=null)
+        {
+            $tempDate = explode('-', $date);
+            if(sizeof($tempDate)<=2||!checkdate($tempDate[1], $tempDate[2], $tempDate[0])){
+                $this->Flash->error(__('El rango de fechas es incorrecto.'));
+                return $this->redirect($this->referer());
+            }
+            $facturas = $this->paginate($this->Facturas->find('all')->where(['desde >='=>$date]));
+            foreach ($this->Facturas->find('all') as $facts)
+                $balance=$balance+$facts->balance;
+        }else{
+            $facturas = $this->paginate($this->Facturas);
+            $balance=null;
+        }
+        $this->set(compact('facturas','balance'));
         $this->set('_serialize', ['facturas']);
     }
 
@@ -78,7 +92,7 @@ class FacturasController extends AppController
             if ($this->Facturas->save($factura)) {
                 $this->Flash->success(__('La factura ha sido registrada.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view',$factura->id]);
             } else {
                 $this->Flash->error(__('La factura no ha podido ser registrada. Intente nuevamente.'));
             }
