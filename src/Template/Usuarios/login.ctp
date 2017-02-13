@@ -1,7 +1,11 @@
 <?php use Cake\Routing\Router;?>
 <?=$this->assign('title',"Sistema de inventario")?>
 <div class="large-4 medium-6 columns" id="actions-sidebar">
-    <fieldset style="padding-top: 0;padding-right: 15px; padding-left: 15px">
+    <fieldset style="    padding-bottom: 0;
+    padding-top: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+    height: 30rem;">
         <h1 class="delicate-text" >¡Bienvenido!<div class="gradient-line" style="height: 1px"></div></h1><br>
     <?= $this->Form->create() ?>
     <?= $this->Form->input('nombre_de_usuario') ?>
@@ -12,7 +16,5 @@
     <?= $this->Form->end() ?>
     </fieldset>
 </div>
-<div class="usuarios form large-8 medium-8 columns content" style="background-image: url(../webroot/img/tubes.png);
-    background-size: contain;
-    background-repeat: no-repeat;    z-index: -1;">
+<div class="usuarios form large-8 medium-8 columns content" style="background-image: url(../webroot/img/tubes.png); background-size: contain;    background-repeat: no-repeat;    z-index: -1;    position: fixed;    width: 100%;">
 </div>

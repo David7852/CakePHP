@@ -610,15 +610,20 @@ table tbody::before{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0A644B', endColorstr='#ffffff', GradientType=0 );
 }
 footer table tbody::before{
-    margin-left:0rem;
+     margin-left:0rem;
+     display: none;
 }
-footer div a{
+footer table.fertinitro tbody::before{
+    margin-left:0rem;
+    display: block;
+}
+footer a{
     opacity: 0.88;
     transition: opacity .75s linear;
 }
-footer div a:hover{
+footer  a:hover{
     opacity: 1;
-    transition: opacity 0.55s linear;
+    transition: opacity 0.55s linear!important;
 }
 .vertical-table tbody::before{
     content:"";

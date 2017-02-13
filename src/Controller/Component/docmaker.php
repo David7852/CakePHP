@@ -355,22 +355,14 @@ class docmaker {
         );
         $paragraphStyleName = 'P-Style';
         $phpWord->addParagraphStyle($paragraphStyleName, array('spaceAfter' => 5));
-        $text->addTextRun(array('spaceAfter' => 0,'size' => 1))->addText('El solicitante declara:',array('valign' => 'left'));
-        $text->addListItem('Que ha recibido de FERTINITRO, en calidad de préstamo y  por tiempo determinado, los equipos arriba descritos de su propiedad, en el entendido que los mismos serán utilizados en asuntos de trabajo relacionado con labores de la Empresa.',
+        $text->addTextRun(array('spaceAfter' => 0,'size' => 1))->addText(' El Usuario declara:',array('valign' => 'left'));
+        $text->addListItem('El equipo (s) solo deberá ser recibido por el departamento de I.T de FERTINITRO, equipo que anteriormente  fue asignado en calidad de préstamo y  por tiempo determinado, serán recibido de acuerdo a las especificaciones  descritas  en el espacio de observación.',
             0,array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
-        $text->addListItem('Conocer que conforme a lo dispuesto en el artículo 102 de la Ley Orgánica del trabajo literal G, constituyen causal justificada de despido: el perjuicio material causado intencionalmente o con negligencia grave en las máquinas, herramientas y útiles de trabajo y mobiliario de la empresa.',
+        $text->addListItem('Todos los accesorios recibidos en el momento de la asignación de los equipos deberán ser devueltos junto con el equipo asignado.',
             0, array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
-        $text->addListItem('Conocer las normas de Protección de Activos de Información (PAI).',
+        $text->addListItem('En caso de que se demuestre que el usuario del equipo asignado es responsable por cualquier daño, robo o pérdida de los equipos, causado o derivado por hechos o actuaciones intencionales o por negligencia, este se comprometerá a restituirlo, pagando el costo total de dicho equipo.',
             0, array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
-        $text->addListItem('Ser responsable por cualquier daño, robo o pérdida de los equipos causado o derivado de hechos o actuaciones intencionales o con negligencia y se compromete a restituirlo, pagando su costo de reposición.',
-            0, array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
-        $text->addListItem('Que en caso de daño, robo o perdida de los equipos hará un Reporte de Pérdida de Propiedad (RPP) de los equipos y lo presentará a Prevención y Control de Pérdida (PCP) el primer día hábil siguiente. En caso de robo o pérdida deberá anexar la denuncia realizada en la Cuerpo de Investigaciones Científicas, Penales y criminalistas (CICPC).',
-            0, array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
-        $text->addListItem('Que está autorizado a sacar del edificio los equipos portátiles que tengan el debido  carnet de identificación. Queda terminantemente prohibido que los equipos pertenecientes a la Empresa, se intercambien o presten a terceros.',
-            0, array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
-        $text->addListItem('Que está consciente que los equipos forman parte de la infraestructura de tecnología de información de FERTINITRO y se compromete a salvaguardarlos con la debida diligencia. Se compromete a devolver  los equipos en las mismas condiciones operativas en las cuales les fueron entregados.',
-            0, array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
-        $text->addListItem('Que no hará reproducción parcial o total del "software" existente en los equipos suministrados, ni instalará "software" adicional en el mismo, dando cumplimiento a lo establecido en la Norma PAI.',
+        $text->addListItem('El equipo solo podrá ser devuelto por la persona a la cual se le hizo la asignación del mismo ya que deberá firmar la constancia de la devolución del equipos.',
             0, array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
         $cell = $table->addRow()->addCell(11000, array('cellMargin' => 80,'gridSpan' => 7,'vMerge' => 'restart','bgColor' => 'ffffff'));
         $innert0 = $cell->addTable(array('alignment' => JcTable::CENTER));
@@ -380,7 +372,7 @@ class docmaker {
         $innercell02 =$innerrow0->addCell(4000, array('cellMargin' => 80,'bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceBefore'=>20,'spaceAfter' => 0,'size' => 1,'lineHeight'=>1.5));
         $innercell02->addText('SOPORTE Y ATENCIÓN A USUARIOS',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
         $innercell03 =$innerrow0->addCell(3500, array('cellMargin' => 80,'bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceBefore'=>20,'spaceAfter' => 3,'size' => 16,'lineHeight'=>1.5));
-        $innercell03->addText('SOLICITANTE:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+        $innercell03->addText('ENTREGADO POR:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
         $innert1  = $cell->addTable(array('alignment' => JcTable::CENTER));
         $innerrow1=$innert1->addRow();
         $innercell11 =$innerrow1->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceAfter' => 2,'size' => 8,'lineHeight'=>1.5));
@@ -414,7 +406,7 @@ class docmaker {
         $innercell33=$innerrow3->addCell(3500, array('bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('spaceAfter' => 2,'size' => 8,'lineHeight'=>1));
         $innercell33->addText('Firma: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left','lineHeight'=>1));
         $innercell33->addText('_______________',array('name' => 'Arial', 'size'=>8, 'valign' => 'left','lineHeight'=>1));
-        $section->addTextRun(array('spaceAfter' => 2,'size' => 16,'lineHeight'=>1.5,'alignment' => JcTable::END))->addText('REV-001-IT01-CA',array('name' => 'Arial','valign' => 'right'));
+        $section->addTextRun(array('spaceAfter' => 2,'size' => 16,'lineHeight'=>1.5,'alignment' => JcTable::END))->addText('REV-001-IT02-CA',array('name' => 'Arial','valign' => 'right'));
         $name='plantilla de '.$proceso->titulo;
         $no='__'.random_int(0,188);
         $file=$name.$no.'.docx';
@@ -745,22 +737,14 @@ class docmaker {
         );
         $paragraphStyleName = 'P-Style';
         $phpWord->addParagraphStyle($paragraphStyleName, array('spaceAfter' => 5));
-        $text->addTextRun(array('spaceAfter' => 0,'size' => 1))->addText('El solicitante declara:',array('valign' => 'left'));
-        $text->addListItem('Que ha recibido de FERTINITRO, en calidad de préstamo y  por tiempo determinado, los equipos arriba descritos de su propiedad, en el entendido que los mismos serán utilizados en asuntos de trabajo relacionado con labores de la Empresa.',
+        $text->addTextRun(array('spaceAfter' => 0,'size' => 1))->addText(' El Usuario declara:',array('valign' => 'left'));
+        $text->addListItem('El equipo (s) solo deberá ser recibido por el departamento de I.T de FERTINITRO, equipo que anteriormente  fue asignado en calidad de préstamo y  por tiempo determinado, serán recibido de acuerdo a las especificaciones  descritas  en el espacio de observación.',
             0,array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
-        $text->addListItem('Conocer que conforme a lo dispuesto en el artículo 102 de la Ley Orgánica del trabajo literal G, constituyen causal justificada de despido: el perjuicio material causado intencionalmente o con negligencia grave en las máquinas, herramientas y útiles de trabajo y mobiliario de la empresa.',
+        $text->addListItem('Todos los accesorios recibidos en el momento de la asignación de los equipos deberán ser devueltos junto con el equipo asignado.',
             0, array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
-        $text->addListItem('Conocer las normas de Protección de Activos de Información (PAI).',
+        $text->addListItem('En caso de que se demuestre que el usuario del equipo asignado es responsable por cualquier daño, robo o pérdida de los equipos, causado o derivado por hechos o actuaciones intencionales o por negligencia, este se comprometerá a restituirlo, pagando el costo total de dicho equipo.',
             0, array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
-        $text->addListItem('Ser responsable por cualquier daño, robo o pérdida de los equipos causado o derivado de hechos o actuaciones intencionales o con negligencia y se compromete a restituirlo, pagando su costo de reposición.',
-            0, array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
-        $text->addListItem('Que en caso de daño, robo o perdida de los equipos hará un Reporte de Pérdida de Propiedad (RPP) de los equipos y lo presentará a Prevención y Control de Pérdida (PCP) el primer día hábil siguiente. En caso de robo o pérdida deberá anexar la denuncia realizada en la Cuerpo de Investigaciones Científicas, Penales y criminalistas (CICPC).',
-            0, array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
-        $text->addListItem('Que está autorizado a sacar del edificio los equipos portátiles que tengan el debido  carnet de identificación. Queda terminantemente prohibido que los equipos pertenecientes a la Empresa, se intercambien o presten a terceros.',
-            0, array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
-        $text->addListItem('Que está consciente que los equipos forman parte de la infraestructura de tecnología de información de FERTINITRO y se compromete a salvaguardarlos con la debida diligencia. Se compromete a devolver  los equipos en las mismas condiciones operativas en las cuales les fueron entregados.',
-            0, array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
-        $text->addListItem('Que no hará reproducción parcial o total del "software" existente en los equipos suministrados, ni instalará "software" adicional en el mismo, dando cumplimiento a lo establecido en la Norma PAI.',
+       $text->addListItem('El equipo solo podrá ser devuelto por la persona a la cual se le hizo la asignación del mismo ya que deberá firmar la constancia de la devolución del equipos.',
             0, array('spaceAfter' => 0,'name' => 'Arial', 'size'=>8, 'valign' => 'left'), $multilevelNumberingStyleName, $paragraphStyleName);
         $cell = $table->addRow()->addCell(11000, array('cellMargin' => 80,'gridSpan' => 7,'vMerge' => 'restart','bgColor' => 'ffffff'));
         $innert0 = $cell->addTable(array('alignment' => JcTable::CENTER));
@@ -770,7 +754,7 @@ class docmaker {
         $innercell02 =$innerrow0->addCell(4000, array('cellMargin' => 80,'bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceBefore'=>20,'spaceAfter' => 0,'size' => 1,'lineHeight'=>1.5));
         $innercell02->addText('SOPORTE Y ATENCIÓN A USUARIOS',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
         $innercell03 =$innerrow0->addCell(3500, array('cellMargin' => 80,'bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('alignment' => Jc::CENTER,'spaceBefore'=>20,'spaceAfter' => 3,'size' => 16,'lineHeight'=>1.5));
-        $innercell03->addText('SOLICITANTE:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+        $innercell03->addText('ENTREGADO POR:',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
         $innert1  = $cell->addTable(array('alignment' => JcTable::CENTER));
         $innerrow1=$innert1->addRow();
         $innercell11 =$innerrow1->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceAfter' => 2,'size' => 8,'lineHeight'=>1.5));
@@ -804,7 +788,7 @@ class docmaker {
         $innercell33=$innerrow3->addCell(3500, array('bgColor' => 'ffffff','borderLeftSize'=>3))->addTextRun(array('spaceAfter' => 2,'size' => 8,'lineHeight'=>1));
         $innercell33->addText('Firma: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left','lineHeight'=>1));
         $innercell33->addText('_______________',array('name' => 'Arial', 'size'=>8, 'valign' => 'left','lineHeight'=>1));
-        $section->addTextRun(array('spaceAfter' => 2,'size' => 16,'lineHeight'=>1.5,'alignment' => JcTable::END))->addText('REV-001-IT01-CA',array('name' => 'Arial','valign' => 'right'));
+        $section->addTextRun(array('spaceAfter' => 2,'size' => 16,'lineHeight'=>1.5,'alignment' => JcTable::END))->addText('REV-001-IT02-CA',array('name' => 'Arial','valign' => 'right'));
         $name='plantilla doble de '.$proceso->solicitante;
         $no='__'.random_int(0,188);
         $file=$name.$no.'.docx';

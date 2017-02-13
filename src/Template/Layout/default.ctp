@@ -91,17 +91,29 @@ $cakeDescription = 'WIT ';
             </button>
         </a>
     <?php endif; ?>
-        <footer >
-            <div style="vertical-align: middle">
-                <a href="http://www.pequiven.com" class="title-area large-2 medium-3 columns" style="color:red; margin: auto; padding: 1.65rem 0.75rem 0.75rem 2.75rem;"><img src="/WIT/webroot/img/logopqv.png" alt="Pequiven"></a>
-                <a href="//10.10.0.74/fertinitro" class="title-area large-2 medium-3 columns right" style="color:#006600;margin: auto;padding: 1.65rem 0.75rem 0.75rem 0.75rem;"><img src="/WIT/webroot/img/fertinitro.png" alt="FertiNitro"></a>
-                <table width="100%" style="margin-bottom: 0.5rem">
+    <?= $this->request->action=='login'? '<footer style="margin-top: 0!important;">':'<footer>' ?>
+            <div style="vertical-align: middle;background-color: #fbfbfb; background-image: url(../img/bodyTexture.png);">
+                <table class="fertinitro" style="margin-bottom: .25rem">
                     <tbody>
-                        <tr style="border-bottom: none">
-                            <td valign="top" style="text-align: left; padding: 0 0 0 2rem">
-                                <img src="/WIT/webroot/img/cintillo izquierda.png" width="316" height="49">
+                    <tr >
+                        <td valign="top" style="text-align: left; padding: 0 0 0 2rem;overflow: visible">
+                            <a href="http://www.pequiven.com" class="title-area large-2 medium-3 columns" style="color:red; margin: auto;     padding: 1.65rem 0.75rem 0.75rem 0.75rem;"><img src="/WIT/webroot/img/logopqv.png" alt="Pequiven"></a>
+                        </td>
+                        <td valign="top" align="right" style="text-align: right; padding: 0 2.5rem 0 0">
+                            <a href="//10.10.0.74/fertinitro" class="title-area large-2 medium-3 columns right" style="color:#006600;margin: auto;padding: 1.65rem 0.75rem 0.75rem 0.75rem;"><img src="/WIT/webroot/img/fertinitro.png" alt="FertiNitro"></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table width="100%" style="    background-color: #fbfbfb;    background-image: url(../img/bodyTexture.png);    margin-bottom: 0;">
+                    <tbody>
+                        <tr style="border-bottom: none;height: auto;max-height: 50px;padding: 0;">
+                            <td style="text-align: left;padding: 0;width: 50%;padding-bottom: 0!important;padding-top: 0!important;max-width: 50%;">
+                                <img style="    width: 100%;    max-width: 330px;    height: auto;max-height: 49px;size: auto;" src="/WIT/webroot/img/cintillo izquierda.png" width="330" height="49">
                             </td>
-                            <td valign="top" align="right" style="text-align: right; padding: 0 2rem 0 0"><img src="/WIT/webroot/img/cintillo derecha.png" width="186" height="49"></td>
+                            <td align="right" style="text-align: right;width: 20%;max-width: 186px;max-height: 50px;height: auto;padding: 0;overflow: hidden;margin-left: 3rem;">
+                                <img style=" width: 100%; max-width: 186px; height: auto; max-height: 49px; SIZE: auto; " src="/WIT/webroot/img/cintillo derecha.png" width="186" height="49">
+                            </td>
                         </tr>
                     </tbody>
                 </table>
