@@ -4,7 +4,7 @@
         <li class="tlf" id="seleccion"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>
         <!-- $ -->
         <li><?= $this->Form->postLink(
-                __('Eliminar ').h($linea->numero),
+                __('Eliminar'),
                 ['action' => 'delete', $linea->id],
                 ['confirm' => __('¿Confirma querer eliminar la linea {0}?', $linea->numero)]
             )

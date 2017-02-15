@@ -41,7 +41,7 @@ class Factura extends Entity
         return $related->linea->numero;
     }
     protected function _getBalance($balance)
-    {
+    {/*
         if($balance!==null){
             if($this->_properties['id']===null||$this->_properties['balance']===null)
                 return 0;
@@ -60,8 +60,27 @@ class Factura extends Entity
             if($consumos!=null)
                 foreach ($consumos as $consumo)
                     $b=$b+$consumo->monto_bs;
-            return $b;
-        }
+            return $b+$this->_properties['cargos_extra'];
+        }*/
+        if($balance==0&&$balance!=null)
+        {
+            if($this->_properties['balance']!=0)
+                return $this->_properties['balance'];
+            $b=0;
+            $c = new FacturasController();
+            $related=$c->getRelated($this->_properties['id']);
+            if($related==null)
+                return 0;
+            $rentas=$related->linea->rentasalt;
+            if($rentas!=null)
+                foreach ($rentas as $renta)
+                    $b=$b+$renta->monto_basico;
+            $consumos=$related->consumos;
+            if($consumos!=null)
+                foreach ($consumos as $consumo)
+                    $b=$b+$consumo->monto_bs;
+            return $b+$this->_properties['cargos_extra'];
+        }return $balance;
     }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

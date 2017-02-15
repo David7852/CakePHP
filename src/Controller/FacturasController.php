@@ -42,10 +42,11 @@ class FacturasController extends AppController
                 $this->Flash->error(__('El rango de fechas es incorrecto.'));
                 return $this->redirect($this->referer());
             }
-            $facturas = $this->Facturas->find('all')->where(['desde >='=>$date]);
-            foreach ($facturas as $facts)
-                $b=$b+$facts->balance;
-            $facturas = $this->paginate($facturas);
+            $facturas = $this->paginate($this->Facturas->find('all')->where(['desde >='=>$date]));
+            $facts=$this->Facturas->find('all')->where(['desde >='=>$date]);
+
+            foreach ($facts as $fact)
+                $b=$b+$fact->balance;
         }else{
             $facturas = $this->paginate($this->Facturas);
             $b=null;
