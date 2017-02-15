@@ -94,16 +94,17 @@ class LineasController extends AppController
                 return $this->redirect($this->referer());
             }
         }
-        $facturas=TableRegistry::get('Facturas')->find('all')->where(['linea_id ='=>$id]);
-        //para limitar el tiempo de valides del consumo, agregar un andwhere con el tiempo en cuestion, posiblemente un mes.
+        $facturas=TableRegistry::get('Facturas')->find('all')->where(['linea_id ='=>$id])->andWhere(['desde >='=>date("Y-m").'-1']);
         $consumos=array();
         foreach ($facturas as $factura) {
             $consumo = TableRegistry::get('Consumos')->find('all')->where(['factura_id =' => $factura->id]);
             foreach ($consumo as $c)
                 array_push($consumos, $c->id);
         }
-        if(!empty($consumos))
+        if(!empty($consumos)){
             $consumos = $this->paginate(TableRegistry::get('Consumos')->find('all',array('conditions'=>array('Consumos.id IN'=>$consumos))));
+
+        }
         $linea = $this->Lineas->get($id, [
             'contain' => ['Articulos', 'Rentas', 'Facturas']
         ]);

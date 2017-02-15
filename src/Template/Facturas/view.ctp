@@ -22,12 +22,18 @@
             <td><?= $factura->has('linea') ? $this->Html->link($factura->linea->numero, ['controller' => 'Lineas', 'action' => 'view', $factura->linea_id]) : '' ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Numero De Cuenta') ?></th>
-            <td><?= h($factura->numero_de_cuenta) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Balance') ?></th>
             <td><?= $this->Number->format($factura->balance).' Bs' ?></td>
+        </tr>
+
+        <tr>
+            <th scope="row"><?= __('IVA') ?></th>
+            <td><?= $this->Number->format($factura->iva).' Bs' ?></td>
+        </tr>
+
+        <tr>
+            <th scope="row"><?= __('Cargos Extra') ?></th>
+            <td><?= $this->Number->format($factura->cargos_extra).' Bs' ?></td>
         </tr>
 
         <tr>
@@ -42,6 +48,10 @@
             <th scope="row"><?= __('Paguese Antes De') ?></th>
             <td><?= h($factura->paguese_antes_de) ?></td>
         </tr>
+        <tr>
+            <th scope="row"><?= __('Numero De Cuenta') ?></th>
+            <td><?= h($factura->numero_de_cuenta) ?></td>
+        </tr>
     </table>
     <?php if (!empty($factura->consumos)): ?>
     <div class="related">
@@ -52,7 +62,7 @@
                 <th scope="col"><?= __('Servicio') ?></th>
                 <th scope="col"><?= __('Consumido') ?></th>
                 <th scope="col"><?= __('Excedente') ?></th>
-                <th scope="col"><?= __('Monto') ?></th>
+                <th scope="col"><?= __('Monto por exceso') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($factura->consumos as $consumos): ?>

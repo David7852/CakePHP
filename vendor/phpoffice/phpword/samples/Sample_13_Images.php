@@ -1,6 +1,7 @@
 <?php
 include_once 'Sample_Header.php';
 
+
 // New Word document
 echo date('H:i:s'), ' Create new PhpWord object', EOL;
 $phpWord = new \PhpOffice\PhpWord\PhpWord();

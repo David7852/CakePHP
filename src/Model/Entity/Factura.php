@@ -2,7 +2,6 @@
 namespace App\Model\Entity;
 
 use App\Controller\FacturasController;
-use App\Model\Table\FacturasTable;
 use Cake\ORM\Entity;
 
 /**
@@ -12,6 +11,8 @@ use Cake\ORM\Entity;
  * @property int $linea_id
  * @property \Cake\I18n\Time $paguese_antes_de
  * @property float $balance
+ * @property float $iva
+ * @property float $cargos_extra
  * @property \Cake\I18n\Time $desde
  * @property \Cake\I18n\Time $hasta
  * @property string $numero_de_cuenta
@@ -31,19 +32,36 @@ class Factura extends Entity
             return '';
         return h($related->linea->numero.' ('.$this->_properties['desde'].')');
     }
-
-    protected function _getBalance()
+    protected function _getLineano()
     {
-        $b=0;
         $c = new FacturasController();
         $related=$c->getRelated($this->_properties['id']);
         if($related==null)
-            return 0;
-        foreach ($related->consumos as $consumo)
-        {
-            $b=$b+$consumo->monto_bs;
+            return '';
+        return $related->linea->numero;
+    }
+    protected function _getBalance($balance)
+    {
+        if($balance!==null){
+            if($this->_properties['id']===null||$this->_properties['balance']===null)
+                return 0;
+            if($this->_properties['balance']!=0)
+                return $this->_properties['balance'];
+            $b=0;
+            $c = new FacturasController();
+            $related=$c->getRelated($this->_properties['id']);
+            if($related==null)
+                return 0;
+            $rentas=$related->linea->rentasalt;
+            if($rentas!=null)
+                foreach ($rentas as $renta)
+                    $b=$b+$renta->monto_basico;
+            $consumos=$related->consumos;
+            if($consumos!=null)
+                foreach ($consumos as $consumo)
+                    $b=$b+$consumo->monto_bs;
+            return $b;
         }
-        return $b;
     }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

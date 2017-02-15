@@ -44,7 +44,7 @@
             <td><?= h($consumo->excedente) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Monto') ?></th>
+            <th scope="row"><?= __('Monto por exceso') ?></th>
             <td><?= $this->Number->format($consumo->monto_bs).' Bs' ?></td>
         </tr>
     </table>

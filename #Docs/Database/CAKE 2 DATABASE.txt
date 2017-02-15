@@ -118,7 +118,7 @@ create table if not exists consumos (
   servicio_id integer unsigned not null,
   consumido varchar(20) default "0",
   excedente varchar(20) default "0",
-  monto_bs float unsigned not null default "0",
+  monto_bs float not null default 0,
   created datetime default null,
   modified datetime default null);
 
@@ -126,7 +126,9 @@ create table if not exists facturas (
   id integer unsigned auto_increment primary key,
   linea_id integer unsigned not null,
   paguese_antes_de date,
-  balance float unsigned not null default 0,
+  balance float not null default 0,
+  iva float default 0,
+  cargos_extra float default 0,
   desde date not null,
   hasta date not null,
   numero_de_cuenta varchar(25),

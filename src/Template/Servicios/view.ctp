@@ -44,7 +44,7 @@
                 <th scope="col"><?= __('Cupo') ?></th>
                 <th scope="col"><?= __('Consumido') ?></th>
                 <th scope="col"><?= __('Excedente') ?></th>
-                <th scope="col"><?= __('Monto Bs') ?></th>
+                <th scope="col"><?= __('Monto por exceso') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
             <?php foreach ($servicio->consumos as $consumos): ?>

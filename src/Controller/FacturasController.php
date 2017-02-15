@@ -34,7 +34,7 @@ class FacturasController extends AppController
         $this->paginate = [
             'contain' => ['Lineas']
         ];
-        $balance=0;
+        $b=0;
         if($date!=null)
         {
             $tempDate = explode('-', $date);
@@ -44,15 +44,13 @@ class FacturasController extends AppController
             }
             $facturas = $this->Facturas->find('all')->where(['desde >='=>$date]);
             foreach ($facturas as $facts)
-                $balance=$balance+$facts->balance;
-            $this->paginate($facturas);
-
-
+                $b=$b+$facts->balance;
+            $facturas = $this->paginate($facturas);
         }else{
             $facturas = $this->paginate($this->Facturas);
-            $balance=null;
+            $b=null;
         }
-        $this->set(compact('facturas','balance'));
+        $this->set(compact('facturas','b'));
         $this->set('_serialize', ['facturas']);
     }
 

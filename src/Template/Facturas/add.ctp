@@ -21,6 +21,8 @@
         <?php
             echo $this->Form->input('linea_id', ['options' => $lineas]);
             echo $this->Form->input('balance');
+            echo $this->Form->input('iva');
+            echo $this->Form->input('cargos_extra');
             echo $this->Form->input('numero_de_cuenta');
             echo $this->Form->input('desde',['minYear'=>date("Y", strtotime("-1 Year")),'maxYear'=>date("Y", strtotime("+1 Year"))]);
             echo $this->Form->input('hasta',['minYear'=>date("Y"),'maxYear'=>date("Y", strtotime("+1 Year")),'value'=>date("Y-m-d", strtotime("+1 Months"))]);

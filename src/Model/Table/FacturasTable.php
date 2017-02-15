@@ -84,6 +84,12 @@ class FacturasTable extends Table
         $validator
             ->allowEmpty('numero_de_cuenta');
 
+        $validator
+            ->allowEmpty('iva');
+
+        $validator
+            ->allowEmpty('cargos_extra');
+
         return $validator;
     }
 
@@ -97,7 +103,6 @@ class FacturasTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['linea_id'], 'Lineas'));
-
         return $rules;
     }
 }

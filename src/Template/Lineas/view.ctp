@@ -17,9 +17,6 @@
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>
         <li class="usu" ><?= $this->Html->link(__('Usuarios'), ['controller' => 'Pages', 'action' => 'display','usuarios'])?></li>
-
-
-
     </ul>
 </nav>
 <div class="lineas view large-9 medium-8 columns content">
@@ -91,16 +88,43 @@
             </table>
         </div>
     <?php endif; ?>
+    <?php if (!empty($linea->facturas)): ?>
+    <div class="related">
+        <h4><?= __('Facturas de esta linea') ?></h4>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th scope="col"><?= __('Titulo') ?></th>
+                <th scope="col"><?= __('Balance') ?></th>
+                <th scope="col"><?= __('Desde') ?></th>
+                <th scope="col"><?= __('Hasta') ?></th>
+                <th scope="col" class="actions"><?= __('Acciones') ?></th>
+            </tr>
+            <?php foreach ($linea->facturas as $facturas): ?>
+            <tr>
+                <td><?= h($facturas->titulo) ?></td>
+                <td><?= h($facturas->balance) ?></td>
+                <td><?= h($facturas->desde) ?></td>
+                <td><?= h($facturas->hasta) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('Ver'), ['controller' => 'Facturas', 'action' => 'view', $facturas->id]) ?>
+                    <?= $this->Html->link(__('Editar'), ['controller' => 'Facturas', 'action' => 'edit', $facturas->id]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Facturas', 'action' => 'delete', $facturas->id], ['confirm' => __('Confirma querer eliminar la factura {0}?', $facturas->titulo)]) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+    <?php endif; ?>
     <?php if (!empty($consumos)): ?>
         <div class="related">
-            <h4><?= __('Consumos') ?></h4>
+            <h4><?= __('Consumos del mes') ?></h4>
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <th scope="col"><?= __('Factura') ?></th>
                     <th scope="col"><?= __('Cupo') ?></th>
                     <th scope="col"><?= __('Consumido') ?></th>
                     <th scope="col"><?= __('Excedente') ?></th>
-                    <th scope="col"><?= __('Monto Bs') ?></th>
+                    <th scope="col"><?= __('Monto por exceso') ?></th>
                     <th scope="col" class="actions"><?= __('Acciones') ?></th>
                 </tr>
                 <?php foreach ($consumos as $consumo): ?>
@@ -121,36 +145,4 @@
             </table>
         </div>
     <?php endif; ?>
-    <?php if (!empty($linea->facturas)): ?>
-    <div class="related">
-        <h4><?= __('Facturas de esta linea') ?></h4>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Titulo') ?></th>
-                <th scope="col"><?= __('Paguese Antes De') ?></th>
-                <th scope="col"><?= __('Balance') ?></th>
-                <th scope="col"><?= __('Desde') ?></th>
-                <th scope="col"><?= __('Hasta') ?></th>
-                <th scope="col"><?= __('Numero De Cuenta') ?></th>
-                <th scope="col" class="actions"><?= __('Acciones') ?></th>
-            </tr>
-            <?php foreach ($linea->facturas as $facturas): ?>
-            <tr>
-                <td><?= h($facturas->titulo) ?></td>
-                <td><?= h($facturas->paguese_antes_de) ?></td>
-                <td><?= h($facturas->balance) ?></td>
-                <td><?= h($facturas->desde) ?></td>
-                <td><?= h($facturas->hasta) ?></td>
-                <td><?= h($facturas->numero_de_cuenta) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('Ver'), ['controller' => 'Facturas', 'action' => 'view', $facturas->id]) ?>
-                    <?= $this->Html->link(__('Editar'), ['controller' => 'Facturas', 'action' => 'edit', $facturas->id]) ?>
-                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Facturas', 'action' => 'delete', $facturas->id], ['confirm' => __('Confirma querer eliminar la factura {0}?', $facturas->titulo)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-    </div>
-    <?php endif; ?>
-
 </div>

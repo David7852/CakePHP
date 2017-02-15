@@ -29,7 +29,7 @@
             <th scope="col"><?= $this->Paginator->sort('cupo') ?></th>
             <th scope="col"><?= $this->Paginator->sort('consumido') ?></th>
             <th scope="col"><?= $this->Paginator->sort('excedente') ?></th>
-            <th scope="col"><?= $this->Paginator->sort('monto') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('monto por exceso') ?></th>
             <th scope="col" class="actions"><?= __('Acciones') ?></th>
         </tr>
         </thead>

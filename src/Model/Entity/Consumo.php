@@ -27,14 +27,30 @@ class Consumo extends Entity
             return '';
         return $related->factura->titulo;
     }
-    protected function _getTitulo()    {
+    protected function _getFecha()
+    {
+        $c = new ConsumosController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
+        return $related->factura->desde;
+    }
+    protected function _getLinea()
+    {
+        $c = new ConsumosController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
+        return $related->factura->lineano;
+    }
+    protected function _getTitulo()    {//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         $c = new ConsumosController();
         $related=$c->getRelated($this->_properties['id']);
         if($related==null)
             return '';
         return h($this->_properties['monto_bs']).' Bs. en factura del '.h($related->factura->titulo);
     }
-    protected function _getDetalle()    {
+    protected function _getDetalle()    {//!!!!!!!!!!!!!!!!!!!!!!!
         $c = new ConsumosController();
         $related=$c->getRelated($this->_properties['id']);
         if($related==null)
