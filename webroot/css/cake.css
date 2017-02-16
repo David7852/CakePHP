@@ -381,10 +381,6 @@ pre {
     vertical-align: middle;
     text-align: center;
     mix-blend-mode: normal;
-    transition: all 2s linear;
-}
-.home header .header-image:hover {
-    transform: scale(1.01);
 }
 .home header {
      width: 100%;
@@ -395,7 +391,7 @@ pre {
 header {
     background-color: #dee9e3;
     background-image: url(../img/banner.png),url(../img/topBarTexture.png), url(../img/sideBarTexture.png);
-    background-size: cover,auto;
+    background-size: cover,auto,auto;
     box-shadow: 0 3px 7px 0 rgba(90,118,100,0.15), 0 4px 11px 0 rgba(80,110,87, 0.2);
     background-repeat: no-repeat,repeat,repeat;
     color: #ffffff;
@@ -436,8 +432,7 @@ header .header-title {
 }
 
 .checks {
-    background-position-y: 33rem;
-    background-position-x: 46rem;
+    background-position: 46.6rem 33rem;
     padding: 30px;
     color: white;
     background-color: darkgray;
@@ -1778,8 +1773,7 @@ div .slice ul li div div div input:hover
     background-image: url(../img/grass.png);
     background-repeat: no-repeat;
     background-origin: border-box;
-    background-position-y: 95%;
-    background-position-x: 9%;
+    background-position: 9% 95%;
     background-size: contain;
 }
 @font-face {

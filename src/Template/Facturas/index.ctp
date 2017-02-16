@@ -16,7 +16,7 @@
 </nav>
 <div class="facturas index large-9 medium-8 columns content">
     <?php setlocale(LC_ALL,"es_ES@euro","es_ES","esp"); ?>
-    <h3><?= $b==null ? 'Facturas' : 'Facturas del mes de '.strftime("%B"); ?></h3>
+    <h3><?= $b===null ? 'Facturas' : 'Facturas del mes de '.strftime("%B"); ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -57,7 +57,7 @@
         </ul>
 
     </div>
-    <?php if($b!=null): ?>
+    <?php if($b!==null): ?>
         <h4>En el mes de <?= strftime("%B del %Y"); ?>, el monto a cancelar es de: <?= $b; ?>Bs.</h4>
     <?php endif; ?>
 </div>

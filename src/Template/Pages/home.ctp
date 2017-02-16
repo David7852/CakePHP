@@ -105,11 +105,15 @@ $cakeDescription = 'WIT';
         <table class="fertinitro" style="margin-bottom: .25rem">
             <tbody>
             <tr >
-                <td valign="top" style="text-align: left; padding: 0 0 0 2rem;overflow: visible">
-                    <a href="http://www.pequiven.com" class="title-area large-2 medium-3 columns" style="color:red; margin: auto;     padding: 1.65rem 0.75rem 0.75rem 0.75rem;"><img src="/WIT/webroot/img/logopqv.png" alt="Pequiven"></a>
+                <td valign="top" style="text-align: left; padding: 0;overflow: visible;max-width: 50%!important;height: 100%;">
+                    <a href="http://www.pequiven.com" class="title-area large-2 medium-3 columns" style="width: 100%;height: 100%;color:red; margin: auto;padding: 1.65rem 0.75rem 0.75rem 0.75rem;">
+                        <img style="size: auto;max-width: 100%;" src="/WIT/webroot/img/logopqv.png" alt="Pequiven">
+                    </a>
                 </td>
-                <td valign="top" align="right" style="text-align: right; padding: 0 2rem 0 0">
-                    <a href="//10.10.0.74/fertinitro" class="title-area large-2 medium-3 columns right" style="color:#006600;margin: auto;padding: 1.65rem 0.75rem 0.75rem 0.75rem;"><img src="/WIT/webroot/img/fertinitro.png" alt="FertiNitro"></a>
+                <td style="float:right; padding: 0; max-width: 50%!important;height: 100%;display: inline-table;">
+                    <a href="//10.10.0.74/fertinitro" class="title-area large-2 medium-3 columns right" style="width: 100%;height: 100%;color:#006600;margin: auto;padding: 1.65rem 0.75rem 0.75rem 0.75rem;">
+                        <img style="size: auto;max-width: 100%;" src="/WIT/webroot/img/fertinitro.png" alt="FertiNitro">
+                    </a>
                 </td>
             </tr>
             </tbody>
@@ -120,7 +124,7 @@ $cakeDescription = 'WIT';
                 <td style="text-align: left;padding: 0;width: 50%;padding-bottom: 0!important;padding-top: 0!important;max-width: 50%;">
                     <img style="    width: 100%;    max-width: 330px;    height: auto;max-height: 49px;size: auto;" src="/WIT/webroot/img/cintillo izquierda.png" width="330" height="49">
                 </td>
-                <td align="right" style="text-align: right;width: 20%;max-width: 186px;max-height: 50px;height: auto;padding: 0;overflow: hidden;margin-left: 3rem;">
+                <td style="float:right; width: 50%;max-width: 186px;max-height: 50px;height: auto;padding: 0;overflow: hidden;margin-left: 3rem;display: inline-table;">
                     <img style=" width: 100%; max-width: 186px; height: auto; max-height: 49px; SIZE: auto; " src="/WIT/webroot/img/cintillo derecha.png" width="186" height="49">
                 </td>
             </tr>

@@ -3778,6 +3778,8 @@ meta.foundation-mq-topbar {
     {
         max-width: 66%;
         width: auto;
+        width: 66%;
+
     }
     .top-bar .button,
     .top-bar button {
