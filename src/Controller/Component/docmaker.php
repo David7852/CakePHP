@@ -14,6 +14,212 @@ use PhpOffice\PhpWord\Style\Image;
  * Time: 8:14 PM
  */
 class docmaker {
+    public function facturacion($facturas,$user)
+    {
+        setlocale(LC_ALL,"es_ES@euro","es_ES","esp");
+        $phpWord = new PHPWord();
+        $sectionStyle=array('pageSizeH'=>Converter::cmToTwip(27.94),
+            'pageSizeW'=>Converter::cmToTwip(21.59),
+            'orientation'=>'landscape',
+            'marginTop'=>Converter::cmToTwip(1.27),
+            'marginBottom'=>Converter::cmToTwip(1.27),
+            'marginRight'=>Converter::cmToTwip(1.27),
+            'marginLeft'=>Converter::cmToTwip(1.27));
+        $section = $phpWord->addSection($sectionStyle);
+        $section->setStyle(array());
+        $fancyTableStyle = array('borderSize' => 12, 'borderColor' => 'green');
+        $cellRowSpan = array('vMerge' => 'restart', 'valign' => 'center', 'bgColor' => 'FFFFFF');
+        $cellHCentered = array('alignment' => Jc::CENTER);
+        $spanTableStyleName = 'Colspan Rowspan';
+        $phpWord->addTableStyle($spanTableStyleName, $fancyTableStyle);
+        $table = $section->addTable($spanTableStyleName);
+        $table->addRow();
+        $table->addCell(2500, array('vMerge' => 'restart', 'bgColor' => 'FFFFFF'))->addImage('../webroot/img/fertinitrorif.png',array(
+            'width'            => Converter::cmToPixel(2.38),
+            'height'           => Converter::cmToPixel(1.39),
+            'positioning'      => Image::POSITION_ABSOLUTE,
+            'posHorizontal'    => Image::POSITION_HORIZONTAL_LEFT,
+            'posHorizontalRel' => Image::POSITION_RELATIVE_TO_COLUMN,
+            'posVertical'      => Image::POSITION_VERTICAL_TOP,
+            'posVerticalRel'   => Image::POSITION_RELATIVE_TO_PAGE,
+        ));
+        $cell2 = $table->addCell(10500, array('cellMargin' => 80,'gridSpan' => 2, 'valign' => 'center'));
+        $textrun2 = $cell2->addTextRun( array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1));
+        $textrun2->addText('Fertilizantes Nitrogenados de Venezuela, FERTINITRO, C.E.C.',array('name' => 'Arial Narrow','bold'=>true,'color'=>'green','size'=>'14'));
+        $textrun2->addTextBreak(1,array('spacing' => 240, 'size' => 24));
+        $textrun2->addTextBreak(1,array('spacing' => 240, 'size' => 14));
+        $textrun2->addText('DETALLE DE FACTURACIÓN DEL MES DE '.strtoupper(strftime("%B")), array('name'=>'Arial','bold' => true,'color'=>'black', 'size'=>'10','valign' => 'center','line' => 24),$cellHCentered);
+        $table->addCell(2000, $cellRowSpan)->addImage('../webroot/img/logoit.png',array(
+            'positioning'      => Image::POSITION_RELATIVE,
+            'posHorizontal'    => Image::POSITION_HORIZONTAL_CENTER,
+            'posHorizontalRel' => Image::POSITION_RELATIVE_TO_COLUMN,
+            'posVertical'      => Image::POSITION_VERTICAL_TOP,
+            'posVerticalRel'   => Image::POSITION_RELATIVE_TO_LINE,
+            'marginLeft'    => 1,
+            'width'         => Converter::cmToPixel(1.82),
+            'height'        => Converter::cmToPixel(1.47)));
+        $section->addTextBreak(1,array('spacing' => 240, 'size' => 1));
+        $table = $section->addTable(array('borderSize' => 6, 'alignment' => JcTable::CENTER,'borderColor' => 'green'));
+        $colormovil='FFDAA1';
+        $colormovis='a2e5ff';
+        $extramovil=0;
+        $balancemovil=0;
+        $cmovil=0;
+        $extramovis=0;
+        $balancemovis=0;
+        $cmovis=0;
+        $ROW = $table->addRow();
+        $ROW->addCell(400, array('cellMargin' => 80, 'valign' => 'center','bgColor' => 'eeeeee'))
+            ->addTextRun(array('alignment' => Jc::CENTER,'spaceBefore'=>5,'spaceAfter' => 1,'size' => 1))
+            ->addText('#',array('lineHeight'=>0.1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+        $ROW->addCell(975, array('cellMargin' => 80, 'valign' => 'center','bgColor' => 'e3ece0'))
+            ->addTextRun(array('alignment' => Jc::CENTER,'spaceBefore'=>5,'spaceAfter' => 1,'size' => 1))
+            ->addText('Operadora',array('lineHeight'=>0.1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+        $ROW->addCell(1000, array('cellMargin' => 80, 'valign' => 'center','bgColor' => 'eeeeee'))
+            ->addTextRun(array('alignment' => Jc::CENTER,'spaceBefore'=>5,'spaceAfter' => 1,'size' => 1))
+            ->addText('Numero',array('lineHeight'=>0.1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+        $ROW->addCell(2000, array('cellMargin' => 80, 'valign' => 'center','bgColor' => 'e3ece0'))
+            ->addTextRun(array('alignment' => Jc::CENTER,'spaceBefore'=>5,'spaceAfter' => 1,'size' => 1))
+            ->addText('Propietario',array('lineHeight'=>0.1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+        $ROW->addCell(2375, array('cellMargin' => 80, 'valign' => 'center','bgColor' => 'eeeeee'))
+            ->addTextRun(array('alignment' => Jc::CENTER,'spaceBefore'=>5,'spaceAfter' => 1,'size' => 1))
+            ->addText('Gerencia y cargo',array('lineHeight'=>0.1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+        $ROW->addCell(2500, array('cellMargin' => 80, 'valign' => 'center','bgColor' => 'e3ece0'))
+            ->addTextRun(array('alignment' => Jc::CENTER,'spaceBefore'=>5,'spaceAfter' => 1,'size' => 1))
+            ->addText('Marca y modelo',array('lineHeight'=>0.1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+        $ROW->addCell(2500, array('cellMargin' => 80, 'valign' => 'center','bgColor' => 'eeeeee'))
+            ->addTextRun(array('alignment' => Jc::CENTER,'spaceBefore'=>5,'spaceAfter' => 1,'size' => 1))
+            ->addText('Serial',array('lineHeight'=>0.1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+        $ROW->addCell(1500, array('cellMargin' => 80, 'valign' => 'center','bgColor' => 'e3ece0'))
+            ->addTextRun(array('alignment' => Jc::CENTER,'spaceBefore'=>5,'spaceAfter' => 1,'size' => 1))
+            ->addText('Plan',array('lineHeight'=>0.1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+        $ROW->addCell(750, array('cellMargin' => 80, 'valign' => 'center','bgColor' => 'eeeeee'))
+            ->addTextRun(array('alignment' => Jc::CENTER,'spaceBefore'=>5,'spaceAfter' => 1,'size' => 1))
+            ->addText('Extra',array('lineHeight'=>0.1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+        $ROW->addCell(1000, array('cellMargin' => 80, 'valign' => 'center','bgColor' => 'e3ece0'))
+            ->addTextRun(array('alignment' => Jc::CENTER,'spaceBefore'=>5,'spaceAfter' => 1,'size' => 1))
+            ->addText('Monto',array('lineHeight'=>0.1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+        $c=0;
+        $textrunstyle=array('alignment' => Jc::CENTER,'spaceBefore'=>5,'spaceAfter' => 1,'size' => 1);
+        $textstyle=array('lineHeight'=>0.1,'name' => 'Arial','bold'=>false, 'size'=>9, 'valign' => 'center');
+        foreach ($facturas as $factura)
+        {
+            if($c%2!=0)
+                $color='e3ece0';
+            else
+                $color='ffffff';
+            $c++;
+            $propietario=$factura->linealt->propietarioent;
+            $cargo='';
+            $articulo=$factura->linealt->altarticulo;
+            $serial='';
+            $balance=$factura->balance;
+            if($propietario!=null&&$propietario!='Sin propietario'){
+                $cargo=$propietario->cargogerencial;
+                $propietario=$propietario->titulo;
+            }
+            if($articulo!=null){
+                $serial=$articulo->serial;
+                $articulo=$articulo->modeloent->marca.' '.$articulo->modeloent->modelo;
+            }
+            $operadora=$factura->linealt->operadora;
+            if($operadora=='Movilnet'){
+                $colorop=$colormovil;
+                $cmovil++;
+                $extramovil+=$factura->cargos_extra;
+                $balancemovil+=$balance;
+            }
+            else{
+                $colorop=$colormovis;
+                $cmovis++;
+                $extramovis+=$factura->cargos_extra;
+                $balancemovis+=$balance;
+            }
+            $cellstyle=array('cellMargin' => 80, 'valign' => 'center','bgColor' => $color);
+            $ROW = $table->addRow();
+            $ROW->addCell(500, $cellstyle)
+                ->addTextRun($textrunstyle)
+                ->addText($c,$textstyle);
+            $ROW->addCell(775, array('cellMargin' => 80, 'valign' => 'center','bgColor' => $colorop))
+                ->addTextRun($textrunstyle)
+                ->addText($operadora,array('lineHeight'=>0.1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+            $ROW->addCell(1000, $cellstyle)
+                ->addTextRun($textrunstyle)
+                ->addText($factura->lineano,$textstyle);
+            $ROW->addCell(2000, $cellstyle)
+                ->addTextRun($textrunstyle)
+                ->addText($propietario,$textstyle);
+            $ROW->addCell(2475, $cellstyle)
+                ->addTextRun($textrunstyle)
+                ->addText($cargo,$textstyle);
+            $ROW->addCell(2500, $cellstyle)
+                ->addTextRun($textrunstyle)
+                ->addText($articulo,$textstyle);
+            $ROW->addCell(2500, $cellstyle)
+                ->addTextRun($textrunstyle)
+                ->addText($serial,$textstyle);
+            $rentascell=$ROW->addCell(1500, $cellstyle);
+            $rentas=$factura->linealt->rentasalt;
+            if($rentas!=null)
+                foreach ($rentas as $renta)
+                    $rentascell
+                        ->addTextRun($textrunstyle)
+                        ->addText($renta->nombre.'.',$textstyle);
+            else
+                $rentascell
+                ->addTextRun($textrunstyle)
+                ->addText('',$textstyle);
+            $ROW->addCell(750, $cellstyle)
+                ->addTextRun($textrunstyle)
+                ->addText($factura->cargos_extra,$textstyle);
+            $ROW->addCell(1000, $cellstyle)
+                ->addTextRun($textrunstyle)
+                ->addText($balance,$textstyle);
+        }
+        $section->addTextBreak(1,array('spacing' => 240, 'size' => 1));
+        $table = $section->addTable(array('borderSize' => 6, 'alignment' => JcTable::CENTER,'borderColor' => 'black'));
+        $ROW = $table->addRow();
+        $ROW->addCell(15000, array('cellMargin' => 80, 'valign' => 'center','bgColor' => $colormovil))
+            ->addTextRun($textrunstyle)
+            ->addText('En el mes de '.strftime("%B").' las '.$cmovil.' lineas de la operadora MOVILNET generaron consumos por un valor de '.$balancemovil.'Bs y el monto por excesos fue equivalente a '.$extramovil.'Bs.',
+                array('lineHeight'=>1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+        $section->addTextBreak(1,array('spacing' => 240, 'size' => 1));
+        $table = $section->addTable(array('borderSize' => 6, 'alignment' => JcTable::CENTER,'borderColor' => 'black'));
+        $ROW = $table->addRow();
+        $ROW->addCell(15000, array('cellMargin' => 80, 'valign' => 'center','bgColor' => $colormovis))
+            ->addTextRun($textrunstyle)
+            ->addText('En el mes de '.strftime("%B").' las '.$cmovis.' lineas de la operadora MOVISTAR generaron consumos por un valor de '.$balancemovis.'Bs y el monto por excesos fue equivalente a '.$extramovis.'Bs.',
+                array('lineHeight'=>1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
+
+        $section->addTextBreak(1,array('spacing' => 240, 'size' => 1));
+        $table = $section->addTable(array('borderSize' => 0, 'alignment' => JcTable::CENTER,'borderColor' => 'white'));
+        $ROW = $table->addRow();
+        $ROW->addCell(15000, array('cellMargin' => 80, 'valign' => 'center','bgColor' => 'white'))
+            ->addTextRun($textrunstyle)
+            ->addText('Este es un documento referencial, generado por el Sistema web de control de inventario y telefonía WIT, a petición del usuario '.$user.' a las '.date("H:i:s").' del '.date("Y-m-d").'.',array('lineHeight'=>0.1,'name' => 'Arial','bold'=>false, 'size'=>8, 'valign' => 'center'));
+        $file='Facturacion de '.date("Y-m-d H-i-s").'.docx';
+        $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
+        $objWriter->save($file);
+        header("Content-Description: File Transfer");
+        header('Content-Disposition: attachment; filename='.$file );
+        header("Content-Type: application/force-download");
+        header("Content-Type: application/octet-stream");
+        header("Content-Type: application/download");
+        header("Content-Description: File Transfer");
+        header("Content-Length: " . filesize($file));
+        header('Cache-Control: must-revalidate, post-check=1, pre-check=1');
+        header('Expires: 0');
+        flush();
+        $fp = fopen($file, "r");
+        while (!feof($fp)) {
+            echo fread($fp, 65536);
+            flush();
+        }
+        fclose($fp);
+        $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
+        $objWriter->save("php://output");
+        unlink($file);
+    }
     public function tipoasignacion($proceso,$solicitante,$supervisor,$encargado)
     {
         $phpWord = new PHPWord();
@@ -38,7 +244,7 @@ class docmaker {
         ));
         $cell2 = $table->addCell(6500, array('cellMargin' => 80,'gridSpan' => 2, 'valign' => 'center'));
         $textrun2 = $cell2->addTextRun( array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1));
-        $textrun2->addText('Fertilizantes Nitrogenados de Venezuela, FERTINITRO, C.E.C',array('name' => 'Arial Narrow','bold'=>true,'color'=>'green','size'=>'14'));
+        $textrun2->addText('Fertilizantes Nitrogenados de Venezuela, FERTINITRO, C.E.C.',array('name' => 'Arial Narrow','bold'=>true,'color'=>'green','size'=>'14'));
         $textrun2->addTextBreak(1,array('spacing' => 240, 'size' => 24));
         $textrun2->addText(' ');
         $textrun2->addTextBreak(1,array('spacing' => 240, 'size' => 24));
@@ -252,7 +458,7 @@ class docmaker {
         ));
         $cell2 = $table->addCell(6500, array('cellMargin' => 80,'gridSpan' => 2, 'valign' => 'center'));
         $textrun2 = $cell2->addTextRun( array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1));
-        $textrun2->addText('Fertilizantes Nitrogenados de Venezuela, FERTINITRO, C.E.C',array('name' => 'Arial Narrow','bold'=>true,'color'=>'green','size'=>'14'));
+        $textrun2->addText('Fertilizantes Nitrogenados de Venezuela, FERTINITRO, C.E.C.',array('name' => 'Arial Narrow','bold'=>true,'color'=>'green','size'=>'14'));
         $textrun2->addTextBreak(1,array('spacing' => 240, 'size' => 24));
         $textrun2->addText(' ');
         $textrun2->addTextBreak(1,array('spacing' => 240, 'size' => 24));
@@ -455,7 +661,7 @@ class docmaker {
         ));
         $cell2 = $table->addCell(6500, array('cellMargin' => 80,'gridSpan' => 2, 'valign' => 'center'));
         $textrun2 = $cell2->addTextRun( array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1));
-        $textrun2->addText('Fertilizantes Nitrogenados de Venezuela, FERTINITRO, C.E.C',array('name' => 'Arial Narrow','bold'=>true,'color'=>'green','size'=>'14'));
+        $textrun2->addText('Fertilizantes Nitrogenados de Venezuela, FERTINITRO, C.E.C.',array('name' => 'Arial Narrow','bold'=>true,'color'=>'green','size'=>'14'));
         $textrun2->addTextBreak(1,array('spacing' => 240, 'size' => 24));
         $textrun2->addText(' ');
         $textrun2->addTextBreak(1,array('spacing' => 240, 'size' => 24));
@@ -634,7 +840,7 @@ class docmaker {
         ));
         $cell2 = $table->addCell(6500, array('cellMargin' => 80,'gridSpan' => 2, 'valign' => 'center'));
         $textrun2 = $cell2->addTextRun( array('alignment' => Jc::CENTER,'spaceAfter' => 0,'size' => 1));
-        $textrun2->addText('Fertilizantes Nitrogenados de Venezuela, FERTINITRO, C.E.C',array('name' => 'Arial Narrow','bold'=>true,'color'=>'green','size'=>'14'));
+        $textrun2->addText('Fertilizantes Nitrogenados de Venezuela, FERTINITRO, C.E.C.',array('name' => 'Arial Narrow','bold'=>true,'color'=>'green','size'=>'14'));
         $textrun2->addTextBreak(1,array('spacing' => 240, 'size' => 24));
         $textrun2->addText(' ');
         $textrun2->addTextBreak(1,array('spacing' => 240, 'size' => 24));

@@ -33,31 +33,32 @@
 
             if($this->request->session()->read('Auth.User.funcion')!='Visitante'&&$this->request->session()->read('Auth.User.funcion')!='Operador') {
                 echo $this->Form->input('cedula');
-                $options = ["IT" => "IT",
-                    "Recursos Humanos" => "Recursos Humanos",
-                    "Finanzas" => "Finanzas",
-                    "Contratacion" => "Contratacion",
-                    "Servicios Generales" => "Servicios Generales",
-                    "Planificacion" => "Planificacion",
-                    "Confiabilidad" => "Confiabilidad",
-                    "Mantenimiento" => "Mantenimiento",
-                    "Produccion" => "Produccion",
-                    "Gestion" => "Gestion"];
-                echo $this->Form->input('gerencia', array('options' => $options, 'empty' => false, 'escape' => false));
-                $options = ["Gerente" => "Gerente",
-                    "Supervisor" => "Supervisor",
-                    "Supervisora" => "Supervisora",
-                    "Analista" => "Analista",
-                    "Pasante" => "Pasante",
-                    "Superintendente" => "Superintendente",
-                    "Jefe de planta" => "Jefe de planta",
-                    "Jefa de planta" => "Jefa de planta",
-                    "Secretaria" => "Secretaria",
-                    "Secretario" => "Secretario",
-                    "Consultor" => "Consultor",
-                    "Consultora" => "Consultora",
-                    "Consejera" => "Consejera",
-                    "Consejero" => "Consejero"];
+                $options=["SBS"=>"SBS",
+                    "Legales"=>"Legales",
+                    "Parada de Planta"=>"Parada de Planta",
+                    "IT"=>"IT",
+                    "Comercializacion"=>"Comercializacion",
+                    "Finanzas"=>"Finanzas",
+                    "General"=>"General",
+                    "Recursos Humanos"=>"Recursos Humanos",
+                    "Mantenimiento"=>"Mantenimiento",
+                    "Gestion"=>"Gestion",
+                    "Servicios Generales"=>"Servicios Generales",
+                    "Tecnica"=>"Tecnica",
+                    "Confiabilidad"=>"Confiabilidad",
+                    "SHA"=>"SHA",
+                    "Operaciones"=>"Operaciones"];
+                echo $this->Form->input('gerencia', array('options'=>$options,'empty'=>false,'escape'=>false));
+                $options=["Gerente"=>"Gerente",
+                    "Supervisor"=>"Supervisor",
+                    "Analista"=>"Analista",
+                    "Pasante"=>"Pasante",
+                    "Superintendente"=>"Superintendente",
+                    "Jefe de planta"=>"Jefe de planta",
+                    "Secretario"=>"Secretario",
+                    "Consultor"=>"Consultor",
+                    "Consejero"=>"Consejero",
+                    "Otro"=>"Otro"];
                 echo $this->Form->input('cargo', array('options' => $options, 'empty' => false, 'escape' => false));
                 echo $this->Form->input('area');
             }

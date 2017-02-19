@@ -40,6 +40,16 @@ class Factura extends Entity
             return '';
         return $related->linea->numero;
     }
+    protected function _getLinealt()
+    {
+        $c = new FacturasController();
+        $related=$c->getRelated($this->_properties['id']);
+        if($related==null)
+            return '';
+        if($related->linea!=null)
+            return $related->linea;
+        return null;
+    }
     protected function _getBalance($balance)
     {/*
         if($balance!==null){

@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
+use App\Controller\Component\docmaker;
 
 /**
  * Facturas Controller
@@ -46,7 +47,7 @@ class FacturasController extends AppController
             $facts=$this->Facturas->find('all')->where(['desde >='=>$date]);
 
             foreach ($facts as $fact)
-                $b=$b+$fact->balance;
+                $b=$b+$fact->balance+$fact->cargos_extra;
         }else{
             $facturas = $this->paginate($this->Facturas);
             $b=null;
@@ -157,5 +158,21 @@ class FacturasController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+    public function facturacion($date)
+    {
+        $this->autoRender = false;
+        if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
+            $this->Flash->error(__('Usted no tiene permiso para realizar esta accion.'));
+            return $this->redirect($this->referer());
+        }
+        $facuracion=new docmaker();
+        $fact=$this->Facturas->find('all')->where(['desde >='=>$date])->order(['created' => 'DESC']);
+        if($fact->isEmpty())
+        {
+            $this->Flash->error(__('Los registros de facturación son muy pocos o incompletos.'));
+            return $this->redirect($this->referer());
+        }
+        $facuracion->facturacion($fact,$this->request->session()->read('Auth.User.nombre_de_usuario'));
     }
 }

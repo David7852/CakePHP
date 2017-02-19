@@ -3,9 +3,9 @@
         <li class="heading"><?=''?></li>
         <li class="tlf" id="seleccion"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>
         <!-- $ -->
-        <li><?= $this->Html->link(__('Agregar Factura'), ['action' => 'add']) ?></li>
+        <li><?= $b===null ? $this->Html->link(__('Agregar Factura'), ['action' => 'add']): $this->Html->link(__('Reporte'), ['action' => 'facturacion',date("Y-m").'-1'],['style'=>'color:#D7782E']); ?></li>
         <li><?= $this->Html->link(__('Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Agregar Linea'), ['controller' => 'Lineas', 'action' => 'add'], ['class'=>'viewLink']) ?></li>
+        <li><?= $this->Html->link(__('Agregar Lineas'), ['controller' => 'Lineas', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('Consumos'), ['controller' => 'Consumos', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Agregar Consumo'), ['controller' => 'Consumos', 'action' => 'add'], ['class'=>'viewLink']) ?></li>
         <!-- $ -->

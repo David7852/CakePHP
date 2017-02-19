@@ -101,7 +101,6 @@ class Articulo extends Entity
     }
     protected function _getAsignado()
     {
-        $solicitantes=array();
         $asig=TableRegistry::get('Asignaciones')->find('all')
             ->where(['articulo_id ='=>$this->_properties['id']])
             ->andWhere(['hasta >='=>date('Y-m-d')]);
@@ -118,15 +117,36 @@ class Articulo extends Entity
                 foreach ($pro_tra as $tra)
                 {
                     $trabajador=TableRegistry::get('Trabajadores')->get($tra->trabajador_id);
-                    array_push($solicitantes, $trabajador->nombre.' '.$trabajador->apellido);
+                    return $trabajador->nombre.' '.$trabajador->apellido;
                 }
             }
         }
-        if(!empty($solicitantes))
-            return $solicitantes[0];
         return '';
     }
-
+    protected function _getAsignadoent()
+    {
+        $asig=TableRegistry::get('Asignaciones')->find('all')
+            ->where(['articulo_id ='=>$this->_properties['id']])
+            ->andWhere(['hasta >='=>date('Y-m-d')]);
+        foreach ($asig as $naciones)
+        {
+            $pro=TableRegistry::get('Procesos')->find('all')
+                ->where(['id ='=>$naciones->proceso_id])
+                ->andWhere(['estado ='=>'Completado']);
+            foreach ($pro as $cesos )
+            {
+                $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')
+                    ->where(['proceso_id ='=>$cesos->id])
+                    ->andWhere(['rol ='=>'Solicitante']);
+                foreach ($pro_tra as $tra)
+                {
+                    $trabajador=TableRegistry::get('Trabajadores')->get($tra->trabajador_id);
+                    return $trabajador;
+                }
+            }
+        }
+        return '';
+    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

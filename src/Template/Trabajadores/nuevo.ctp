@@ -12,33 +12,32 @@
         $options = ['M'=>'Hombre',
             'F'=>'Mujer'];
         echo $this->Form->input('sexo',array('options'=>$options,'empty'=>true,'label'=>'Genero'));
-
-        $options=["IT"=>"IT",
-            "Recursos Humanos"=>"Recursos Humanos",
+        $options=["SBS"=>"SBS",
+            "Legales"=>"Legales",
+            "Parada de Planta"=>"Parada de Planta",
+            "IT"=>"IT",
+            "Comercializacion"=>"Comercializacion",
             "Finanzas"=>"Finanzas",
-            "Contratacion"=>"Contratacion",
-            "Servicios Generales"=>"Servicios Generales",
-            "Planificacion"=>"Planificacion",
-            "Confiabiliad"=>"Confiabiliad",
+            "General"=>"General",
+            "Recursos Humanos"=>"Recursos Humanos",
             "Mantenimiento"=>"Mantenimiento",
-            "Produccion"=>"Produccion",
-            "Gestion"=>"Gestion"];
+            "Gestion"=>"Gestion",
+            "Servicios Generales"=>"Servicios Generales",
+            "Tecnica"=>"Tecnica",
+            "Confiabilidad"=>"Confiabilidad",
+            "SHA"=>"SHA",
+            "Operaciones"=>"Operaciones"];
         echo $this->Form->input('gerencia', array('options'=>$options,'empty'=>false,'escape'=>false));
-
         $options=["Gerente"=>"Gerente",
             "Supervisor"=>"Supervisor",
-            "Supervisora"=>"Supervisora",
             "Analista"=>"Analista",
             "Pasante"=>"Pasante",
             "Superintendente"=>"Superintendente",
             "Jefe de planta"=>"Jefe de planta",
-            "Jefa de planta"=>"Jefa de planta",
-            "Secretaria"=>"Secretaria",
             "Secretario"=>"Secretario",
             "Consultor"=>"Consultor",
-            "Consultora"=>"Consultora",
-            "Consejera"=>"Consejera",
-            "Consejero"=>"Consejero"];
+            "Consejero"=>"Consejero",
+            "Otro"=>"Otro"];
         echo $this->Form->input('cargo', array('options'=>$options,'empty'=>false,'escape'=>false));
         echo $this->Form->input('area');
         $options = ['0' => 'Sede del complejo Jose',
