@@ -39,13 +39,13 @@ class FacturasController extends AppController
         if($date!=null)
         {
             $tempDate = explode('-', $date);
-            if(sizeof($tempDate)<=2||!checkdate($tempDate[1], $tempDate[2], $tempDate[0])){
+            if(sizeof($tempDate)<=2||!is_numeric($tempDate[0])||!is_numeric($tempDate[1])||!is_numeric($tempDate[2])||!checkdate($tempDate[1], $tempDate[2], $tempDate[0])){
+                if($date!='dist')
                 $this->Flash->error(__('El rango de fechas es incorrecto.'));
                 return $this->redirect($this->referer());
             }
             $facturas = $this->paginate($this->Facturas->find('all')->where(['desde >='=>$date]));
             $facts=$this->Facturas->find('all')->where(['desde >='=>$date]);
-
             foreach ($facts as $fact)
                 $b=$b+$fact->balance+$fact->cargos_extra;
         }else{
@@ -100,7 +100,7 @@ class FacturasController extends AppController
                 $this->Flash->error(__('La factura no ha podido ser registrada. Intente nuevamente.'));
             }
         }
-        $lineas = $this->Facturas->Lineas->find('list', ['limit' => 200]);
+        $lineas = $this->Facturas->Lineas->find('list', ['limit' => 500]);
         $this->set(compact('factura', 'lineas'));
         $this->set('_serialize', ['factura']);
     }
@@ -131,7 +131,7 @@ class FacturasController extends AppController
                 $this->Flash->error(__('Los cambios en la factura no pudieron guardarse. Intente nuevamente.'));
             }
         }
-        $lineas = $this->Facturas->Lineas->find('list', ['limit' => 200]);
+        $lineas = $this->Facturas->Lineas->find('list', ['limit' => 500]);
         $this->set(compact('factura', 'lineas'));
         $this->set('_serialize', ['factura']);
     }
@@ -174,5 +174,30 @@ class FacturasController extends AppController
             return $this->redirect($this->referer());
         }
         $facuracion->facturacion($fact,$this->request->session()->read('Auth.User.nombre_de_usuario'));
+    }
+
+    public function aprobar($date=null)
+    {
+        $this->autoRender = false;
+        if($this->request->session()->read('Auth.User.funcion')!='Superadministrador') {
+            $this->Flash->error(__('Usted no tiene permiso para acceder a la accion solicitada.'));
+            return $this->redirect($this->referer());
+        }
+        $this->request->allowMethod(['post', 'aprobar']);
+        $facturas = $this->Facturas->find('all')->where(['desde >='=>$date]);
+        if($facturas->isEmpty())
+        {
+            $this->Flash->error(__('Los registros de facturación son muy pocos o incompletos.'));
+            return $this->redirect($this->referer());
+        }else
+        {
+            foreach ($facturas as $factura)
+            {
+                $factura->balance=$factura->balance;
+                $this->Facturas->save($factura);
+            }
+        }
+        $this->Flash->success(__('Las facturación del mes ha sido aprobada'));
+        return $this->redirect($this->referer());
     }
 }

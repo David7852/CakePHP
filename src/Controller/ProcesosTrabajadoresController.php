@@ -62,8 +62,8 @@ class ProcesosTrabajadoresController extends AppController
                 $this->Flash->error(__('The procesos trabajadore could not be saved. Please, try again.'));
             }
         }
-        $trabajadores = $this->ProcesosTrabajadores->Trabajadores->find('list', ['limit' => 200]);
-        $procesos = $this->ProcesosTrabajadores->Procesos->find('list', ['limit' => 200]);
+        $trabajadores = $this->ProcesosTrabajadores->Trabajadores->find('list', ['limit' => 500]);
+        $procesos = $this->ProcesosTrabajadores->Procesos->find('list', ['limit' => 500]);
         $this->set(compact('procesosTrabajadore', 'trabajadores', 'procesos'));
         $this->set('_serialize', ['procesosTrabajadore']);
     }
@@ -90,8 +90,8 @@ class ProcesosTrabajadoresController extends AppController
                 $this->Flash->error(__('The procesos trabajadore could not be saved. Please, try again.'));
             }
         }
-        $trabajadores = $this->ProcesosTrabajadores->Trabajadores->find('list', ['limit' => 200]);
-        $procesos = $this->ProcesosTrabajadores->Procesos->find('list', ['limit' => 200]);
+        $trabajadores = $this->ProcesosTrabajadores->Trabajadores->find('list', ['limit' => 500]);
+        $procesos = $this->ProcesosTrabajadores->Procesos->find('list', ['limit' => 500]);
         $this->set(compact('procesosTrabajadore', 'trabajadores', 'procesos'));
         $this->set('_serialize', ['procesosTrabajadore']);
     }

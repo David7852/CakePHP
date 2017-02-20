@@ -48,7 +48,7 @@ class ProcesosController extends AppController
                 $this->Flash->error(__('El proceso no pudo ser guardado. Intente nuevamente.'));
             }
         }
-        $trabajadores = $this->Procesos->Trabajadores->find('list', ['limit' => 200]);
+        $trabajadores = $this->Procesos->Trabajadores->find('list', ['limit' => 500]);
         $this->set(compact('proceso', 'trabajadores'));
         $this->set('_serialize', ['proceso']);
     }
@@ -116,10 +116,7 @@ class ProcesosController extends AppController
                 $this->Flash->error(__('El proceso no pudo ser guardado. Intente nuevamente.'));
             }
         }
-        $trabajadores = $this->Procesos->Trabajadores->find('list')
-            ->where(['gerencia =' => 'IT'])
-            ->andWhere(['id !='=>$this->request->session()->read('Auth.User.trabajador_id')]);
-        $solicitantes= $this->Procesos->Trabajadores->find('list', ['limit' => 200]);
+        $solicitantes= $this->Procesos->Trabajadores->find('list', ['limit' => 500]);
         $this->set(compact('proceso', 'trabajadores', 'solicitantes'));
         $this->set('_serialize', ['proceso']);
     }
@@ -280,7 +277,6 @@ class ProcesosController extends AppController
         $proceso = $this->Procesos->get($id, [
             'contain' => ['Trabajadores']
         ]);
-        $solicitantes=array();
         if ($this->request->is(['patch', 'post', 'put'])) {
             $proceso = $this->Procesos->patchEntity($proceso, $this->request->data);
             if ($this->Procesos->save($proceso))
@@ -318,12 +314,22 @@ class ProcesosController extends AppController
             ->where(['proceso_id ='=>$id])
             ->andWhere(['rol ='=>'Solicitante']);
         $s=array();
-        foreach ($pro_tra as $pt) array_push($s,$pt->trabajador_id);
-        if($pro_tra!=null&&!$pro_tra->isEmpty()&&!empty($s))
-            $solicitantes=$this->Procesos->Trabajadores->find('list',array('conditions'=>array('Trabajadores.id IN'=>$s)));
-        $trabajadores = $this->Procesos->Trabajadores->find('list',array('conditions'=>array('Trabajadores.id NOT IN'=>$s)))
-            ->where(['gerencia =' => 'IT'])
-            ->andWhere(['id !='=>$this->request->session()->read('Auth.User.trabajador_id')]);
+        if(!$pro_tra->isEmpty())
+            foreach ($pro_tra as $pt)
+                array_push($s,$pt->trabajador_id);
+        if(!empty($s)){
+            $solicitantes = $this->Procesos->Trabajadores->find('list',array('limit' => 500,'conditions'=>array('Trabajadores.id IN'=>$s)));
+            $trabajadores = $this->Procesos->Trabajadores->find('list',array('limit' => 500,'conditions'=>array('Trabajadores.id NOT IN'=>$s)))
+                ->where(['gerencia =' => 'IT'])
+                ->andWhere(['id !='=>$this->request->session()->read('Auth.User.trabajador_id')]);
+        }
+        else
+        {
+            $solicitantes = $this->Procesos->Trabajadores->find('list',array('limit' => 500));
+            $trabajadores = $this->Procesos->Trabajadores->find('list',array('limit' => 500))
+                ->where(['gerencia =' => 'IT'])
+                ->andWhere(['id !='=>$this->request->session()->read('Auth.User.trabajador_id')]);
+        }
         $this->set(compact('proceso', 'trabajadores', 'solicitantes'));
         $this->set('_serialize', ['proceso']);
     }

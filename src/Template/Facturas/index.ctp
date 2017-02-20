@@ -3,11 +3,16 @@
         <li class="heading"><?=''?></li>
         <li class="tlf" id="seleccion"><?= $this->Html->link(__('Telefonia'), ['controller' => 'Pages', 'action' => 'display','telefonia'])?></li>
         <!-- $ -->
-        <li><?= $b===null ? $this->Html->link(__('Agregar Factura'), ['action' => 'add']): $this->Html->link(__('Reporte'), ['action' => 'facturacion',date("Y-m").'-1'],['style'=>'color:#D7782E']); ?></li>
+        <?php if($b===null): ?>
+        <li><?= $this->Html->link(__('Agregar Factura'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('Lineas'), ['controller' => 'Lineas', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Agregar Lineas'), ['controller' => 'Lineas', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('Consumos'), ['controller' => 'Consumos', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Agregar Consumo'), ['controller' => 'Consumos', 'action' => 'add'], ['class'=>'viewLink']) ?></li>
+        <?php else: ?>
+        <li><?= $this->Html->link(__('Reporte'), ['action' => 'facturacion',date("Y-m").'-1'],['style'=>'color:#D7782E']); ?></li>
+        <li><?= $this->Form->postLink(__('Aprobar'), ['controller' => 'Facturas','action' => 'aprobar',date("Y-m").'-1'],['style'=>'color:#C3232D','confirm' => __('¿Aprueba que los balances de las facturas sean escritos permanentemente en la base de datos?')]); ?></li>
+        <?php endif; ?>
         <!-- $ -->
         <li class="sol"><?= $this->Html->link(__('Solicitudes'), ['controller' => 'Pages', 'action' => 'display','solicitudes'])?></li>
         <li class="inv"><?= $this->Html->link(__('Inventario'), ['controller' => 'Pages', 'action' => 'display','inventario'])?></li>

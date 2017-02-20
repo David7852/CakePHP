@@ -184,7 +184,7 @@ class TrabajadoresController extends AppController
                 $this->Flash->error(__('El trabajador no pudo ser guardado. Intente nuevamente.'));
             }
         }
-        $procesos = $this->Trabajadores->Procesos->find('list', ['limit' => 200]);
+        $procesos = $this->Trabajadores->Procesos->find('list', ['limit' => 500]);
         $this->set(compact('trabajador', 'procesos'));
         $this->set('_serialize', ['trabajador']);
     }
@@ -250,7 +250,7 @@ class TrabajadoresController extends AppController
                 $this->Flash->error(__('Usted no pudo ser registrado. Intente nuevamente.'));
             }
         }
-        $procesos = $this->Trabajadores->Procesos->find('list', ['limit' => 200]);
+        $procesos = $this->Trabajadores->Procesos->find('list', ['limit' => 500]);
         $this->set(compact('trabajador', 'procesos'));
         $this->set('_serialize', ['trabajador']);
     }
@@ -300,7 +300,7 @@ class TrabajadoresController extends AppController
                 $this->Flash->error(__('Los cambios en el trabajador no pudieron guardarse. Intente nuevamente.'));
             }
         }
-        $procesos = $this->Trabajadores->Procesos->find('list', ['limit' => 200]);
+        $procesos = $this->Trabajadores->Procesos->find('list', ['limit' => 500]);
         $this->set(compact('trabajador', 'procesos'));
         $this->set('_serialize', ['trabajador']);
     }

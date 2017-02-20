@@ -72,13 +72,14 @@ class Factura extends Entity
                     $b=$b+$consumo->monto_bs;
             return $b+$this->_properties['cargos_extra'];
         }*/
-        if($balance==0&&$balance!=null)
+        if($balance==0&&$balance!==null)
         {
             if($this->_properties['balance']!=0)
                 return $this->_properties['balance'];
             $b=0;
             $c = new FacturasController();
-            $related=$c->getRelated($this->_properties['id']);
+            if($this->id!=null);
+                $related=$c->getRelated($this->id);
             if($related==null)
                 return 0;
             $rentas=$related->linea->rentasalt;

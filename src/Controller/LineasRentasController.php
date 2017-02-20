@@ -73,8 +73,8 @@ class LineasRentasController extends AppController
                 $this->Flash->error(__('The lineas renta could not be saved. Please, try again.'));
             }
         }
-        $lineas = $this->LineasRentas->Lineas->find('list', ['limit' => 200]);
-        $rentas = $this->LineasRentas->Rentas->find('list', ['limit' => 200]);
+        $lineas = $this->LineasRentas->Lineas->find('list', ['limit' => 500]);
+        $rentas = $this->LineasRentas->Rentas->find('list', ['limit' => 500]);
         $this->set(compact('lineasRenta', 'lineas', 'rentas'));
         $this->set('_serialize', ['lineasRenta']);
     }
@@ -101,8 +101,8 @@ class LineasRentasController extends AppController
                 $this->Flash->error(__('The lineas renta could not be saved. Please, try again.'));
             }
         }
-        $lineas = $this->LineasRentas->Lineas->find('list', ['limit' => 200]);
-        $rentas = $this->LineasRentas->Rentas->find('list', ['limit' => 200]);
+        $lineas = $this->LineasRentas->Lineas->find('list', ['limit' => 500]);
+        $rentas = $this->LineasRentas->Rentas->find('list', ['limit' => 500]);
         $this->set(compact('lineasRenta', 'lineas', 'rentas'));
         $this->set('_serialize', ['lineasRenta']);
     }

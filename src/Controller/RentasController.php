@@ -89,7 +89,7 @@ class RentasController extends AppController
                 $this->Flash->error(__('La renta no pudo ser guardada. Intente nuevamente.'));
             }
         }
-        $lineas = $this->Rentas->Lineas->find('list', ['limit' => 200]);
+        $lineas = $this->Rentas->Lineas->find('list', ['limit' => 500]);
         $this->set(compact('renta', 'lineas'));
         $this->set('_serialize', ['renta']);
     }
@@ -120,7 +120,7 @@ class RentasController extends AppController
                 $this->Flash->error(__('Los cambios en la renta no pudieron guardarse. Intente nuevamente'));
             }
         }
-        $lineas = $this->Rentas->Lineas->find('list', ['limit' => 200]);
+        $lineas = $this->Rentas->Lineas->find('list', ['limit' => 500]);
         $this->set(compact('renta', 'lineas'));
         $this->set('_serialize', ['renta']);
     }

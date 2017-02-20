@@ -190,7 +190,7 @@ class ArticulosController extends AppController
                 $this->Flash->error(__('El articulo no pudo guardarse. Intente nuevamente.'));
             }
         }
-        $modelos = $this->Articulos->Modelos->find('list', ['limit' => 200]);
+        $modelos = $this->Articulos->Modelos->find('list', ['limit' => 500]);
         $this->set(compact('articulo', 'modelos'));
         $this->set('_serialize', ['articulo']);
     }
@@ -221,7 +221,7 @@ class ArticulosController extends AppController
                 $this->Flash->error(__('Los cambios en el articulo no pudieron guardarse. Intente nuevamente.'));
             }
         }
-        $modelos = $this->Articulos->Modelos->find('list', ['limit' => 200]);
+        $modelos = $this->Articulos->Modelos->find('list', ['limit' => 500]);
         $this->set(compact('articulo', 'modelos'));
         $this->set('_serialize', ['articulo']);
     }

@@ -129,10 +129,13 @@ ul.pagination li a {
 }
 
 ul.pagination li.active a {
-    background-color: #DCE47E;
-    color: #FFF;
-    font-weight: bold;
-    cursor: default;
+     background-color: #5da140;
+     color: #FFF;
+     font-weight: bold;
+     cursor: default;
+ }
+ul.pagination li.active a:hover {
+    background-color: #89b237;
 }
 
 ul.pagination .disabled:hover a {

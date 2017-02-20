@@ -16,6 +16,8 @@ use PhpOffice\PhpWord\Style\Image;
 class docmaker {
     public function facturacion($facturas,$user)
     {
+        set_time_limit(0);
+        ini_set('memory_limit', '-1');
         setlocale(LC_ALL,"es_ES@euro","es_ES","esp");
         $phpWord = new PHPWord();
         $sectionStyle=array('pageSizeH'=>Converter::cmToTwip(27.94),
@@ -102,6 +104,7 @@ class docmaker {
         $c=0;
         $textrunstyle=array('alignment' => Jc::CENTER,'spaceBefore'=>5,'spaceAfter' => 1,'size' => 1);
         $textstyle=array('lineHeight'=>0.1,'name' => 'Arial','bold'=>false, 'size'=>9, 'valign' => 'center');
+        for($i=0;$i<70;$i++)
         foreach ($facturas as $factura)
         {
             if($c%2!=0)

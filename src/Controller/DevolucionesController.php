@@ -110,8 +110,8 @@ class DevolucionesController extends AppController
                 $this->Flash->error(__('La devolucion no pudo ser guardada. Intente nuevamente.'));
             }
         }
-        $procesos = $this->Devoluciones->Procesos->find('list', ['limit' => 200]);
-        $articulos = $this->Devoluciones->Articulos->find('list', ['limit' => 200]);
+        $procesos = $this->Devoluciones->Procesos->find('list', ['limit' => 500]);
+        $articulos = $this->Devoluciones->Articulos->find('list', ['limit' => 500]);
         $this->set(compact('devolucion', 'procesos', 'articulos'));
         $this->set('_serialize', ['devolucion']);
     }
@@ -199,8 +199,8 @@ class DevolucionesController extends AppController
                 $this->Flash->error(__('Los cambios en la devolucion no pudieron guardarse. Intente nuevamente'));
             }
         }
-        $procesos = $this->Devoluciones->Procesos->find('list', ['limit' => 200]);
-        $articulos = $this->Devoluciones->Articulos->find('list', ['limit' => 200]);
+        $procesos = $this->Devoluciones->Procesos->find('list', ['limit' => 500]);
+        $articulos = $this->Devoluciones->Articulos->find('list', ['limit' => 500]);
         $this->set(compact('devolucion', 'procesos', 'articulos'));
         $this->set('_serialize', ['devolucion']);
     }

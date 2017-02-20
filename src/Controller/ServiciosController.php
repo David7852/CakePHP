@@ -83,7 +83,7 @@ class ServiciosController extends AppController
                 $this->Flash->error(__('El servicio no pudo guardarse. Intente nuevamente.'));
             }
         }
-        $rentas = $this->Servicios->Rentas->find('list', ['limit' => 200]);
+        $rentas = $this->Servicios->Rentas->find('list', ['limit' => 500]);
         $this->set(compact('servicio', 'rentas'));
         $this->set('_serialize', ['servicio']);
     }
@@ -114,7 +114,7 @@ class ServiciosController extends AppController
                 $this->Flash->error(__('Los cambios en el servicio no pudieron guardarse. Intente nuevamente'));
             }
         }
-        $rentas = $this->Servicios->Rentas->find('list', ['limit' => 200]);
+        $rentas = $this->Servicios->Rentas->find('list', ['limit' => 500]);
         $this->set(compact('servicio', 'rentas'));
         $this->set('_serialize', ['servicio']);
     }

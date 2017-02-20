@@ -121,7 +121,7 @@ class AccesoriosController extends AppController
                 $this->Flash->error(__('El accesorio no pudo guardarse. Intente nuevamente.'));
             }
         }
-        $articulos = $this->Accesorios->Articulos->find('list', ['limit' => 200]);
+        $articulos = $this->Accesorios->Articulos->find('list', ['limit' => 500]);
         $this->set(compact('accesorio', 'articulos'));
         $this->set('_serialize', ['accesorio']);
     }
@@ -152,7 +152,7 @@ class AccesoriosController extends AppController
                 $this->Flash->error(__('Los cambios en el accesorio no pudieron guardarse. Intente nuevamente'));
             }
         }
-        $articulos = $this->Accesorios->Articulos->find('list', ['limit' => 200]);
+        $articulos = $this->Accesorios->Articulos->find('list', ['limit' => 500]);
         $this->set(compact('accesorio', 'articulos'));
         $this->set('_serialize', ['accesorio']);
     }

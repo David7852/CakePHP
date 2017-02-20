@@ -112,8 +112,8 @@ class AsignacionesController extends AppController
                 $this->Flash->error(__('La asignacion no pudo ser guardada. Intente nuevamente.'));
             }
         }
-        $procesos = $this->Asignaciones->Procesos->find('list', ['limit' => 200]);
-        $articulos = $this->Asignaciones->Articulos->find('list', ['limit' => 200]);
+        $procesos = $this->Asignaciones->Procesos->find('list', ['limit' => 500]);
+        $articulos = $this->Asignaciones->Articulos->find('list', ['limit' => 500]);
         $this->set(compact('asignacion', 'procesos', 'articulos'));
         $this->set('_serialize', ['asignacion']);
     }
@@ -163,7 +163,7 @@ class AsignacionesController extends AppController
         if(!empty($articulos))
             $articulos = $this->Asignaciones->Articulos->find('list',array('conditions'=>array('Articulos.id NOT IN'=>$articulos)));
         else
-            $articulos = $this->Asignaciones->Articulos->find('list',['limit' => 200]);
+            $articulos = $this->Asignaciones->Articulos->find('list',['limit' => 500]);
         $procesos = $this->Asignaciones->Procesos->find('list')
             ->where(['id ='=>$id]);
         $this->set(compact('asignacion', 'procesos', 'articulos'));
@@ -196,8 +196,8 @@ class AsignacionesController extends AppController
                 $this->Flash->error(__('Los cambios en la asignacion no pudieron guardarse. Intente nuevamente.'));
             }
         }
-        $procesos = $this->Asignaciones->Procesos->find('list', ['limit' => 200]);
-        $articulos = $this->Asignaciones->Articulos->find('list', ['limit' => 200]);
+        $procesos = $this->Asignaciones->Procesos->find('list', ['limit' => 500]);
+        $articulos = $this->Asignaciones->Articulos->find('list', ['limit' => 500]);
         $this->set(compact('asignacion', 'procesos', 'articulos'));
         $this->set('_serialize', ['asignacion']);
     }

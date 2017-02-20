@@ -282,7 +282,7 @@ class UsuariosController extends AppController
                 $this->Flash->error(__('El nuevo usuario no pudo ser guardado. Intente nuevamente.'));
             }
         }
-        $trabajadores = $this->Usuarios->Trabajadores->find('list', ['limit' => 200]);
+        $trabajadores = $this->Usuarios->Trabajadores->find('list', ['limit' => 500]);
         $this->set(compact('usuario', 'trabajadores'));
         $this->set('_serialize', ['usuario']);
     }
@@ -345,7 +345,7 @@ class UsuariosController extends AppController
                     $this->Flash->error(__('Debe Ingresar correctamente su clave anterior antes de poder efectuar los cambios.'));
             }
         }
-        $trabajadores = $this->Usuarios->Trabajadores->find('list', ['limit' => 200]);
+        $trabajadores = $this->Usuarios->Trabajadores->find('list', ['limit' => 500]);
         $this->set(compact('usuario', 'trabajadores'));
         $this->set('_serialize', ['usuario']);
     }

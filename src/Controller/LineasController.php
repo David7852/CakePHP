@@ -134,8 +134,17 @@ class LineasController extends AppController
                 $this->Flash->error(__('La linea no pudo ser registrada. Intente nuevamente.'));
             }
         }
-        $articulos = $this->Lineas->Articulos->find('list', ['limit' => 200]);//restringir para que solo muestre celulares o telefonos fijos
-        $rentas = $this->Lineas->Rentas->find('list', ['limit' => 200]);
+        $s=array();
+        $modelos=TableRegistry::get('Modelos')->find('all')
+            ->where(['tipo_de_articulo ='=>'Celular']);
+        if(!$modelos->isEmpty())
+            foreach ($modelos as $mo)
+                array_push($s,$mo->id);
+        if(!empty($s))
+            $articulos = $this->Lineas->Articulos->find('list', array('limit' => 500,'conditions'=>array('Articulos.modelo_id IN'=>$s)));//restringir para que solo muestre celulares o telefonos fijos
+        else
+            $articulos = $this->Lineas->Articulos->find('list', ['limit' => 500]);
+        $rentas = $this->Lineas->Rentas->find('list', ['limit' => 500]);
         $this->set(compact('linea', 'articulos', 'rentas'));
         $this->set('_serialize', ['linea']);
     }
@@ -166,8 +175,17 @@ class LineasController extends AppController
                 $this->Flash->error(__('Los cambios en la linea no pudieron guardarse. Intente nuevamente'));
             }
         }
-        $articulos = $this->Lineas->Articulos->find('list', ['limit' => 200]);
-        $rentas = $this->Lineas->Rentas->find('list', ['limit' => 200]);
+        $s=array();
+        $modelos=TableRegistry::get('Modelos')->find('all')
+            ->where(['tipo_de_articulo ='=>'Celular']);
+        if(!$modelos->isEmpty())
+            foreach ($modelos as $mo)
+                array_push($s,$mo->id);
+        if(!empty($s))
+            $articulos = $this->Lineas->Articulos->find('list', array('limit' => 500,'conditions'=>array('Articulos.modelo_id IN'=>$s)));//restringir para que solo muestre celulares o telefonos fijos
+        else
+            $articulos = $this->Lineas->Articulos->find('list', ['limit' => 500]);
+        $rentas = $this->Lineas->Rentas->find('list', ['limit' => 500]);
         $this->set(compact('linea', 'articulos', 'rentas'));
         $this->set('_serialize', ['linea']);
     }

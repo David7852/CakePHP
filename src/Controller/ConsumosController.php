@@ -128,7 +128,7 @@ class ConsumosController extends AppController
             $fact = true;
             $id=substr($id, 1);
         }
-        $facturas = $this->Consumos->Facturas->find('list', ['limit' => 200]);
+        $facturas = $this->Consumos->Facturas->find('list', ['limit' => 500]);
         if($id!=null) {
             $facturas=TableRegistry::get('Facturas')->find('list')
                 ->where(['linea_id ='=>$id]);
@@ -151,7 +151,7 @@ class ConsumosController extends AppController
                 $this->Flash->error(__('El consumo no pudo ser registrado. Intente nuevamente'));
             }
         }
-        $servicios = $this->Consumos->Servicios->find('list', ['limit' => 200]);
+        $servicios = $this->Consumos->Servicios->find('list', ['limit' => 500]);
         $this->set(compact('consumo', 'facturas', 'servicios'));
         $this->set('_serialize', ['consumo']);
     }
@@ -182,8 +182,8 @@ class ConsumosController extends AppController
                 $this->Flash->error(__('El consumo no pudo ser registrado. Intente nuevamente'));
             }
         }
-        $facturas = $this->Consumos->Facturas->find('list', ['limit' => 200]);
-        $servicios = $this->Consumos->Servicios->find('list', ['limit' => 200]);
+        $facturas = $this->Consumos->Facturas->find('list', ['limit' => 500]);
+        $servicios = $this->Consumos->Servicios->find('list', ['limit' => 500]);
         $this->set(compact('consumo', 'facturas', 'servicios'));
         $this->set('_serialize', ['consumo']);
     }

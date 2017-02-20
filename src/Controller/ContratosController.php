@@ -107,7 +107,7 @@ class ContratosController extends AppController
                 $this->Flash->error(__('El contrato no pudo guardarse. Intente nuevamente .'));
             }
         }
-        $trabajadores = $this->Contratos->Trabajadores->find('list', ['limit' => 200]);
+        $trabajadores = $this->Contratos->Trabajadores->find('list', ['limit' => 500]);
         $this->set(compact('contrato', 'trabajadores'));
         $this->set('_serialize', ['contrato']);
     }
@@ -150,7 +150,7 @@ class ContratosController extends AppController
                 $this->Flash->error(__('Los cambios en el contrato no pudieron guardarse. Intente nuevamente'));
             }
         }
-        $trabajadores = $this->Contratos->Trabajadores->find('list', ['limit' => 200]);
+        $trabajadores = $this->Contratos->Trabajadores->find('list', ['limit' => 500]);
         $this->set(compact('contrato', 'trabajadores'));
         $this->set('_serialize', ['contrato']);
     }
