@@ -103,8 +103,7 @@ class docmaker {
             ->addText('Monto',array('lineHeight'=>0.1,'name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'center'));
         $c=0;
         $textrunstyle=array('alignment' => Jc::CENTER,'spaceBefore'=>5,'spaceAfter' => 1,'size' => 1);
-        $textstyle=array('lineHeight'=>0.1,'name' => 'Arial','bold'=>false, 'size'=>9, 'valign' => 'center');
-        for($i=0;$i<70;$i++)
+        $textstyle=array('lineHeight'=>1,'name' => 'Arial','bold'=>false, 'size'=>8, 'valign' => 'center');
         foreach ($facturas as $factura)
         {
             if($c%2!=0)

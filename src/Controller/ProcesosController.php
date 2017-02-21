@@ -60,7 +60,6 @@ class ProcesosController extends AppController
      */
     public function index()
     {
-
         if($this->request->session()->read('Auth.User.funcion')=='Visitante') {
             $procesos=array();
             $pro_tra=TableRegistry::get('ProcesosTrabajadores')->find('all')

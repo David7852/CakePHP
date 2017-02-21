@@ -26,7 +26,7 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort(' ') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('motivo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Solicitante') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('solicitante') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Supervisor') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created',['label'=>'Fecha de Solicitud']) ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>

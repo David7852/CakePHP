@@ -909,6 +909,12 @@ div.message.hidden {
         line-height: normal;
         text-transform: capitalize !important;
     }
+    div .slice ul li div div div input,
+    div .slice ul li div div div input:hover {
+        height: 16px!important;
+        border-radius: 1000em!important;
+        box-shadow: unset!important;
+    }
     div.header-image img
     {
         max-width: 75%;
@@ -933,7 +939,7 @@ div.message.hidden {
         margin-bottom: 0;
     }
     form div.slice ul li div div button{
-        width: 19px;
+        width: 20px;
         height: 20px;
         padding: 0px 5px 1px 3px;
         margin: 3px;
