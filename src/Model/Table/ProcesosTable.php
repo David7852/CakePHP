@@ -80,6 +80,10 @@ class ProcesosTable extends Table
             ->allowEmpty('fecha_de_aprobacion');
 
         $validator
+            ->date('fecha_de_complecion')
+            ->allowEmpty('fecha_de_complecion');
+
+        $validator
             ->allowEmpty('estado');
 
         $validator

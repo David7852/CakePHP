@@ -58,6 +58,16 @@ use Cake\ORM\TableRegistry;?>
             </td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Fecha De Compleción') ?></th>
+            <td>
+                <?php if($proceso->fecha_de_complecion!=''):?>
+                    <?= h($proceso->fecha_de_complecion) ?>
+                <?php else: ?>
+                    <?= h('Sin completar') ?>
+                <?php endif; ?>
+            </td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Estado') ?></th>
             <td><?= h($proceso->estado) ?></td>
         </tr>
@@ -121,7 +131,6 @@ use Cake\ORM\TableRegistry;?>
         <h4><?= __('Personal involucrado:') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <!-- Aca podria ir el rol del trabajador -->
                 <th scope="col"><?= __('Rol') ?></th>
                 <th scope="col"><?= __('Nombre') ?></th>
                 <th scope="col"><?= __('Cedula') ?></th>

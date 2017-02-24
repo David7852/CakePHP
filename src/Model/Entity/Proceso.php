@@ -11,6 +11,7 @@ use Cake\ORM\TableRegistry;
  * @property string $motivo
  * @property string $tipo
  * @property \Cake\I18n\Time $fecha_de_aprobacion
+ * @property \Cake\I18n\Time $fecha_de_complecion
  * @property string $estado
  * @property string $observaciones
  * @property \Cake\I18n\Time $created
@@ -115,6 +116,8 @@ class Proceso extends Entity
     protected function _setModified($value){
         if($this->fecha_de_aprobacion==''&&($this->estado=='Aprobado'||$this->estado=='Completado'))
             $this->fecha_de_aprobacion=$value;
+        if($this->fecha_de_complecion==''&&$this->estado=='Completado')
+            $this->fecha_de_complecion=$value;
         return $value;
     }
 

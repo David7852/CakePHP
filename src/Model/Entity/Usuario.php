@@ -11,8 +11,9 @@ use Cake\ORM\Entity;
  * @property string $email
  * @property string $clave
  * @property string $funcion
+ * @property string $pregunta
+ * @property string $respuesta
  * @property int $trabajador_id
- * @property string $imagen
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
@@ -25,7 +26,14 @@ class Usuario extends Entity
         $hasher = new DefaultPasswordHasher();
         return $hasher->hash($value);
     }
-
+    protected function _setPregunta($value)
+    {
+        if($value[0]!='¿')
+            $value='¿'.ucfirst($value);
+        if($value[sizeof($value-1)]!='?')
+            $value=$value.'?';
+        return $value;
+    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

@@ -8,7 +8,7 @@ create table if not exists articulos (
   serial varchar(50) unique not null,
   modelo_id integer unsigned,
   datos varchar(200),
-  ubicacion varchar(50),
+  ubicacion varchar(50) default "Deposito IT",
   estado enum("Nuevo","Usado","Roto","Reparado","Obsoleto") default "Nuevo",
   fecha_de_compra date,
   created datetime default null,
@@ -52,7 +52,6 @@ create table if not exists trabajadores (
   sede smallint default 0,
   puesto_de_trabajo varchar(50),
   telefono_personal varchar(20),
-  extension varchar(20),
   rif varchar(15),
   residencia varchar(200),
   created datetime default null,
@@ -61,9 +60,8 @@ create table if not exists trabajadores (
 create table if not exists procesos (
   id integer unsigned auto_increment primary key,
   motivo varchar(255),
-  tipo enum("Asignacion","Devolucion","Mixto") default "Asignacion",
+  tipo enum("Asignacion","Devolucion","Mixto") not null default "Asignacion"
   fecha_de_aprobacion date,
-  fecha_de_complecion date,
   estado enum("Pendiente","Aprobado","Rechazado","Completado") default "Pendiente",
   observaciones text,
   created datetime default null,
@@ -117,9 +115,10 @@ create table if not exists consumos (
   id integer unsigned auto_increment primary key,
   factura_id integer unsigned not null,
   servicio_id integer unsigned not null,
+  cupo varchar(20) default "0",
   consumido varchar(20) default "0",
   excedente varchar(20) default "0",
-  monto_bs float not null default 0,
+  monto_bs float unsigned not null,
   created datetime default null,
   modified datetime default null);
 
@@ -127,9 +126,7 @@ create table if not exists facturas (
   id integer unsigned auto_increment primary key,
   linea_id integer unsigned not null,
   paguese_antes_de date,
-  balance float not null default 0,
-  iva float default 0,
-  cargos_extra float default 0,
+  balance float unsigned not null default 0,
   desde date not null,
   hasta date not null,
   numero_de_cuenta varchar(25),
@@ -154,10 +151,9 @@ create table if not exists usuarios(
   nombre_de_usuario varchar(25) unique not null,
   email varchar(50) unique not null,
   clave varchar(255) not null,
-  pregunta varchar(100),
-  respuesta varchar(50),
   funcion enum("Superadministrador","Administrador","Operador","Visitante") default "Visitante",
   trabajador_id integer unsigned,
+  imagen text,
   created datetime default null,
   modified datetime default null);
 
@@ -240,7 +236,6 @@ create table if not exists softwares (
 
 create table if not exists instalaciones (
   id integer unsigned primary key,
-  titulo varchar(255),
   articulo_id integer unsigned not null,
   software_id integer unsigned not null,
   fecha_de_instalacion date not null,

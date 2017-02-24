@@ -80,7 +80,10 @@ class UsuariosTable extends Table
             ->allowEmpty('funcion');
 
         $validator
-            ->allowEmpty('imagen');
+            ->allowEmpty('pregunta');
+
+        $validator
+            ->allowEmpty('respuesta');
 
         return $validator;
     }

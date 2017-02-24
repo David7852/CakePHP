@@ -4,8 +4,8 @@
         <li class="usu" id="seleccion"><?= $this->Html->link(__('Usuarios'), ['controller' => 'Pages', 'action' => 'display','usuarios'])?></li>
         <!-- $ -->
         <?php if($this->request->session()->read('Auth.User.funcion')=='Visitante'): ?>
+            <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $usuario->id]) ?> </li>
             <li><?= $this->Html->link(__('Trabajadores'), ['controller' => 'Trabajadores','action' => 'index']) ?> </li>
-            <li><?= $this->Html->link(__('Usuarios'), ['action' => 'index']) ?></li>
         <?php else: ?>
         <li><?= $this->Html->link(__('Editar'), ['action' => 'edit', $usuario->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $usuario->id], ['confirm' => __('¿Confirma querer eliminar al usuario {0}?', $usuario->nombre_de_usuario)]) ?> </li>

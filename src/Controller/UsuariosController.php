@@ -53,11 +53,11 @@ class UsuariosController extends AppController
                 $query = $usuarios->find();
                 $found=false;
                 foreach ($query as $userrow){
-                    if($userrow->nombre_de_usuario==$this->request->data['nombre_de_usuario'])
-                        $found=$userrow->id;
+                    if(strtolower($userrow->nombre_de_usuario)==strtolower($this->request->data['nombre_de_usuario']))
+                    {$found=$userrow->id;
+                    break;}
                 }
-                if($found)
-                {
+                if($found)                {
                     return $this->redirect(['action' => 'reset',$found]);
                 }
                 $this->Flash->error('Ningun nombre de usuario coincide con el nombre ingresado');
@@ -156,13 +156,17 @@ class UsuariosController extends AppController
     {
         if($this->request->session()->read('Auth.User'))
             return $this->redirect(['action' => 'view', $this->request->session()->read('Auth.User.id')]);
+        $usuario = $this->Usuarios->get($id);
+        $this->set(compact('usuario'));
+        $this->set('_serialize', ['usuario']);
         if ($this->request->is('post'))
         {
             $usuario = TableRegistry::get('Usuarios')->get($id);
             $trabajador = TableRegistry::get('Trabajadores')->get($usuario->trabajador_id);
             if(strcasecmp($this->request->data['nombre'],$trabajador->nombre)==0&&
                 strcasecmp($this->request->data['apellido'],$trabajador->apellido)==0&&
-                $this->request->data['cedula']==$trabajador->cedula)
+                $this->request->data['cedula']==$trabajador->cedula&&
+                $this->request->data['respuesta']==$usuario->respuesta)
             {
                 $this->Flash->success(('Se le asigno la contraseña temporal "fertinitro'.date("Y").'". Ingrese a su perfil y cámbiela lo antes posible.'));
                 $usuarios = TableRegistry::get('Usuarios');
@@ -330,7 +334,7 @@ class UsuariosController extends AppController
                 $usuario = $this->Usuarios->patchEntity($usuario, $this->request->data);
                 if ($this->Usuarios->save($usuario)) {
                     $this->Flash->success(__('El usuario se modifico correctamente.'));
-                    return $this->redirect(['action' => 'index']);
+                    return $this->redirect(['action' => 'view',$id]);
                 } else {
                     $this->Flash->error(__('Los cambios no pudieron guardarse, Intente nuevamente.'));
                 }

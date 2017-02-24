@@ -11,7 +11,7 @@
                 <?= $this->Form->input('nombre') ?>
                 <?= $this->Form->input('apellido') ?>
                 <?= $this->Form->input('cedula') ?>
-                <br>
+                <?= $this->Form->input('respuesta',['label'=>h($usuario->pregunta)]) ?>
                 <?= str_replace("type=\"submit\"", "type=\"submit\" id='red-button' style=' float:none; display:block; margin: auto; height:3rem;'", $this->Form->button(__('Reiniciar mi contraseña'))) ?>
             <?= $this->Form->end() ?>
             <br>

@@ -19,6 +19,8 @@
             echo $this->Form->input('nombre_de_usuario');
             echo $this->Form->input('email');
             echo $this->Form->input('clave',['type'=>'password']);
+            echo $this->Form->input('pregunta',['label'=>'Pregunta Secreta']);
+            echo $this->Form->input('respuesta');
             if($this->request->session()->read('Auth.User.funcion')=='Superadministrador'){
                 $options = ["Superadministrador"=>"Superadministrador",
                         "Administrador"=>"Administrador",

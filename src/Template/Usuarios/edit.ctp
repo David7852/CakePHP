@@ -31,14 +31,17 @@
         echo "<p class='removablewarningnote' id='removable' onclick='removeFadeOut(document.getElementById(\"removable\"), 666);'>Actualmente tiene asignada una clave poco segura. Consideré actualizar su clave cuanto antes.</p>";
         ?>
     <?= $this->Form->create($usuario) ?>
-    <fieldset>
+    <fieldset style="padding-bottom: 0.16rem;margin-bottom: 0.04rem">
         <legend><?= __('Editando a ').h($usuario->nombre_de_usuario) ?></legend>
         <?php
+            $hasher = new DefaultPasswordHasher();
             echo $this->Form->input('nombre_de_usuario');
             echo $this->Form->input('email');
-            echo $this->Form->input('clave_anterior',['type'=>'password','value'=>'','required'=>true]);
-            echo $this->Form->input('clave',['label'=>'Clave','type'=>'password','value'=>'']);
-            echo $this->Form->input('conf_clave',['label'=>'Reingrese Su Clave','type'=>'password','value'=>'']);
+            echo $this->Form->input('clave_anterior',['label'=>'Clave Actual','type'=>'password','value'=>'','required'=>true]);
+            echo $this->Form->input('clave',['label'=>'Nueva Clave','type'=>'password','value'=>'']);
+            echo $this->Form->input('conf_clave',['label'=>'Reingrese Su Nueva Clave','type'=>'password','value'=>'','required'=>true]);
+            echo $this->Form->input('pregunta',['label'=>'Pregunta Secreta','value'=>'']);
+            echo $this->Form->input('respuesta',['value'=>'']);
             if($this->request->session()->read('Auth.User.funcion')=='Superadministrador')
             {
                 $options = ["Superadministrador" => "Superadministrador",
@@ -47,14 +50,14 @@
                     "Visitante" => "Visitante"];
                 echo $this->Form->input('funcion', array('options'=>$options,'empty'=>false,'escape'=>false));
             }
-            /*echo $this->Form->input('imagen', ['type' => 'file']);*/
         ?>
-        <table>
+
+    </fieldset>
+    <table>
         <tr>
             <td><?=$usuario->has('trabajador') ? $this->Html->link($usuario->trabajador->titulo, ['controller' => 'Trabajadores', 'action' => 'view', $usuario->trabajador->id]) : '' ?></td>
         </tr>
-        </table>
-    </fieldset>
+    </table>
     <?= $this->Form->button(__('Aceptar')) ?>
     <?= $this->Form->end() ?>
 </div>
