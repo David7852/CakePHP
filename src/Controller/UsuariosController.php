@@ -34,10 +34,11 @@ class UsuariosController extends AppController
      *
      *
      */
-    public function login()
+    public function login($nombre = null)
     {
         if($this->request->session()->read('Auth.User'))
             return $this->redirect(['action' => 'view', $this->request->session()->read('Auth.User.id')]);
+        $this->set(compact('nombre'));
         if($this->request->is('post'))
             if (array_key_exists('btn',$this->request->data)&&$this->request->data['btn'] == 'Ingresar') {
                 $user = $this->Auth->identify();
@@ -65,9 +66,6 @@ class UsuariosController extends AppController
 
     protected function getnewname($username)
     {
-        /*
-         * receive the desire username that causes conflict with the naming standard.
-         */
         $user = TableRegistry::get('Usuarios');
         $q = $user->find();
         $c = 2;
@@ -110,10 +108,9 @@ class UsuariosController extends AppController
                     $query = $usuarios->find();
                     foreach ($query as $userrow){
                         if($userrow->trabajador_id==$row->id){//and if at least an user happens to belong to said worker redirect to the view of that user.
-                            $this->Flash->success(__('Trabajador y usuario encontrados. Redireccionando...'));
-                            $url = array('controller' => 'usuarios', 'action' => 'view',$userrow->id);//an special action can be created so that it displays flashes with instructions
-                            $second = '1.25';
-                            $this->Auth->setUser($usuarios->get($userrow->id));
+                            $this->Flash->success(__('El usuario "'.$userrow->nombre_de_usuario.'" pertenece a ese trabajador. Redireccionando...'));
+                            $url = array('controller' => 'usuarios', 'action' => 'login',$userrow->nombre_de_usuario);//an special action can be created so that it displays flashes with instructions
+                            $second = '1.85';
                             $this->response->header("refresh:$second; url='" . Router::url($url) . "'");
                             $this->set(compact('url', 'second'));
                             return;

@@ -92,7 +92,7 @@ $cakeDescription = 'WIT ';
         </a>
     <?php endif; ?>
     <?= $this->request->action=='login'? '<footer style="margin-top: 0!important;">':'<footer>' ?>
-            <div style="vertical-align: middle;background-color: #fbfbfb; background-image: url(../img/bodyTexture.png);">
+            <div style="vertical-align: middle;background-color: #fbfbfb; background-image: url(/WIT/webroot/img/bodyTexture.png);">
                 <table class="fertinitro" style="margin-bottom: .25rem">
                     <tbody>
                     <tr >
@@ -109,14 +109,14 @@ $cakeDescription = 'WIT ';
                     </tr>
                     </tbody>
                 </table>
-                <table width="100%" style="    background-color: #fbfbfb;    background-image: url(../img/bodyTexture.png);    margin-bottom: 0;">
+                <table width="100%" style="background-color: #fbfbfb; background-image: url(/WIT/webroot/img/bodyTexture.png); margin-bottom: 0;">
                     <tbody>
                     <tr style="border-bottom: none;height: auto;max-height: 50px;padding: 0;">
                         <td style="text-align: left;padding: 0;width: 50%;padding-bottom: 0!important;padding-top: 0!important;max-width: 50%;">
-                            <img style="    width: 100%;    max-width: 330px;    height: auto;max-height: 49px;size: auto;" src="/WIT/webroot/img/cintillo izquierda.png" width="330" height="49">
+                            <img style="width: 100%; max-width: 330px; height: auto;max-height: 49px;size: auto;" src="/WIT/webroot/img/cintillo izquierda.png" width="330" height="49">
                         </td>
                         <td style="float:right; width: 50%;max-width: 186px;max-height: 50px;height: auto;padding: 0;overflow: hidden;margin-left: 3rem;display: inline-table;">
-                            <img style=" width: 100%; max-width: 186px; height: auto; max-height: 49px; SIZE: auto; " src="/WIT/webroot/img/cintillo derecha.png" width="186" height="49">
+                            <img style="width: 100%; max-width: 186px; height: auto; max-height: 49px; SIZE: auto; " src="/WIT/webroot/img/cintillo derecha.png" width="186" height="49">
                         </td>
                     </tr>
                     </tbody>

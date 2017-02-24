@@ -1,24 +1,9 @@
 <?php
-/**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @since         0.10.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
 use App\Controller\Component\savory;
 use Cake\Core\Configure;
 use Cake\Network\Exception\NotFoundException;
 use Cake\Routing\Router;
-
 $this->layout = false;
-
 if (!Configure::read('debug')):
     throw new NotFoundException('Please replace src/Template/Pages/home.ctp with your own version.');
 endif;
@@ -71,6 +56,9 @@ $cakeDescription = 'WIT';
                 </div>
             </div>
             <div class="columns large-12 checks">
+                <!--<h4 style="text-transform: capitalize">PUEDE COLOCAR NOTICIAS EN ESTA SECCIÓN</h4>
+                 <div><P>...</P></div>
+                <hr>-->
                 <h4 style="text-transform: capitalize">unete y participa</h4>
                 <div><?= $savoire->gettrbdata() ?></div>
                 <hr>
@@ -95,13 +83,13 @@ $cakeDescription = 'WIT';
                 <p>La visión de <dfn style="color: rgb(56,118,29); font-style: normal ; font-weight: bold">Ferti</dfn><dfn style="color: rgb(137,180,43); font-style: normal ; font-weight: bold">Nitro</dfn> es ser reconocida a nivel nacional e internacional como la empresa más confiable y rentable en producción y comercialización de urea y amoníaco de alta calidad.</p>
             </div>
         </div><div>
-        <hr style="border-color: rgba(195, 35, 45, 0.92); border-width: 2px"></div>
+        <hr style="border-color: rgba(195, 35, 45, 0.92); border-width: 2px; border-radius: 2px;"></div>
         <br>
         <br>
     </div>
 </body>
 <footer>
-    <div style="vertical-align: middle;background-color: #fbfbfb; background-image: url(../img/bodyTexture.png);">
+    <div style="vertical-align: middle;background-color: #fbfbfb; background-image: url(/WIT/webroot/img/bodyTexture.png);">
         <table class="fertinitro" style="margin-bottom: .25rem">
             <tbody>
             <tr >
@@ -118,7 +106,7 @@ $cakeDescription = 'WIT';
             </tr>
             </tbody>
         </table>
-        <table width="100%" style="    background-color: #fbfbfb;    background-image: url(../img/bodyTexture.png);    margin-bottom: 0;">
+        <table width="100%" style="    background-color: #fbfbfb;    background-image: url(/WIT/webroot/img/bodyTexture.png);    margin-bottom: 0;">
             <tbody>
             <tr style="border-bottom: none;height: auto;max-height: 50px;padding: 0;">
                 <td style="text-align: left;padding: 0;width: 50%;padding-bottom: 0!important;padding-top: 0!important;max-width: 50%;">

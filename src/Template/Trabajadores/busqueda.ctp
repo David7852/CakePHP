@@ -80,6 +80,7 @@
             <thead>
             <tr>
                 <th scope="col" class="search-h"><?= $this->Paginator->sort('nombre') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('gerencia') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('extension') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('telefono_personal') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Linea Corporativa') ?></th>
@@ -92,6 +93,7 @@
             <?php foreach ($trabajadores as $trabajador): ?>
                 <tr>
                     <td><?= h($trabajador->nombre).' '.$trabajador->apellido ?></td>
+                    <td><?=$this->Text->autoParagraph(h($trabajador->gerencia))?></td>
                     <td><?=$this->Text->autoParagraph(h($trabajador->extension))?></td>
                     <td><?=$this->Text->autoParagraph(h($trabajador->telefono_personal))?></td>
                     <td><?=$this->Text->autoParagraph(h($trabajador->lineano))?></td>
