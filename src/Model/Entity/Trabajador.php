@@ -74,12 +74,12 @@ class Trabajador extends Entity
         }
         return $value;
     }
-    protected function _getUsuario()
+    protected function _getemail()
     {
         $users=TableRegistry::get('Usuarios')->find('all')
             ->where(['trabajador_id ='=>$this->_properties['id']]);
         foreach ($users as $user)
-            return $user;
+            return $user->email;
         return null;
     }
     protected function _getSupervisor()

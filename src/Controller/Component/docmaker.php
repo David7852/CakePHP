@@ -281,7 +281,7 @@ class docmaker {
         $innerrow2=$innert2->addRow();
         $innercell21=$innerrow2->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell21->addText('Correo: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
-        $innercell21->addText($solicitante->usuario->email,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
+        $innercell21->addText($solicitante->email,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innercell22=$innerrow2->addCell(4000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell22->addText('Supervisor: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
         $innercell22->addText($solicitante->supervisor!=null ? $solicitante->supervisor->titulo : '',array('name' => 'Arial', 'size'=>8, 'valign' => 'left'));
@@ -495,7 +495,7 @@ class docmaker {
         $innerrow2=$innert2->addRow();
         $innercell21=$innerrow2->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell21->addText('Correo: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
-        $innercell21->addText($solicitante->usuario->email,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
+        $innercell21->addText($solicitante->email,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innercell22=$innerrow2->addCell(4000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell22->addText('Supervisor: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
         $innercell22->addText($solicitante->supervisor!=null ? $solicitante->supervisor->titulo : '',array('name' => 'Arial', 'size'=>8, 'valign' => 'left'));
@@ -698,7 +698,7 @@ class docmaker {
         $innerrow2=$innert2->addRow();
         $innercell21=$innerrow2->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell21->addText('Correo: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
-        $innercell21->addText($solicitante->usuario->email,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
+        $innercell21->addText($solicitante->email,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innercell22=$innerrow2->addCell(4000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell22->addText('Supervisor: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
         $innercell22->addText($solicitante->supervisor!=null ? $solicitante->supervisor->titulo : '',array('name' => 'Arial', 'size'=>8, 'valign' => 'left'));
@@ -877,7 +877,7 @@ class docmaker {
         $innerrow2=$innert2->addRow();
         $innercell21=$innerrow2->addCell(3500, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell21->addText('Correo: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
-        $innercell21->addText($solicitante->usuario->email,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
+        $innercell21->addText($solicitante->email,array('name' => 'Arial', 'size'=>9, 'valign' => 'left'));
         $innercell22=$innerrow2->addCell(4000, array('bgColor' => 'ffffff'))->addTextRun(array('spaceBefore'=>1,'spaceAfter' => 1, 'size' => 9,'lineHeight'=>1.5));
         $innercell22->addText('Supervisor: ',array('name' => 'Arial','bold'=>true, 'size'=>9, 'valign' => 'left'));
         $innercell22->addText($solicitante->supervisor!=null ? $solicitante->supervisor->titulo : '',array('name' => 'Arial', 'size'=>8, 'valign' => 'left'));

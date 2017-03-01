@@ -123,16 +123,22 @@ class UsuariosController extends AppController
                         // if no coincidence is found, create an user with the default rule and redirect to its view.
                         $found=$this->lastnamefixer($row->apellido).$row->nombre[0];
                         $usuario = $this->Usuarios->patchEntity($usuario,
-                            ['nombre_de_usuario'=>$found,
+                            [
+                                'nombre_de_usuario'=>$found,
                                 'email'=>$found.'@fertinitro.com',
                                 'clave'=>$row->cedula,
+                                'pregunta'=>'',
+                                'respuesta'=>'',
                                 'funcion'=>'Visitante',
                                 'trabajador_id'=>$row->id]);
                     }else
                         $usuario = $this->Usuarios->patchEntity($usuario,
-                            ['nombre_de_usuario'=>$found,
+                            [
+                                'nombre_de_usuario'=>$found,
                                 'email'=>$found.'@fertinitro.com',
                                 'clave'=>$row->cedula,
+                                'pregunta'=>'',
+                                'respuesta'=>'',
                                 'funcion'=>'Visitante',
                                 'trabajador_id'=>$row->id]);
                     if ($this->Usuarios->save($usuario)) {//if user could be inserted, echo message and redirect
@@ -140,9 +146,10 @@ class UsuariosController extends AppController
                         $this->Auth->setUser($usuario);
                         return $this->redirect(['action' => 'view',$usuario->id]);
                     } else //else, echo sorry message
-                        $this->Flash->error(__('Usted es un trabajador registrado, pero el intento de crear su usuario fallo. Contacte a IT soporte.'));
+                        $this->Flash->error(__('Usted es ahora un trabajador registrado, pero el intento de crear su usuario de acceso fallo. Contacte a IT soporte.'));
                     break;
-                }//if no worker found with such ci, echo
+                }
+            if($found==null||!$found)
             $this->Flash->error(__('Ningún trabajador fue previamente registrado con esa cédula. por favor, registrese.'));
         }
     }

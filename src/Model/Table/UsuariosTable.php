@@ -60,8 +60,7 @@ class UsuariosTable extends Table
 
         $validator
             ->requirePresence('nombre_de_usuario', 'create')
-            ->minLength('nombre_de_usuario',5)
-            ->alphaNumeric('nombre_de_usuario')
+            ->minLength('nombre_de_usuario',3)
             ->notEmpty('nombre_de_usuario')
             ->add('nombre_de_usuario', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 

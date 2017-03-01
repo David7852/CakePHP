@@ -28,6 +28,8 @@ class Usuario extends Entity
     }
     protected function _setPregunta($value)
     {
+        if($value==null)
+            return $value;
         if($value[0]!='¿')
             $value='¿'.ucfirst($value);
         if($value[sizeof($value-1)]!='?')

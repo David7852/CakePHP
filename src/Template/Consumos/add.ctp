@@ -23,8 +23,7 @@
         echo $this->Form->input('servicio_id', ['options' => $servicios]);
         echo $this->Form->input('consumido');
         echo $this->Form->input('excedente');
-        echo $this->Form->input('monto_bs',['label'=>'Monto por exceso']);
-        ?>
+        echo $this->Form->input('monto_bs',['label'=>'Monto por exceso']);?>
     </fieldset>
     <?= $this->Form->button(__('Aceptar')) ?>
     <?= $this->Form->end() ?>

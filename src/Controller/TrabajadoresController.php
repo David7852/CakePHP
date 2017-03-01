@@ -219,7 +219,7 @@ class TrabajadoresController extends AppController
         if ($this->request->is('post')) {
             $trabajador = $this->Trabajadores->patchEntity($trabajador, $this->request->data);
             if ($this->Trabajadores->save($trabajador)) {
-                $this->Flash->success(__('Su registro como trabajador de FertiNitro ha sido exitoso.'));
+                $this->Flash->success(__('¡Bienvenido! Su registro como trabajador de FertiNitro ha sido un exito.'));
                 $contrato=TableRegistry::get('Contratos')->newEntity();
                 $contrato=TableRegistry::get('Contratos')->patchEntity($contrato,
                     [
