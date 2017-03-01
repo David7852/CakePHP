@@ -15,7 +15,7 @@ class savory
     public function gettrbdata()
     {
         $trabajadores=TableRegistry::get('Trabajadores')->find('all')->count();
-        return '<p><dfn style="text-shadow: 0px 0px 2px rgba(245,91,255,0.8); font-size: large; font-style: normal ; font-weight: bold">' .$trabajadores.'</dfn>'.' Trabajadores de la familia 
+        return '<p><dfn style="text-shadow: 0px 0px 2px rgba(252,131,255,0.8); font-size: large; font-style: normal ; font-weight: bold">' .$trabajadores.'</dfn>'.' Trabajadores de la familia 
             <dfn style="font-size: large;color: rgb(57,115,30); font-style: normal ; font-weight: bold">Ferti</dfn><dfn style="font-size: large;color: rgb(185,230,51); font-style: normal ; font-weight: bold">Nitro</dfn> ya forman parte de WIT.<br>Tu participación es valiosa y nos ayuda a mejorar la calidad de nuestro servicio.</p><a href="/WIT/registrate" class="button" style="float: none;    position: relative;    transition: all 1s;    margin-bottom: 0;    width: 8rem;    text-align: center;    padding: 0;    margin: auto;">¡Únete!</a>';
     }
     public function getinvdata()

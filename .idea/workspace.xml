@@ -77,26 +77,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="savory.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="savory.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/Component/savory.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="48" column="426" lean-forward="true" selection-start-line="48" selection-start-column="426" selection-end-line="48" selection-end-column="436" />
+            <state relative-caret-position="285">
+              <caret line="34" column="36" lean-forward="false" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
               <folding>
-                <marker date="1488326975313" expanded="true" signature="334:839" ph="..." />
-                <marker date="1488326975313" expanded="true" signature="347:450" ph="..." />
-                <marker date="1488326975313" expanded="false" signature="532:610" ph="..." />
-                <marker date="1488326975313" expanded="false" signature="635:714" ph="..." />
-                <marker date="1488326975313" expanded="false" signature="888:1038" ph="..." />
-                <marker date="1488326975313" expanded="true" signature="1514:1578" ph="..." />
-                <marker date="1488326975313" expanded="true" signature="1514:1596" ph="..." />
-                <marker date="1488326975313" expanded="true" signature="1692:1774" ph="..." />
-                <marker date="1488326975313" expanded="true" signature="1862:1946" ph="..." />
-                <marker date="1488326975313" expanded="true" signature="2123:2280" ph="..." />
-                <marker date="1488326975313" expanded="true" signature="2913:2995" ph="..." />
-                <marker date="1488326975313" expanded="true" signature="3054:3135" ph="..." />
-                <marker date="1488326975313" expanded="true" signature="3262:3340" ph="..." />
-                <marker date="1488326975313" expanded="true" signature="3365:3444" ph="..." />
+                <marker date="1488331220335" expanded="true" signature="334:840" ph="..." />
+                <marker date="1488331220335" expanded="true" signature="347:451" ph="..." />
+                <marker date="1488331220335" expanded="false" signature="533:611" ph="..." />
+                <marker date="1488331220335" expanded="false" signature="636:715" ph="..." />
+                <marker date="1488331220335" expanded="false" signature="889:1039" ph="..." />
+                <marker date="1488331220335" expanded="true" signature="1515:1579" ph="..." />
+                <marker date="1488331220335" expanded="true" signature="1515:1597" ph="..." />
+                <marker date="1488331220335" expanded="true" signature="1693:1775" ph="..." />
+                <marker date="1488331220335" expanded="true" signature="1863:1947" ph="..." />
+                <marker date="1488331220335" expanded="true" signature="2124:2281" ph="..." />
+                <marker date="1488331220335" expanded="true" signature="2914:2996" ph="..." />
+                <marker date="1488331220335" expanded="true" signature="3055:3136" ph="..." />
+                <marker date="1488331220335" expanded="true" signature="3263:3341" ph="..." />
+                <marker date="1488331220335" expanded="true" signature="3366:3445" ph="..." />
               </folding>
             </state>
           </provider>
@@ -122,7 +122,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrabajadoresController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TrabajadoresController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/TrabajadoresController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
@@ -256,11 +256,11 @@
         <option value="$PROJECT_DIR$/src/Controller/Component/docmaker.php" />
         <option value="$PROJECT_DIR$/src/Model/Entity/Trabajador.php" />
         <option value="$PROJECT_DIR$/src/Template/Usuarios/reset.ctp" />
-        <option value="$PROJECT_DIR$/src/Controller/Component/savory.php" />
         <option value="$PROJECT_DIR$/src/Model/Entity/Usuario.php" />
         <option value="$PROJECT_DIR$/src/Model/Table/UsuariosTable.php" />
         <option value="$PROJECT_DIR$/src/Controller/UsuariosController.php" />
         <option value="$PROJECT_DIR$/src/Controller/TrabajadoresController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Component/savory.php" />
       </list>
     </option>
   </component>
@@ -889,18 +889,18 @@
       <workItem from="1487807507784" duration="1196000" />
       <workItem from="1488151930360" duration="4385000" />
       <workItem from="1488171328657" duration="1194000" />
-      <workItem from="1488323904032" duration="6711000" />
+      <workItem from="1488323904032" duration="6886000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="843997000" />
+    <option name="totallyTimeSpent" value="844172000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21255673" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21255673" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.5030257" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13086233" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -953,11 +953,6 @@
           <url>file://$PROJECT_DIR$/src/Controller/Component/docmaker.php</url>
           <line>497</line>
           <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/Controller/Component/savory.php</url>
-          <line>17</line>
-          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="44" />
@@ -1276,29 +1271,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Component/savory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="48" column="426" lean-forward="true" selection-start-line="48" selection-start-column="426" selection-end-line="48" selection-end-column="436" />
-          <folding>
-            <marker date="1488326975313" expanded="true" signature="334:839" ph="..." />
-            <marker date="1488326975313" expanded="true" signature="347:450" ph="..." />
-            <marker date="1488326975313" expanded="false" signature="532:610" ph="..." />
-            <marker date="1488326975313" expanded="false" signature="635:714" ph="..." />
-            <marker date="1488326975313" expanded="false" signature="888:1038" ph="..." />
-            <marker date="1488326975313" expanded="true" signature="1514:1578" ph="..." />
-            <marker date="1488326975313" expanded="true" signature="1514:1596" ph="..." />
-            <marker date="1488326975313" expanded="true" signature="1692:1774" ph="..." />
-            <marker date="1488326975313" expanded="true" signature="1862:1946" ph="..." />
-            <marker date="1488326975313" expanded="true" signature="2123:2280" ph="..." />
-            <marker date="1488326975313" expanded="true" signature="2913:2995" ph="..." />
-            <marker date="1488326975313" expanded="true" signature="3054:3135" ph="..." />
-            <marker date="1488326975313" expanded="true" signature="3262:3340" ph="..." />
-            <marker date="1488326975313" expanded="true" signature="3365:3444" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Pages/home.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="984">
@@ -1352,6 +1324,29 @@
         <state relative-caret-position="330">
           <caret line="234" column="80" lean-forward="true" selection-start-line="234" selection-start-column="80" selection-end-line="234" selection-end-column="80" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Component/savory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="34" column="36" lean-forward="false" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
+          <folding>
+            <marker date="1488331220335" expanded="true" signature="334:840" ph="..." />
+            <marker date="1488331220335" expanded="true" signature="347:451" ph="..." />
+            <marker date="1488331220335" expanded="false" signature="533:611" ph="..." />
+            <marker date="1488331220335" expanded="false" signature="636:715" ph="..." />
+            <marker date="1488331220335" expanded="false" signature="889:1039" ph="..." />
+            <marker date="1488331220335" expanded="true" signature="1515:1579" ph="..." />
+            <marker date="1488331220335" expanded="true" signature="1515:1597" ph="..." />
+            <marker date="1488331220335" expanded="true" signature="1693:1775" ph="..." />
+            <marker date="1488331220335" expanded="true" signature="1863:1947" ph="..." />
+            <marker date="1488331220335" expanded="true" signature="2124:2281" ph="..." />
+            <marker date="1488331220335" expanded="true" signature="2914:2996" ph="..." />
+            <marker date="1488331220335" expanded="true" signature="3055:3136" ph="..." />
+            <marker date="1488331220335" expanded="true" signature="3263:3341" ph="..." />
+            <marker date="1488331220335" expanded="true" signature="3366:3445" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
