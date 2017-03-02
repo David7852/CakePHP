@@ -46,8 +46,9 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Consumos', 'action' => 'view', $servicios->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Consumos', 'action' => 'edit', $servicios->id]) ?>
+                <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                     <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Consumos', 'action' => 'delete', $servicios->id], ['confirm' => __('¿Confirma querer eliminar el consumo {0}?', $servicios->titulo)]) ?>
-                </td>
+                <?php endif; ?></td>
             </tr>
             <?php endforeach; ?>
         </table>
@@ -83,8 +84,9 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Lineas', 'action' => 'view', $lineas->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Lineas', 'action' => 'edit', $lineas->id]) ?>
+                <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                     <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Lineas', 'action' => 'delete', $lineas->id], ['confirm' => __('¿Confirma querer eliminar la linea {0}?', $lineas->numero)]) ?>
-                </td>
+                <?php endif; ?></td>
             </tr>
             <?php endforeach; ?>
         </table>

@@ -81,8 +81,9 @@
                         <td class="actions">
                             <?= $this->Html->link(__('Ver'), ['controller' => 'Rentas', 'action' => 'view', $rentas->id]) ?>
                             <?= $this->Html->link(__('Editar'), ['controller' => 'Rentas', 'action' => 'edit', $rentas->id]) ?>
+                    <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                             <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Rentas', 'action' => 'delete', $rentas->id], ['confirm' => __('¿Confirma querer eliminar la renta o plan {0}?', $rentas->nombre)]) ?>
-                        </td>
+                        <?php endif; ?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
@@ -108,8 +109,9 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Facturas', 'action' => 'view', $facturas->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Facturas', 'action' => 'edit', $facturas->id]) ?>
+                <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                     <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Facturas', 'action' => 'delete', $facturas->id], ['confirm' => __('Confirma querer eliminar la factura {0}?', $facturas->titulo)]) ?>
-                </td>
+                <?php endif; ?></td>
             </tr>
             <?php endforeach; ?>
         </table>
@@ -138,8 +140,9 @@
                         <td class="actions">
                             <?= $this->Html->link(__('Ver'), ['controller' => 'Consumos', 'action' => 'view', $consumo->id]) ?>
                             <?= $this->Html->link(__('Editar'), ['controller' => 'Consumos', 'action' => 'edit', $consumo->id]) ?>
+                    <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                             <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Consumos', 'action' => 'delete', $consumo->id], ['confirm' => __('¿Confirma querer eliminar el consumo {0}?', $consumo->titulo)]) ?>
-                        </td>
+                        <?php endif; ?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

@@ -94,8 +94,9 @@ use Cake\ORM\TableRegistry;?>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Asignaciones', 'action' => 'view', $asignaciones->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Asignaciones', 'action' => 'edit', $asignaciones->id]) ?>
+                <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                     <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Asignaciones', 'action' => 'delete', $asignaciones->id], ['confirm' => __('¿Confirma querer eliminar la asignacion del{0}?', $asignaciones->titulo)]) ?>
-                </td>
+                <?php endif; ?></td>
             </tr>
             <?php endforeach; ?>
         </table>
@@ -117,8 +118,9 @@ use Cake\ORM\TableRegistry;?>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Devoluciones', 'action' => 'view', $devoluciones->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Devoluciones', 'action' => 'edit', $devoluciones->id]) ?>
+                <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                     <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Devoluciones', 'action' => 'delete', $devoluciones->id], ['confirm' => __('¿Confirma querer eliminar la devolucion del {0}?', $devoluciones->titulo)]) ?>
-                </td>
+                <?php endif; ?></td>
             </tr>
             <?php endforeach; ?>
         </table>

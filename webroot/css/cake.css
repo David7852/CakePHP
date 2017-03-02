@@ -615,13 +615,13 @@ footer table.fertinitro tbody::before{
     margin-left:0rem;
     display: block;
 }
-footer a{
+footer a img{
     opacity: 0.88;
     transition: opacity .75s linear;
 }
-footer  a:hover{
+footer a:hover img{
     opacity: 1;
-    transition: opacity 0.55s linear!important;
+    transition: opacity 0.55s linear;
 }
 .vertical-table tbody::before{
     content:"";

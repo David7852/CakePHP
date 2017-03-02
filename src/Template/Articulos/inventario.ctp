@@ -46,8 +46,9 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $articulo->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $articulo->id]) ?>
+            <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                     <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $articulo->id], ['confirm' => __('¿Confirma querer eliminar el articulo {0}?', $articulo->titulo)]) ?>
-                </td>
+                <?php endif; ?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>

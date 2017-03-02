@@ -58,8 +58,9 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $proceso->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $proceso->id]) ?>
+                <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                     <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $proceso->id], ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $proceso->motivo)]) ?>
-                </td>
+                <?php endif; ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

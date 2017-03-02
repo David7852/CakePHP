@@ -71,8 +71,9 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Articulos', 'action' => 'view', $articulos->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Articulos', 'action' => 'edit', $articulos->id]) ?>
+                <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                     <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Articulos', 'action' => 'delete', $articulos->id], ['confirm' => __('¿Confirma querer eliminar al articulo #{0}?', $articulos->serial)]) ?>
-                </td>
+                <?php endif; ?></td>
             </tr>
             <?php endforeach; ?>
         </table>

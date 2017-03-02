@@ -58,6 +58,7 @@
                     <li class="first">
                         <a href="<?=Router::url(array('controller' => 'Rentas', 'action' => 'index'))?>" style="color:#1c2529; background-color: lightgreen ">Ver Planes</a>
                     </li>
+                    <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?>
                     <li class="superlabel first">
                         <div style=" background-color: #548b54">
                             <h5>Buscar numeros<br>del Trabajador:</h5>
@@ -71,6 +72,7 @@
                             </div>
                         </div>
                     </li>
+                    <?php endif; ?>
                     <li>
                         <a href="<?=Router::url(array('controller' => 'Servicios', 'action' => 'index'))?>" style="color:white; background-color: seagreen">Ver Servicios</a>
                     </li>

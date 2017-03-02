@@ -48,8 +48,9 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $factura->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $factura->id]) ?>
+                <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                     <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $factura->id], ['confirm' => __('¿Confirma querer eliminar la factura del {0}?', $factura->title)]) ?>
-                </td>
+                <?php endif; ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

@@ -40,8 +40,9 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $renta->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $renta->id]) ?>
+                <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                     <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $renta->id], ['confirm' => __('¿Confirma querer eliminar la renta o plan {0}?', $renta->nombre)]) ?>
-                </td>
+                <?php endif; ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

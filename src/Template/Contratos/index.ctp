@@ -40,8 +40,11 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $contrato->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $contrato->id]) ?>
+
+                    <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                     <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $contrato->id], ['confirm' => __('¿Confirma querer eliminar el contrato {0}?', $contrato->titulo)]) ?>
-                </td>
+                <?php endif; ?>
+                    </td>
             </tr>
             <?php endforeach; ?>
         </tbody>

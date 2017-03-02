@@ -96,8 +96,9 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Contratos', 'action' => 'view', $contratos->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Contratos', 'action' => 'edit', $contratos->id]) ?>
+                <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                     <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Contratos', 'action' => 'delete', $contratos->id], ['confirm' => __('¿Confirma querer eliminar el contrato {0}?', $contratos->titulo)]) ?>
-                </td>
+                <?php endif; ?></td>
             </tr>
             <?php endforeach; ?>
         </table>
@@ -122,8 +123,9 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Usuarios', 'action' => 'view', $usuarios->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Usuarios', 'action' => 'edit', $usuarios->id]) ?>
+                <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                     <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Usuarios', 'action' => 'delete', $usuarios->id], ['confirm' => __('¿Confirma querer eliminar al usuario {0}?', $usuarios->nombre_de_usuario)]) ?>
-                </td>
+                <?php endif; ?></td>
             </tr>
             <?php endforeach; ?>
         </table>
@@ -150,8 +152,9 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Procesos', 'action' => 'view', $procesos->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['controller' => 'Procesos', 'action' => 'edit', $procesos->id]) ?>
+                <?php if($this->request->session()->read('Auth.User.funcion')!='Visitante'): ?><!-->
                     <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Procesos', 'action' => 'delete', $procesos->id], ['confirm' => __('¿Confirma querer eliminar el proceso {0}?', $procesos->titulo)]) ?>
-                </td>
+                <?php endif; ?></td>
             </tr>
             <?php endforeach; ?>
         </table>
