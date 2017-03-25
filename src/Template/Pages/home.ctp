@@ -47,7 +47,11 @@ $cakeDescription = 'WIT';
                             <a href="<?=Router::url(array('controller' => '/', 'action' => 'telefonia'))?>" style="color:white; background-color: #00b14c">Telefonía</a>
                         </li>
                         <li>
-                            <a href="<?=Router::url(array('controller' => '/', 'action' => 'usuarios'))?>" style="color:white; background-color: rgb(184, 65, 110)">Usuarios</a>
+                            <?php if(!$this->request->session()->read('Auth.User')): ?>
+                                <a href="<?=Router::url(array('controller' => 'usuarios', 'action' => 'login'))?>" style="color:white; background-color: rgb(184, 65, 110)">Ingresar</a>
+                            <?php else: ?>
+                                <a href="<?=Router::url(array('controller' => '/', 'action' => 'usuarios'))?>" style="color:white; background-color: rgb(184, 65, 110)">Usuarios</a>
+                            <?php endif; ?>
                         </li>
                     </ul>
                 </div>
