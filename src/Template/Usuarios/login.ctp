@@ -1,6 +1,6 @@
 <?php use Cake\Routing\Router;?>
 <?=$this->assign('title',"Sistema de inventario")?>
-<div class="large-4 medium-6 columns" id="actions-sidebar">
+<div class="large-4 medium-6 columns login-sidebar" id="actions-sidebar">
     <fieldset style="    padding-bottom: 0;
     padding-top: 0;
     padding-right: 15px;

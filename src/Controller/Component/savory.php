@@ -7,16 +7,21 @@
  */
 
 namespace App\Controller\Component;
-use Cake\ORM\Entity;
 use Cake\ORM\TableRegistry;
+use App\Controller\PAgesController;
 
 class savory
 {
     public function gettrbdata()
     {
+        $page=new PAgesController();
         $trabajadores=TableRegistry::get('Trabajadores')->find('all')->count();
+        if(!$page->request->session()->read('Auth.User'))
         return '<p><dfn style="text-shadow: 0px 0px 2px rgba(252,131,255,0.8); font-size: large; font-style: normal ; font-weight: bold">' .$trabajadores.'</dfn>'.' Trabajadores de la familia 
             <dfn style="font-size: large;color: rgb(57,115,30); font-style: normal ; font-weight: bold">Ferti</dfn><dfn style="font-size: large;color: rgb(185,230,51); font-style: normal ; font-weight: bold">Nitro</dfn> ya forman parte de WIT.<br>Tu participación es valiosa y nos ayuda a mejorar la calidad de nuestro servicio.</p><a href="/WIT/registrate" class="button" style="float: none;    position: relative;    transition: all 1s;    margin-bottom: 0;    width: 8rem;    text-align: center;    padding: 0;    margin: auto;">¡Únete!</a>';
+        return '<p><dfn style="text-shadow: 0px 0px 2px rgba(252,131,255,0.8); font-size: large; font-style: normal ; font-weight: bold">' .$trabajadores.'</dfn>'.' Trabajadores de la familia 
+            <dfn style="font-size: large;color: rgb(57,115,30); font-style: normal ; font-weight: bold">Ferti</dfn><dfn style="font-size: large;color: rgb(185,230,51); font-style: normal ; font-weight: bold">Nitro</dfn> ya forman parte de WIT <b>Y tu eres uno de ellos.<b><br>Gracias por tu participación, esta nos ayuda a mejorar la calidad de nuestro servicio.</p><br>';
+
     }
     public function getinvdata()
     {
